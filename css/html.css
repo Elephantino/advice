@@ -1,0 +1,259 @@
+
+
+
+.text-align ul {
+  width: 335px;
+  padding: 1em;
+  background-color: rgb(253, 236, 203);
+}
+
+.text-align li {
+  border: 1px solid black;
+  margin-bottom: -1px;
+  padding: 0.1em .3em;
+}
+
+.text-align h3 {
+  margin-bottom: 0.4em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.preview .inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.preview .item {
+  min-height: 100px;
+  min-width: 100px;
+  max-width: 200px;
+  border: 1px solid black;
+}
+
+.preview .item p {
+  margin: 0;
+}
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+.text-orientation .item p {
+  text-align: center;
+}
+
+.text-orientation .item:nth-child(1) {
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  width: 100px;
+  padding-left: 70px;
+}
+
+.text-orientation .item:nth-child(2) {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.text-orientation .item:nth-child(3) {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+.text-indent .item:nth-child(1) {
+  text-indent: 2em;
+}
+
+.text-indent .item:nth-child(2) {
+  margin-left: 2em;
+  text-indent: -2em;
+}
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+.text-align > ul{
+  width: min-content;
+  display: grid;
+  grid-template-columns: repeat(3, 210px);
+}
+
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+.text-overflow p {
+  border: 1px solid red;
+  width: 100px;
+  overflow-x: hidden;
+  white-space: nowrap;
+
+  text-overflow: clip;
+}
+
+.text-overflow p:last-child {
+  text-overflow: ellipsis;
+}
+
+.text-overflow p:hover {
+  width: 100%;
+}
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+.writing-mode .item {
+  writing-mode: horizontal-tb;
+}
+
+.writing-mode .item:nth-child(2) {
+  writing-mode: vertical-lr;
+}
+
+.writing-mode .item:last-child {
+  writing-mode: vertical-rl;
+}
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+
+.text-justify .item p:first-child {
+  text-align: center;
+  margin: 10px 0 15px;
+  font-weight: bold;
+}
+
+.text-justify .item p {
+  text-align: justify;
+}
+
+.text-justify .item:first-child p:last-child {
+  text-justify: auto;
+}
+
+.text-justify .item:nth-child(2) p:last-child {
+  text-justify: inter-word;
+}
+
+.text-justify .item:nth-child(3) p:last-child {
+  text-justify: inter-character;
+}
+
+.text-justify .item:nth-child(4) p:last-child {
+  text-justify: distribute;
+}
+
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+
+.video table,
+.audio table {
+  max-width: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 183, 178);
+}
+
+.video caption,
+.audio caption {
+  margin-bottom: .3em;
+}
+
+.video table td,
+.audio table td {
+  border: 1px solid rgb(200, 183, 178);
+  padding: 1em;
+}
+
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+
+.table__inner {
+  padding: 1em;
+  display: flex;
+  justify-content: space-around;
+  gap: 1em;
+}
+
+.table__inner table {
+  max-width: 350px;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid #000000;
+}
+
+.table__border-bottom td {
+  border-bottom: 2px solid silver;
+}
+
+.table__border-left td {
+  border-left: 2px solid silver;
+}
+
+.table__inner table caption {
+  caption-side: top;
+}
+
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+
+
+.modal {
+  padding: 0;
+  border: none;
+  border-radius: 15px;
+}
+
+.modal__inner {
+  padding: 1em 2em;
+  text-align: center;
+}
+
+.modal::backdrop {
+  background-color: #2f0303bd;
+}
+
+.openModal,
+.closeModal {
+  border: 1px solid black;
+}
+
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

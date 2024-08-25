@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>htmlcollection</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="img/window-icon/window-icon.png" type="image/png">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <div class="wrapper">
+
+
+
+      <header class="page--header">
+        <div class="container">
+          <div class="header__inner">
+
+            <a href="../index.html">
+              <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+              <img src="../img/logo.png" alt="">
+            </a>
+
+            <ul class="header-list list-reset">
+              <li class="item"><a href="../html/404.html">404</a></li>
+              <li class="item"><a href="../html/examples.html">examples</a></li>
+              <li class="item"><a href="../html/about.html">шпора</a></li>
+              <li class="item"><a href="../html/table-of-contents.html">оглавление</a></li>
+            </ul>
+
+          </div>
+        </div>
+      </header>
+
+      <main class="page--main">
+        <div class="container">
+
+          <section class="htmlcollection">
+
+            <h1>HTMLCollection</h1>
+
+            <ul>
+              <li>Динамическая коллекция элементов</li>
+              <li>Не имеет привычных методов массива</li>
+              <li>Хранит только узлы HTML элементов(теги)</li>
+              <li>Обращение к элементам коллекции:
+                <ul>
+                  <li>по индексу</li>
+                  <li>по имени методом namedItem</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p>если возвращенная коллекция динамическая то перебирать ее нужно с конца (страница 274)</p>
+
+            <p>у html-коллекции нет итератора по этому что бы перебрать нужно коллекцию перевести в массив
+              <code>Array.from() или [...htmlCollection]</code></p>
+
+            <textarea cols="60" rows="8">
+let elem = document.querySelector("#test");
+
+let arr = Array.from(elem.children)
+let arr = [...elem.children]
+
+for (let i of arr) {
+  console.log(i)
+}
+
+</textarea>
+
+          </section>
+
+        </div>
+      </main>
+
+    </div>
+    <script src="../main.js"></script>
+</body>
+
+</html>

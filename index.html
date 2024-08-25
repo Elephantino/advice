@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="header__inner">
+
+          <a href="index.html">
+            <!-- <svg width="125px" height="20px">
+              <use href="img/sprite.svg#logo"></use>
+            </svg> -->
+            <img src="img/logo.png" alt="">
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="html/404.html">404</a></li>
+            <li class="item"><a href="html/examples.html">examples</a></li>
+            <li class="item"><a href="html/about.html">шпора</a></li>
+            <li class="item"><a href="html/table-of-contents.html">оглавление</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </header>
+
+
+
+    <main class="page--main">
+      <div class="container">
+
+        <ul>
+          <li><a href="https://itchief.ru/javascript/get-elements#matches-closest-contains" target="_blank"
+              rel="noopener noreferrer">операторы Spread Rest</a></li>
+          <li><a target="_blank" rel="noopener noreferrer"
+              href="https://www.youtube.com/watch?v=OtJkXuqyjkk&t=488s">ФОРМЫ. --- ФРИЛАНСЕР</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://telegra.ph/Prototipy-02-08">Прототипы</a>
+          </li>
+        </ul>
+
+
+
+
+        <ul>
+          <li>
+            <a href="html/js.html#oninput">получить данные из поля ввода без отправки формы <span
+                class="color-red">oninput</span></a>
+          </li>
+          <li>
+            <a href="html/css.html#hidden">
+              Любому элементу можно добавить атрибут hidden и он пропадёт
+            </a>
+          </li>
+          <li>
+            <a href="js.html#delegate-event--menu">Меню на делегировании событий</a>
+          </li>
+          <li>
+            атрибут title="подсказка при hover"
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/ru/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy">Политика
+              защиты содержимого</a>
+          </li>
+        </ul>
+
+
+        <hr>
+        <div class="performance">
+          <pre><code>
+section id           | #id class |     #js > .events
+  div class           --- или ---     -------------
+  div class          | #id       |     #js    
+                     |   class   |       .events
+</code></pre>
+        </div>
+
+
+
+        <hr>
+
+        <p>прессет - готовая настройка</p>
+        <p>полифил - костыль для браузера</p>
+
+        <hr>
+
+        <button class="guess-the-number">игра - угадай число</button>
+
+        <hr>
+
+        <h2>figma</h2>
+
+        <ul>
+          <li>Duplicate to uour draft -- дубликат макета, в верхнем меню</li>
+          <li>клонировать -- зажать alt перетащить объект </li>
+          <li>проект во весь экран -- hift + 1</li>
+        </ul>
+
+
+        <hr>
+
+
+
+        <div class="performance animation">
+          <p><span>animation:</span> name, duration, timing-function, delay, iteration-count, direction, fill-mode,
+            play-state.</p>
+        </div>
+
+        <hr>
+
+
+
+        <div class="performance">
+          <pre><code>
+выделение текста при нажатии
+
+form {
+  user-select: none;
+}
+
+</code></pre>
+        </div>
+
+
+        <div class="performance">
+          <pre><code>
+примере нажатие на идентификатор приведет к прокрутке на 60 пикселей выше идентификатора.
+
+function scrollToId() {
+	const navHeight = 60;
+	window.scrollTo(0, window.pageYOffset - navHeight);
+}
+
+window.addEventListener('hashchange', scrollToId);
+
+</code></pre>
+        </div>
+
+
+
+
+
+        <section class="performance">
+          <pre><code>
+Array.prototype.peek = function() {
+	return this.shift();
+}
+let peek = arr.peek();
+
+console.log(peek);
+
+</code></pre>
+        </section>
+
+        <div class="performance">
+          <p>Вы можете сначала добавить новый элемент на страницу, а потом уже менять ему текстовое содержимое и
+            класс, но тогда
+            браузеру придётся несколько раз перерисовывать страницу. Это неэффективно. Лучше добавлять на страницу
+            уже полностью
+            сформированный элемент.</p>
+        </div>
+
+
+
+        <div class="performance count">
+          <h3>css счетчик</h3>
+          <textarea name="count" id="" cols="30" rows="12">
+ul {
+  counter-reset: count;
+}
+
+li {
+  counter-increment: count 1;
+}
+
+li::marker {
+  content: counter(count);
+}
+          </textarea>
+        </div>
+
+
+
+        <div class="performance">
+          <p>initial - все свойства в начальные значения.</p>
+          <p>inherit - все свойства в их унаследованные значения.</p>
+          <p>unset - Изменяет все значения на соответствующее значение по умолчанию, которое является либо inherit
+            или
+            initial.</p>
+          <p>revert - Результирующие значения зависят от источника таблицы стилей, где находится это свойство.</p>
+          <p>revert-layer - Результирующие значения будут соответствовать предыдущему каскадному слою или
+            следующему
+            соответствующему правилу.</p>
+        </div>
+
+        <div class="performance">
+          <h3>class="..."</h3>
+          <p>Класс должен отражать назначение элемента. Плохими считаются классы, которые описывают внешний вид.
+            Исключение делается для дивов-обёрток, которые нужны исключительно для оформления.<a
+              href="https://github.com/yoksel/common-words" target="_blank" rel="noopener noreferrer"> Шпоргалга
+              классов html</a></p>
+        </div>
+
+        <div class="performance button">
+          <p>У &lt;button&gt; обязательно явно прописывать type. По умолчанию его значение —
+            submit, а зачастую нужен
+            тип button. Особенно важно это для кнопок, которые находятся вне форм и нужны для JavaScript.</p>
+        </div>
+
+
+
+      </div>
+    </main>
+
+
+
+
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+
+          footer
+
+        </div>
+      </div>
+    </footer>
+
+
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>

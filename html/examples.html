@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>examples</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+
+
+<header class="page--header">
+  <div class="container">
+    <div class="header__inner">
+
+      <a href="../index.html">
+        <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+        <img src="../img/logo.png" alt="">
+      </a>
+
+      <ul class="header-list list-reset">
+        <li class="item"><a href="../html/404.html">404</a></li>
+        <li class="item"><a href="../html/examples.html">examples</a></li>
+        <li class="item"><a href="../html/about.html">шпора</a></li>
+        <li class="item"><a href="../html/table-of-contents.html">оглавление</a></li>
+      </ul>
+
+    </div>
+  </div>
+</header>
+
+
+
+
+
+
+    <main class="main">
+      <div class="container">
+        <div class="main__inner">
+
+
+<section class="performance git-init">
+ <pre>
+  <code>
+git init
+git remote add origin http://
+git pull origin main   ===   git pull http://
+
+git add . 
+  git status 
+git commit -m "commit"
+git push origin main   ===   git push http://
+
+git clone http://
+  </code>
+</pre> 
+</section>
+
+
+
+          <div class="performance">
+            <pre>
+<code>
+	alt коды
+
+179 : │    193 : ┴    217 : ┘
+
+180 : ┤    194 : ┬    218 : ┌
+
+191 : ┐    195 : ├    250 : ·
+
+192 : └    196 : ─     31 : ▼  
+</code>
+</pre>
+          </div>
+
+
+          <section class="multi-columns">
+            <details class="show-block">
+              <summary><code>мультиколонки</code></summary>
+              <p>
+                <code>columns: column-width || column-count; -- <span class="color-red">порядок значения не имеет</span></code>
+              </p>
+              <p>
+                <code>columns: 100px 3; -- <span class="color-red">максимум 3 колонки минимум 100px в ширину каждая;</span></code>
+              </p>
+              <p>
+                <code>columns: 200px auto; -- <span class="color-red">ширина колонок минимум 200 пикселов, количество задаётся браузером</span></code>
+              </p>
+              <p><code>columns: 3 12em;</code></p>
+              <p>
+                <code>columns: 2; -- <span class="color-red">две колонки, их ширина определяется браузером.</span></code>
+              </p>
+
+              <hr>
+              <p><code>column-gap</code></p>
+              <p><code>column-rule: style / width / color;</code></p>
+
+              <div class="performance">
+                <p>Свойство column-width задаёт минимальную желаемую ширину колонки. Если свойство column-count ещё не
+                  было
+                  задано, браузер
+                  автоматически поделит текст на такое количество колонок, чтобы они уместились во всю доступную ширину.
+                </p>
+              </div>
+
+              <div class="multi-columns__inner">
+                <div class="multi-columns__item">
+                  <h2>title</h2>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sequi?</p>
+                  <h2>title</h2>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sequi?</p>
+                  <h2>title</h2>
+                  <p>Lorem <ips> </ips>um dolor sit amet consectetur adipisicing elit. Soluta, sequi?</p>
+                  <h2>title</h2>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sequi?</p>
+                  <h2>title</h2>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sequi?</p>
+                </div>
+              </div>
+            </details>
+          </section>
+
+
+
+          <div class="show-code content-switcher-example">
+            <h2 class="show-code__title">show code</h2>
+            <div class="show-code__description">
+              <p>description</p>
+            </div>
+            <div class="show-code__inner">
+              <div class="show-code__performance">
+                <section class="checkout">
+
+                  <ol class="tab-list list-reset">
+                    <li class="tab-item">1</li>
+                    <li class="tab-item is-active">2</li>
+                    <li class="tab-item">3</li>
+                    <li class="tab-item">4</li>
+                    <li class="tab-item">5</li>
+                  </ol>
+
+                  <ul class="content-list list-reset">
+                    <li class="content-item">Content-1</li>
+                    <li class="content-item is-active">Content-2</li>
+                    <li class="content-item">Content-3</li>
+                    <li class="content-item">Content-4</li>
+                    <li class="content-item">Content-5</li>
+                  </ul>
+
+                </section>
+              </div>
+              <textarea class="show-code__textarea">
+const tabItems = Array.from(document.querySelectorAll('.tab-item'));
+const contentItems = Array.from(document.querySelectorAll('.content-item'));
+//  Array.from что бы работал .find
+    
+const clearActiveClass = (element, className = 'is-active') => {
+    element.find(item => item.classList.remove(`${className}`))
+}
+const setActiveClass = (element, index, className = 'is-active') => {
+    element[index].classList.add(`${className}`)
+}
+    
+const checkoutTabs = (item, index) => {
+    item.addEventListener('click', () => {
+   
+    if (item.classList.contains('is-active')) return
+   
+    clearActiveClass(tabItems)
+    clearActiveClass(contentItems)
+    
+    setActiveClass(tabItems, index)
+    setActiveClass(contentItems, index)
+    
+    })
+}
+    
+tabItems.forEach(checkoutTabs);
+            </textarea>
+            </div>
+          </div>
+
+
+
+          <!-- performance -->
+          <textarea cols="25" rows="4" style="display: block">
+<div class="performance"> 
+  
+</div>
+</textarea>
+
+          <!-- show-piece -->
+          <textarea cols="30" rows="6" style="display: block">
+<details class="show-piece">
+  <summary><code></code></summary>
+
+</details>
+</textarea>
+
+          <!-- show-block -->
+          <textarea cols="40" rows="7" style="display: block">
+<section class="">
+  <details class="show-block">
+    <summary><code></code></summary>
+
+  </details>
+</section>
+</textarea>
+
+          <!-- show-code -->
+          <textarea cols="45" rows="19" style="display: block">
+<div class="show-code">
+  <h2 class="show-code__title">showСode</h2>
+
+  <div class="show-code__description">
+    <p>description</p>
+  </div>
+
+  <div class="show-code__inner">
+    <div class="show-code__performance">
+      <section class="class">
+        performance
+      </section>
+   </div>
+
+    textarea.show-code__textarea
+
+  </div>
+</div>
+</textarea>
+
+
+
+<!-- show-info -->
+
+<textarea cols="30" rows="6" style="display: block">
+<div class="show-info">
+  <div class="show-info__inner">
+
+  </div>
+</div>
+</textarea>
+
+
+
+
+
+          <textarea cols="60" rows="16">
+<section class=" layout">
+
+  <ol class="layout__tab-list list-reset">
+    <li class="layout__tab-item is-active"></li>
+    <li class="layout__tab-item"></li>
+    <li class="layout__tab-item"></li>
+  </ol>
+
+  <ul class="layout__content-list list-reset">
+    <li class="layout__content-item is-active"></li>
+    <li class="layout__content-item"></li>
+    <li class="layout__content-item"></li>
+  </ul>
+
+</section>
+</textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+    </main>
+
+
+
+
+
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+
+          footer
+
+        </div>
+      </div>
+    </footer>
+
+
+  </div>
+  <script src="../js/example.js"></script>
+</body>
+
+</html>

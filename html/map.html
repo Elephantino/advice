@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>map</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="img/window-icon/window-icon.png" type="image/png">
+</head>
+
+<body>
+  <div class="wrapper">
+
+  <header class="page--header">
+    <div class="container">
+      <div class="header__inner">
+  
+        <a href="../index.html">
+          <!-- <svg width="125px" height="20px">
+                    <use href="img/sprite.svg#logo"></use>
+                  </svg> -->
+          <img src="../img/logo.png" alt="">
+        </a>
+  
+        <ul class="header-list list-reset">
+          <li class="item"><a href="../html/404.html">404</a></li>
+          <li class="item"><a href="../html/examples.html">examples</a></li>
+          <li class="item"><a href="../html/about.html">шпора</a></li>
+          <li class="item"><a href="../html/table-of-contents.html">оглавление</a></li>
+        </ul>
+  
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="page--main">
+      <div class="container">
+
+<section class="map">
+
+<h1>map</h1>
+
+<p><code>map -- </code>словарь</p>
+<p>get, set, has</p>
+                  <p>коллекция ключ/значение как obj но позволяет задействовать любые типы ключей</p>
+                  <pre><code>
+let map = new Map();  создание
+map.set(key, value);  записать значение по ключу
+map.get(key);         вернуть значение по ключу
+map.has(key);         true / false
+map.delete(key);      удалит пару
+map.clear();          фул отчистка
+map.size();           размер
+</code></pre>
+
+                  <p>map сохранит тип ключей в отличии от obj</p>
+
+                  <pre><code>
+map.set(1, "цыфра ключ")  
+   .set("1", "строка ключ")
+   .set(false, "булево значение ключ");  (цепочка вызовов set)
+
+
+let obj = {obj: "obj"};
+
+map.set(obj, 123); -- обьект ключ 
+map.get(obj); //123
+
+</code></pre>
+
+                  <details class="show-piece">
+                    <summary><code>создание Map</code></summary>
+                    <p>при создании мы можем указать пустой Map, передать внутрь массив(или другой итерируемый обьект)
+                      или даже сделать Map из обьекта.</p>
+                    <pre><code>
+let map = new Map();
+----------------------
+let map = new Map([
+  ["1", "str1'],
+  [1,   "num1"],
+  [true, "bool"]
+]);
+
+alert(map.get("1")); // str1
+
+</code></pre>
+                  </details>
+				  
+<p>Map перебирается по порядку добавления в отличии от obj</p>
+
+                  <details class="show-piece">
+                    <summary><code>перебор Map</code></summary>
+                    <pre><code>
+map.keys();    вернет итерируемый обьект по ключам
+map.values();  вернет итерируемый обьект по значениям
+map.entries(); вернет итерируемый обьект по парам [ключ, значение](по умолчанию в for...of)  
+
+
+
+let map = new Map([
+  ["огурец", 500],
+  ["помидор", 400],
+  ["лук", 300]
+]);
+
+  по ключам
+for(let i of map.keys()) {
+  console.log(i);
+}
+
+  по значениям
+for(let i of map.values()) {
+  console.log(i);
+}
+
+  по парам [ключ, значение]
+for (let i of map) {  то же что и map.entries()
+  console.log(i);
+}
+
+
+map.forEach((value, key, map) => {
+	console.log(`${key}: ${value}`);
+});
+
+</code></pre>
+
+                  <details class="show-piece">
+                    <summary><code>Object.entries() -- </code>возвращает(Map) массив пар [ключ, значение]</summary>
+                    <pre><code>
+Map из обычного обьекта
+
+Object.entries(obj) -- метод получает обьект и 
+возвращает массив пар [ключ, значение]
+
+let obj = {
+  name: "John",
+  age: "30"
+};
+
+let map = new Map(Object.entries(obj));
+
+map.get("name"); //John
+
+</code></pre>
+                  </details>
+				  
+<details class="show-piece">
+                    <summary><code>Object.fromEntries() -- </code>создает обьект из пар [ключ, значение]</summary>
+                    <pre><code>
+const arr = [
+  ["0", "a"],
+  ["1", "b"],
+  ["2", 42]
+]
+
+const obj = Object.formEntries(arr); // {0: "a", 1: "b", 2: 42};
+
+-----------------------------
+
+let map = new Map();
+
+map.set("a", 1);
+map.set("b", 2);
+map.set("c", 3);
+
+let obj = Object.fromEntries(map.emtries());// {a: 1, b: 2, c: 3}; 
+let obj = Object.fromEntries(map);// {a: 1, b: 2, c: 3}; 
+
+map.emtries() вернет итерируемый 
+обект пар для Object.fromEntries
+
+</code></pre>
+                  </details>
+
+
+</section>
+
+      </div>
+    </main>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>object</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="img/window-icon/window-icon.png" type="image/png">
+</head>
+
+<body>
+  <div class="wrapper">
+
+<header class="page--header">
+  <div class="container">
+    <div class="header__inner">
+
+      <a href="../index.html">
+        <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+        <img src="../img/logo.png" alt="">
+      </a>
+
+      <ul class="header-list list-reset">
+        <li class="item"><a href="../html/404.html">404</a></li>
+        <li class="item"><a href="../html/examples.html">examples</a></li>
+        <li class="item"><a href="../html/about.html">шпора</a></li>
+        <li class="item"><a href="../html/table-of-contents.html">оглавление</a></li>
+      </ul>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="page--main">
+      <div class="container">
+
+<section class="object">
+
+<h1>object</h1>
+<p>object -- для хранения именованных коллекций</p>
+
+<pre><code>
+obj = {} это то же что и obj = new Object(), где 
+Object() - встроенная функция конструктор для объектов 
+с собственным свойством prototype, которое ссылается 
+на огромный обьект с методами.
+
+</code></pre>
+
+<div class="performance">
+
+                    <p><span class="color-red">узнать ----- </span>рассматривать только свойства самого объекта, а не
+                      его прототипов
+                      getOwnPropertyNames(), hasOwnProperty(), propertyIsEnumerable.</p>
+                  </div>
+
+                  <p>Объекты – это ссылочный тип, когда вы присваиваете объект переменной, вы присваиваете ей не сам
+                    этот
+                    объект, а ссылку на него, которая указывает на то место в памяти компьютера, где он находится.</p>
+                  <pre>
+<code>
+const person = { 
+  a: "aa",                   свойство: "значение"
+  b: "bb",                    метод() {...}
+  getName() {      
+    return `${this.a} ${this.b}`,
+  }
+}
+console.log(person.getName); // aa bb
+ </code>
+</pre>
+
+
+<p>свойства - пары ключ: значение(они неявно имеют строковый тип)</p>
+<p>методы – свойства, у которых значение является функцией(поведение объекта)</p>
+<p>кроме выполнения действия, методы возвращают значения. Если в методе явно не указан return то неявно вернется undefined</p>
+
+
+                  <div class="performance">
+                    <h3>имена свойств в объекте не явно являются строками.</h3>
+                    <p>Их можно не заключать в кавычки, это допустимо только если они составлены по правилам
+                      именования
+                      переменных
+                    </p>
+                    <pre>
+ <code>
+{
+  '': 1, // имя является пустой строкой
+  'author of post': 'Алексей', // имя состоит из нескольких слов
+}
+ </code>
+</pre>
+                  </div>
+
+
+
+<section class="property">
+
+
+<h3>свойства</h3>
+
+<div class="property__item performance"> 
+	<pre><code>
+<b>обращение</b>
+	
+через точку: 	
+person.firstName;
+	
+через квадратные скобки, ключ в этом случае	
+нужно указывать в виде строки
+person['name'];
+
+разница в том что через . мы не можем                   
+обратиться к нестандартному свойству,                    
+например которое состоит из двух слов или               
+имеет тип nember:
+person["new prop"] = "bateman";                          
+
+obj[3] 
+	</code></pre>
+</div>
+
+
+
+<h3>методы</h3>
+
+<div class="property__item performance">
+	
+	
+		<pre><code>
+<b>обращение</b>
+
+const getName = person.getFullName();
+getName; 
+
+person.getFullName();  
+person['getFullName']();
+		</code></pre>
+</div>
+
+
+<div class="property__item performance"> 
+	<pre><code>
+<b>изменим значения свойств</b>	
+
+person.name= 'чем заменяем';
+person["new prop"] = "money";
+	</code></pre>
+</div>
+
+
+
+
+
+<div class="property__item performance"> 
+	<pre><code>
+<b>добавление</b>	
+	
+объект.["новое свойство"] = "значение"  
+
+person["last name"] = "Рыбинский"; 
+person.children = [
+  {                                                    
+    name: 'Алиса',
+    age: 8
+  },
+  {                                                       
+    name: 'Виктор',                             
+    age: 14                                                    
+  }                                                            
+];
+	</code></pre>
+</div>
+
+
+<div class="property__item performance"> 
+	<pre><code>
+<b>методы объектов</b>	
+	
+delete obj.key — удалит значение	 
+obj.assign — копирует все свойства
+obj.keys/values/entries — вернет массив ключей/значений
+"key" in obj — проверка наличия ключа
+Object.create(proto[, propertiesObject]) - новый объект с указанным прототипом и свойствами
+Object.freeze(obj) - предотвращает добавление новых свойств, удаление старых свойств, изменение существующих
+	</code></pre>
+</div>
+
+
+
+
+
+
+
+
+</section>
+
+
+
+<h3>перебор объекта</h3>
+
+                  <div class="performance">
+
+                    <details class="show-piece keys-values-entries">
+                      <summary><code>keys / values / entries -- </code> получить массив ключей и значений</summary>
+                      <pre><code>
+const person = {
+  name: "Igor",
+  lastName: "Rybinsky",
+  age: 28,
+  city: "Bratsk"
+}
+
+Object.keys(obj);    // массив имен объекта
+Object.values(obj);  // массив значений объекта
+Object.entries(obj); // массив массивов [имя свойства, значение свойства]
+
+
+Object.keys(person);    // [ 'name', 'lastName', 'age', 'city' ]
+Object.values(person);  // [ 'Igor', 'Rybinsky', 28, 'Bratsk' ]
+Object.entries(person); // [ ['name', 'Igor'], ['lastName', 'Rybinsky'], ['age', 28], ['city', 'Bratsk'] ]
+
+
+перебрать только значения  
+  
+Object.values(car).forEach((value) =&gt; { console.log(value); });
+</code></pre>
+                    </details>
+
+                    <details class="show-piece obj-for">
+                      <summary><code>for</code></summary>
+                      <pre><code>
+const person = {        
+  name: "Igor",                   Object.keys(obj) свойства
+  age: 28,                        Object.values(obj) значения
+  city: "Bratsk",                 Object.entries(obj) весь объект
+  hobby: "programmer", 
+};
+
+for (let <span class="color-red">i</span> = 0; i < <span class="color-light-blue">Object.keys(person)</span>.length; i++) {
+  console.log(<span class="color-light-blue">Object.keys(person)</span>[<span class="color-red">i</span>] + " - " + <span class="color-light-blue">Object.values(person)</span>[<span class="color-red">i</span>]);
+}    
+     name - Igor
+     age - 28
+     city - Bratsk
+     hobby - programmer
+
+</code></pre>
+                    </details>
+
+                    <details class="show-piece obj-for-in">
+                      <summary><code>for in</code></summary>
+                      <pre><code>
+const person = {
+  name: "Igor",
+  age: 28,                            в цикле for in 
+  city: "Bratsk",                     на место <span class="color-red">i</span>
+  hobby: "programmer",                подставляется ключ/свойство
+};                                    каждую итерацию цикла
+
+
+for (let <span class="color-red">i</span> <span class="color-light-blue">in</span> person) {
+  console.log(<span class="color-red">i</span> + "-" + person[<span class="color-red">i</span>])    person[<span class="color-red">i</span>]
+}                                 
+      name - Igor                     person.name
+      age - 28                        person.age
+      city - Bratsk                   person.city
+      hobby - programmer              person.hobby 
+
+</code></pre>
+
+                      <details class="show-piece examples-js-object-for-in">
+                        <summary><code><a name="examples-js-object-for-in">Перебор объекта в цикле for...in</a></code>
+                        </summary>
+                        <a href="https://www.youtube.com/watch?v=eqD7DJVJWOc" target="_blank"
+                          rel="noopener noreferrer">Источник
+                          этого
+                          примера https://www.youtube.com/watch?v=eqD7DJVJWOc</a>
+
+                        <pre>
+  <code>
+let arr = [
+  {
+    "original_name": "Fight Club",
+    "russian_name": "Бойцовский клуб",
+    "year": 1999,
+    "actors": [
+      "Эдварт нортан",
+      "Бред Питт",
+      "Хелена Бонем Кратер"
+    ]
+  },
+  {
+    "original_name": "The Mask",
+    "russian_name": "Маска",
+    "year": 1994,
+    "actors": [
+      "Джим Керри",
+      "Камерон Диаз"
+    ]
+  },
+  {
+    "original_name": "Rocky III",
+    "russian_name": "Рокки 3",
+    "year": 1982,
+    "actors": [
+      "Сильвестр Сталоне",
+      "Мистер Ти",
+      "Талия Шайн",
+      "Бёрджесс Мередит"
+    ]
+  },
+]
+
+консоль лог приводит значения к строке
+по этому выражение надо писать в скобках //(i + 1), (k + 1), 
+что бы в результате была не конкатенация => i = 0; + i + 1 + = 01   ======== Фильм №01 ========
+а сам результат который получается в скобках => + (i + 1) + = 1     ======== Фильм №1 ========
+
+for (let i = 0; i &gt; arr.length; i++) {
+  console.log("======== Фильм №" + (i + 1) + " ========"); 
+  for (let j in arr[i]) {                                 
+    if (j == "actors") {                                  
+      for (let k = 0; k &gt; arr[i][j].length; k++) {        
+        console.log("Актёр " + (k + 1) + ": " + arr[i][j][k]);
+      }
+    } else if (j == "original_name") {
+      console.log("Оригинальное название: " + arr[i][j]);
+    } else if (j == "russian_name") {
+      console.log("Русское название: " + arr[i][j]);
+    } else if (j == "year") {
+      console.log("Год: " + arr[i][j]);
+    }
+  }
+}
+
+
+======== Фильм №1 ========
+js.js:71 Оригинальное название: Fight Club
+js.js:73 Русское название: Бойцовский клуб
+js.js:75 Год: 1999
+js.js:68 Актёр 1: Эдварт нортан
+js.js:68 Актёр 2: Бред Питт
+js.js:68 Актёр 3: Хелена Бонем Кратер
+js.js:64 ======== Фильм №2 ========
+js.js:71 Оригинальное название: The Mask
+js.js:73 Русское название: Маска
+js.js:75 Год: 1994
+js.js:68 Актёр 1: Джим Керри
+js.js:68 Актёр 2: Камерон Диаз
+js.js:64 ======== Фильм №3 ========
+js.js:71 Оригинальное название: Rocky III
+js.js:73 Русское название: Рокки 3
+js.js:75 Год: 1982
+js.js:68 Актёр 1: Сильвестр Сталоне
+js.js:68 Актёр 2: Мистер Ти
+js.js:68 Актёр 3: Талия Шайн
+js.js:68 Актёр 4: Бёрджесс Мередит
+  </code>
+</pre>
+                      </details>
+
+                    </details>
+
+                    <details class="show-piece obj-for-of">
+                      <summary><code>for of</code></summary>
+                      <pre><code>
+по дефолту не удобно перебирать object с for of
+потому что object не итерируемый по умолчанию
+
+const person = {             
+  name: "Igor",                 
+  age: 28, 
+  city: "Bratsk", 
+  hobby: "programmer", 
+};
+
+              массив ключей объекта                        массив значений объекта
+for (let i <span class="color-red">of</span> <span class="color-light-blue">Object.<span class="color-red">keys</span>(person)</span>) {   |     for (let i <span class="color-red">of</span> <span class="color-light-blue">Object.<span class="color-red">values</span>(person)</span>) {
+  console.log(i);                      |       console.log(i);
+}                                      |     }  
+        // name                        |          // Igor
+           age                         |             28
+           city                        |             Bratsk
+           hobby                       |             programmer
+
+</code></pre>
+                    </details>
+
+                    <details class="show-piece obj-forEach">
+                      <summary><code>forEach</code></summary>
+                      <pre><code>
+Object.keys(car).forEach((key) =&gt; {
+  console.log(`${key}: ${car[key]}`);
+});
+  </code></pre>
+                    </details>
+
+
+                  </div>
+
+
+                  <div class="performance">
+                    <details class="show-piece object-clone">
+                      <summary>Копирование объектов -- Object.assign({},);</summary>
+                      <p>Переменная, содержащая объект на самом деле содержит не сам объект, а только ссылку на него.
+                        При
+                        копировании объектов в отличие от значений примитивных типов происходит передача ссылки.</p>
+                      <pre>
+  <code>
+const student1 = { name: 'Carl' };
+const student2 = student1;
+
+Теперь student1 и student2 содержат ссылки, 
+указывающие на один и тот же объект.
+
+student2.name = 'Nelly';
+console.log(student1.name); // Nelly
+ </code>
+</pre>
+                      <p>А что если нам необходимо скопировать не саму ссылку, а создать новый объект с такими же
+                        свойствами?
+                      </p>
+                      <pre>
+ <code>
+const student3 = {};
+for (const key in student1) {
+  student3[key] = student1[key];
+}
+
+student3 содержит клон объекта student1
+student3.name = 'Thyra';
+в student1 значение name осталось прежним
+console.log(student1.name); // Nelly
+ </code>
+</pre>
+
+                      <h3>Другой способ скопировать свойства:</h3>
+                      <pre>
+ <code>
+const student4 = Object.assign({}, student1);
+ </code>
+</pre>
+
+                      <p>Object.assign() позволяет скопировать свойства из множества объектов.</p>
+                      <pre>
+<p>в который нужно скопировать указывается первым</p>
+ <code>
+const target = { a: 1 };
+const source1 = { b: 2 };
+const source2 = { c: 3 };
+Object.assign(target, source1, source2);
+console.log(target); // {a: 1, b: 2, c: 3}
+ </code>
+</pre>
+
+                      <h2>Сравнение объектов</h2>
+                      <pre>
+ <code>
+let objA = {};
+let objB = objA;
+let objC = {};
+
+console.log( objA === objB ); // true, т.к. переменные содержат одну и ту же ссылку
+console.log( objA === objC ); // false, т.к. переменные содержат разные ссылки (оба объекта пусты, но это разные объекты)
+ </code>
+</pre>
+                    </details>
+
+                    <details class="show-piece">
+                      <summary>Вычисляемые свойства</summary>
+                      <p>В JavaScript имя свойства может быть вычисляемым. То есть для задания имени можно
+                        использовать
+                        выражение, результат вычисления которого и будет это имя. Указывать вычисляемое свойство
+                        необходимо
+                        в
+                        квадратных скобках [ ]:</p>
+                      <pre>
+  <code>
+const key = 'url';
+const app = {
+  name: 'Yandex',
+  [key]: 'https://yandex.ru/', // имя свойства будет взято из переменной key
+};
+console.log(app.url); // 'https://yandex.ru/'
+ </code>
+</pre>
+
+                      <h3>метод с более сложным выражением:</h3>
+                      <pre>
+  <code>
+const key = 'url';
+const app = {
+  name: 'Yandex',
+  [key]: 'https://yandex.ru/',
+  ['get' + key.toUpperCase()]() {
+    return this[key];
+  }
+};
+console.log(app.getURL()); // 'https://yandex.ru/'
+ </code>
+</pre>
+                    </details>
+
+<details class="show-piece object-properties">
+<summary>Свойства объектов и их конфигурация - writable / enumerable / configurable</summary>
+<a href="https://itchief.ru/javascript/objects" target="_blank" rel="noopener noreferrer">источник
+                        https://itchief.ru/javascript/objects</a>
+
+<p>До этого времени мы рассматривали свойства как пары «ключ: значение».</p>
+<p>Но свойство кроме значения (value) имеет специальные флаги:</p>
+<ul>
+                        <li>writable – доступно ли свойство для изменения;</li>
+                        <li>enumerable – доступно ли свойство для перебора в циклах;</li>
+                        <li>configurable – доступно ли свойство для настройки и удаления.</li>
+                      </ul>
+
+<p>по умолчанию у всех <code>true</code></p>
+
+
+                    </details>
+					
+					
+<details class="show-piece ">
+<summary>динамические свойства -- геттер / сеттер</summary>
+
+
+</details>
+                  </div>
+
+
+
+
+</section>
+
+      </div>
+    </main>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>grades</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="img/window-icon/window-icon.png" type="image/png">
+</head>
+
+<body>
+  <div class="wrapper">
+  
+<header class="page--header">
+  <div class="container">
+    <div class="header__inner">
+
+      <a href="../index.html">
+        <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+        <img src="../img/logo.png" alt="">
+      </a>
+
+      <ul class="header-list list-reset">
+        <li class="item"><a href="../html/404.html">404</a></li>
+        <li class="item"><a href="../html/examples.html">examples</a></li>
+        <li class="item"><a href="../html/about.html">шпора</a></li>
+        <li class="item"><a href="../html/table-of-contents.html">оглавление</a></li>
+      </ul>
+
+    </div>
+  </div>
+</header>
+
+
+
+
+    <main class="page--main">
+      <div class="container">
+
+<section class="grades">
+
+            <h1>классы</h1>
+
+            <p>Классы — это способ установить схему для создания объектов с предопределенными свойствами и методами.
+              Создав класс с
+              определенными свойствами и методами, вы можете позже создать экземпляры объектов этого класса, которые
+              унаследуют все
+              свойства и методы этого класса.</p>
+
+            <pre><code>
+В JavaScript мы можем создавать классы следующим образом:
+            
+class Alien {
+    constructor (name, phrase) {
+        this.name = name
+        this.phrase = phrase
+        this.species = "alien"
+    }
+    fly = () => console.log("Zzzzzziiiiiinnnnnggggg!!")
+    sayPhrase = () => console.log(this.phrase)
+}
+            </code></pre>
+
+            <p>И затем мы можем создать экземпляр объекта из этого класса следующим образом:</p>
+
+            <pre><code>
+const alien1 = new Alien("Ali", "I'm Ali the alien!")
+console.log(alien1.name) // output: "Ali"
+
+            </code></pre>
+
+            <p>Классы используются как способ сделать код более модульным, организованным и понятным и широко
+              используются в
+              ООП-программировании.</p>
+            <p>Но имейте в виду, что JavaScript на самом деле не поддерживает классы, как другие языки. Ключевое
+              classслово было
+              введено в ES6 как синтаксический сахар, облегчающий такой способ организации кода.</p>
+            <p>Чтобы визуализировать это, обратите внимание: то же самое, что мы делали ранее, определив class, мы можем
+              сделать,
+              определив функцию и отредактировав прототип следующим образом:</p>
+
+            <pre><code>
+function Alien(name, phrase) {
+    this.name = name
+    this.phrase = phrase
+    this.species = "alien"
+}
+
+Alien.prototype.fly = () => console.log("Zzzzzziiiiiinnnnnggggg!!")
+Alien.prototype.sayPhrase = () => console.log(this.phrase)
+
+const alien1 = new Alien("Ali", "I'm Ali the alien!")
+
+console.log(alien1.name) // output "Ali"
+console.log(alien1.phrase) // output "I'm Ali the alien!"
+alien1.fly() // output "Zzzzzziiiiiinnnnnggggg"
+
+</code></pre>
+
+
+            <p>Любая функция может быть вызвана как конструктор с ключевым словом, newа свойство прототипа этой функции
+              используется
+              для того, чтобы объект наследовал методы. В JavaScript «класс» используется только концептуально для
+              описания описанной
+              выше практики — технически это просто функции.😑</p>
+            <p>Хотя это не обязательно имеет большое значение (мы по-прежнему можем прекрасно реализовать ООП и
+              использовать классы,
+              как и в большинстве других языков программирования), важно помнить, что в основе JavaScript лежит
+              наследование
+              прототипов.</p>
+
+
+<details class="show-piece">
+  <summary><code>constructor</code></summary>
+
+<textarea cols="100" rows="12">
+Свойство constructor ссылается на функцию-конструктор, которая была использована при создании объекта:
+            
+let x = new String();
+            
+if (x.constructor == String)
+  document.write("Это объект String");  
+else
+  document.write("Это не String");  
+                        
+// выведет:  Это объект String
+   
+</textarea>
+</details>
+
+</section>
+
+      </div>
+    </main>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

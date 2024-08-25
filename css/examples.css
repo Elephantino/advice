@@ -1,0 +1,9 @@
+.multi-columns__item {
+  border: 1px solid black;
+  padding: 1em;
+  
+  /* column-count: auto;
+  column-width: 150px; */
+
+  columns: auto 200px;
+}

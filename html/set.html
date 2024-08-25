@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>set</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="img/window-icon/window-icon.png" type="image/png">
+</head>
+
+<body>
+  <div class="wrapper">
+
+<header class="page--header">
+  <div class="container">
+    <div class="header__inner">
+
+      <a href="../index.html">
+        <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+        <img src="../img/logo.png" alt="">
+      </a>
+
+      <ul class="header-list list-reset">
+        <li class="item"><a href="../html/404.html">404</a></li>
+        <li class="item"><a href="../html/examples.html">examples</a></li>
+        <li class="item"><a href="../html/about.html">шпора</a></li>
+        <li class="item"><a href="../html/table-of-contents.html">оглавление</a></li>
+      </ul>
+
+    </div>
+  </div>
+</header>
+
+    <main class="page--main">
+      <div class="container">
+
+<section class="set">
+
+<h1>set</h1>
+<p><code>Set -- </code>множество(каждое значение может появиться только 1 раз)</p>
+
+<p>set - коллекция без ключей где каждое значение может появиться только 1 раз</p>
+                  <p>для множеств Set лучше оптимизорован чем Array, по этому поиск по нему будет быстрее и
+                    автоматическая проверка на идентичность</p>
+
+                  <pre><code>
+new Set(iterable); если в аргументе был передан итерируемый
+обьект(обычно это arr), то копирует его значения в новый Set
+
+set.add(value); если value повторяется то не добавит
+
+set.delete(value); вернет true если value было в множестве
+на момент вызова метода  
+
+set.has(vslue); проверка (true / false)
+set.clear(); 
+set.size;
+
+</code></pre>
+
+<p>Set имеет те же методы что и Map</p>
+                  <p><code>set.values() -- </code>вернет перебираемый объект для значений</p>
+                  <p><code>set.keys() -- </code>то же что и set.values()</p>
+                  <p><code>set.entries() -- </code>вернет перебираемый объект для пар [значение, значение]</p>
+				  
+</section>
+
+      </div>
+    </main>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

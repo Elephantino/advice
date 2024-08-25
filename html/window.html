@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>window</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="img/window-icon/window-icon.png" type="image/png">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <img src="../img/logo.png" alt="">
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="../html/404.html">404</a></li>
+            <li class="item"><a href="../html/examples.html">examples</a></li>
+            <li class="item"><a href="../html/about.html">шпора</a></li>
+            <li class="item"><a href="../html/table-of-contents.html">оглавление</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </header>
+
+
+    <main class="page--main">
+      <div class="container">
+
+        <section class="window">
+
+          <h1>объект window</h1>
+
+          <p>все #id становятся свойствами объекта window</p>
+
+          <textarea cols="30" rows="4">
+<a id="link"></a>
+
+link === window.link // true
+</textarea>
+
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

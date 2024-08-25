@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>function</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="img/window-icon/window-icon.png" type="image/png">
+</head>
+
+<body>
+  <div class="wrapper">
+
+<header class="page--header">
+  <div class="container">
+    <div class="header__inner">
+
+      <a href="../index.html">
+        <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+        <img src="../img/logo.png" alt="">
+      </a>
+
+      <ul class="header-list list-reset">
+        <li class="item"><a href="../html/404.html">404</a></li>
+        <li class="item"><a href="../html/examples.html">examples</a></li>
+        <li class="item"><a href="../html/about.html">шпора</a></li>
+        <li class="item"><a href="../html/table-of-contents.html">оглавление</a></li>
+      </ul>
+
+    </div>
+  </div>
+</header>
+
+
+
+    <main class="page--main">
+      <div class="container">
+
+<section class="function">
+
+<h1>function</h1>
+
+
+<p>Функция – особого типа значение переменной</p>
+
+                  <ul>
+                    <li>функция возвращает только один результат своей работы</li>
+                    <li>после <code>return</code> код не выполняется, происходит выход из функции</li>
+                    <li>если в функции нет <code>return</code> то она вернет <code>indefined</code></li>
+                  </ul>
+
+                  <details class="show-piece">
+                    <summary><code>флаг как параметр функции</code></summary>
+                    <p>если в параметре достаточно двух вариантов ответа то это наверняка булевы значения(true/false),
+                      такие параметры называют флагами.</p>
+
+                    <p>Эти значения называют особым образом, их пишут с приставкой is -- isBusinessClass т.е. переменная
+                      как бы задает вопрос своему содержанию "сейчас у нас бизнес класс?", а содержание отвечает на
+                      вопрос а или нет.</p>
+                    <p>от содержимого этой переменной мы можем что то делать</p>
+
+                    <textarea cols="30" rows="10">
+let a = function(name, isB) {
+	if(isB == true) {
+		что то делаем
+		флаг равен true
+	} else {
+		что то делаем
+		флаг равен false
+	}
+}
+
+a(igor, false);
+a(igor, true);
+</textarea>
+                  </details>
+
+
+                  <div class="performance">
+                    <h3 class="performance__title">Function Declaration - объявление функции</h3>
+
+                    <p>может быть вызвана раньше, чем она объявлена.</p>
+                    <p>доступна везде внутри блока в котором находится, но не снаружи него</p>
+                    <p>инструкция определяет переменную (имя функции) и назначает ей ссылку на функцию. Объявления
+                      функций
+                      не
+                      являются
+                      частью обычной
+                      последовательности выполнения программ. Они перемещаются в верхнюю часть своей области
+                      видимости.
+                    </p>
+                    <pre>
+    <code>
+function sayHi() {
+  console.log("Привет");
+}
+sayHi(); //Привет
+    </code>
+</pre>
+
+                  </div>
+
+                  <div class="performance">
+                    <h3>Function Expression - функциональное выражение</h3>
+                    <p>создаётся, когда выполнение доходит до него.</p>
+                    <pre>
+    <code>
+let sayHi = function() {
+   console.log("Привет");
+}
+sayHi(); //Привет
+    </code>
+</pre>
+                  </div>
+
+                  <div class="performance">
+                    <h3>стрелочные</h3>
+                    <pre>
+  <code>
+(...args) =&gt; expression
+
+(...args) =&gt; { return } если использовать скобки то надо явно указать return
+
+return без следующего за ним выражения приводит к тому что функция возвращает undefined
+
+одна и та же функция:
+const square = (x) =&gt; {return x * x};
+const square = x =&gt; x * x;
+  </code>
+</pre>
+                  </div>
+
+
+</section>
+
+      </div>
+    </main>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

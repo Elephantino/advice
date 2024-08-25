@@ -1,0 +1,293 @@
+/* *************************** */
+
+.matches__inner > * {
+	display: block;
+	width: max-content;
+}
+
+/* *************************** */
+
+div.output {
+	border: 1px solid red;
+	width: max-content;
+	padding: 2px;
+}
+.insertAdjacentHTML p {
+	margin: 0;
+}
+.insertAdjacentHTML .test {
+	border: 1px solid black;
+	padding: 2px;
+}
+
+/* *************************** */
+
+.mouse-over-out__hover-grid {
+  border: 1px solid black;
+  min-height: 150px;
+  width: 100%;
+  max-width: 200px;
+  padding: 10px;
+  margin: 0 5px 5px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background-color: rgba(0, 0, 0, .1);
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  }
+} 
+
+
+
+
+
+.drag-field {
+  width: 200px;
+  height: 200px;
+  background-color: #7a956b;
+  position: relative;
+}
+
+.drag-field__item {
+  width: 40px;
+  height: 40px;
+  cursor: grab;
+  background-color: #77608d;
+}
+
+
+.drag-field__point {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  background-color: #45553d;
+  transition: all 0.3s ease 0s;
+}
+
+.drag-field__point._active {
+  box-shadow: inset 0px 0px 10px 5px #333f2d;
+}
+
+
+
+
+
+
+
+.ascent {
+  width: 100%;
+}
+
+.ascent div {
+  border: 1px solid black;
+
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ascent>div {
+  width: 200px;
+  height: 150px;
+}
+
+.ascent>div>div {
+  width: 150px;
+  height: 100px;
+}
+
+.ascent>div>div>div {
+  width: 100px;
+  height: 50px;
+}
+
+
+.ascent div>span {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.delegate-event--menu {
+  display: inline-block;
+}
+
+.delegate-event--menu button>span:last-child {
+  display: none;
+}
+
+.delegate-event--menu button>span:first-child {
+  display: block;
+}
+
+.delegate-event--menu.active button>span:first-child {
+  display: none;
+}
+
+.delegate-event--menu.active button>span:last-child {
+  display: block;
+}
+
+.delegate-event--menu.active ul {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+.js-item {
+  .controls {
+    margin-bottom: 24px;
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    line-height: 22px;
+    color: #eff1f5;
+    border-bottom: 2px solid #20262d;
+    background-color: #485671;
+  }
+
+  .container {
+    width: 326px;
+    height: 66px;
+    margin: 0 auto;
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chosen-color {
+    display: flex;
+    padding: 8px 36px 8px 12px;
+    font: inherit;
+    color: inherit;
+    border: 2px solid #20262d;
+    border-radius: 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 8px top 50%;
+    background-size: 14px auto;
+    background-color: #485671;
+    background-image: url("img/pixel-arrow-down.svg");
+  }
+
+  .chosen-color::-ms-expand {
+    display: none;
+  }
+
+  .chosen-color:focus {
+    outline: 2px dashed #6e86b3;
+    outline-offset: 2px;
+  }
+
+  .chosen-color:hover {
+    background-color: #304153;
+  }
+
+  .eraser-label {
+    position: relative;
+    padding: 8px 0 8px 40px;
+    cursor: pointer;
+  }
+
+  .eraser-label::before {
+    position: absolute;
+    content: "";
+    left: 6px;
+    top: 6px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #20262d;
+  }
+
+  .eraser:checked+.eraser-label::before {
+    background-color: #c1d3e6;
+  }
+
+  .eraser:focus+.eraser-label::before {
+    outline: 2px dashed #6e86b3;
+    outline-offset: 2px;
+  }
+
+  .eraser-label:hover::before {
+    background-color: #304153;
+  }
+
+  .eraser-label:active::before {
+    background-color: #20262d;
+    border-color: #485671;
+  }
+
+  .eraser-label::after {
+    position: absolute;
+    content: "";
+    left: 6px;
+    top: 6px;
+    width: 24px;
+    height: 24px;
+    background: url("img/cut-corners.svg");
+    background-repeat: no-repeat;
+  }
+
+  .main {
+    position: relative;
+    height: calc(100vh - 92px);
+    width: 326px;
+    margin: 0 auto;
+  }
+
+  .main::before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: -120px;
+    width: 100px;
+    height: 105px;
+    background-image: url("img/pixel-keks.svg");
+    background-repeat: no-repeat;
+  }
+
+  .canvas {
+    display: flex;
+    flex-wrap: wrap;
+    border: 3px solid #20262d;
+  }
+
+  .pixel {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #333a48;
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+}

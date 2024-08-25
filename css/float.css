@@ -1,0 +1,20 @@
+.float .item {
+  max-width: 500px;
+  min-height: 210px;
+  border: 1px solid black;
+  margin-bottom: 1em;
+}
+
+.float .content {
+  margin-left: 150px;
+  background-color: rgba(0, 0, 0, .3);
+  height: 100%;
+}
+
+.float .sitebar {
+  max-width: 150px;
+  width: 100%;
+  min-height: 100px;
+  background-color: rgba(128, 4, 4, 0.14);
+  float: left;
+}

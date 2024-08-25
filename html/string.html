@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>string</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="img/window-icon/window-icon.png" type="image/png">
+</head>
+
+<body>
+  <div class="wrapper">
+
+<header class="page--header">
+  <div class="container">
+    <div class="header__inner">
+
+      <a href="../index.html">
+        <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+        <img src="../img/logo.png" alt="">
+      </a>
+
+      <ul class="header-list list-reset">
+        <li class="item"><a href="../html/404.html">404</a></li>
+        <li class="item"><a href="../html/examples.html">examples</a></li>
+        <li class="item"><a href="../html/about.html">шпора</a></li>
+        <li class="item"><a href="../html/table-of-contents.html">оглавление</a></li>
+      </ul>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="page--main">
+      <div class="container">
+
+<section class="string">
+
+<h1>строки</h1>
+
+<p>cтрока - примитив, приметив неизменяем(только заменяем).</p>
+                  <pre>
+    <code>
+let str = "Строковой литерал"; //string
+let str = new String("Объект класса String"); //object
+ 
+ 
+let str = "How are you?"; //string
+ 
+   "H  o  w     a  r  e     y  o  u  ?";
+    0  1  2  3  4  5  6  7  8  9  10 11
+пробел тоже символ по этому у него есть индекс.
+    </code>
+</pre>
+                  <p>доступ к символам:</p>
+                  <pre>
+    <code>
+let str = "JavaScript";
+
+str[0] // J str[index] -- es5
+str.charAt(0) // J
+str.at(0) // J -- Array.prototype.at
+
+console.log(str[str.length - 1]); // t
+console.log(str.at(-1)); // t
+    </code>
+</pre>
+                  <p>charAt() или []</p>
+                  <pre>
+    <code>
+если на месте искомой позиции символа нет:
+  - charAt() вернет пустую строку ''
+  - [] – вернет undefined.
+    </code>
+</pre>
+
+<section class="performance">
+перебор строки
+                    <pre>
+    <code>
+let str = "Hello";
+
+for(let i of str) {
+    console.log(i);
+}
+  //
+    H
+    e
+    l
+    l
+    o
+     //
+    </code>
+</pre>
+</section>
+
+
+
+<h2>Методы String</h2>
+
+                    <ul class="list-reset">
+                      <li>at() -- возвращает символ</li>
+                      <li>charAt() and slice() возвращает строковые значения на основе индексов</li>
+                      <li>indexOf() and lastIndexOf() вернут индексы на основе значений</li>
+
+
+                      <li>charCodeAt() -- возвращает числовое значение Юникода для символа по индексу</li>
+                      <li>codePointAt() -- возвращает неотрицательное целое число, являющееся закодированным в UTF-16
+                        значением кодовой точки</li>
+
+                      <li>concat() -- объединяет</li>
+
+                      <li>startsWith() -- начинается ли строка с символов указанных в скобках</li>
+                      <li>endsWith() -- заканчивается ли строка символами указанными в скобках</li>
+
+                      <li>includes() -- проверяет, содержит ли строка заданную подстроку</li>
+                      <li>indexOf() -- возвращает индекс первого вхождения</li>
+                      <li>lastIndexOf() -- возвращает индекс последнего вхождения</li>
+                      <li>match()-- возвращает совпадения с регулярным выражением</li>
+
+                      <li>padStart() -- дополняет текущую строку с начала</li>
+                      <li>padEnd() -- дополняет текущую строку с конца</li>
+
+                      <li>repeat() -- конструирует и возвращает новую строку</li>
+
+                      <li>replace() -- замена части</li>
+
+
+                      <li>search() -- возвращает индекс первого сопоставления с регулярным выражением внутри строки.
+                      </li>
+
+                      <li>split() -- разбивает объект String на массив строк</li>
+
+                      <li>toLocaleLowerCase() / toLocaleUpperCase() / toLowerCase() / toUpperCase()</li>
+                      <li>valueOf() возвращает примитивное значение объекта String.</li>
+
+                      <li>toString() возвращает строку, представляющую объект и делает тоже самое, что и метод
+                        String.prototype.valueOf().</li>
+
+                      <li>trim() удаляет пробельные символы с начала и конца строки</li>
+
+                    </ul>
+
+<details class="show-piece charAt">
+                      <summary>charAt -- возврата символа</summary>
+                      <p>метод для возврата символа, используя индекс в качестве параметра</p>
+                      <pre>
+ <code>
+"How are you?".charAt(5); //r
+ </code>
+</pre>
+                    </details>
+					
+                    <details class="show-piece indexOf">
+                      <summary>indexOf -- поиск подстроки</summary>
+                      <p>ищет подстроку substr в строке str, начиная с позиции pos, и возвращает позицию совпадения,
+                        либо -1
+                        при отсутствии совпадений.</p>
+                      <p>чувствителен к регистру</p>
+                      <p>вернет порядковый номер первого символа в экземпляре.</p>
+                      <pre>
+ <code>
+let str = 'Widget with id';
+ 
+alert( str.indexOf('Widget') ); // 0, потому что подстрока 'Widget' найдена в начале
+alert( str.indexOf('widget') ); // -1, совпадений нет, поиск чувствителен к регистру
+ 
+alert( str.indexOf("id") ); // 1, подстрока "id" найдена на позиции 1 (..idget with id)
+это если не указать второй параметр, если указать индекс
+дальше позиции 2 то он найдет другое совпадение
+ 
+Необязательный второй аргумент позволяет начать поиск с
+определённой позиции.
+str.indexOf("id", 2); // 12
+ </code>
+</pre>
+
+                      <p>Чтобы найти все вхождения подстроки, нужно запустить indexOf в цикле. Каждый раз, получив
+                        очередную
+                        позицию, начинаем
+                        новый поиск со следующей:</p>
+
+                      <pre>
+ <code>
+let str = 'Ослик Иа-Иа посмотрел на виадук';
+ 
+let target = 'Иа'; // цель поиска
+ 
+let pos = 0;
+while (true) {
+  let foundPos = str.indexOf(target, pos);
+  if (foundPos == -1) break;
+ 
+  alert( `Найдено тут: ${foundPos}` );
+  pos = foundPos + 1; // продолжаем со следующей позиции
+}
+ 
+Тот же алгоритм можно записать и короче:
+ 
+let str = "Ослик Иа-Иа посмотрел на виадук";
+let target = "Иа";
+ 
+let pos = -1;
+  while ((pos = str.indexOf(target, pos + 1)) != -1) {
+  alert( pos );
+}
+ </code>
+</pre>
+</details>				
+					
+<details class="show-piece includes">
+                      <summary>includes(substr, pos) -- возвращает boolean</summary>
+                      <p>возвращает true, если в строке str есть подстрока substr, либо false</p>
+                      <p>если нам необходимо проверить, есть ли совпадение, но позиция не нужна</p>
+                      <pre>
+<code>
+alert( "Widget with id".includes("Widget") ); // true
+alert( "Hello".includes("Bye") ); // false
+ 
+второй аргумент позволяет начать поиск с определённой позиции
+alert( "Midget".includes("id") ); // true
+alert( "Midget".includes("id", 3) ); // false, поиск начат с позиции 3
+</code>
+  </pre>
+                    </details>				
+					
+					
+                  <div class="performance">
+                    <h2>Получение подстроки</h2>
+                    <p>В JavaScript есть 3 метода для получения подстроки: substring, substr и slice.</p>
+
+                    <details class="show-piece slice">
+                      <summary>slice(start [, end]) -- возвращает часть строки</summary>
+                      <pre>
+<code>
+"How are you?".slice(8, 11); //you
+      
+            индексы символов:  0 1 2 3 4 5 6 7 8
+                              ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+            индексы slice:    0 1 2 3 4 5 6 7 8 9
+
+Если аргумент end отсутствует, slice возвращает символы до конца строки.
+</code>
+</pre>
+                    </details>
+                  </div>					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+
+
+</section>
+
+      </div>
+    </main>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>
