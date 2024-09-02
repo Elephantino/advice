@@ -33,6 +33,16 @@
 
 
 
+.array-method-table {
+  border-collapse: collapse;
+}
+
+.array-method-table th,
+.array-method-table td {
+  border: 1px solid black;
+  padding: 0 .5em;
+}
+
 
 
 

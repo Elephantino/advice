@@ -12,27 +12,27 @@
 <body>
   <div class="wrapper">
 
-<header class="page--header">
-  <div class="container">
-    <div class="header__inner">
+    <header class="page--header">
+      <div class="container">
+        <div class="header__inner">
 
-      <a href="../index.html">
-        <!-- <svg width="125px" height="20px">
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
                   <use href="img/sprite.svg#logo"></use>
                 </svg> -->
-        <img src="../img/logo.png" alt="">
-      </a>
+            <img src="../img/logo.png" alt="">
+          </a>
 
-      <ul class="header-list list-reset">
-        <li class="item"><a href="../html/404.html">404</a></li>
-        <li class="item"><a href="../html/examples.html">examples</a></li>
-        <li class="item"><a href="../html/about.html">шпора</a></li>
-        <li class="item"><a href="../html/table-of-contents.html">оглавление</a></li>
-      </ul>
+          <ul class="header-list list-reset">
+            <li class="item"><a href="../html/404.html">404</a></li>
+            <li class="item"><a href="../html/examples.html">examples</a></li>
+            <li class="item"><a href="../html/about.html">шпора</a></li>
+            <li class="item"><a href="../html/table-of-contents.html">оглавление</a></li>
+          </ul>
 
-    </div>
-  </div>
-</header>
+        </div>
+      </div>
+    </header>
 
 
 
@@ -40,54 +40,54 @@
     <main class="page--main">
       <div class="container">
 
-<section class="array">
+        <section class="array">
 
-<h1>array</h1>
+          <h1>array</h1>
 
-<ul>
-                    <li>списки пронумерованных значений</li>
-                    <li>могут содержать данные любого типа</li>
-                    <li>многие методы массива будут влиять на исходный массив, а не на его копию</li>
-                  </ul>
-                  <pre>
+          <ul>
+            <li>списки пронумерованных значений</li>
+            <li>могут содержать данные любого типа</li>
+          </ul>
+
+          <pre>
   <code>
 const a = []
-const a = [1, 2, 3]
-const a = Array.of(1, 2, 3)
-const a = Array(6).fill(1) // 6 элементов c числом 1
-</code>
-</pre>
-                  <h3>Доступ к элементам по индексам arr[index]</h3>
-                  <pre>
-   <code>
+const a = [ 1, 2, 3 ]
+
+const a = Array.of() // новый массив из произвольного числа аргументов
+const a = Array(6) // пустой массив но length = 6 
+ 
 let arr = [10, "2", 3, false];
-let first = arr[0];
-let count = 1;
 
-arr[0] и arr.at(0) оба вернут первый элемент
+  let count = 1;
+arr[count] // "2"
+arr[3] // false
+arr[10] // undefined
 
-console.log(arr[3]); // false
-console.log(first); // 10
-console.log(arr[count]) // "2"
+arr[0] и arr.at(0) оба вернут начальный элемент
+
+arr[0] = 4; // [4, "2", 3, false];
+ 
+arr[5] = false; // [ 4, "2", 3, false, "", false ] // Разреженный массив (пропустили 4 индекс)
+
   </code>
 </pre>
 
-                  <p>При использовании точки слово, стоящее после нее, является точечным именем свойства.</p>
-                  <p>При использовании квадратных скобок,для получении имени свойства
-                    <i>Вычисляется</i> заключенное в скобки выражение.
-                  </p>
-                  <p>Если value.x извлекает из значения value свойство с именем x, то
-                    value[x] пытается вычислить выражение x и применяет результат, преобразованный в строку, в
-                    качестве
-                    имени
-                    свойства</p>
-                  <p>По этому если вы знаете что интересующее вас свойство называется color, то пишите сразу
-                    value.color
-                  </p>
-				  
-                  <details class="show-piece">
-                    <summary><code>сортировка массива</code></summary>
-                    <textarea cols="120" rows="28">
+          <p>При использовании точки слово, стоящее после нее, является точечным именем свойства.</p>
+          <p>При использовании квадратных скобок,для получении имени свойства
+            <i>Вычисляется</i> заключенное в скобки выражение.
+          </p>
+          <p>Если value.x извлекает из значения value свойство с именем x, то
+            value[x] пытается вычислить выражение x и применяет результат, преобразованный в строку, в
+            качестве
+            имени
+            свойства</p>
+
+
+          <!-- сортировка массива -->
+          <details class="show-piece">
+            <summary><code>сортировка массива</code></summary>
+            <textarea cols="120" rows="28">
 let arr = [4, 1, 3, 2, 5];
 
 console.log(arr);
@@ -117,62 +117,18 @@ for (let currentIndex = 0; currentIndex &lt;= arr.length - 2; currentIndex++) {
 console.log(arr);
         </textarea>
 
-                  </details>
-				  
-<div><!-- replacement -->
-                    <h3>replacement</h3>
-                    <pre>
-   <code>
-arr[0] = 4
-console.log(a) //[4, "2", 3, false];
-   </code>
-</pre>
-
-                    <h3>add</h3>
-                    <pre>
-  <code>
-a[5] = false;
-console.log(arr) //[ 4, "2", 3, false "", false ] // Разреженный массив
-  </code>
-</pre>
-
-                    <h3>Обращение к несуществующему элементу вернет undefined</h3>
-                    <pre>
-   <code>
-console.log(arr[7]); // undefined
-   </code>
-</pre>
-
-                    <h2>меняем элементы массива местами</h2>
-                    <pre>
-    <code>
-let a = [4, 1, 2, 3];
-let swap = a[0];
-
-a[1] = swap; // [1, 4, 2, 3]
-    </code>
-</pre>
-                    <p>если сразу записать на первое место значение второго элемента, то мы потеряем значение первого.
-                    </p>
+          </details>
 
 
-                    <div>
-                      <p>matches() //проверка</p>
-                      <p>closet() //возвращает</p>
-                      <p>contains() //проверка</p>
-                    </div>
-                  </div>	  
-				  
-				  
-<details class="show-piece array-clone">
-                    <summary>Клонирование массива</summary>
-                    <p>В js нет метода для клонирования массивов</p>
-                    <p>Этот метод легко сэмулировать, помня, что concat и slice не меняют исходный массив. Достаточно
-                      вызвать
-                      метод
-                      concat без
-                      аргументов или метод slice с единственным аргументом равным 0.</p>
-                    <pre>
+          <details class="show-piece array-clone">
+            <summary>Клонирование массива</summary>
+            <p>В js нет метода для клонирования массивов</p>
+            <p>Этот метод легко сэмулировать, помня, что concat и slice не меняют исходный массив. Достаточно
+              вызвать
+              метод
+              concat без
+              аргументов или метод slice с единственным аргументом равным 0.</p>
+            <pre>
    <code>
 let a = [1,2,3];
 let b = a.concat();
@@ -183,14 +139,14 @@ let c = a.slice(0);
 ([a == b, a == c, b == c]); // [ false,false,false ]
    </code>
 </pre>
-                    <p>Если в массиве лежат ссылки на объекты, в том числе ссылки на другие массивы, то в
-                      новосозданном
-                      массиве будут лежать
-                      ссылки на те же самые объекты. Поэтому если вы хотите клонировать многомерный массив, то
-                      придётся
-                      вручную создавать
-                      новый массив, после чего перебрать подмассивы исходного массива и клонировать их в новый.</p>
-                    <pre>
+            <p>Если в массиве лежат ссылки на объекты, в том числе ссылки на другие массивы, то в
+              новосозданном
+              массиве будут лежать
+              ссылки на те же самые объекты. Поэтому если вы хотите клонировать многомерный массив, то
+              придётся
+              вручную создавать
+              новый массив, после чего перебрать подмассивы исходного массива и клонировать их в новый.</p>
+            <pre>
    <code>
   Клонируется только массив верхнего уровня:
 let a = [
@@ -208,7 +164,7 @@ b[0][1] = 15;
 a[0][1] // 15
    </code>
 </pre>
-                    <pre>
+            <pre>
    <code>
   Клонируем вложенные массивы:
 
@@ -232,14 +188,16 @@ a[0][1]; // 15
 </pre>
 
 
-                  </details>				  
-				  
-			
-<div class="performance">
-                    <h3>перебор массива</h3>
+          </details>
 
-                    <h3>for</h3>
-                    <pre><code>
+
+          <section>
+
+            <h3>перебор массива</h3>
+
+            <details class="show-piece">
+              <summary><code>for</code></summary>
+              <pre><code>
 let arr = [ "a", "b", "c", "d" ];
 
 for (let <span class="color-red">i</span> = 0; i < arr.length; i++) {                
@@ -253,10 +211,13 @@ for (let <span class="color-red">i</span> = 0; i < arr.length; i++) {
             3 - d
 
 </code></pre>
+            </details>
 
-                    <h3>for in</h3>
-                    <p class="color-red">for in не стоит использовать для перебора массива</p>
-                    <pre><code>
+
+            <details class="show-piece">
+              <summary><code>for in - </code><span class="color-red"> не стоит использовать для перебора
+                  массива</span></summary>
+              <pre><code>
 let arr = [ "a", "b", "c", "d" ];
 
 for (let <span class="color-red">i</span> <span class="color-light-blue">in</span> arr) {  
@@ -270,10 +231,12 @@ for (let <span class="color-red">i</span> <span class="color-light-blue">in</spa
            3 - d
 
 </code></pre>
+            </details>
 
-                    <h3>for of</h3>
 
-                    <pre><code>
+            <details class="show-piece">
+              <summary><code>for of</code></summary>
+              <pre><code>
 let arr = [ "a", "b", "c", "d" ];
 
 for (let i <span class="color-red">of</span> arr) { 
@@ -290,415 +253,423 @@ for (let i <span class="color-red">of</span> arr) {
 
 
 </code></pre>
+            </details>
 
-                    <pre><code>
-arr.forEach((e) => console.log(e));  // a b c d
 
-arr.map((e) => console.log(e))  // a b c d // новый массив
+            <details class="show-piece">
+              <summary><code>forEach</code></summary>
+              <pre><code>
+arr.forEach((e) =&gt; console.log(e));  // a b c d
+
+arr.map((e) =&gt; console.log(e))  // a b c d // новый массив
 
 </code></pre>
+            </details>
+
+
+          </section>
 
 
 
-                  </div>			
 
 
 
-<div class="performance"><!-- Методы массивов -->
 
-                    <h2>Методы массивов</h2>
 
-                    <div class="performance">
-                      <pre><code>
-    unshift ┐       push ┐            стек
+          <!-- Методы массивов -->
+          <section>
+
+            <hgroup>
+              <h2>Методы массивов</h2>
+              <h3>Array.prototype.method</h3>
+            </hgroup>
+
+            <p>создают новый массив</p>
+
+            <table class="array-method-table">
+              <thead></thead>
+              <tbody>
+
+                <!-- concat -->
+                <tr>
+                  <td>
+                    <p>concat</p>
+                  </td>
+                  <td>
+                    <p>возвращает массив из множества массивов</p>
+                  </td>
+                </tr>
+
+                <!-- filter -->
+                <tr>
+                  <td>
+                    <p>filter</p>
+                  </td>
+                  <td>
+                    <p>создаёт массив с элементами прошедшими проверку
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- flat -->
+                <tr>
+                  <td>
+                    <p>flat</p>
+                  </td>
+                  <td>
+                    <p>новый массив из массивов в массиве [ 1 [ 2 ] [ 3 ] ] -- [1, 2, 3]</p>
+                  </td>
+                </tr>
+
+                <!-- flatMap -->
+                <tr>
+                  <td>
+                    <p>flatMap</p>
+                  </td>
+                  <td>
+                    <p>Новый массив, каждый элемент которого является результатом выполнения функции</p>
+                  </td>
+                </tr>
+
+                <!-- forEach -->
+                <tr>
+                  <td>
+                    <p>forEach</p>
+                  </td>
+                  <td>
+                    <p>выполнит функцию для каждого элемента</p>
+                  </td>
+                </tr>
+
+                <!-- map -->
+                <tr>
+                  <td>
+                    <p>map</p>
+                  </td>
+                  <td>
+                    <p>новый массив с результатом вызова функции для каждого элемента</p>
+                  </td>
+                </tr>
+
+                <!-- slice -->
+                <tr>
+                  <td>
+                    <p>slice</p>
+                  </td>
+                  <td>
+                    <p>копия части исходного массива</p>
+                  </td>
+                </tr>
+
+
+              </tbody>
+              <tfoot></tfoot>
+            </table>
+
+
+            <p>редактируют массив</p>
+
+            <table class="array-method-table">
+              <thead></thead>
+              <tbody>
+
+
+                <tr>
+                  <td colspan="2">
+                    <p>
+                    <pre><code>
+    unshift ┐       push ┐            
 	    ▼            ▼
           [ + 0, 1, 2, 3 + ] 
             ▼            ▼
-            └ shift      └ pop        очередь
-</code></pre>
-                    </div>
+            └ shift      └ pop       
 
-                    <h2>replace</h2>
-                    <p>из числа с запятыми 3,45,666 можем получить 345666 использовав <code>.replace(/,/g " ")</code>
+</code></pre>
                     </p>
-
-                    <details class="show-piece reverse">
-                      <summary>Array.indexOf</summary>
-                      Array.indexOf — ищет только 1 символ
-                      String.indexOf — может искать строку больше 1 символа
-                    </details>
-
-                    <details class="show-piece reverse">
-                      <summary>reverse - разворачивает</summary>
-                      <p>изменяет исходный массив</p>
-
-                      <pre>
-  <code>
-let a = [ ];
-
-a[1] = 1;
-b[2] = 2;
-
-console.log(a + " : " + [0 in a, 1 in a, 2 in a]); // ,1,2, : false,true,true
-
-a.reverse();
-
-console.log(a + " : " + [0 in a, 1 in a, 2 in a]); // 2,1, : true,true,false
-  </code>
-</pre>
-                    </details>
-
-                    <details class="show-piece sort">
-                      <summary>sort - сортирует</summary>
-                      <p>изменяет исходный массив</p>
-                      <p>принимает единственным аргументом функцию, сравнивающую элементы массива. Если функция
-                        сравнения не
-                        задана, то элементы
-                        сортируются в лексикографическом порядке.</p>
-                      <pre>
-   <code>
- var a = ['d', 'b', 'a', 'e', 'c'];
- a.sort();
- alert(a); // a,b,c,d,e
-   </code>
-</pre>
-                      <p>без переданной callback -функции, если сортировать числа, sort отсортирует их как строки,
-                        а не как
-                        числа.</p>
-                      <pre>
-   <code>
- let a = [4, 2, 10, 5, 30];
- a.sort(); // 10,2,30,4,5
-   </code>
-</pre>
-                      <p>для сортировки чисел необходимо передать методу sort функцию сравнения двух чисел (a - b)
-                        / (a + b)
-                      </p>
-                      <pre>
-   <code>
- let arr = [ 3, 22, -10, 1, 7 ]
-
- без callback - функции
- arr.sort(); // [-10, 1, 22, 3, 7] - сортирует в лексикографическом порядке
-
- с функцией сравнения
- arr.sort((a-b) =&gt; a - b); // [-10, 1, 3, 7, 22] - сортирует по порядку
-   </code>
-</pre>
-                    </details>
-
-                    <details class="show-piece concat">
-                      <summary>concat</summary>
-                      <p>создаёт копию исходного массива, добавляя к нему переданные аргументы</p>
-                      <pre>
-   <code>
- Array.prototype.toString = function() {
-   return '[' + this.join(,) + ']';
- };
-
-
- let a = [1,2,3];
-
- a.concat(4,5,6); //[1,2,3,4,5,6]
-
- a.concat([4,5],[6]); //[1,2,3,4,5,6]
-   </code>
-</pre>
-                      <p>Однако дальше одного уровня concat аргументы-массивы не разворачивает</p>
-                      <pre>
-   <code>
- a.concat([4, [5], 6]); //[1,2,3,4,[5],6]
-   </code>
-</pre>
-                      <p>пропуски как из исходного массива, так и из массивов-аргументов, сохраняются</p>
-                      <pre>
-   <code>
- let a = [1, , 3];
-
- console.log(a.concat([4, , 6])); // [1, , 3, 4, , 6]
-   </code>
-</pre>
-                    </details>
-
-                    <details class="show-piece slice">
-                      <summary>slice - возвращает подмассив исходного массива</summary>
-                      <p>slice(begin[, end])</p>
-                      <p>возвращает подмассив исходного массива, начиная с индекса begin и заканчивая индексом end
-                        - 1.</p>
-                      <p>метод массива с помощью которого можно получить копию части или всего массива</p>
-                      <p>Чтобы легче запомнить такую странную нумерацию, лучше считать, что передаются индексы не
-                        элементов,
-                        а "межэлементного пространства".</p>
-                      <pre>
-   <code>
- индексы элементов: 0 1 2 3 4 5 6 7 8
-                   ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
- индексы slice:    0 1 2 3 4 5 6 7 8 9
-   </code>
-</pre>
-                      <p>становится понятно, что ar.slice(0, 1) вернёт только нулевой элемент, а slice(5, 9) — с
-                        пятого по
-                        восьмой элементы.</p>
-                      <pre>
-   <code>
-let arr = [0, 1, 2, 3, 4, 5];
-
-arr.slice(0, 2); // 0,1
-arr.slice(4, 5); // 4
-   </code>
-</pre>
-                      <p>Если второй аргумент является отрицательным числом, то отсчёт второго индекса идёт с конца
-                        массива.
-                      </p>
-                      <pre>
-  <code>
-arr.slice(0, -2); // 0,1,2,3 
-  </code>
-</pre>
-                      <p>Если же второй аргумент не передан вообще, то возвращается копия массива от begin до
-                        конца.</p>
-                      <pre>
-   <code>
-arr.slice(3); // 3,4,5
-   </code>
-</pre>
-                    </details>
-
-
-                    <details class="show-piece forEach">
-                      <summary><code>forEach -- </code>применит функцию к каждому элементу</summary>
-                      <pre><code>
-let arr = [
-	{id: 1, name: "a", age: 11},
-	{id: 2, name: "b", age: 22},
-	{id: 3, name: "c", age: 33}
-]
-
-arr.forEach(e => {
-	let count = e.age + 1;
-	let id = e.id;
-	console.log(id + " - " + count);
-		
-		// 1 - 12
-		// 2 - 23
-		// 3 - 34
-})
-</code></pre>
-                    </details>
-
-
-                    <details class="show-piece some">
-                      <summary><code>some -- </code>удовлетворяет ли выбранные элемент массива условию заданному в
-                        передоваемой функции</summary>
-                      <pre><code>
-let arr = [
-  {id: 1, name: "a", age: 11},
-  {id: 2, name: "b", age: 22},
-  {id: 3, name: "c", age: 33}
-]
-
-arr.some(e => e.age === 11); // true
-arr.some(e => e.age === 12); // false 
-arr.some(e => e.age === 33); // true
-
-</code></pre>
-                    </details>
-
-                    <details class="show-piece reduce">
-                      <summary><code>reduce -- </code>ринимает функцию у которой в качестве аргумента аккумулятор и
-                        значение к каждому значению массива</summary>
-                      <pre><code>
-возвращает одно(общее) значение
-
-
-const arrReduce = [ 1, 2, 3, 4, 5];
-
-arrReduce.reduce((total, value) => total + value); // 15
-
-</code></pre>
-                    </details>
-
-                    <details class="show-piece every">
-                      <summary><code>every -- </code>все ли элементы массива удовлитворяют условию в переданной функции
-                      </summary>
-                      <pre><code>
-const arrEveryFalse = [1, 2, 3];
-const arrEveryTrye = [2, 2, 2];
-
-arrEveryFalse.every(test => test === 2); // false
-arrEveryTrye.every(test => test === 2); // true
-
-</code></pre>
-                    </details>
-
-                    <details class="show-piece map">
-                      <summary><code>map -- </code>вернет новый массив с результатом вызова для каждого элемента массива
-                      </summary>
-                      <pre><code>
-const mapArrayOne = [1, 2, 3]; 
-const mapArrayTwo = [5, 5, 5]; 
-
-mapArrayOne.map(e => e + e); // [2, 4, 6] -- [1 + 1] [2 + 2] [3 + 3]
-mapArrayTwo.map(e => e + e); // [10, 10, 10]
-
-</code></pre>
-                    </details>
-
-
-                    <details class="show-piece flat">
-                      <summary><code>flat -- </code>сгладит вложенные массивы в сплошной массив(работает только на одну
-                        вложенность)</summary>
-                      <pre><code>
-const flatArray = [1, 2, ["a", "b", "c"], ["1", "2", "3"] ];
-
-let flatArrayTwo = flatArray.flat();
-console.log(flatArrayTwo);
-</code></pre>
-                    </details>
-
-
-                    <details class="show-piece filter">
-                      <summary><code>filter -- </code>вернет новый массив</summary>
-                      <pre><code>
-const filterArray = [
-	{id: 1, name: "a"},
-	{id: 2, name: "b"},
-	{id: 3, name: "c"},
-	{id: 4, name: "a"}	
-]
-
-filterArray.filter(e => e.name === "a" || e.id == 2); // вернет массив с тремя обьектами (в этом случае)
-
-</code></pre>
-                    </details>
-
-
-                    <details class="show-piece find">
-                      <summary><code>find -- </code>вернет элемент массива</summary>
-                      <pre><code>
-const findArray = [
-	{id: 1, name: "a"},
-	{id: 2, name: "b"},
-	{id: 3, name: "c"}	
-]
-
-findArray.find(e => e.name === "a"); // Object {id: 1, name: "a"}
-findArray.find(e => e.name === "d"); // undefined
-</code></pre>
-                    </details>
-
-                    <details class="show-piece findindex">
-                      <summary><code>findindex -- </code>вернет индекс</summary>
-                      <pre><code>
-const findIndexArray = [
-	{id: 1, name: "a"},
-	{id: 2, name: "b"},
-	{id: 3, name: "c"}	
-]
-
-findIndexArray.findIndex(e => e.name === "a"); // 0
-findIndexArray.findIndex(e => e.name === "d"); // -1
-
-</code></pre>
-                    </details>
-
-                    <details class="show-piece sort">
-                      <summary><code>sort</code></summary>
-                      <pre><code>
-const sortArray = ["c", 3, 2, "b", 1, "a"];
-
-sortArray.sort(); // [1, 2, 3, "a", "b", "c"]
-
-</code></pre>
-                    </details>
-
-                    <details class="show-piece concat">
-                      <summary><code>concat -- </code>вернет новый массив </summary>
-                      <pre><code>
-const concatArrayOne = [1, 2, 3];
-const concatArrayTwo = ["a", "b"];
-
-concatArrayOne.concat(concatArrayTwo); // [1, 2, 3, "a", "b"]
-
-</code></pre>
-                    </details>
-
-
-                    <details class="show-piece fill">
-                      <summary><code>fill(значение, от, до); -- </code>заполнит диопазон индексов одинаковыми значениями
-                      </summary>
-                      <pre><code>
-const fillArray = [1, 2, 3, 4, 5, 6, 7];
-
-fillArray.fill("A", 1, 4); // [1, "A", "A", "A", 5, 6, 7]
-
-</code></pre>
-                    </details>
-
-
-                    <details class="show-piece includes">
-                      <summary><code>includes -- </code>вернет true если найдет значение</summary>
-                      <pre><code>
-const includesArray = [1, 2, "a"];
-
-includesArray.includes(1);   // true
-includesArray.includes(5);   // false
-includesArray.includes("a"); // true
-
-</code></pre>
-                    </details>
-
-
-                    <details class="show-piece reverse">
-                      <summary><code>reverse</code></summary>
-                      <pre><code>
-const reverseArray = [1, 2, 3];
-
-reverseArray.reverse(); //[3, 2, 1]
-</code></pre>
-                    </details>
-
-
-                    <details class="show-piece delete">
-                      <summary><code>delete -- </code>удаляет значение(индекс остается === undefined)</summary>
-                      <pre><code>
-let deleteArray = [1, 2, 3];
-
-delete deleteArray[1];
-
-deleteArray.length // длина массива осталась 3
-
-deleteArray[0]; // 1
-deleteArray[1]; // undefined
-deleteArray[2]; // 3
-
-</code></pre>
-                    </details>
-
-                    <details class="show-piece splice">
-                      <summary><code>splice -- </code>удалить, добавить, заменить</summary>
-                      <pre><code>
-изменяет массив
-вернет маасив из удаленных элементов
-
-let spliceArray = ["a", "b", "c"];
-
-spliceArray.splice(1, 1); // изменит массив и 
-вернет элемент под индексом 1 = "b" 
-
-     теперь массив такой ["a", "c"];
-
-</code></pre>
-                    </details>
-
-
-
-
+                  </td>
+                </tr>
+
+
+                <!-- fill -->
+                <tr>
+                  <td>
+                    <p>fill</p>
+                  </td>
+                  <td>
+                    <p>заполняет элементы одним значением</p>
+                  </td>
+                </tr>
+
+                <!-- reverse -->
+                <tr>
+                  <td>
+                    <p>reverse</p>
+                  </td>
+                  <td>
+                    <p>разворачивает массив</p>
+                  </td>
+                </tr>
+
+                <!-- sort -->
+                <tr>
+                  <td>
+                    <p>sort</p>
+                  </td>
+                  <td>
+                    <p>сортирует элементы</p>
+                  </td>
+                </tr>
+
+                <!-- splice -->
+                <tr>
+                  <td>
+                    <p>splice</p>
+                  </td>
+                  <td>
+                    <p>удалить / добавить / заменить</p>
+                  </td>
+                </tr>
+
+
+                <!-- with -->
+                <tr>
+                  <td>
+                    <p>with(index, value)</p>
+                  </td>
+                  <td>
+                    <p>заменяет значение по индексу</p>
+                  </td>
+                </tr>
+
+              </tbody>
+              <tfoot></tfoot>
+            </table>
+
+
+
+            <p>возвращают значение из текущего массива</p>
+
+            <table class="array-method-table">
+              <thead></thead>
+              <tbody>
+
+                <!-- at -->
+                <tr>
+                  <td>
+                    <p>at</p>
+                  </td>
+                  <td>
+                    <p>возвращает элемент по числу (индексу)</p>
+                  </td>
+                </tr>
+
+                <!-- copyWithin -->
+                <tr>
+                  <td>
+                    <p>copyWithin</p>
+                  </td>
+                  <td>
+                    <p>копирует последовательность элементов</p>
+                  </td>
+                </tr>
+
+                <!-- entries -->
+                <tr>
+                  <td>
+                    <p>entries</p>
+                  </td>
+                  <td>
+                    <p>возвращает новый объект итератора массива</p>
+                  </td>
+                </tr>
+
+                <!-- find -->
+                <tr>
+                  <td>
+                    <p>find</p>
+                  </td>
+                  <td>
+                    <p>вернет элемент</p>
+                    <p>возвращает значение первого найденного в массиве элемента, которое удовлетворяет условию</p>
+                  </td>
+                </tr>
+
+                <!-- findIndex -->
+                <tr>
+                  <td>
+                    <p>findIndex</p>
+                  </td>
+                  <td>
+                    <p>вернет индекс, если элемент удовлетворяет условию</p>
+                  </td>
+                </tr>
+
+                <!-- findLast -->
+                <tr>
+                  <td>
+                    <p>findLast</p>
+                  </td>
+                  <td>
+                    <p>возвращает значение первого элемента, удовлетворяющего предоставленной функции</p>
+                    <p>перебирает массив в обратном порядке</p>
+                  </td>
+                </tr>
+
+                <!-- findLastIndex -->
+                <tr>
+                  <td>
+                    <p>findLastIndex</p>
+                  </td>
+                  <td>
+                    <p>возвращает индекс первого элемента, удовлетворяющего
+                      предоставленной функции</p>
+                    <p>перебирает массив в обратном порядке</p>
+                  </td>
+                </tr>
+
+                <!-- indexOf -->
+                <tr>
+                  <td>
+                    <p>indexOf</p>
+                  </td>
+                  <td>
+                    <p>возвращает первый индекс, по которому данный элемент может быть найден в массиве</p>
+                    <p> Array.indexOf — ищет только 1 символ</p>
+                    <p>String.indexOf — может искать строку больше 1 символа</p>
+                  </td>
+                </tr>
+
+                <!-- lastIndexOf -->
+                <tr>
+                  <td>
+                    <p>lastIndexOf</p>
+                  </td>
+                  <td>
+                    <p>возвращает последний индекс, по которому данный элемент может быть найден в массиве</p>
+                  </td>
+                </tr>
+
+                <!-- reduce -->
+                <tr>
+                  <td>
+                    <p title="[ 1, 2, 3, 4, 5].reduce((total, value) => total + value) = 15">reduce</p>
+                  </td>
+                  <td>
+                    <p>применяет функцию к каждому элементу, возвращая одно результирующее значение</p>
+                    <p>слева на право</p>
+                  </td>
+                </tr>
+
+
+                <!-- reduceRight -->
+                <tr>
+                  <td>
+                    <p>reduceRight</p>
+                  </td>
+                  <td>
+                    <p>применяет функцию к каждому элементу, возвращая одно результирующее значение</p>
+                    <p>с права на лево</p>
+                  </td>
+                </tr>
+
+                <!-- toReversed -->
+                <tr>
+                  <td>
+                    <p>toReversed</p>
+                  </td>
+                  <td>
+                    <p>вернет копию массива в обратном порядке</p>
+                    <p>копирующая версия reverse()</p>
+                  </td>
+                </tr>
+
+                <!-- toSorted -->
+                <tr>
+                  <td>
+                    <p>toSorted</p>
+                  </td>
+                  <td>
+                    <p>вернет сортированную копию массива</p>
+                    <p>копирующая версия sort()</p>
+                  </td>
+                </tr>
+
+                <!-- toSpliced -->
+                <tr>
+                  <td>
+                    <p>toSpliced</p>
+                  </td>
+                  <td>
+                    <p>вернет копию массива с удаленными / замененными элементами</p>
+                    <p>копирующая версия splice()</p>
+                  </td>
+                </tr>
+
+              </tbody>
+              <tfoot></tfoot>
+            </table>
+
+
+
+            <p>true false</p>
+
+            <table class="array-method-table">
+              <thead></thead>
+              <tbody>
+
+                <!-- every -->
+                <tr>
+                  <td>
+                    <p>every</p>
+                  </td>
+                  <td>
+                    <p>удовлетворяют ли все элементы массива условию</p>
+                  </td>
+                </tr>
+
+                <!-- includes -->
+                <tr>
+                  <td>
+                    <p>includes</p>
+                  </td>
+                  <td>
+                    <p>содержит ли массив определенное значение</p>
+                  </td>
+                </tr>
+
+                <!-- some -->
+                <tr>
+                  <td>
+                    <p>some</p>
+                  </td>
+                  <td>
+                    <p>удовлетворяет ли какой-либо элемент условию</p>
+                  </td>
+                </tr>
+
+
+              </tbody>
+              <tfoot></tfoot>
+            </table>
+
+
+
+            <p>--------------------</p>
+
+            <table class="array-method-table">
+              <thead></thead>
+              <tbody>
+
+
+                <!-- peek -->
+                <tr>
+                  <td>
+                    <p>
                     <details class="show-piece peek">
-                      <summary><code>peek() - </code>получить последний элемент не кдаляя его из массива</summary>
-<p>для просмотра последнего элемента массива</p>
-					  
-<textarea cols="30" rows="10">
+                      <summary><code>peek</code></summary>
+                      <p>для просмотра последнего элемента массива</p>
+
+                      <textarea cols="30" rows="10">
 arr[arr.length - 1]
 
 добавитиь метод в цепочку прототипов Array 
@@ -716,29 +687,91 @@ let arr = [1, 2, 3];
 arr.peek() // 3
 
 </textarea>
-					  
+
                     </details>
-					
-					
-					
-
-                    <details class="show-piece ">
-                      <summary><code></code></summary>
-                      <pre><code>
-
-</code></pre>
-                    </details>
+                    </p>
+                  </td>
+                  <td>
+                    <p>получить последний элемент не удаляя его из массива</p>
+                  </td>
+                </tr>
 
 
+                <!-- join -->
+                <tr>
+                  <td>
+                    <p>join</p>
+                  </td>
+                  <td>
+                    <p>объединяет все элементы массива</p>
+                  </td>
+                </tr>
 
-                  </div>
+                <!-- keys -->
+                <tr>
+                  <td>
+                    <p>keys</p>
+                  </td>
+                  <td>
+                    <p>возвращает новый итератор массива Array Iterator, содержащий ключи каждого индекса в массиве
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- toLocaleString -->
+                <tr>
+                  <td>
+                    <p>toLocaleString</p>
+                  </td>
+                  <td>
+                    <p>строковое представление элементов массива</p>
+                  </td>
+                </tr>
+
+                <!-- toString -->
+                <tr>
+                  <td>
+                    <p>toString</p>
+                  </td>
+                  <td>
+                    <p>вернет строку с элементами массива через запятую</p>
+                  </td>
+                </tr>
+
+                <!-- values -->
+                <tr>
+                  <td>
+                    <p>values</p>
+                  </td>
+                  <td>
+                    <p>вернет объект итератор массива Array Iterator который содержит значения каждого индекса</p>
+                  </td>
+                </tr>
+
+                <!-- delete -->
+                <tr>
+                  <td>
+                    <p>delete</p>
+                  </td>
+                  <td>
+                    <p>удалит значение, индекс равен = undefined, длина массива останется прежней</p>
+                  </td>
+                </tr>
+
+
+              </tbody>
+              <tfoot></tfoot>
+            </table>
+
+
+          </section>
 
 
 
 
 
 
-</section>
+        </section>
 
       </div>
     </main>

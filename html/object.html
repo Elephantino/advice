@@ -44,8 +44,8 @@
 <p>object -- для хранения именованных коллекций</p>
 
 <pre><code>
-obj = {} это то же что и obj = new Object(), где 
-Object() - встроенная функция конструктор для объектов 
+obj = {} это то же что и obj = new Object()  
+Object() - конструктор для объектов 
 с собственным свойством prototype, которое ссылается 
 на огромный обьект с методами.
 
@@ -506,23 +506,6 @@ console.log(app.getURL()); // 'https://yandex.ru/'
 </pre>
                     </details>
 
-<details class="show-piece object-properties">
-<summary>Свойства объектов и их конфигурация - writable / enumerable / configurable</summary>
-<a href="https://itchief.ru/javascript/objects" target="_blank" rel="noopener noreferrer">источник
-                        https://itchief.ru/javascript/objects</a>
-
-<p>До этого времени мы рассматривали свойства как пары «ключ: значение».</p>
-<p>Но свойство кроме значения (value) имеет специальные флаги:</p>
-<ul>
-                        <li>writable – доступно ли свойство для изменения;</li>
-                        <li>enumerable – доступно ли свойство для перебора в циклах;</li>
-                        <li>configurable – доступно ли свойство для настройки и удаления.</li>
-                      </ul>
-
-<p>по умолчанию у всех <code>true</code></p>
-
-
-                    </details>
 					
 					
 <details class="show-piece ">
@@ -534,6 +517,305 @@ console.log(app.getURL()); // 'https://yandex.ru/'
 
 
 
+<div class="show-info">
+  <div class="show-info__inner">
+
+
+<!-- flags-and-descriptors -->
+<section class="flags-and-descriptors">
+<h2><a name="flags-and-descriptors">Свойства объектов и их конфигурация</a></h2>
+
+<p><a href="https://itchief.ru/javascript/objects" target="_blank" rel="noopener noreferrer">источник https://itchief.ru/javascript/objects</a></p>
+
+
+<p>дескрипторы работают на уровне одного свойства</p>
+<p>методы ограничивают доступ ко всему объекту</p>
+
+
+
+<table class="table-object">
+<thead>
+	<tr>
+		<th>методы</th>
+		<th>проверки этих методов</th>
+	</tr>
+</thead>
+
+<tbody>
+
+	<tr>
+<td>
+<p>запрет на добавление новых свойств</p>
+<details class="show-piece">
+  <summary><code>Object.preventExtensions(obj) </code></summary>
+  
+<textarea name="" id="" cols="40" rows="11">
+let user = {
+  name1: "name 1",
+}
+
+Object.preventExtensions(user) // false = объект теперь не расширить
+
+user.name2 = "name 2" // не добавится
+
+Object.isExtensible(user) // false
+  </textarea>
+</details>
+</td>
+		
+<td>
+		
+<p><b>Object.isExtensible(obj)</b></p>
+<p><b>false - </b>запрет на добавление новых свойств</p>
+
+</td>
+	</tr>
+	
+	<tr>
+		<td>
+<p>запрет добавить/удалить свойства</p>
+<p><span style="color: red;">configurable: false</span> для всех существующих свойств</p>
+<details class="show-piece">
+  <summary><code>Object.seal(obj)</code></summary>
+
+</details>
+		</td>
+		<td>
+<p><b>Object.isSealed(obj)</b></p>
+<p><b>true - </b>запрет на добавить / удалить для всех свойств</p>
+		</td>
+	</tr>
+	
+<tr>
+<td>
+<p>запрет добавить/удалить/изменить свойства</p>
+<p><span style="color: red;">configurable: false, writable: false</span> для всех существующих свойств</p>
+<details class="show-piece">
+  <summary><code>Object.freeze(obj)</code></summary>
+
+</details>
+</td>
+
+
+<td>
+<p><b>Object.isFrozen(obj)</b></p>
+<p><b>true - </b>добавить/удалить/изменить свойства запрещено и для всех свойств</span></p>
+
+</td>
+</tr>
+	
+</tbody>
+</table>
+
+
+
+
+<h2>флаги и десприпторы свойств </h2>
+
+
+
+<div class="show-info">
+  <div class="show-info__inner">
+
+<h4>проверка флагов конкретного свойства</h4>
+
+<p><b>Object.getOwnPropertyDescriptor(obj, "property")</b></p>
+
+<pre><code>
+  для нового свойства необходимо явно указывать флаг со значением true
+  если нужен флаг со значением false то он просто не указывается
+
+let obj = {};
+
+Object.defineProperty(obj, "newProperty", {
+  value: "new value",
+  enumerable: true, 
+})
+
+console
+Object {
+  newProperty: "new value"
+}
+
+console.log(Object.getOwnPropertyDescriptor(obj, "newProperty"))
+
+Object {
+  value: "new value", 
+  writable: false, 
+  enumerable: true, 
+  configurable: false
+}
+
+</code></pre>
+
+  </div>
+</div>
+
+
+
+<div class="show-info">
+  <div class="show-info__inner">
+<h4>замена флагов</h4>
+
+<p><b>Object.defineProperty(obj, "property", { value: "new value" })</b></p>
+<p>получить значения флагов свойства</p>
+
+<ul>
+	<li>свойство есть то оно заменит флаги на противоположные</li>
+	<li>свойства нет то оно создастся с указанные value и фалгами</li>
+	<li>флаг не был указан то он получит значение false</li>
+	<li>изменит все флаги на false у вновь созданного свойства</li>
+</ul>
+  </div>
+</div>
+
+
+
+<!-- writable -->
+<details class="show-piece">
+  <summary><code>writable - </code>только для чтения</summary>
+  
+<pre><code>
+let user = {
+  name: "old name",
+}; 
+
+Object.defineProperty(user, "name", {
+  writable: false,
+});
+
+user.name = "new name" // не сработает value будет old name
+
+</code></pre>
+
+<p style="color: blue;">то же саоме но с новым свойством:</p>
+
+<pre><code>
+let user = {};
+ 
+Object.defineProperty(user, "name", {
+  value: "new value",
+  enumerable: true, 
+  configurable: true,
+})
+
+если какой то флаг не был указан то он получит значение false
+
+user.name = "new"; // не сработает (writable не указан)
+</code></pre>
+
+</details>
+
+
+
+<!-- enumerable -->
+<details class="show-piece">
+  <summary><code>enumerable - </code>неперечислимое свойство</summary>
+
+<p>все встроенные методы объекта не перечислимы, их не видно в обычных циклах</p>
+
+
+<pre><code>
+let user = {
+  name: "user name",
+  givName() {
+    return this.name;
+  }
+}
+
+for (let key in user) console.log(key) // name givName
+
+<span style="color: red;">скроем метод от перечисления</span>	
+
+Object.defineProperty(user, "givName", {
+  <span style="color: red;">enumerable: false,</span>
+})
+
+for (let key in user) console.log(key) // name
+</code></pre>
+
+
+</details>
+
+
+
+<!-- configurable -->
+<details class="show-piece">
+  <summary><code>configurable - </code>неконфигуримое свойство</summary>
+<p>такое свойство не может быть удалено, его атрибуты не могут быть удалены</p>
+
+<p>если configurable false <span style="color: red;">то другой флаг (если он false) не изменить</span>, дорога в один конец</p>
+
+<pre><code>
+let user = {
+  name: "old name",
+}
+
+Object.defineProperty(user, "name", {
+  <span style="color: red;">writable: false</span>,
+  configurable: false,
+})
+
+user.name = "new"; // не сработает 
+delete user.name   // не сработает
+<span style="color: red;">Object.defineProperty(user, "name", { writable: true });</span> // js выдаст ошибку
+  
+</code></pre>
+
+</details>
+
+
+
+
+<!-- defineProperties -->
+<details class="show-piece">
+  <summary><code>Object.defineProperties - </code>определить множество свойств за раз</summary>
+<div class="performance">
+<pre><code>
+const user = {
+  name: "user",
+}
+
+Object.defineProperties(user, {
+  surname: { value: "new surname", writable: true },
+  age: { value: 29, writable: false},
+})
+
+console.log(user)
+  Object {
+    name: "user", 
+    surname: "new surname", 
+    age: 29
+  }
+
+console.log(Object.getOwnPropertyDescriptor(user, "surname"))
+  Object {
+    value: "new surname", 
+    writable: true, 
+    enumerable: false, 
+    configurable: false
+  }
+  
+</code></pre>
+</div>
+</details>
+
+
+
+
+<!-- getOwnPropertyDescriptors -->
+<details class="show-piece">
+  <summary><code>Object.getOwnPropertyDescriptors</code></summary>
+
+</details>
+
+
+
+  </div>
+</div>
+
+
+</section>
 
 </section>
 
