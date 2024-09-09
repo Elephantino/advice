@@ -33,15 +33,25 @@
 
 
 
-.array-method-table {
-  border-collapse: collapse;
+.methods__item {
+	vertical-align: top;
+	margin-bottom: 1em;
 }
 
-.array-method-table th,
-.array-method-table td {
-  border: 1px solid black;
-  padding: 0 .5em;
+.methods__item {
+	display: inline-block;
+	max-width: 450px;	
 }
+.table-methods {	
+	border-collapse: collapse;
+	max-width: 100%;
+}
+.table-methods th,
+.table-methods td {
+	border: 1px solid black;
+	padding: 0 0.5em;
+}
+
 
 
 
@@ -273,19 +283,19 @@ summary::-webkit-details-marker {
   right: 10px;
 }
 
-.show-piece>summary::before {
+/* .show-piece>summary::before {
   content: "+";
   position: absolute;
   right: 10px;
-}
+} */
 
 .show-block[open]>summary::before {
   content: "-";
 }
 
-.show-piece[open]>summary::before {
+/* .show-piece[open]>summary::before {
   content: "-";
-}
+} */
 
 
 

@@ -42,223 +42,70 @@
 
 <h1>строки</h1>
 
-<p>cтрока - примитив, приметив неизменяем(только заменяем).</p>
-                  <pre>
-    <code>
-let str = "Строковой литерал"; //string
-let str = new String("Объект класса String"); //object
+<p>cтрока - примитив, приметив неизменяем(только заменяем), по этому все методы возвращают новую строку а не изменяют старую</p>
+
+<p>доступ к символам подобен массивам</p>
+<p>перебор строк подобен массивам</p>
+
+<div class="performance">
+<p>если на месте искомой позиции символа нет</p>
+<p>charAt - вернет пустую строку ''</p>
+<p>[ ] – вернет undefined</p>
+</div>
+
+
+
+
+<h2>String.prototype.methods</h2>
+
+
+<div class="performance">
+<pre><code>
+let str = "Qwe";
+let str2 = "rty";
+
+                         
+str.at(0)                | --- TypeError | символ по индексу
+str.charAt(0)            | Q             | символ по индексу
+str.indexOf("we")        | 1             | индекс вхождения
+str.lastIndexOf("w")     | 1             | индекс вхождения
+
+str.concat(str2)         | Qwerty        | строка из множества строк
+str.repeat(2)            | QweQwe        | строка из повторов
+str.slice(0, 2)          | Qw            | кусок строки по индексам
+str.substr(1, 2)         | we            | кусок строки по индексам
+
  
- 
-let str = "How are you?"; //string
- 
-   "H  o  w     a  r  e     y  o  u  ?";
-    0  1  2  3  4  5  6  7  8  9  10 11
-пробел тоже символ по этому у него есть индекс.
-    </code>
-</pre>
-                  <p>доступ к символам:</p>
-                  <pre>
-    <code>
-let str = "JavaScript";
+str.match()              |               | возвращает совпадения с регулярным выражением
+str.replace()            |               | вернет строку, заменит часть
+str.search()             |               | индекс первого совпадения с регулярным выражением
 
-str[0] // J str[index] -- es5
-str.charAt(0) // J
-str.at(0) // J -- Array.prototype.at
 
-console.log(str[str.length - 1]); // t
-console.log(str.at(-1)); // t
-    </code>
-</pre>
-                  <p>charAt() или []</p>
-                  <pre>
-    <code>
-если на месте искомой позиции символа нет:
-  - charAt() вернет пустую строку ''
-  - [] – вернет undefined.
-    </code>
-</pre>
-
-<section class="performance">
-перебор строки
-                    <pre>
-    <code>
-let str = "Hello";
-
-for(let i of str) {
-    console.log(i);
-}
-  //
-    H
-    e
-    l
-    l
-    o
-     //
-    </code>
-</pre>
-</section>
+str.includes("Qwe")      | true          | содержит ли строка заданную подстроку
+str.startWith("Qwe")     | --- TypeError | начинается ли строка с символов
+str.endWith("rty")       | --- TypeError | заканчивается ли строка символами
 
 
 
-<h2>Методы String</h2>
-
-                    <ul class="list-reset">
-                      <li>at() -- возвращает символ</li>
-                      <li>charAt() and slice() возвращает строковые значения на основе индексов</li>
-                      <li>indexOf() and lastIndexOf() вернут индексы на основе значений</li>
+str.split()              | ["Qwe"]       | строка в массив
+str.valueOf()            | ?             | ?
+["a", "b", 3].toString() | a, b, 3       | в строку любой объект
 
 
-                      <li>charCodeAt() -- возвращает числовое значение Юникода для символа по индексу</li>
-                      <li>codePointAt() -- возвращает неотрицательное целое число, являющееся закодированным в UTF-16
-                        значением кодовой точки</li>
-
-                      <li>concat() -- объединяет</li>
-
-                      <li>startsWith() -- начинается ли строка с символов указанных в скобках</li>
-                      <li>endsWith() -- заканчивается ли строка символами указанными в скобках</li>
-
-                      <li>includes() -- проверяет, содержит ли строка заданную подстроку</li>
-                      <li>indexOf() -- возвращает индекс первого вхождения</li>
-                      <li>lastIndexOf() -- возвращает индекс последнего вхождения</li>
-                      <li>match()-- возвращает совпадения с регулярным выражением</li>
-
-                      <li>padStart() -- дополняет текущую строку с начала</li>
-                      <li>padEnd() -- дополняет текущую строку с конца</li>
-
-                      <li>repeat() -- конструирует и возвращает новую строку</li>
-
-                      <li>replace() -- замена части</li>
+str.trim()               |               | удалит пробелы 
+str.padStart("NEW")      | --- TypeError | дополняет текущую строку
 
 
-                      <li>search() -- возвращает индекс первого сопоставления с регулярным выражением внутри строки.
-                      </li>
 
-                      <li>split() -- разбивает объект String на массив строк</li>
 
-                      <li>toLocaleLowerCase() / toLocaleUpperCase() / toLowerCase() / toUpperCase()</li>
-                      <li>valueOf() возвращает примитивное значение объекта String.</li>
+str.length               | 3             | длина
+str.toUpperCase()        | toLowerCase() | регистр
+str.charCodeAt("")       | ?             | числовое значение Юникода
 
-                      <li>toString() возвращает строку, представляющую объект и делает тоже самое, что и метод
-                        String.prototype.valueOf().</li>
+</code></pre>
+</div>
 
-                      <li>trim() удаляет пробельные символы с начала и конца строки</li>
 
-                    </ul>
-
-<details class="show-piece charAt">
-                      <summary>charAt -- возврата символа</summary>
-                      <p>метод для возврата символа, используя индекс в качестве параметра</p>
-                      <pre>
- <code>
-"How are you?".charAt(5); //r
- </code>
-</pre>
-                    </details>
-					
-                    <details class="show-piece indexOf">
-                      <summary>indexOf -- поиск подстроки</summary>
-                      <p>ищет подстроку substr в строке str, начиная с позиции pos, и возвращает позицию совпадения,
-                        либо -1
-                        при отсутствии совпадений.</p>
-                      <p>чувствителен к регистру</p>
-                      <p>вернет порядковый номер первого символа в экземпляре.</p>
-                      <pre>
- <code>
-let str = 'Widget with id';
- 
-alert( str.indexOf('Widget') ); // 0, потому что подстрока 'Widget' найдена в начале
-alert( str.indexOf('widget') ); // -1, совпадений нет, поиск чувствителен к регистру
- 
-alert( str.indexOf("id") ); // 1, подстрока "id" найдена на позиции 1 (..idget with id)
-это если не указать второй параметр, если указать индекс
-дальше позиции 2 то он найдет другое совпадение
- 
-Необязательный второй аргумент позволяет начать поиск с
-определённой позиции.
-str.indexOf("id", 2); // 12
- </code>
-</pre>
-
-                      <p>Чтобы найти все вхождения подстроки, нужно запустить indexOf в цикле. Каждый раз, получив
-                        очередную
-                        позицию, начинаем
-                        новый поиск со следующей:</p>
-
-                      <pre>
- <code>
-let str = 'Ослик Иа-Иа посмотрел на виадук';
- 
-let target = 'Иа'; // цель поиска
- 
-let pos = 0;
-while (true) {
-  let foundPos = str.indexOf(target, pos);
-  if (foundPos == -1) break;
- 
-  alert( `Найдено тут: ${foundPos}` );
-  pos = foundPos + 1; // продолжаем со следующей позиции
-}
- 
-Тот же алгоритм можно записать и короче:
- 
-let str = "Ослик Иа-Иа посмотрел на виадук";
-let target = "Иа";
- 
-let pos = -1;
-  while ((pos = str.indexOf(target, pos + 1)) != -1) {
-  alert( pos );
-}
- </code>
-</pre>
-</details>				
-					
-<details class="show-piece includes">
-                      <summary>includes(substr, pos) -- возвращает boolean</summary>
-                      <p>возвращает true, если в строке str есть подстрока substr, либо false</p>
-                      <p>если нам необходимо проверить, есть ли совпадение, но позиция не нужна</p>
-                      <pre>
-<code>
-alert( "Widget with id".includes("Widget") ); // true
-alert( "Hello".includes("Bye") ); // false
- 
-второй аргумент позволяет начать поиск с определённой позиции
-alert( "Midget".includes("id") ); // true
-alert( "Midget".includes("id", 3) ); // false, поиск начат с позиции 3
-</code>
-  </pre>
-                    </details>				
-					
-					
-                  <div class="performance">
-                    <h2>Получение подстроки</h2>
-                    <p>В JavaScript есть 3 метода для получения подстроки: substring, substr и slice.</p>
-
-                    <details class="show-piece slice">
-                      <summary>slice(start [, end]) -- возвращает часть строки</summary>
-                      <pre>
-<code>
-"How are you?".slice(8, 11); //you
-      
-            индексы символов:  0 1 2 3 4 5 6 7 8
-                              ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
-            индексы slice:    0 1 2 3 4 5 6 7 8 9
-
-Если аргумент end отсутствует, slice возвращает символы до конца строки.
-</code>
-</pre>
-                    </details>
-                  </div>					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 
 
 </section>
