@@ -47,15 +47,6 @@
 <p>доступ к символам подобен массивам</p>
 <p>перебор строк подобен массивам</p>
 
-<div class="performance">
-<p>если на месте искомой позиции символа нет</p>
-<p>charAt - вернет пустую строку ''</p>
-<p>[ ] – вернет undefined</p>
-</div>
-
-
-
-
 <h2>String.prototype.methods</h2>
 
 
@@ -65,42 +56,45 @@ let str = "Qwe";
 let str2 = "rty";
 
                          
-str.at(0)                | --- TypeError | символ по индексу
-str.charAt(0)            | Q             | символ по индексу
-str.indexOf("we")        | 1             | индекс вхождения
-str.lastIndexOf("w")     | 1             | индекс вхождения
+str.at(0)          es6   | Q             | символ по индексу
+charAt(0)                | Q             | символ по индексу
+indexOf("str")           | только str    | индекс первого вхождения
+search()                 | regexp и str  | индекс первого вхождения
 
-str.concat(str2)         | Qwerty        | строка из множества строк
-str.repeat(2)            | QweQwe        | строка из повторов
-str.slice(0, 2)          | Qw            | кусок строки по индексам
-str.substr(1, 2)         | we            | кусок строки по индексам
+replace()                | regexp и str  | вернет строку, заменит часть
+concat(str2)             | Qwerty        | строка из множества строк
+repeat(2)                | QweQwe        | строка из повторов
+slice(0, 2)              | Qw            | кусок строки по индексам
+substr(1, 2)             | we            | кусок строки по индексам
 
  
-str.match()              |               | возвращает совпадения с регулярным выражением
-str.replace()            |               | вернет строку, заменит часть
-str.search()             |               | индекс первого совпадения с регулярным выражением
-
-
-str.includes("Qwe")      | true          | содержит ли строка заданную подстроку
-str.startWith("Qwe")     | --- TypeError | начинается ли строка с символов
-str.endWith("rty")       | --- TypeError | заканчивается ли строка символами
+ 
+match()                  | regexp        | возвращает совпадения с регулярным выражением
+replace()                | regexp и str  | вернет строку, заменит часть
+search()                 | regexp и str  | индекс первого вхождения с регулярным выражением или строкой
 
 
 
-str.split()              | ["Qwe"]       | строка в массив
-str.valueOf()            | ?             | ?
+includes("Qwe")          | true          | содержит ли строка заданную подстроку
+startWith("Qwe")         | --- TypeError | начинается ли строка с символов
+endWith("rty")           | --- TypeError | заканчивается ли строка символами
+
+
+
+split()                  | ["Qwe"]       | строка в массив
+valueOf()                | ?             | ?
 ["a", "b", 3].toString() | a, b, 3       | в строку любой объект
 
 
-str.trim()               |               | удалит пробелы 
-str.padStart("NEW")      | --- TypeError | дополняет текущую строку
+
+trim()                   |               | удалит пробелы 
+padStart("NEW")          | --- TypeError | дополняет текущую строку
 
 
 
-
-str.length               | 3             | длина
-str.toUpperCase()        | toLowerCase() | регистр
-str.charCodeAt("")       | ?             | числовое значение Юникода
+length                   | 3             | длина
+toUpperCase()            | toLowerCase() | регистр
+charCodeAt("")           | ?             | числовое значение Юникода
 
 </code></pre>
 </div>

@@ -72,6 +72,17 @@
               <details class="show-block">
                 <summary><code><a name="text">text</a></code></summary>
 
+<div class="performance">
+          <pre><code>
+выделение текста при нажатии
+
+form {
+  user-select: none;
+}
+
+</code></pre>
+        </div>
+
                 <p><code>text-decoration</code> - text-decoration-line, text-decoration-style, text-decoration-color;
                 </p>
                 <p><code>line-height -- </code>межстрочный интервал</p>
@@ -272,6 +283,27 @@ datetime -- можно указать дату и время поправки / 
             </section>
 
 
+<section class="animation">
+  <details class="show-block">
+    <summary><code>animation</code></summary>
+<p>animation: name, duration, timing-function, delay, iteration-count, direction, fill-mode,
+            play-state.</p>
+  </details>
+</section>
+
+<!-- классы в css -->
+<section class="">
+  <details class="show-block">
+    <summary><code>классы в css</code></summary>
+<p>Класс должен отражать назначение элемента. Плохими считаются классы, которые описывают внешний вид.
+            Исключение делается для дивов-обёрток, которые нужны исключительно для оформления.<a
+              href="https://github.com/yoksel/common-words" target="_blank" rel="noopener noreferrer"> Шпоргалга
+              классов html</a></p>
+  </details>
+</section>
+		
+		
+
             <details class="show-piece scroll-bar">
               <summary><code>scroll-bar</code></summary>
               <p>боковая полоса прокрутки в ff не делается через css, единственное это сменить цвет</p>
@@ -291,8 +323,13 @@ datetime -- можно указать дату и время поправки / 
                 <li>::-webkit-scroll-bar-thumb</li>
               </ul>
             </details>
+			
 
 
+
+
+
+<!-- Приоритет -->
             <details class="show-piece a-priority">
               <summary><code><a name="a-priority">Приоритет</a></code></summary>
               <pre><code>
@@ -300,16 +337,18 @@ datetime -- можно указать дату и время поправки / 
   &lt;span class="cat-in-box"&gt;&lt;/span&gt;
 &lt;/div&gt;
 
-span { 6 }
-div span { 5 }
-#floor .cat-in-box { 4 }
-.cat-in-box { 3 }
-#floor span { 2 }
-div .cat-in-box { 1 }
+span { 7 }
+div span { 6 }
+#floor .cat-in-box { 5 }
+.cat-in-box { 4 }
+#floor span { 3 }
+div .cat-in-box { 2 }
+
+!important { 1}
   </code></pre>
             </details>
 
-
+<!-- border -->
             <details class="show-piece border">
               <summary><code><a name="border">border</a></code></summary>
               <p>border: width / style / color</p>
@@ -688,290 +727,12 @@ box-shadow: inset? h-offset v-offset blur-radius spread-distance color;
 
 
 
-            <details class="show-piece elements-selection">
-              <summary><code><a name="elements-selection">поиск элемента</a></code></summary>
-              <p><code>const ul = document.querySelectorAll("#ul li:nth-child(even)") - </code>все четные li внутри #ul
-              </p>
-              <details class="show-piece">
-                <summary><code>footer ul span { ... }</code> -- контекстные (вложенные)</summary>
-                <p>только если он вложен в нужный элемент.</p>
-              </details>
-
-              <details class="show-piece">
-                <summary><code>li.one ~ li.six { ... }</code> -- родственный</summary>
-                <p>Оба элемента должны принадлежать одному родителю.</p>
-                <p>Отличие от соседнего селектора состоит в том, что между
-                  элементами селектор1 и селектор2 могут находиться
-                  другие элементы.</p>
-                <pre>
-  <code>
-h1 ~ p { color: red; }
-
-&lt;h1&gt;Заголовок&lt;/g1&gt;
-&lt;p&gt;Абзац 1&lt;/p&gt;    //red
-&lt;p&gt;&gt;Абзац 2&lt;/p&gt;   //red
-&lt;div&gt;
-  &lt;p&gt;Абзац 3&lt;/p&gt;  // тут не выберет(не имеет общего родителя h1)
-&lt;div&gt;
-&lt;p&gt;&gt;Абзац 4&lt;/p&gt;   //red
-  </code>
-</pre>
+	  
+<section>
+<h2>псевдо :классы / ::элементы</h2>
 
 
-                <article>
-                  <pre>
-              <code>
-            input[type="checkbox"]:required:checked {}
-            
-            В данном примере будут выбраны все чекбоксы, которые 
-            являются обязательными для заполнения и включены по умолчанию
-              </code>
-            </pre>
-
-                </article>
-
-              </details>
-
-              <details class="show-piece">
-                <summary><code>ul &lt; li &lt; span { ... }</code> -- дочерние</summary>
-              </details>
-
-              <details class="show-piece">
-                <summary><code>li.one + li { ... }</code> -- соседние</summary>
-                <p>соседние по отношению друг к другу</p>
-                <pre>
-  <code>
-&lt;p&gt;Lorem &lt;b&gt;ipsum &lt;/b&gt; dolor sit amet, &lt;i&gt;consectetuer&lt;/i&gt; adipiscing &lt;tt&gt;elit&lt;/tt&gt;.&lt;/p&gt;
-
-<p>Соседними здесь являются теги &lt;b&gt; и &lt;i&gt;, а также &lt;i&gt; и &lt;tt&gt;. При этом &lt;b&gt; и &lt;tt&gt; к
-соседним элементам не относятся из-за того, что между ними расположен контейнер &lt;i&gt;.</p>
-  </code>
-</pre>
-              </details>
-
-              <details class="show-piece">
-                <summary><code>.class.class2</code> -- oбъединение селекторов / классов</summary>
-                <p>слитно без пробелов, выберет элемент с двумя классами одновременно, обьеденять можно большн двух
-                </p>
-              </details>
-
-              <details class="show-piece">
-                <summary><code>input[checked] { ... }</code> -- cелекторы атрибутов</summary>
-                <p>cелекторы атрибутов</p>
-                <pre>
-  <code>
-input[checked] { ... }
-input[type="text"] { ... }   
-details[open] &gt; summary { ... }
-  </code>
-</pre>
-              </details>
-
-              <details class="show-piece">
-                <summary><code>:empty</code> -- нет дочерних элементов</summary>
-                <p>выбирает те теги, у которых нет дочерних элементов в том числе текстовых.</p>
-                <pre>
-              <code>
-            ul li:empty { ... } // все пустые элементы li внутри ul
-              </code>
-            </pre>
-              </details>
-
-              <details class="show-piece">
-                <summary><code>:only-child</code> -- единственный дочерний элемент</summary>
-                <p>единственный дочерний элемент внутри родительского контейнера.</p>
-                <pre>
-              <code>
-            li:only-child { ... } // когда этот li в списке единственный
-              </code>
-            </pre>
-              </details>
-
-              <details class="show-piece">
-                <summary><code>::first-line</code> -- первая строка текста</summary>
-
-              </details>
-
-              <details class="show-piece">
-                <summary><code>::first-letter</code> -- первый символ в тексте</summary>
-
-              </details>
-
-
-
-              <section class="search"> <!-- Поиск по значениям атрибутов -->
-                <a name="Поиск по значениям атрибутов">
-                  <h3>Поиск по значениям атрибутов (cелекторы атрибутов)</h3>
-                </a>
-
-
-                <details class="show-piece">
-                  <summary><code>[foo="bar"]</code> -- полное совпадение</summary>
-                  <p>все элементы, у которых значение атрибута foo полностью совпадает со значением bar</p>
-                  <pre>
-  <code>
-input[checked] { ... }
-input[type="text"] { ... }
-details[open] &gt; summary { ... }
-  </code>
-</pre>
-                </details>
-
-                <details class="show-piece">
-                  <summary><code>[foo^="bar"]</code> -- поиск в начале строки</summary>
-                  <p>выберет все элементы, у которых значение атрибута foo начинается с подстроки bar.</p>
-                </details>
-
-                <details class="show-piece">
-                  <summary><code>[href$=".pdf"]</code> -- поиск в конце строки</summary>
-                  <p>выбирает все элементы, значение атрибута href которых оканчивается строкой .pdf.</p>
-                </details>
-
-                <details class="show-piece">
-                  <summary><code></code>[foo*="bar"] -- поиск подстроки везде</summary>
-                  <p>все элементы, у которых значение атрибута foo содержит подстроку bar на любой позиции</p>
-                </details>
-
-                <details class="show-piece">
-                  <summary><code>[foo|="bar"]</code> -- поиск по префиксу</summary>
-                  <p>все элементы, у которых значение атрибута foo содержит префикс bar, то есть
-                    либо полностью совпадает с bar, либо начинается со строки bar- (наличие знака переноса
-                    существенно).
-                    Другими словами, используя уже знакомые записи селекторов, этот можно заменить на два:</p>
-                  <pre>
-  <code>
-[foo="bar"] — все элементы, у которых значение атрибута foo полностью совпадает со значением bar
-
-[foo^="bar-"] — все элементы, у которых значение атрибута foo начинается со значения bar-
-  </code>
-</pre>
-                </details>
-
-                <h3>Поиск слов внутри строки</h3>
-                <details class="show-piece">
-                  <summary><code>[value~="Регистрозависим"] / [value~="регистрозависим"]</code> </summary>
-                  <p>Такой селектор выберет все элементы, у которых значение атрибута value содержит слово
-                    регистрозависим
-                    или Регистрозависим.</p>
-                  <p>Входить должно именно слово, а не подстрока. То есть вхождение bar должно содержать с обеих
-                    сторон
-                    разделители: пробелы или начало / конец строки.</p>
-                </details>
-
-              </section>
-            </details>
-
-
-            <details class="show-piece has">
-              <summary><code><a name="has">:has - </a></code>проверка наличия элемента</summary>
-              <p><code>.card:not(:has(+.card)) </code>//все .card за которыми нет .card</p>
-            </details>
-
-
-
-
-            <details class="show-piece enabled-disabled">
-              <summary><code>enabled / disabled - </code> обратиться к доступным / недоступным элементам </summary>
-              <p>Заблокированными считаются элементы форм, у которых установлен атрибут disabled.
-              </p>
-              <pre>
-  <code>
-input:enabled { ... }   -- обратиться к доступным элементам
-input:disabled { ... }  -- обратиться к заблокированным элементам
-  </code>
-</pre>
-            </details>
-
-            <details class="show-piece read-only-read-write">
-              <summary><code>read-only / read-write - </code> запретить редактирование полей</summary>
-              <p>есть разные способы запретить редактирование пользователем полей. Одним из таковых установка
-                атрибута readonly.
-                Значение в данном случае доступно для чтения и копирования, но недоступно для редактирования.</p>
-
-              <p>В зависимости от этого параметра существует два селектора, которые позволяют выбирать каждую группу
-                полей:</p>
-              <pre>
-  <code>
-input:read-only выберет все поля, доступные только для чтения.
-input:read-write выберет все поля без атрибута readonly, даже если у них есть атрибут disabled.
-
-браузер не поддерживает такие селекторы:
-
-input[readonly] {} /* аналог :read-only */
-input:not([readonly]) {} /* аналог :read-write */
-
-Однако,  input:not([readonly]) помимо
-доступных для редактирования текстовых полей выберет кнопки и
-другие нетекстовые поля input, например, input[type="submit"].
-  </code>
-</pre>
-            </details>
-
-            <details class="show-piece requied">
-              <summary><code>requied - </code>поля обязательные для заполнения</summary>
-              <pre>
-  <code>
-input:required { ... }
-  </code>
-</pre>
-            </details>
-
-            <details class="show-piece optional">
-              <summary><code>optional - </code>поля НЕобязательные для заполнения</summary>
-              <pre>
-  <code>
-input[type="text"]:optional {}  // все элементы, у которых НЕ указан атрибут required
-  </code>
-</pre>
-            </details>
-
-            <details class="show-piece checked">
-              <summary><code>checked - </code> все выбранные элементы</summary>
-              <p>обратиться ко всем элементам input с типами checkbox или radio, которые являются
-                выбранными(отмеченными)</p>
-              <pre>
-  <code>
-input:checked ~ label { ... }
-  </code>
-</pre>
-            </details>
-
-            <details class="show-piece invalid-valid">
-              <summary><code>invalid / valid - </code>введенное значение корректно/некорректно.</summary>
-              <p><code>:valid -- </code>выберет все элементы, у которых введенное значение удовлетворяет
-                требованиям.
-              </p>
-              <p><code>:invalid -- </code>соответственно выберет элементы, у которых введенное значение некорректно.
-              </p>
-            </details>
-
-            <details class="show-piece in-range-out-of-range">
-              <summary><code>in-range / out-of-range - </code>все элементы, значение которых попадает/не попадает в
-                указанный
-                диапазон</summary>
-              <p>Специальный тип поля для ввода числовых значений <code>&lt;input type="number"&gt;</code> . У этого
-                поля можно определить максимальное и
-                минимальное значение при помощи атрибутов max и min соответственно.</p>
-              <p><code>:in-range -- </code>все элементы, значение которых попадает в указанный диапазон.</p>
-              <p><code>:out-of-range -- </code>выбирает все элементы, значение которых НЕ попадает в указанный
-                диапазон.</p>
-            </details>
-
-            <details class="show-piece first-child">
-              <summary><code>first-child - </code>первый дочерний элемент в родителе</summary>
-
-            </details>
-
-            <details class="show-piece">
-              <summary><code>first-of-type - </code>первый дочерний элемент с учетом типа</summary>
-
-            </details>
-
-            <details class="show-piece last-of-type">
-              <summary><code>last-of-type - </code>последний дочерний элемент с учетом типа</summary>
-
-            </details>
-
+<!-- nth-child -->
             <details class="show-piece nth-child">
               <summary><code>nth-child</code></summary>
 
@@ -1227,66 +988,235 @@ input:checked ~ label { ... }
 
             </details>
 
-            <details class="show-piece not">
-              <summary><code>not</code></summary>
-              <pre>
-  <code>
-li:not(:first-child):not(:last-child) { Выберет все теги &lt;li&gt;, которые НЕ являются первыми и последними в их родителе }
-  
-:not(:not(...)) { двойной not не сработает}
-</code>
-</pre>
+<pre><code>
 
-              <p>Также в комбинации с :not не применяются:</p>
-              <ul>
-                <li>объединение селекторов: например, li:not(.heart.jack) — некорректный селектор</li>
-                <li>псевдоэлементы: li:not(::after) — неправильная запись</li>
-                <li>селекторы-потомки, групповые селекторы или комбинации: например, нельзя писать li:not(a span)
-                  или
-                  li:not(a + span)</li>
-              </ul>
-            </details>
-
-            <details class="show-piece marker">
-              <summary><code>marker</code></summary>
-              <pre>
-  <code>
-delete: 
-
-summary::marker,
-summary::-webkit-details-marker {
-  display: none; 
-  content: "";
-}
-  </code>
-</pre>
-            </details>
-
-            <article class="hidden">
-              <a name="hidden">
-                <h2><code>hidden</code></h2>
-              </a>
-              <p>Любому элементу можно добавить атрибут hidden и он пропадёт</p>
-
-
-              <p>В современных браузерах на этот атрибут повешен тот самый display: none, который вырубает элемент.
-                Он
-                бинарный как
-                required или checked, так что его удобно выставлять через JavaScript. Только не забудьте добавить в
-                стили [hidden] {
-                display: none } для IE 10, Safari 5 и других старых браузеров.</p>
-              <p>У visibility: hidden есть другая приятная особенность: свойство наследуется, а значит ребёнок
-                невидимого родителя может
-                сменить видимость на visible. Такой трюк не пройдёт ни с display: none, ни с opacity: 0. С ним
-                удобно
-                делать всплывающие
-                меню и подказки, прятать элементы из дизайна, но оставлять доступным их содержимое.</p>
-            </article>
+:nth-of-type / 
+:indeterminate /
 
 
 
 
-          </section>
+                         поиск элементов
+
+
+по селектору
+-------------
+
+li + li               | соседние
+ul &gt; li &gt; span        | дочерние
+li.one ~ li.six       | родственный
+footer ul span        | контекстные (вложенные)
+.class.class2         | oбъединение селекторов / классов
+
+
+по атрибуту
+------------
+
+input[checked]  
+input[type="text"] 
+details[open] > summary 
+
+
+
+по значениям атрибутов 
+-----------------------
+
+[foo="bar"]     | полное совпадение
+[foo^="bar"]    | поиск в начале строки
+[href$=".pdf"]  | поиск в конце строки
+[foo*="bar"]    | поиск подстроки везде
+[foo^="bar-"]   | поиск по префиксу &lt; элементы, у которых значение 
+                                       атрибута foo начинается 
+					 со значения bar-
+
+
+
+поиск слов внутри строки
+-------------------------
+[value~="Регистрозависим"]  | все элементы у которых значение атрибута value 
+[value~="регистрозависим"]  | содержит слово регистрозависим или Регистрозависим
+
+
+
+
+:nth-child() :nth-last-child :nth-last-of-type() :nth-of-type
+
+::first-letter | первый символ  
+::first-line   | первая строка 
+
+:first-child   | первый дочерний элемент \любой\ 
+:last-of-type  | последний дочерний элемент \с учетом типа\
+
+:only-child    | единственный потомок родителя
+:only-of-type  | единственный потомок родителя \с учетом типа\
+
+:empty         | элемент у которого нет потомков
+
+<span title=".card:not(:has(+.card)) -- все .card за которыми нет .card">:has</span>           | стилизовать родителя при наличии конкретного ребёнка
+<span title=":not(:first-child):not(:last-child) { Выберет все теги li, которые НЕ являются первыми и последними в их родителе }">:not           | элементы не соответствующие селектору</span>
+
+:default       | элементы которые используются по умолчанию в группе аналогичных элементов
+
+---
+:focus         | когда элемент получает фоку
+:focus-visible | когда действительно нужно визуально выделить элементы в фокусе
+:focus-within  | элементы которые сами находятся в фокусе, либо имеют дочерние элементы в фокусе
+
+:current()  | элемент или предок элемента, который отображается в данный момент
+:future     | любой элемент, который встречается после :current()
+
+:fullscreen | элемент который в данный момент находится в полноэкранном режиме
+---
+
+
+---
+<span title=":is(header, main, footer) p:hover { ... }">:is()</span>      | принимют один или несколько селекторов в качестве аргумента
+:matches() | Браузер применяет стили к каждому из перечисленных селекторов
+:any()     | is это замена для matches и any
+
+<span title=":where(header, main, footer) p:hover { ... }">:where()</span>   | принимает список селекторов и выбирает только те элементы, которые могут быть выбраны из переданного списка
+---
+
+
+
+---
+:link    | ссылки которые не были посещены  
+:visited | ссылки которые были посещены  
+:hover   | наведение на элемент
+:active  | между нажатием и отпусканием кнопки мыши 
+
+:target  | элемент куда ведет ссылка /якорь/
+:any-link| все элементы a, area, link, которые имеют атрибут href. все элементы, которые используют :link или :visited
+---
+
+
+---
+:modal 
+:popover-open | стилизует всплывающее окно, когда оно находится в «открытом» состоянии
+
+::backdrop     
+---
+
+
+
+
+
+
+формы
+------
+
+:checked  | все выбранные checkbox или radio
+
+:requied  | поля обязательные для заполнения
+:optional | поля НЕобязательные для заполнения \элементы, у которых нет :required\
+
+:enabled   | включённые элементы форм
+:disabled  | отключённые элементы форм
+
+:read-only  | input[readonly] | поля НЕдоступные для редактирования пользователем
+:read-write | not([readonly]) | поля доступные для редактирования пользователем \без атрибута readonly, даже если у них disabled\
+
+:valid   | элементы контент которых проходит валидацию
+:invalid | элементы контент которых НЕ проходит валидацию
+
+:in-range     | все элементы, значение которых попадает в указанный диапазон
+:out-of-range | все элементы, значение которых НЕ попадает в указанный диапазон
+
+:blank    | выбирает пустые элементы пользовательского ввода (input или textarea)
+ 
+:autofill | когда значение input автоматически заполняется браузером
+
+:checked  | radio, checkbox, option которые выбраны или включены
+
+
+
+
+
+:root | обратиться к самому главному родительскому элементу документа \корневой элемент\ 
+
+:picture-in-picture | элемент который находится в режиме «картинка в картинке»
+
+:lang() | элементы основываясь на языке, на котором они определены
+
+:first  | используется с @-правилом @page, представляя первую страницу документа при печати
+
+:indeterminate | элементы в неопределённом состоянии
+
+
+
+
+audio и video
+--------------
+
+:paused  | применяется к элементам audio и video, когда их проигрывание ставится на паузу
+:playing | применяется к элементам audio и video, когда происходит проигрывание аудио или виде
+:muted   | элемент способный издавать звук, например audio или video, но приглушенный (принудительно молчащий)
+:seeking | применяется к элементам audio и video, когда в проигрывателе на шкале времени ищется определённая позиция
+:stalled | применяется к элементам audio и video, когда проигрывание застопорилось
+---
+
+
+
+
+
+
+---------------
+псевдоэлементы
+---------------
+
+::after (:after)        | { content: "" }
+::before (:before)      | { content: "" }
+::marker                | { content: "" }
+
+
+::backdrop              | фон подложки элемента dialog
+::cue
+::file-selector-button
+::first-letter
+::first-line
+::grammar-error
+::highlight()
+::part()
+::placeholder  | :placeholder-shown | любой элемент с активным плейсхолдером
+::selection
+::slotted()
+::spelling-error
+::target-text
+::view-transition
+::view-transition-group
+::view-transition-image-pair
+::view-transition-new
+::view-transition-old
+
+
+
+At-rules
+
+@charset
+@color-profile
+@container
+@counter-style
+@font-face
+@font-feature-values
+@font-palette-values
+@import
+@keyframes
+@layer
+@media
+@namespace
+@page
+@position-tryExperimental
+@property
+@scope
+@starting-style
+@supports
+@view-transitionExperimental
+
+</code></pre>
+
+
+
+</section>
 
 
         </div>
