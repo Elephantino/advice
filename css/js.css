@@ -1,0 +1,303 @@
+
+.insertAdjacentHTML-show {
+	border: 1px solid red;
+	width: max-content;
+	padding: 2px;
+}
+.insertAdjacentHTML p {
+	margin: 0;
+}
+.insertAdjacentHTML .test {
+	border: 1px solid black;
+	padding: 2px;
+}
+
+/* *************************** */
+
+.matches__inner > * {
+	display: block;
+	width: max-content;
+}
+
+/* *************************** */
+
+.events .show-event {
+	display: inline-table;
+	padding: 0.2em;
+	vertical-align: top;
+	margin-left: 0.5em;
+	min-width: 300px;
+  min-height: 129px;
+  border-collapse: collapse;
+	border: 2px solid silver;
+  margin-bottom: 0.2em;
+}
+
+.show-event td {
+  border: 1px solid black;
+  padding: 0.2em;
+}
+
+.show-event p {
+	margin: 0;
+}
+
+/* --- */
+input[type="text"] {
+  box-sizing: border-box;
+}
+.show-event__input {
+  display: block;
+  width: 100%;
+}
+/* --- */
+
+
+
+
+
+
+
+
+.mouse-over-out__hover,
+.mouse-enter-leave__hover {
+  border: 1px solid black;
+  min-height: 150px;
+  max-width: 200px;  
+  width: 100%;
+  padding-left: 10px;
+}
+
+
+.mouse-over-out__hover-grid {
+  border: 1px solid black;
+  min-height: 150px;
+  width: 100%;
+  max-width: 200px;
+  padding: 10px;
+  margin: 0 5px 5px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background-color: rgba(0, 0, 0, .1);
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  }
+}
+
+
+
+
+/* mousedown - перетаскивание */
+
+.drag-field {
+  width: 200px;
+  height: 200px;
+  background-color: #7a956b;
+  position: relative;
+}
+
+.drag-field__item {
+  width: 40px;
+  height: 40px;
+  cursor: grab;
+  background-color: #77608d;
+}
+
+
+.drag-field__point {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  background-color: #45553d;
+  transition: all 0.3s ease 0s;
+}
+
+.drag-field__point._active {
+  box-shadow: inset 0px 0px 10px 5px #333f2d;
+}
+
+
+
+
+
+ /* Всплытие и погружение  */
+
+ .ascent {
+   width: 100%;
+ }
+
+ .ascent div {
+   border: 1px solid black;
+
+   position: relative;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ .ascent>div {
+   width: 200px;
+   height: 150px;
+ }
+
+ .ascent>div>div {
+   width: 150px;
+   height: 100px;
+ }
+
+ .ascent>div>div>div {
+   width: 100px;
+   height: 50px;
+ }
+
+
+ .ascent div>span {
+   position: absolute;
+   top: 0;
+   left: 0;
+ }
+
+
+
+
+
+/* Делегирование событий */
+
+.delegate-event--menu {
+  display: inline-block;
+}
+
+.delegate-event--menu button>span:last-child {
+  display: none;
+}
+
+.delegate-event--menu button>span:first-child {
+  display: block;
+}
+
+.delegate-event--menu.active button>span:first-child {
+  display: none;
+}
+
+.delegate-event--menu.active button>span:last-child {
+  display: block;
+}
+
+.delegate-event--menu.active ul {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+/* *************************** */
+
+.export-import__box {
+  display: flex;
+  gap: 1em;
+}
+
+/* *************************** */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

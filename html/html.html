@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>html</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/html.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+
+      <section class="html">
+        <div class="container">
+
+          <h1>html</h1>
+
+          <section class="meta">
+            <details class="show-block">
+              <summary><code><a name="meta">meta</a></code></summary>
+              <p>Перечень ключевых слов задаётся тегом , у которого атрибут name имеет значение keywords. Ключевые
+                слова
+                (самые важные слова из содержания страницы) перечисляются в атрибуте content через запятую</p>
+              <pre> <code>
+&lt;meta name="keywords" content="важные, ключевые, слова"&gt;
+      </code> </pre>
+              <p>Краткое описание страницы задаётся похожим образом, только значение атрибута name меняется на
+                description
+              </p>
+              <pre><code>
+&lt;meta name="description" content="краткое описание"&gt;
+      </code></pre>
+            </details>
+          </section> <!-- meta -->
+
+          <section class="localstorage">
+            <details class="show-block">
+              <summary><code><a name="localstorage">localstorage</a></code></summary>
+              <p><a href="https://learn.javascript.ru/localstorage" target="_blank">хранение данных в
+                  браузере</a></p>
+              <p><a
+                  href="https://codepen.io/collection/DgYaMj/?cursor=eyJjb2xsZWN0aW9uX2lkIjoiRGdZYU1qIiwiY29sbGVjdGlvbl90b2tlbiI6bnVsbCwibGltaXQiOjQsIm1heF9pdGVtcyI6OTksIm9mZnNldCI6MjQsInBhZ2UiOjcsInNvcnRfYnkiOiJwb3NpdGlvbiIsInNvcnRfb3JkZXIiOiJBc2MifQ==">input
+                  type range</a></p>
+
+              <p><a href="https://css-live.ru/articles-css/background-clip-use-cases.html">В СЕРЕДИНЕ
+                  СТРАНИЦЫ</a></p>
+
+            </details>
+          </section> <!-- localstorage -->
+
+          <section class="fonts">
+            <details class="show-block">
+              <summary><code>fonts</code></summary>
+
+              <p><code>font: font-style, font-variant, font-weight, font-size/line-height, font-family;</code></p>
+              <pre>
+      <code>
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url("../fonts/RobotoCondensed-Light.ttf");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+      </code>
+    </pre>
+
+              <p>
+                <a href="https://fontstorage.com/blog/about-font-face-part-one/">
+                  Подключение нестандартных шрифтов. Часть первая
+                </a>
+              </p>
+              <p>
+                <a href="https://fontstorage.com/blog/about-font-face-part-two/">
+                  Подключение нестандартных шрифтов. Часть вторая
+                </a>
+              </p>
+
+            </details>
+          </section> <!-- fonts -->
+
+          <section class="atributes">
+            <details class="show-block" open>
+              <summary><code><a name="atributes">атрибуты</a></code></summary>
+
+              <!-- hidden -->
+              <p><b>hidden - </b>Любому элементу можно добавить атрибут hidden и он пропадёт</p>
+              <p>В современных браузерах на этот атрибут повешен display: none.</p>
+              <p>У visibility: hidden есть другая приятная особенность: свойство наследуется, а значит ребёнок
+                невидимого родителя может сменить видимость на visible. Такой трюк не пройдёт ни с display: none, ни с
+                opacity: 0. С ним удобно делать всплывающие меню и подказки, прятать элементы из дизайна, но оставлять
+                доступным их содержимое.</p>
+
+              <p><b>cite - </b>ссылку на источник цитаты</p>
+
+            </details>
+          </section><!-- atributes -->
+
+
+          <h2>элементы</h2>
+
+          <section class="link">
+            <details class="show-block" open>
+              <summary><code><a name="html-anchor-link">ссылки, якоря</a></code></summary>
+
+              <p><code>&lt;a href="../html/layouts.html<span class="color-red">#layouts-float</span>"&gt; откуда &lt;/a&gt;</code></p>
+              <p><code>&lt;a name="<span class="color-red">link</span>"&gt; куда &lt;/a&gt;</code></p>
+
+              <pre><code>
+a { ... }
+a:link { ... }
+a:visited { ... }
+a:focus { ... }
+a:hover { ... }
+a:active { кнопка мыши зажата на ссылке }
+</code></pre>
+
+              <details class="show-piece"><!-- Зона кликабельности ссылки -->
+                <summary><code>Зона кликабельности ссылки</code></summary>
+                <pre>
+      <code>
+div {
+  position: relative;
+}
+    
+a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+      </code>
+    </pre>
+
+              </details><!-- Зона кликабельности ссылки -->
+
+              <details class="show-piece"><!-- ссылка на файл -->
+                <summary><code>ссылка на файл</code></summary>
+                <p>при переходе по ссылке на файл браузер предложит его скачать.</p>
+                <p>Однако, если браузер умеет обрабатывать файлы этого типа, то содержимое файла откроется прямо в
+                  браузере. Чаще всего так происходит с изображениями.</p>
+                <p>предотвратить открытие файлов прямо в браузере:</p>
+                <pre><code>
+&lt;a href="file.pdf" download&gt;Браузер скачает меня, а не будет читать&lt;/a&gt;
+      
+rel="noopener" // атрибут позволяет игнорировать скрипты сторонней страницы
+
+</code></pre>
+                <p>При скачивании или загрузке файлов со сторонних сайтов для безопасности можно использовать атрибут
+                  rel="noopener". Этот атрибут позволяет игнорировать скрипты сторонней страницы, которые могут влиять
+                  на загрузку файла. Особенно актуален этот атрибут в случае, если загрузка происходит в новой вкладке
+                  или новом окне.</p>
+              </details><!-- ссылка на файл -->
+
+            </details>
+          </section> <!-- link -->
+
+
+          <!-- button -->
+          <section class="button">
+            <details class="show-block" open>
+              <summary><code><a name="html-anchor-button">button</a></code></summary>
+              <p>У button обязательно явно прописывать type. По умолчанию его значение — submit, а зачастую нужен тип
+                button. Особенно важно это для кнопок, которые находятся вне форм и нужны для JavaScript.</p>
+            </details>
+          </section><!-- button -->
+
+
+          <!-- lists -->
+          <section class="lists">
+            <details class="show-block" open>
+              <summary><code><a name="lists">списки</a></code></summary>
+
+              <details class="show-piece unordered-list">
+                <summary><code>unordered list</code> -- неупорядоченный список</summary>
+                <p>в ul могут находиться только теги li -- «list item»</p>
+                <p>Пунктов должно быть не менее одного.</p>
+              </details>
+
+              <details class="show-piece ordered-list">
+                <summary><code>ordered list</code> -- упорядоченный список</summary>
+                <p><code>У ol может быть несколько атрибутов: start, reversed и type.</code></p>
+                <p>По умолчанию нумерация пунктов начинается с единицы, а с помощью start можно поменять это стартовое
+                  число. Нумерация пунктов списка может также быть отрицательной.</p>
+                <pre><code>
+start     -- меняет стартовое число нумерации, может быть отрицательным.
+reversed  -- меняет направление нумерации на противоположный, не требует значения
+type      -- можно задавать различные типы маркеров
+
+      </code></pre>
+                <ul class="list-reset">
+                  <li>1: десятичное число</li>
+                  <li>a: буквы латинского алфавита в нижнем регистре</li>
+                  <li>A: буквы латинского алфавита в верхнем регистре</li>
+                  <li>i: римские цифры в нижнем регистре</li>
+                  <li>I: римские цифры в верхнем регистре</li>
+                </ul>
+              </details>
+
+              <details class="show-piece description-list">
+                <summary><code>description list</code> -- список описаний</summary>
+                <p>может содержать более одного описания для каждого термина.</p>
+                <pre><code>
+&lt;dl&gt;    «description list»           сам список описаний;
+&lt;dt&gt;    «description term»           термин;
+&lt;dd&gt;    «description definition»     описание или определение.
+      </code></pre>
+              </details>
+
+            </details>
+          </section>
+
+
+          <!-- input -->
+          <section class="input">
+            <details class="show-block" open>
+              <summary><code><a name="input">input</a></code></summary>
+
+              <details class="show-piece custom-input">
+                <summary><code>custom input</code></summary>
+                <p>input снаружи label</p>
+
+                <pre>
+      <code>
+    &lt;input class=“custom-checkbox reset” type="checkbox" id="checkbox-1”&gt;
+    &lt;label for=" checkbox-1"&gt;&lt;/label&gt;
+    
+    
+          Скрываем инпут добавлением класса
+    
+          Создаем чекбокс
+        
+    .custom-checkbox + label::before {
+      content: "";
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      border: 1px solid red;
+      border-radius: .25em;
+      margin-right: .5em;
+      vertical-align: middle;
+    
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: 50% 50%;
+    }
+    
+    
+       checked:
+    
+    .custom-checkbox:checked + label::before {
+      border-color: #0b76ef;
+      background-color: #0b76ef;
+      background-image: url("");
+    }
+    
+          при наведении курсора на checkbox
+    .custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
+      border-color: #b3d7ff;
+    }
+    
+          для активного состояния чекбокса (при нажатии на него)
+    .custom-checkbox:not(:disabled):active+label::before {
+      background-color: #b3d7ff;
+      border-color: #b3d7ff;
+    }
+    
+          для чекбокса, находящегося в фокусе
+    .custom-checkbox:focus+label::before {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    
+          для чекбокса, находящегося в фокусе и не находящегося в состоянии checked
+    .custom-checkbox:focus:not(:checked)+label::before {
+      border-color: #80bdff;
+    }
+    
+          для чекбокса, находящегося в состоянии disabled
+    .custom-checkbox:disabled+label::before {
+      background-color: #e9ecef;
+    }
+      </code>
+    </pre>
+
+                <p>input вложен в label</p>
+                <pre>
+      <code>
+    &lt;label class="custom-radio"&gt;
+      &lt;input class=“reset” type="radio" name="color" value="indigo"&gt;
+      &lt;input class=“reset” type="radio" name="color" value="red"&gt;
+      &lt;span&gt;без спана не обойтись в этом случае&lt;/span&gt;
+    &lt;/label&gt;
+    
+    
+    Скрываем инпут добавлением класса
+    
+    для элемента label связанного с .custom-radio
+    
+    .custom-radio &gt; span {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: .5em;
+    }
+    
+    
+    создание в label псевдоэлемента before 
+    
+    .custom-radio &gt; span::before {
+      content: '';
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      border: 1px solid #adb5bd;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 0.5em;
+    
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 50% 50%;
+    }
+    
+    
+    при наведении курсора на радио
+    
+    .custom-radio &gt; input:not(:disabled):not(:checked)+span:hover::before {
+      border-color: #b3d7ff;
+    }
+    
+    
+          для активной радиокнопки (при нажатии на неё)
+    
+    .custom-radio &gt; input:not(:disabled):active+span::before {
+      background-color: #b3d7ff;
+      border-color: #b3d7ff;
+    }
+    
+    
+          для радиокнопки, находящейся в фокусе
+    
+    .custom-radio &gt; input:focus+span::before {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    
+    
+          для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked
+    
+    .custom-radio &gt; input:focus:not(:checked) + span::before {
+      border-color: #80bdff;
+    }
+    
+    
+          для радиокнопки, находящейся в состоянии checked
+    
+    .custom-radio &gt; input:checked + span::before {
+      border-color: #0b76ef;
+      background-color: #0b76ef;
+      background-image: url("http://");
+    }
+    
+    
+          для радиокнопки, находящейся в состоянии disabled
+    
+    .custom-radio &gt; input:disabled + span::before {
+      background-color: #e9ecef;
+    }
+    
+      </code>
+    </pre>
+
+                <p>custom checkbox</p>
+                <pre>
+      <code>
+    
+    &lt;form class="check"&gt;
+      &lt;input type="checkbox" class="check__input" id="agreement"&gt;
+      &lt;label class="check__label" for="agreement"&gt; I'm agree&lt;/label&gt;
+    &lt;/form&gt;
+    
+    .check__input {
+      position: absolute;
+      left: -999%;
+      width: 1px;
+      height: 1px;
+      clip: rect(0 0 0 0);
+      opacity: 0;
+      z-index: -1;
+    }
+    
+    .check__label {
+      vertical-align: middle;
+    }
+    
+    .check__label::before {
+      content: '';
+      display: inline-block;
+      width: 1.2em;
+      height: 1.2em;
+      padding-bottom: 0.05em;
+      font-size: 0.7em;
+      border: 1px solid #000;
+      border-radius: 0.2em;
+      vertical-align: middle;
+      margin-right: 0.35em;
+      text-align: center;
+      position: relative;
+      top: -0.2em;
+    }
+    
+    .check__input:checked + .check__label::before {
+      content: '\2714';
+    }
+      </code>
+    </pre>
+              </details>
+
+
+
+              <details class="show-piece show-password">
+                <summary><code>input type="password"</code> - показать пароль</summary>
+
+                <pre>
+  <code>
+&lt;input class="password" type="password" placeholder="**********" required&gt;
+&lt;input class="show-password" type="checkbox"&gt;
+
+
+let password = document.querySelector('.password');
+let showPassword = document.querySelector('.show-password');
+let securityBar = document.querySelector('.security-bar');
+
+showPassword.onchange = function () {
+  if (showPassword.checked) {
+     password.type = 'text';
+  } else {                          //если чекбокс не checked то 
+    password.type = 'password';       изменим type на pasword
+  }                                  что бы снова скрыть пароль
+};
+
+      прогрессбар заполнения пароля
+password.oninput = function () {
+  
+  let passLength = password.value.length;
+  
+  securityBar.style.width = passLength * 10 + '%';
+  
+  if (passLength &lt;= 5) {
+    securityBar.style.backgroundColor = 'red';
+  } else if (passLength > 5 && passLength &lt; 10) {
+    securityBar.style.backgroundColor = 'gold';
+  } else {
+    securityBar.style.backgroundColor = 'green';
+    }
+};
+
+тут * на 10 потому что минимальная длина пароля 10 символов.
+умножайте на свое минимальное значение что бы полоса под инпутом 
+заполнялась актуально
+  </code>
+</pre>
+
+              </details>
+<!-- input type="password" -->
+
+
+              <details class="show-piece range-reset">
+                <summary><code>input type range -- reset</code></summary>
+                <pre>
+      <code>
+        input type range reset
+    
+    &lt;input class="range" type="range" min="0" max="100" value="25" &gt;
+    
+    .range {
+      appearance: none;
+      -webkit-appearance: none;
+      
+      outline: none;
+    }
+    
+    .range::-webkit-slider-thumb {  ползунок
+      -webkit-appearance: none;
+    
+      cursor: pointer;
+    }
+    .range::-moz-range-thumb {      ползунок
+      -moz-appearance: none;
+    
+      cursor: pointer;
+    }
+    
+    .range::-moz-range-track {      полоса
+      appearance: none;
+    
+      outline: none;
+    }
+    .range::-webkit-slider-thumb:hover,
+    .range::-webkit-slider-thumb:active {
+      увеличить размер при наведении и перетаскивании
+      или цвет поменять(ну крч выделить активный ползунок)
+    }
+    .range::-moz-range-thumb:hover,
+    .range::-moz-range-thumb:active{
+      width: 20px;
+      height: 20px;
+    }
+    
+    </code>
+    </pre>
+
+              </details>
+
+
+              <details class="show-piece select">
+                <summary><code>select</code></summary>
+                <p>Вложенность групп не ограничена, внутрь каждой группы можно вложить другие группы.</p>
+                <p>Аналогично можно группировать элементы и в списках со множественным выбором</p>
+                <pre>
+      <code>
+    &lt;select name="variants"&gt;
+      &lt;optgroup label="Группа вариантов 1"&gt;
+        &lt;option value="1"&gt;Вариант 1&lt;/option&gt;
+        &lt;option value="2"&gt;Вариант 2&lt;/option&gt;
+        &lt;option value="3"&gt;Вариант 3&lt;/option&gt;
+      &lt;/optgroup&gt;
+      &lt;optgroup label="Группа вариантов 2"&gt;
+        &lt;option value="4"&gt;Вариант 4&lt;/option&gt;
+        &lt;option value="5"&gt;Вариант 5&lt;/option&gt;
+        &lt;option value="6"&gt;Вариант 6&lt;/option&gt;
+      &lt;/optgroup&gt;
+    &lt;/select&gt;
+      </code>
+    </pre>
+              </details>
+
+
+              <details class="show-piece readonly-disabled">
+                <summary><code>Запрет редактирования полей</code></summary>
+                <p><code>readonly</code> не дает пользователю изменять поле (вводить новый текст, модифицировать
+                  существующий).
+                  Введенное
+                  значение можно выделить и скопировать. Данные из этого поля отправляются на сервер.</p>
+                <p><code>disabled</code> не дает пользователю изменять поле (вводить новый текст, модифицировать
+                  существующий).
+                  Нельзя поставить
+                  фокус в это поле, введенное значение нельзя выделять и копировать. Данные из этого поля НЕ
+                  отправляются
+                  на
+                  сервер.</p>
+                <pre>
+      <code>
+    &lt;input type="text" readonly&gt;
+    &lt;input type="text" disabled&gt;
+      </code>
+    </pre>
+              </details>
+
+
+              <details class="show-piece autocomplete">
+                <summary><code>autocomplete</code></summary>
+                <p>При вводе первых букв текста выводится список сохранённых ранее значений</p>
+                <p>Параметрами автозаполнения можно управлять используя атрибут autocomplete.</p>
+                <p>Он может принимать два значения on и off</p>
+                <p>Отключение автозаполнения обычно используется из соображений безопасности, например, чтобы не
+                  сохранялись
+                  пароли, номера
+                  банковских карт и так далее.</p>
+                <p><code>&lt;input type="text" autocomplete="off"&gt;</code></p>
+              </details>
+
+
+              <details class="show-piece tabindex">
+                <summary><code>tabindex</code></summary>
+                <article>
+                  <p>Из соображений доступности не рекомендуется менять порядок навигации по полям ввода по
+                    умолчанию</p>
+                </article>
+
+                <pre>
+      <code>
+    &lt;input type="text" tabindex="3"&gt;
+      </code>
+    </pre>
+
+                <p>В качестве значения может использоваться любое целое положительное число. Значения выстраиваются
+                  последовательно и
+                  переход между элементами происходит от меньшего значения к большему.</p>
+                <p>Если представлено отрицательное значение — элемент может быть выделен, однако не участвует в
+                  последовательной навигации</p>
+                <p>Если представлен 0 — элемент может быть выделен и достигнут с помощью последовательной
+                  навигации,
+                  однако
+                  порядок
+                  навигации определён платформой</p>
+
+              </details>
+
+            </details>
+          </section>
+
+
+          <!-- blockquote -->
+          <section class="blockquote">
+            <details class="show-block" open>
+              <summary><code><a name="blockquote">цитаты</a></code></summary>
+              <p><b>q</b> -- встроенная цитата</code></p>
+
+              <p><b>cite</b> — «расширенная версия» атрибута cite. В нём можно указывать помимо адреса источника
+                цитаты ещё и название произведения, откуда цитируется текст, а также имя автора или организации, чей
+                текст цитируется.</p>
+              <pre><code>
+&lt;p&gt;По словам &lt;cite&gt;Чарльза Буковски&lt;/cite&gt; — &lt;q&gt;Интеллектуал о простой вещи говорит сложно —
+художник сложную вещь описывает простыми словами.&lt;/q&gt;&lt;/p&gt;
+    
+Тег &lt;cite&gt; может быть самостоятельным и не привязываться к цитате:
+    
+&lt;p&gt;Какой доктор ваш любимый (в сериале &lt;cite&gt;Доктор Кто&lt;/cite&gt;)?&lt;/p&gt;
+</code></pre>
+
+              <p><b>blockquote</b> -- отдельная цитата</p>
+              <p>Для выделения длинных цитат, которые могут состоять из нескольких абзацев</p>
+              <pre>
+      <code>
+    может быть атрибут cite, содержащий ссылку на источник цитаты
+    также в паре с blockquote можно использовать тег cite
+    
+&lt;blockquote&gt;
+  &lt;p&gt;Ум ценится дорого, когда дешевеет сила.&lt;/p&gt;
+  &lt;cite&gt;Джейсон Стэтхэм&lt;/cite&gt;
+&lt;/blockquote&gt;
+      </code>
+    </pre>
+
+            </details>
+          </section>
+
+          <!-- image -->
+          <section class="image">
+            <details class="show-block" open>
+              <summary><code><a name="image">image</a></code></summary>
+
+              <details class="show-piece"><!-- адаптивное изображение -->
+                <summary><code>адаптивное изображение</code></summary>
+                <textarea cols="51" rows="11">
+
+.container {             |     
+  position: relative;    |
+  padding-top: 56,25%;   |  .container > img {
+}                        |    aspect-ratio: 16 / 9;
+                         |    width: 100%; 
+.container > img {       |  }
+  position: absolute;    |
+  top: 0;                |
+  width: 100%;           |
+}                        |
+</textarea>
+              </details>
+
+
+              <details class="show-piece"><!-- дескриптор плотности и ширины -->
+                <summary><code>дескриптор плотности и ширины</code></summary>
+                <textarea cols="35" rows="11">
+	 дескриптор плотности
+
+<img src="img.png" 
+	srcset="img.png, 
+	img2.png 2x" />
+	 
+используйте дескриптор плотности
+отображения(x1; 1.5; x2) если 
+ваши изображения имеют
+фиксированную ширину
+</textarea>
+
+                <textarea cols="35 " rows="16">
+	 дескриптор ширины
+	 
+<img src="img.png" 
+	srcset="small.png 300w, 
+	medium.png 600w,
+	big.png 900w" />
+
+
+использование дескриптора ширины
+позволяет браузеру выбирать
+лучшего кандидата на основе 
+фактической ширины, необходимой 
+для визуализации этого изображения 
+на этом конкретном дисплее во 
+время выполнения.
+</textarea>
+              </details>
+
+
+              <details class="show-piece loading"><!-- loading -->
+                <summary><code>loading</code></summary>
+                <p>Браузер не будет загружать ленивые изображения до тех пор, пока пользователь не прокрутит страницу
+                  вниз настолько, что
+                  изображение вот-вот появится в поле зрения. Если пользователь никогда не прокручивает, изображение
+                  никогда не
+                  загружается.</p>
+
+                <p><code>&lt;img loading="lazy"&gt;</code></p>
+
+                <p><code>loading="lazy"</code> не следует указывать тем изображениям которые при загрузке страницы уже
+                  попадают в поле зрения.
+
+                  Если ваш сайт автоматически применяет loading="lazy"атрибут, вы часто можете установить eagerатрибут
+                  (который
+                  используется по умолчанию), чтобы предотвратить его применение:</p>
+
+                <p><code>&lt;img loading="eager"&gt;</code></p>
+
+                <h3>приоритет загрузки</h3>
+
+                <p><code>&lt;img fetchpriority="high"&gt;</code></p>
+
+                <p>Это сообщит браузеру о том, что нужно сразу же получить изображение и с высоким приоритетом, а не
+                  ждать, пока браузер
+                  завершит макет, когда изображения обычно загружаются.</p>
+                <p>Но помните: когда вы просите браузер установить приоритет загрузки одного ресурса, например
+                  изображения, браузеру
+                  придется отменить приоритет загрузки другого ресурса, такого как сценарий или файл шрифта.
+                  Устанавливайте изображение
+                  только в fetchpriority="high"том случае, если оно действительно жизненно необходимо</p>
+                <p>Надпись на кнопке можно задать с помощью атрибута value. Для кнопки отправки формы задавать имя
+                  необязательно. Но если
+                  имя задано, то на сервер будут отправляться имя и значение кнопки.</p>
+                <p>Обычно имя для кнопки отправки задают, когда в форме несколько кнопок, отвечающих за разные
+                  действия. Браузер отправляет
+                  на сервер имя и значение только той из них, на которую нажал пользователь. Таким образом, сервер
+                  может понять, какую
+                  кнопку нажали и что нужно сделать.</p>
+                <p>В браузере Safari картинки могут слегка деформироваться даже после добавления им максимальной
+                  ширины и автоматической
+                  высоты. Проблему можно решить, обернув картинку в любой подходящий тег, например &lt;figure&gt; или
+                  &lt;div&gt;.</p>
+
+                <h3>Картинка в параграфе</h3>
+                <p>картинку можно запихать в параграф</p>
+
+                <textarea cols="80" rows="5">
+<p class="post-info">
+  <img class="author-photo" src="https://validator.w3.org/nu/#textarea" alt="aaa">
+  <span class="author-name">Имя автора</span>
+  <time datetime="2001-05-15 19:00">Дата публикации</time>
+</p>
+</textarea>
+              </details>
+
+
+              <details class="show-piece picture"><!-- picture -->
+                <summary><code>picture</code></summary>
+
+                <picture>
+                  <source srcset="../img/1.png 1x, ../img/2.png 2x" media="(max-width: 320px)">
+                  <source srcset="../img/3.png 1x, ../img/4.png 2x" media="(max-width: 500px)">
+                  <source srcset="../img/5.png 1x, ../img/6.png 2x" media="(max-width: 700px)">
+                  <img src="../img/7.png" srcset="../img/8.png 2x" alt="">
+                </picture>
+                <pre> <code>
+&lsaquo;picture"&rsaquo;    2x для ретины(такая же картинка только плотность пикселей больше)
+
+  &lsaquo;source srcset="../img/1.png 1x, ../img/2.png 2x" media="(max-width: 320px)"&rsaquo;
+  &lsaquo;source srcset="../img/3.png 1x, ../img/4.png 2x" media="(max-width: 500px)"&rsaquo;
+  &lsaquo;source srcset="../img/5.png 1x, ../img/6.png 2x" media="(max-width: 700px)"&rsaquo;
+
+  &lsaquo;img src="../img/7.png" srcset="../img/8.png 2x" alt=""&rsaquo;
+          img отобразится если ни один вариант выше не подойдет
+&lsaquo;/picture&rsaquo;
+
+
+  </code> </pre>
+
+              </details>
+
+
+              <details class="show-piece map-image">
+                <summary><code>map image</code></summary>
+                <p>usemap это имя карты изображения, шарп (#) обязателен.</p>
+                <p>coords="координаты в пикселях"</p>
+                <p>x от левого края картинки до точки</p>
+                <p>y от верха картинки до точки</p>
+                <p>shape="rect / circle / poly / default"</p>
+                <p>shape - область</p>
+                <p>rect - прямоугольная область</p>
+                <p>circle - круглая область</p>
+                <p>poly - многоугольная(полигон)</p>
+                <p>default - вся область(по дефолту)</p>
+
+                <pre>
+  <code> 
+&lsaquo;img class="" src="" alt="" usemap="#имя карты изображения, шарп обязателен"&rsaquo;
+&lsaquo;map&rsaquo; name="имя карты изобpажения"&rsaquo;
+
+  coords="x, y, x, y"
+  &lsaquo;area shape="rect" coords="58, 37, 167, 175" href="" target="blank" alt=""&rsaquo; rect - прямоугольная область
+
+  coords=" x, y, ширина "
+  &lsaquo;area shape="circle" coords="250, 115, 60" href="https://" target="blank" alt=""&rsaquo; circle - круглая область
+
+  poly - многоугольная(полигон)
+  &lsaquo;area shape="poly" coords="70,70, 168,70, 180,112, 280,112, 280,198, 180,198, 168,210, 70,210" href="https://"
+    target="blank" alt=""&rsaquo;
+&lsaquo;/map&rsaquo;
+  </code>
+</pre>
+
+                <img src="../img/mapSircle.png" alt="">
+                <img src="../img/mapRect.png" alt="">
+                <img src="../img/mapPoly.png" alt="">
+
+              </details>
+
+
+            </details>
+          </section><!-- image -->
+
+
+          <!-- figure-figcaption -->
+          <section class="figure-figcaption">
+            <details class="show-block" open>
+              <summary><code>figure и figcaption</code></summary>
+
+              <p>&lt;figure&gt; хорош для любого иллюстративного или
+                демонстрационного материала, которым можно дополнить содержание документа. Таким материалом могут быть
+                схемы, графики, примеры кода, таблицы и так далее.</p>
+              <pre>
+  <code>
+&lt;figure&gt;
+  Схема, график, диаграмма или код
+  &lt;figcaption&gt;Подпись к содержимому&lt;/figcaption&gt;
+&lt;/figure&gt;
+  </code>
+</pre>
+            </details>
+          </section><!-- figure-figcaption -->
+
+
+          <section class="video">
+            <details class="show-block">
+              <summary><code><a name="video">video</a></code></summary>
+              <h4>В HTML с самого начала было очень просто вставлять изображения, но очень сложно видео и
+                аудио.
+                Сейчас
+                эта проблема
+                решена.</h4>
+
+              <table>
+                <caption>Для вставки видео предназначен специальный парный тег &lt;video&gt;. Его основные
+                  атрибуты:
+                </caption>
+                <tr>
+                  <td>
+                    <code>width</code>
+                    и
+                    <code>height</code>
+                  </td>
+                  <td>
+                    задают ширину и высоту видео
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>controls</code></td>
+                  <td>пустой атрибут, при наличии которого отображается панель управления видео</td>
+                </tr>
+                <tr>
+                  <td><code>preload</code></td>
+                  <td>
+                    задаёт режим предзагрузки видео, имеет 3 возможных значения:
+                    <ul>
+                      <li><code>none</code> — не загружать ничего;</li>
+                      <li><code>metadata</code> — загрузить служебную мета-информацию (длительность, первый
+                        кадр и так
+                        далее);</li>
+                      <li><code>auto</code> — можно загрузить всё видео.</li>
+                    </ul>
+                    значение по умолчанию зависит от браузера
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><code>src</code></td>
+                  <td>задаёт адрес видеофайла</td>
+                </tr>
+                <tr>
+                  <td><code>autoplay</code></td>
+                  <td>пустой атрибут, при наличии которого воспроизведение видео начинается автоматически</td>
+                </tr>
+                <tr>
+                  <td><code>poster</code></td>
+                  <td>задаёт адрес картинки-обложки, которая отображается, когда видео ещё не загрузилось или
+                    не
+                    воспроизводится</td>
+                </tr>
+              </table>
+
+              <p>Cуществует несколько форматов видео, каждый из которых хорошо поддерживается лишь некоторыми
+                браузерами.
+                Вот три самых
+                распространённых формата и их поддержка:</p>
+              <ul>
+                <li>MPEG-4/H.264</li>
+                <li>OGG/Theora</li>
+                <li>WebM</li>
+              </ul>
+              <p>Поэтому мы должны в видео указывать адреса файлов во всех этих форматах (и конвертировать
+                исходное
+                видео в
+                эти форматы,
+                конечно). Делается это с помощью тегов
+                &lt;source&gt;:</p>
+              <pre>
+  <code>
+&lt;video controls preload="metadata" width="400" height="225"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;source src="video.ogv" type="video/ogg"&gt;
+  &lt;source src="video.webm" type="video/webm"&gt;
+&lt;/video&gt;
+  </code>
+</pre>
+
+              <p>В атрибуте src указывается адрес видеофайла, а в атрибуте type его тип (также там могут
+                указываться и
+                кодеки)</p>
+              <p>Атрибут type не является обязательным, так как браузер умеет сам определять тип и кодеки, но
+                указывая
+                тип
+                явно, мы
+                помогаем ему не ошибиться.</p>
+
+
+              <details class="show-piece cover-for-video-youtube">
+                <summary><code>обложки к видео youtube</code></summary>
+                <p>ютуб хранит обложки к видео по адресу:</p>
+                <pre>
+  <code>
+i.ytimg.com/vi/ id видео/ разрешение обложки
+i.ytimg.com/vi_webp/ id видео/ разрешение обложки.webp
+
+https://i.ytimg.com/vi/ZwtLqMiQwcA/maxresdefault.jpg
+https://i.ytimg.com/vi_webp/ZwtLqMiQwcA/maxresdefault.webp
+
+качество миниатюры(обложки видео):
+
+maxresdefault.jpg - максимальное
+hqdefault.jpg - высокое
+mqdefault.jpg - среднее
+sddefault.jpg - стандартное
+  </code>
+</pre>
+              </details>
+
+
+
+
+              <details class="show-piece examples-html-media-video-wrapper">
+                <summary>
+                  <code><a name="examples-html-media-video-wrapper">вставка видео без растраты трафика пользователя</a></code>
+                </summary>
+
+                <textarea name="video" cols="125" rows="50">
+
+<div class="video-wrapper">    <!-- контейнер для всех видео -->
+
+  <a class="video-wrapper__link" href="https://www.youtube.com/watch?v=ZwtLqMiQwcA">    <!-- при клике заменится на видео -->
+    <picture>         
+      <source srcset="https://i.ytimg.com/vi_webp/ZwtLqMiQwcA/maxresdefault.webp" type="image/webp">
+      <img class="video-wrapper__media" src="https://i.ytimg.com/vi/ZwtLqMiQwcA/maxresdefault.jpg" alt="video">
+    </picture>
+  </a>       <!-- ссылка на случай если что то не так пойдет но контент не пропадет -->
+
+  <button class="video-wrapper__button" aria-label="запустить видео">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48">
+      <path class="video-wrapper__button-shape"
+        d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,
+        0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,
+        0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.
+        6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,
+        43.6,31.6,43.2,33.9z">
+      </path>
+      <path class="video-wrapper__button-icon" d="M20 31L20 17 32 24z"></path>
+    </svg>
+  </button>
+
+</div>
+
+--------------------------------------------------------------------------------------------------------
+
+ютуб хранит обложки к видео по адресу:
+
+        i.ytimg.com/vi/ id видео/ разрешение обложки
+        i.ytimg.com/vi_webp/ id видео/ разрешение обложки.webp
+
+https://i.ytimg.com/vi/ZwtLqMiQwcA/maxresdefault.jpg
+https://i.ytimg.com/vi_webp/ZwtLqMiQwcA/maxresdefault.webp
+
+
+качество миниатюры(обложки видео):
+
+maxresdefault.jpg - максимальное  
+hqdefault.jpg     - высокое 
+mqdefault.jpg     - среднее
+sddefault.jpg     - стандартное
+
+--------------------------------------------------------------------------------------------------------
+
+.video-wrapper {
+  position: relative; 
+
+    /* разрешение 16/19   */
+  width: 100%;      
+  height: 0;               
+  padding-bottom: 56.25%;
+
+  background: #000;
+}
+
+.video-wrapper__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-wrapper__button {
+  position: absolute;
+    /* по умолчанию прячем что бы при замене */
+    /* картинки на видео кнопка пряталась */
+  display: none;  
+  border: none;   
+  border: none;
+  height: 48px;
+  width: 68px;
+  padding: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  outline: none;
+}
+
+.video-wrapper--enabled {
+  cursor: pointer;
+}
+
+.video-wrapper--enabled .video-wrapper__button {
+  display: block;
+}
+
+.video-wrapper__button-shape {
+  fill: #212121;
+  fill-opacity: 0.8;
+}
+
+.video-wrapper:hover .video-wrapper__button-shape,
+.video-wrapper__button:focus .video-wrapper__button-shape{
+  fill: tomato;
+  fill-opacity: 1;
+}
+
+.video-wrapper__button-icon {
+  fill: white;
+}
+
+--------------------------------------------------------------------------------------------------------
+
+export function findVideos() {  
+
+let videos = document.querySelectorAll('.video-wrapper');    // находим все видео
+
+  for (let i = 0; i &lt; videos.length; i++) { 
+    setupVideo(videos[i]); 
+  } 
+} 
+
+function setupVideo(video) { 
+  let link = video.querySelector('.video-wrapper__link'); 
+  let media = video.querySelector('.video-wrapper__media'); 
+  let button = video.querySelector('.video-wrapper__button'); 
+  let id = parseMediaURL(media); 
+
+  video.addEventListener('click', ()=> {
+    let iframe = createIframe(id);
+    link.remove(); // при клике после замены удаляется ссылка а вместе с ней и картинка (обложка) и все остальное
+    button.remove();
+    video.appendChild(iframe);
+  });
+
+  link.removeAttribute('href');
+  video.classList.add('video-wrapper--enabled');
+}
+
+function parseMediaURL(media) {
+  let regexp = /https:\/\/i\.ytimg\.com\/vi\/([a-zA-Z0-9_-]+)\/maxresdefault\.jpg/i;
+  let url = media.src;
+  let match = url.match(regexp);
+
+  return match[1];
+}
+
+function createIframe(id) {
+  let iframe = document.createElement('iframe');
+
+  iframe.setAttribute('allowfullscreen', '');
+  iframe.setAttribute('allow', 'autoplay');
+  iframe.setAttribute('src', generateURL(id));
+  iframe.classList.add('video-wrapper__media');
+
+  return iframe;
+}
+
+function generateURL(id) {
+  let query = '?rel=0&showinfo=0&autoplay=1';      // сразу после вставки начнется проигрывание autoplay=1
+
+  return 'https://www.youtube.com/embed/' + id + query;
+}
+
+
+
+findVideos();
+</textarea>
+              </details>
+
+
+            </details>
+
+
+          </section><!-- video -->
+
+
+
+
+
+
+
+          <section class="audio">
+            <details class="show-block">
+              <summary><code><a name="audio">audio</a></code></summary>
+              <p>Работа с аудио в HTML очень похожа на работу с видео, только у тега для аудио чуть меньше
+                параметров.
+              </p>
+
+              <table>
+                <caption>Для вставки звука предназначен тег &lt;audio&gt;. Его основные атрибуты:</caption>
+                <tr>
+                  <td><code>controls</code></td>
+                  <td>пустой атрибут, при наличии которого отображается панель управления проигрывателем</td>
+                </tr>
+                <tr>
+                  <td><code>preload</code></td>
+                  <td>
+                    задаёт режим предзагрузки аудио, имеет 3 возможных значения:
+                    <ul>
+                      <li><code>none</code> — не загружать ничего;</li>
+                      <li><code>metadata</code> — загрузить служебную мета-информацию;</li>
+                      <li><code>auto</code> — можно загрузить весь файл.</li>
+                    </ul>
+                    значение по умолчанию зависит от браузера
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>src</code></td>
+                  <td>задаёт адрес аудиофайла</td>
+                </tr>
+                <tr>
+                  <td><code>autoplay</code></td>
+                  <td>пустой атрибут, при наличии которого воспроизведение звука начинается автоматически</td>
+                </tr>
+              </table>
+
+              <p>Для охвата большинства современных браузеров, достаточно использовать всего два формата:</p>
+              <ul>
+                <li>MP3</li>
+                <li>OGG</li>
+              </ul>
+              <p>И снова мы не можем указать только один файл в атрибуте src у тега &lt;audio&gt;. Мы должны так
+                же, как
+                и в
+                случае с видео, перечислить адреса звуковых файлов в разных форматах с помощью тегов
+                &lt;source&gt;:</p>
+              <pre>
+  <code>
+&lt;audio controls&gt;
+  &lt;source src="sound.mp3" type="audio/mpeg"&gt;
+  &lt;source src="sound.oga" type="audio/ogg"&gt;
+&lt;/audio&gt;
+
+Теги &lt;source&gt; в аудио работают так же, как и в видео
+  </code>
+</pre>
+
+
+            </details>
+          </section><!-- audio -->
+
+
+
+
+          <section class="table">
+            <details class="show-block">
+              <summary><code><a name="table">table</a></code></summary>
+
+              <h2>display: table</h2>
+
+              <!-- <img src="../img/table.jpg" alt="таблица"> -->
+
+              <!-- таблица -->
+              <details class="show-piece">
+                <summary><code>таблица</code></summary>
+                <div class="show-code">
+                  <h2 class="show-code__title">table</h2>
+
+                  <div class="show-code__description">
+                    <!-- <p>description</p> -->
+                  </div>
+
+                  <div class="show-code__inner">
+                    <div class="show-code__performance">
+                      <section>
+
+                        <table border="1" cellspacing="10" cellpadding="2">
+                          <caption>border-collapse: separate</caption>
+
+                          <colgroup>
+                            <col width="100px">
+                            <col width="60px">
+                            <col>
+                            <col width="150px">
+                          </colgroup>
+
+
+                          <thead bgcolor="lightblue">
+                            <tr>
+                              <th>.</th>
+                              <th>.</th>
+                              <th>.</th>
+                              <th>.</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <tr>
+                              <th rowspan="2" valign="bottom">valign</th>
+                              <td>.</td>
+                              <td>.</td>
+                              <td>.</td>
+                            </tr>
+                            <th></th>
+                            <td>.</td>
+                            <td>.</td>
+                            </tr>
+                          </tbody>
+
+                          <tfoot>
+                            <tr>
+                              <td colspan="4" align="right">align</td>
+                            </tr>
+                          </tfoot>
+
+                        </table>
+                      </section>
+                    </div>
+
+                    <textarea name="" id="" cols="30" rows="10">
+<table border="1" cellspacing="10" cellpadding="2">
+
+ <caption>caption</caption>	
+ 
+ <colgroup>
+   <col width="100px">
+   <col width="60px">
+   <col>
+   <col width="150px">
+ </colgroup>
+ 
+
+ <thead bgcolor="lightblue">
+   <tr>
+     <th>.</th>
+     <th>.</th>
+     <th>.</th>
+     <th>.</th>
+   </tr>
+ </thead>
+
+ <tbody>
+   <tr>
+     <th rowspan="2" valign="bottom">valign</th>
+     <td>.</td>
+	 <td>.</td>
+     <td>.</td>
+   </tr>
+     <th></th>
+     <td>.</td>
+	 <td>.</td>
+   </tr>
+ </tbody>
+
+ <tfoot>
+   <tr>
+     <td colspan="4" align="right">align</td>
+   </tr>
+ </tfoot>
+
+</table>
+</textarea>
+                  </div>
+                </div>
+              </details>
+
+
+
+
+
+              <pre>
+  <code>
+html     | css
+
+table    | display: table 
+
+caption  | display: table-caption      | первый элемент внутри table
+           caption-side: top / bottom 
+           text-align: ...
+
+thead    | display: table-header-group | группировка для th
+tbody    | display: table-row-group 
+tfoot    | display: table-footer-group | всегда отображается снизу
+
+colgroup | display: table-column-group | стилизация столбцов
+col      | display: table-column       | 
+
+tr       | display: table-row 
+td, th   | display: table-cell 
+
+
+
+cellspacing | border-spacing  | отступы между ячейками
+cellpadding | th,td{padding}  | отступы внутри ячеек
+
+
+empty-cells: show / hide     | границы и фон вокруг пустых ячеек
+
+                    separate     collapse
+border-collapse:  ┌----┐┌----┐  ┌----┐----┐
+                  └----┘└----┘  └----┘----┘
+                                              colspan: 2
+colspan | объединение ячеек    ┌----┐┌----┐ > ┌-------┐
+rowspan | объединение ячеек    └----┘└----┘ > └-------┘
+
+  </code>
+</pre>
+
+              <!-- col -->
+              <details class="show-piece">
+                <summary><code>col - </code>стилизация столбцов</summary>
+
+                <pre><code>
+&lt;table&gt;
+  &lt;col width="20%"&gt;
+  &lt;col width="80%"&gt;
+  &lt;tr&gt;
+      ...
+  &lt;/tr&gt;
+  &lt;tr&gt;
+      ...
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+</code></pre>
+
+                <p>В HTML-таблицах для стилизации столбцов используется тег &lt;col&gt;. Тег пишется в начале таблицы
+                  и не закрывается. Первый col в разметке влияет на каждую первую ячейку в рядах таблицы, то есть, на
+                  первый столбец. Следующий &lt;col&gt; будет стилизовать второй столбец и так далее.</p>
+                <p>В CSS-таблицах так же: внутри таблицы создать пустой тег и задать ему display: table-column (это
+                  аналог тега col). Правила для него будут применяться к первому столбцу, следующий элемент с
+                  table-column стилизует второй столбец и так далее.</p>
+
+              </details>
+
+              <!-- table-row -->
+              <details class="show-piece">
+                <summary><code>table-row</code></summary>
+                <p><b>display: table-row - </b>контейнер для ячеек, практически не имеет собственного отображения. Для
+                  неё можно только задавать цвет фона.</p>
+              </details>
+
+              <!-- cellpadding -->
+              <details class="show-piece">
+                <summary><code>cellpadding - </code>отступы внутри ячеек</summary>
+
+                <p><b>атрибут cellpadding - </b>отступы внутри ячеек, но лучше его не использовать, а задавать отступы
+                  с помощью CSS.</p>
+              </details>
+
+
+              <!-- cellspacing -->
+              <details class="show-piece">
+                <summary><code>cellspacing / border-spacing </code>отступы между ячейками</summary>
+                <p>Отступы между ячейками не работают с border-collapse: collapse, ведь рамки ячеек в этом режиме
+                  «склеены» и их не разорвать.</p>
+              </details>
+
+
+            </details>
+          </section><!-- table -->
+
+
+          <section class="dialog">
+            <details class="show-block">
+              <summary><code><a name="dialog">dialog</a></code></summary>
+
+              <dialog class="modal">
+                <div class="modal__inner">
+                  <h2>dialog html элемент</h2>
+                  <p>какой то текст</p>
+
+                  <button class="closeModal">close</button>
+                </div>
+              </dialog>
+
+              <button class="openModal">open</button>
+
+              <ul>
+                <li><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element">HTML
+                    Standard</a></li>
+                <li><a href="https://www.youtube.com/watch?v=m-mWUNUdtss" target="_blank"
+                    rel="noopener noreferrer">исходник</a>
+                </li>
+              </ul>
+
+              <article>
+                <p>Удаление open атрибута обычно скрывает диалоговое окно. Однако это влечет за собой ряд
+                  странных
+                  дополнительных
+                  последствий:</p>
+                <ul>
+                  <li>Событие closeне будет запущено.</li>
+                  <li>Метод close()и любой интерфейс отмены, предоставляемый пользовательским агентом , больше
+                    не смогут
+                    закрыть диалоговое
+                    окно.</li>
+                  <li>Если диалог был показан с использованием его showModal() метода, он Documentвсе равно
+                    будет
+                    заблокирован
+                    .</li>
+                </ul>
+                <p>По этим причинам обычно лучше никогда не удалять open атрибут вручную. Вместо этого
+                  используйте
+                  close() метод,
+                  чтобы
+                  закрыть диалоговое окно, или hidden атрибут, чтобы скрыть его.</p>
+              </article>
+
+              <h3>Методы</h3>
+
+              <pre><code>
+атрибут open открывает модальное окно &lt;dialog open&gt;...&ltdialog&gt;
+                
+modal.showModal();   открыть 
+                
+modal.close();       скрыть
+                
+::backdrop задний фон
+</code></pre>
+
+              <p>html элемент dialig занимает 100% окна браузера а не только див с контентом</p>
+              <p>если кликнуть в любое место вы кликаете на элемент dialog</p>
+
+              <img src="../img/dialog.jpg" alt="">
+
+              <p>по этому что бы закрывать модальное окно по клику в любое место нужно сделать подложку в нутри
+                модального
+                окна
+                что бы по клику на само окно оно не закрывалось а по клику мимо всплывашки оно закрывалось, и
+                всякие
+                паддинги
+                задавать уже иннеру а не самому модальному окну.</p>
+
+              <img src="../img/dialog-2.jpg" alt="">
+
+            </details>
+          </section>
+
+
+
+
+
+
+
+
+        </div><!-- container -->
+      </section> <!-- html -->
+
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,2594 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/js.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+
+      <section class="js">
+        <div class="container">
+
+
+          <section class="transformation-document">
+
+            <h2>Изменение документа</h2>
+
+
+            <section class="createElement">
+
+              <div class="performance">
+                <pre><code>
+<span class="color-red">создание элемента</span>
+
+let elem = document.createElement("button")
+  elem.textContent = "Click-me"
+  elem.title = "button"
+  elem.className = "btn"
+  elem.style.cssText += ` color: ...; font-size: ... `
+  elem.style.colot = "red"
+  
+  elem.onmouseover = function() {
+    this.style.color = "red"
+  }
+  elem.onmouseout = function() {
+    this.style.color = "black"
+  }
+  
+document.body.appendChild(elem);
+
+</code></pre>
+
+                <pre><code>
+document.createTextNode('value') - схож с textContent
+
+let div = document.createElement("div");
+let text = document.createTextNode("новый текст")
+
+div.appendChild(text);
+</code></pre>
+              </div>
+
+
+              <details class="show-piece">
+                <summary><code>на основе шаблонной строки</code></summary>
+                <textarea cols="85" rows="25">
+
+const createElFromStr = (str) => { 
+	const el = document.createElement("div") (1)создаем временный элемент
+	el.innerHTML = str  (2)записываем в него строку
+	const child = el.firstElementChild  (3)извлекаем наш элемент 
+	el.remove() (4)удалим временный элемент
+	return child (5)возвращаем элемент
+}
+
+const listTemplate = 
+`
+<ul id="list">
+  <li data-id="item1" class="item">1</li>
+  <li data-id="item2" class="item">2</li>
+  <li data-id="item3" class="item">3</li>
+</ul>
+`
+  
+const listEl = createElFromStr(listTemplate) (6)создаем список на основе шаблона
+
+document.body.appendChild(listEl) (7)вставляем его
+
+
+(3) если использовать firstChild то вернется #text(пробелы тоже текстовые элементы) по этому нужно вернуть именно элемент а не первого потомка
+</textarea>
+              </details>
+              <!-- на основе шаблонной строки -->
+
+
+              <details class="show-piece">
+                <summary><code>при помощи конструктора DOMParser()</code></summary>
+                <textarea cols="60" rows="19">
+const createElFromStr = (str) => { 
+  const parser = new DOMParser() (1)создаем новый парсер
+  const {  (2)парсер вернет новый документ
+    body: { children }   
+  } = parser.parseFromString(str, "text/html")
+  return children[0] (3)первый дочерний элемент нового тела
+}
+
+const listTemplate = `  
+<ul id="list">
+  <li data-id="item1" class="item">1</li>
+  <li data-id="item2" class="item">2</li>
+  <li data-id="item3" class="item">3</li>
+</ul>
+`
+
+const listEl = createElFromStr(listTemplate)
+document.body.appendChild(listEl)
+</textarea>
+              </details>
+              <!-- при помощи конструктора DOMParser() -->
+
+
+              <details class="show-piece">
+                <summary><code>при помощи расширения для объекта Range</code></summary>
+                <p>методом createContextualFragment()</p>
+
+                <textarea cols="75" rows="19">
+const createFragment = (str) => {
+  const range = new Range()
+  const fragment = range.createContextualFragment(str)
+  return fragment
+}
+       то же самое но в 1 строку:
+	   
+const createFragment = (str) => new Range().createContextualFragment(str)
+
+const listTemplate = 
+`  
+<ul id="list">
+  <li data-id="item1" class="item">1</li>
+  <li data-id="item2" class="item">2</li>
+  <li data-id="item3" class="item">3</li>
+</ul>
+`
+
+document.body.appendChild(createFragment(listTemplate))
+</textarea>
+              </details>
+              <!-- при помощи расширения для объекта Range -->
+
+            </section>
+            <!-- createElement -->
+
+
+            <p>document.createTextNode('value') - схож с textContent</p>
+
+
+            <details class="show-piece cloneNode"> <!-- клонирование узлов -->
+              <summary><code>elem.<span class="color-red">cloneNode</span>(true)  -- </code>клонирование узлов</summary>
+
+              <ul class="list-reset">
+                <li><code>deep - </code>true</li>
+                <li><code>elem.cloneNode(true) - </code>со всеми атрибутами и дочерними элементами.</li>
+                <li><code>elem.cloneNode(false) - </code> без дочерних элементов.</li>
+              </ul>
+
+              <pre><code>
+&lt;div&gt; Всем привет! &lt;/div&gt;
+
+let clone = div.cloneNode(true); // клонировать
+clone.innerHTML = 'Всем пока!'; // изменить
+document.body.insertBefore(clone, div); // вставить
+
+</code></pre>
+
+            </details>
+            <!-- cloneNode -->
+
+
+            <details class="show-piece">
+              <summary><code>parent.<span class="color-red">removeChild</span>(node)</code> - удалить node (<span
+                  class="color-red">вернет удаленный элемент</span>)</summary>
+              <p>родитель.removeChild(дочерний элемент)</p>
+
+              <pre><code>
+&lt;ul id="ul"&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+  &lt;li&gt;3&lt;/li&gt;
+&lt;/ul&gt;
+
+let liSecond = document.querySelector("#ul li:nth-child(2));
+liSecond.parentNode.removeChild(liSecond);  // вызываем метод на родительском элементе
+                                            // передаем аргументом дочерний элемент
+&lt;ul class="ul"&gt;                             // который нужно удалить
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;  
+&lt;/ul&gt;         
+              
+</code></pre>
+
+
+              <p>удаленный элемент можно вставить потому что removeChild <span class="color-red">возвращает удаленный
+                  элемент</span></p>
+
+              <pre><code>
+&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+
+let result = p.parentElement.removeChild(p);  // <span class="color-red">удалим</span> со старого места
+div.appendChild(result);  // <span class="color-red">вставим</span> в новое место  
+
+</code></pre>
+
+            </details>
+            <!-- removeChild(node) -->
+
+
+            <details class="show-piece remove">
+              <summary><code>node.<span class="color-red">remove()</span>; -- удалить node</code></summary>
+
+              <pre><code>
+  удалим кнопку по нажатию
+
+&lt;button&gt;btn&lt;/button&gt;
+
+button.onclick = function() {
+  this.<span class="color-red">remove()</span>;
+}
+</code></pre>
+
+              <details class="show-piece">
+                <summary><code>элемент появится и исчезнет через секунду</code></summary>
+                <pre><code>
+let div = document.createElement('div');
+div.className = "alert";
+div.innerHTML = "&lt;strong&gt;Всем привет!&lt;/strong&gt; Вы прочитали важное сообщение.";
+
+document.body.append(div);
+setTimeout(() => div.<span class="color-red">remove()</span>, 1000);
+
+</code></pre>
+              </details>
+
+            </details>
+            <!-- remove() -->
+
+
+          </section>
+          <!-- Изменение документа -->
+
+
+          <section class="this">
+            <details class="show-block" open>
+              <summary><code>this</code></summary>
+              <h3>Доступ к элементу через this</h3>
+              <p>Внутри обработчика события this ссылается на текущий элемент, то есть на тот, на котором, как
+                говорят,
+                «висит» (т.е. назначен) обработчик.</p>
+              <pre><code>
+&lt;button onclick="console.log(this.innerHTML)"&gt;Нажми меня&lt;/button&gt;
+&lt;button onclick="console.log(this)"&gt;Нажми меня&lt;/button&gt;
+
+</code></pre>
+
+            </details>
+          </section>
+
+
+
+          <section>
+            <details class="show-block">
+              <summary><code>Действия браузера по умолчанию и их отмена</code></summary>
+              <p>Многие события автоматически влекут за собой действие браузера по умолчанию, переходы по
+                ссылкам
+                и т.д.
+              </p>
+              <ul class="link-cancle list-reset">
+
+                <li>
+                  <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">ссылка работает
+                    как
+                    указывает браузер(по умолчанию)</a>
+                </li>
+                <li>
+                  <a class="link-cancle__two" href="https://www.google.com" target="_blank"
+                    rel="noopener noreferrer">отменяем
+                    работу по умолчанию
+                    через addEventListener</a>
+                </li>
+                <li>
+                  <a class="link-cancle__three" href="https://www.google.com" target="_blank"
+                    rel="noopener noreferrer">отменяем
+                    работу по умолчанию
+                    через return</a>
+                </li>
+
+              </ul>
+
+              <pre><code>
+let linkCancleTwo = document.querySelector(".link-cancle__two");
+let linkCancleThree = document.querySelector(".link-cancle__three");
+
+linkCancleTwo.addEventListener("click", function (event) {
+  event.preventDefault(); //отменяет действие по умолчанию
+});
+
+//то же что и выше только если нельзя использовать addEventListene
+linkCancleThree.onclick = function () {
+  return false; 
+}
+
+</code></pre>
+
+            </details>
+          </section>
+          <!-- Действия браузера по умолчанию и их отмена -->
+
+
+          <section class="getting-elements">
+            <details class="show-block">
+              <summary><code><a name="Получение элементов">
+                Получение элементов
+              </a></code></summary>
+
+              <p> Почти все методы возвращают коллекции элементов схожих с массивом
+                но это объекты классов: Array, NodeList, HTMLCollection и т.д.
+                к которым нужно обращаться по индексу <span class="color-yellow">arr.[0]/[1]/[2]</span></p>
+
+
+              <pre>
+  <code>
+<span class="color-red-light">element</span>        
+   
+let e = document.<span class="color-blue">querySelector</span>('#nav &gt; ul.menu__list &gt; li[name="li"] + li');
+console.log(e); <span class="color-yellow">// element</span>
+   
+let eId = document.<span class="color-red-light">getElementById</span>('menu__item-3');
+console.log(eId);  <span class="color-yellow">// element</span>
+   
+   
+<span class="color-red-light">NodeList</span> - статическая коллекция элементов  
+
+document.querySelectorAll("#source-list li:nth-child(even)"); // все четные li
+
+let eAll = document.<span class="color-blue">querySelectorAll</span>('li');
+console.log(eAll); <span class="color-yellow">// NodeList</span>
+console.log(eAll<span class="color-yellow">[0]</span>); <span class="color-yellow">// element</span>
+   
+let eName = document.<span class="color-red-light">getElementsByName</span>('li'); //динамическая коллекция 
+console.log(eName); <span class="color-yellow">// NodeList</span>
+console.log(eName<span class="color-yellow">[1]</span>);<span class="color-yellow">// element</span> 
+   
+let e = list.<span class="color-blue-light">childNodes</span>; //динамическая коллекция
+  хранит в себе псевдомассив дочерних узлов 
+  элемента (теги, комментарии и текстовые узлы).
+   
+   
+<span class="color-red-light">HTMLCollection</span> - динамическая коллекция элементов
+                        
+let eTag = document.<span class="color-red-light">getElementsByTagName</span>('li');
+console.log(eTag);   <span class="color-yellow">// HTMLCollection</span>
+console.log(eTag<span class="color-yellow">[2]</span>);  <span class="color-yellow">// element</span> 
+   
+let eClass = document.<span class="color-red-light">getElementsByClassName</span>('menu__item');
+console.log(eClass); <span class="color-yellow">// HTMLCollection</span>  
+console.log(eClass<span class="color-yellow">[3]</span>);   <span class="color-yellow"> // element </span> 
+      </code>
+   </pre>
+
+            </details>
+          </section>
+          <!-- Получение элементов -->
+
+
+          <section class="set-element">
+
+
+            <details class="show-block">
+              <summary><code>вставить элемент</code></summary>
+              <p class="color-red">Все методы вставки автоматически удаляют узлы со старых мест(кроме клонирования).</p>
+
+              <details class="show-piece">
+                <summary><code>prepend, append, before, after -- </code>заменяют теги на текст</summary>
+
+                <textarea cols="55" rows="27">
+<div id="test">test</div>
+				
+let prepend = document.createElement("p");
+let append = document.createElement("p");
+let before = document.createElement("p");
+let after = document.createElement("p");
+
+prepend.innerHTML = "prepend";
+append.innerHTML = "append";
+before.innerHTML = "before";
+after.innerHTML = "after";
+
+test.prepend(prepend);
+test.append(append);
+test.before(before);
+test.after(after);
+
+    output:
+    
+             before
+          ┌───────────┐&lt;--<div id="test">test</div>
+          │  prepend  │
+          │   test    │
+          │  append   │
+          └───────────┘
+             after
+</textarea>
+
+                <p class="color-red">если эти методы использовать для вставки элементов то теги заменятся на текст
+                </p>
+
+                <textarea cols="60" rows="20">
+<div id="div"></div>
+
+div.prepend(
+  '<p>можно вставить несколько элементов за раз</p>',
+  "<div>но теги будут заменяться на текст</div>",
+        
+  document.createElement('hr'), 
+        
+  "<p>теги станут как обычный текст</p>",
+);
+
+output 
+
+<p>можно вставить несколько элементов за раз</p>
+<div>но теги будут заменяться на текст</div>
+        
+<hr>
+        
+<p>теги станут как обычный текст</p>	
+</textarea>
+
+              </details>
+              <!-- prepend, append, before, after -->
+
+
+              <details class="show-piece">
+                <summary><code>parentNode.<span class="color-red">replaceChild(newChild, oldChild)</span> - </code>
+                  новый элемент который заменит oldChild</summary>
+
+                <ul>
+                  <li>newChild - новый элемент который заменит oldChild</li>
+                  <li>psrentNode - родитель odChild</li>
+                </ul>
+                <p>parentNode в результате вернет oldChild</p>
+
+                <textarea cols="30" rows="10">
+	заменим li
+	
+<ul class="ul">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+
+let oldLi = document.querySelector(".ul li:nth-child(2)");
+let newLi = document.createElement("li");
+newLi.textContent = "Five";
+oldLi.parentNode.replaceChild(newLi, oldLi);
+
+элемент.родитель.replaceChild(новый элемент, старый элемент)
+</textarea>
+
+              </details>
+              <!-- replaceChild -->
+
+
+              <details class="show-piece">
+                <summary><code>node.<span class="color-red">replaceWith</span> - </code>заменить node узлом или строкой
+                </summary>
+                <p>parentNode.replaceWith(...nodes, string)</p>
+
+                <textarea cols="30" rows="10">
+<ul class="ul">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+
+let oldLi = document.querySelector(".ul li:nth-child(2)");
+let newLi1 = document.createElement("li");
+let newLi2 = document.createElement("li");
+newLi1.textContent = "newLi1";
+newLi2.textContent = "newLi2";
+
+oldLi.replaceWith(newLi1, newLi2);
+
+<ul class="ul">
+  <li>1</li>
+  <li>2</li>
+  <li>newLi1</li>
+  <li>newLi2</li>
+</ul>
+</textarea>
+              </details>
+              <!-- replaceWith -->
+
+
+              <div class="performance">
+
+                <h3>Устаревшие методы</h3>
+                <details class="show-piece">
+                  <summary><code>elem.appendChild(node); - </code>вставит node после последнего элемента внутри elem
+                  </summary>
+
+                  <pre><code>
+let div = document.querySelector(".div");
+let p = document.createElement("p");
+
+div.appendChild(p);
+
+</code></pre>
+                </details>
+
+
+                <details class="show-piece">
+                  <summary><code>elem.insertBefore(node, nextSibling) - </code>вставит узел node перед nextSibling
+                    внутри elem</summary>
+                  <pre><code>
+let elem = document.querySelector(".insertBefore");
+let li = document.createElement("li");
+li.textContent = "new li";
+
+elem.insertBefore(li, elem.children[3]); //вставит перед 4
+
+1
+2
+3
+new li
+4
+
+
+если передать null то он будет работать как .appendChild
+
+elem.insertBefore(li, null); 
+
+1
+2
+3
+4
+new li
+
+</code></pre>
+                </details>
+
+              </div>
+              <!-- Устаревшие методы -->
+
+
+              <h3 class="color-red">что делать если нужно вставить элемент а не текст? --
+                <code>insertAdjacentHTML</code>
+              </h3>
+
+              <details class="show-piece insertAdjacentHTML">
+                <summary><code>insertAdjacentHTML(where, elem или text) -- </code>вставить фрагмент html или текст
+                </summary>
+
+
+                <div class="show-code">
+                  <h2 class="show-code__title"></h2>
+                  <div class="show-code__description">
+                  </div>
+                  <div class="show-code__inner">
+                    <div class="show-code__performance">
+                      <section class="insertAdjacentHTML">
+                        <div class="insertAdjacentHTML-show">
+                          <p>beforebegin</p>
+                          <div class="test">
+                            <p>afterbegin</p>
+                            <p>test</p>
+                            <p>beforeend</p>
+                          </div>
+                          <p>afterend</p>
+                        </div>
+                      </section>
+                    </div>
+                    <textarea class="show-code__textarea">
+<div id="test">test</div>
+
+test.insertAdjacentHTML("beforebegin", "<p>beforebegin</p>");
+test.insertAdjacentHTML("afterbegin", "<div>afterbegin</div>");
+test.insertAdjacentHTML("beforeend", "<section>beforeend</section>");
+test.insertAdjacentHTML("afterend", "<a>afterend</a>");
+    </textarea>
+                  </div>
+                </div>
+
+                <textarea cols="65" rows="14">
+let details = document.createElement('details'); // создаем элемент
+elem.append(details); // добавляем элемент на страницу
+
+//фаршируем внутри наш элемент
+details.insertAdjacentHTML('afterbegin', `
+<summary><code>...</code></summary>
+<p>...</p>
+<div>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+</div>
+`);
+</textarea>
+
+              </details>
+              <!-- insertAdjacentHTML -->
+
+
+
+              <details class="show-piece DocumentFragment">
+                <summary><code>DocumentFragment -- </code>вставить множество элементов</summary>
+                <p>обёртка для временного хранения html элементов</p>
+                <p>это облегченная версия document</p>
+                <p>когда мы его вставляем, вставляется только содержимое</p>
+
+
+
+                <details class="show-piece">
+                  <summary><code>пример</code></summary>
+
+                  <textarea cols="30" rows="10">
+<ul id="source-list">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+</ul>
+
+
+const sourceLi = document.querySelectorAll("#source-list li:nth-child(even)"); //все четные li
+const targetList = document.createElement("ul"); //создаем новый список
+const fragment = new DocumentFragment(); //создаем фрагмент
+
+const btn = document.querySelector(".btn") 
+
+
+btn.onclick = function() { 
+	
+  for (let i = 0; i &lt; sourceLi.length; i++) {
+	fragment.appendChild(sourceLi[i]);
+  }
+
+  targetList.appendChild(fragment);
+  document.body.appendChild(targetList)
+}
+
+
+по клику на btn список разделится на два вытаща 
+все even(четные) из списка запихав их в новый ul с помощью фрагмента
+<ul id="source-list">
+  <li>1</li>
+  <li>3</li>
+  <li>5</li>
+</ul>
+
+<ul>
+  <li>2</li>
+  <li>4</li>
+</ul>
+
+</textarea>
+
+                </details>
+
+
+                <details class="show-piece">
+                  <summary><code>пример</code></summary>
+
+
+                  <textarea cols="85" rows="21">
+        getListContent ниже генерирует фрагмент с элементами &lt;li&gt;, которые позже 
+        вставляются в &lt;ul>:
+        
+&lt;ul id="ul">&lt;/ul>
+
+
+function getListContent() {
+  let fragment = new DocumentFragment();
+
+  for(let i=1; i&lt;=3; i++) {
+    let li = document.createElement('li');
+    li.append(i);
+    fragment.append(li);
+  }
+
+  return fragment;
+}
+
+ul.append(getListContent()); // (*)
+
+</textarea>
+
+                  <p>Обратите внимание, что на последней строке с (*) мы добавляем DocumentFragment, но он
+                    «исчезает», поэтому структура будет:</p>
+
+                  <textarea cols="12" rows="6">
+&lt;ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+&lt;/ul>
+</textarea>
+
+                </details>
+
+                <p>DocumentFragment редко используется. Зачем добавлять элементы в специальный вид узла, если вместо
+                  этого мы можем вернуть массив узлов? </p>
+                <p></p>
+
+                <textarea cols="70" rows="20">
+&lt;ul id="ul">&lt;/ul>
+
+&lt;script>
+function getListContent() {
+  let result = [];
+
+  for(let i=1; i&lt;=3; i++) {
+    let li = document.createElement('li');
+    li.append(i);
+    result.push(li);
+  }
+
+  return result;
+}
+
+ul.append(...getListContent()); // append + spread / rest
+&lt;/script>
+</textarea>
+
+
+              </details>
+              <!-- DocumentFragment -->
+
+
+
+              <details class="show-piece">
+                <summary>document.write</summary>
+                <p>работает только до загрузки страницы.</p>
+                <p>после того, как страница загружена, он уже непригоден к использованию</p>
+              </details>
+              <!-- document.write -->
+
+
+
+
+            </details>
+          </section>
+          <!-- вставить элемент -->
+
+
+
+
+
+          <section class="get-content">
+            <h2>получение контента и его установка</h2>
+
+            <a href="https://itchief.ru/javascript/textcontent#innerhtml-i-outerhtml">источник</a>
+            <p>textContent / innerHTML - получить / добавить просто текст</p>
+            <p>эти методы меняют текст в уже существующем элементе</p>
+            <p>textContent более предпочтительней потому что не нужно парсить html</p>
+
+
+            <details class="show-piece textContent">
+              <summary><code><span class="color-red">textContent</span> -- </code>получить/вписать просто текст (и
+                содержимое его потомков).
+              </summary>
+
+              <pre><code>
+element.textContent = 'не парсит&lt;b&gt;html&lt;/b&gt;';  // не парсит &lt;b&gt;html(вставит теги в html)&lt;/b&gt;
+element.innerHTML = 'парсит &lt;b&gt;html&lt;/b&gt;';      // парсит <b>html(станет жирным)</b>
+
+
+
+const elem = document.querySelector(".elem");
+
+const text = elem.textContent; //получаем содержимое
+elem.textContent = "Некоторый текст ..."; //устанавливаем новое содержимое
+
+</code></pre>
+
+              <p>Если элемент содержит другие узлы, textContent вернёт конкатенацию текстов всех его текстовых узлов.
+              </p>
+
+              <pre><code>
+&lt;div&gt;
+  Внимание! 
+  &lt;p&gt;
+    Это 
+    &lt;strong&gt;
+      очень важный текст.
+    &lt;/strong&gt;
+  &lt;/p&gt;
+  &lt;script&gt;
+    alert('А это очень важное сообщение!');
+  &lt;/script&gt;
+&lt;/div&gt;
+         
+
+const text = div.textContent;
+
+text // "Внимание! Это очень важный текст.alert('А это очень важное сообщение!');" 
+
+      textContent -- вернул текстовое содержимое всех потомков
+
+</code></pre>
+
+              <p>textContent удалит всего его узлы (при их наличии), и добавит в него один текстовый узел, содержащий
+                указанный текст.</p>
+
+
+              <pre><code>
+&lt;div&gt;
+  Внимание! 
+  &lt;p&gt;
+    Это 
+    &lt;strong&gt;
+      очень важный текст.
+    &lt;/strong&gt;
+  &lt;/p&gt;
+  &lt;script&gt;
+    alert('А это очень важное сообщение!');
+  &lt;/script&gt;
+&lt;/div&gt;
+
+
+div.textContent = 'Новый текст...';  // эта строчка удалит все элементы
+                                         в div и добавит в него текстовый 
+                                           узел с текстом "Новый текст..."
+ 
+</code></pre>
+
+              <p>Если присвоить textContent строку, содержащую HTML код, то символы &lt; и &gt; будут заменены.</p>
+
+              <pre><code>
+$elem.textContent = '&lt;p&gt;...&lt;/p&gt;';
+const text = $elem.textContent; // "&lt;p&gt;...&lt;/p&gt;"
+
+
+const $alert = document.createElement('div');   // создадим элемент 
+
+$alert.className = 'alert';  // добавим к $alert класс alert    
+    
+$alert.textContent = 'Некоторый текст...';  // установим $alert текстовый контент  
+    
+document.body.appendChild($alert);  // вставим на страницу перед &lt;/body&gt;
+
+</code></pre>
+
+            </details>
+            <!-- textContent -->
+
+
+            <details class="show-piece innerHTML">
+              <summary><code><span class="color-red">innerHTML</span> -- </code>получить/вписать текст вместе с
+                HTML-разметкой
+              </summary>
+
+              <p>innerHTML полностью перезаписывает содержимое элемента вместе с тегами</p>
+
+              <pre><code>
+&lt;div id="message"&gt;
+  Я люблю 
+  &lt;strong&gt;
+    JavaScript
+  &lt;/strong&gt;
+    ! Он позволяет 
+  &lt;span&gt;
+    сделать что угодно со страницей
+  &lt;/span&gt;
+  .
+&lt;/div&gt;
+
+
+const html = message.innerHTML  // получим html разметку элемента вместе с текстом
+
+html.innerHTML = "&lt;em&gt;Что-то новое&lt;/em&gt;"; // изменить html содержимое элемента
+
+html.innerHTML = '';  // полностью очистит содержимое и теги тоже
+
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </details>
+            <!-- innerHTML -->
+
+
+            <details class="show-piece innerText">
+              <summary><code><span class="color-red">innerText</span> -- (устаревший)</code> копирует текст (учитывает
+                стили)</summary>
+
+              <p>innerText в отличии от textContent как бы копирует текст, отображаемый этим элементом в браузере. Он
+                учитывает стили
+              </p>
+
+              <p>не добавляет в возвращаемый результат содержимое style и script.</p>
+
+              <p>учитывает стили элементов, и возвращает только текст отображаемый этим элементом в браузере.</p>
+
+              <pre><code>
+<span class="color-red">разница между innerText и textContent</span>
+
+&lt;div id="div"&gt;
+  Внимание! 
+  &lt;span&gt;
+    Это 
+    &lt;strong&gt;
+      очень важный текст.
+    &lt;/strong&gt;
+  &lt;/span&gt;
+  &lt;script&gt;
+    alert('А это очень важное сообщение!');
+  &lt;/script&gt;
+&lt;/div&gt;
+
+
+span {
+  display: none;  // скроем элемент и он не отобразится в результате
+}                     потому что innerText учитывает стили элементов
+
+
+div.<span class="color-red">textContent</span>; // "Внимание! Это очень важный текст.alert('А это очень важное сообщение!');"
+
+div.<span class="color-red">innerText</span>; // "Внимание!"
+
+алерт не отобразится потому что innerText не добавляет
+в возвращаемый результат содержимое style и script.
+
+</code></pre>
+
+            </details>
+            <!-- innerText -->
+
+
+            <details class="show-piece outerText">
+              <summary><code><span class="color-red">outerText</span> -- </code>удаляет элемент а на его место ставит
+                текстовое содержимое</summary>
+
+              <pre><code>
+&lt;div class="container"&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  <span class="color-yellow">&lt;img src="..." alt="..."&gt;</span>
+  &lt;div&gt;...&lt;/div&gt;
+  <span class="color-yellow">&lt;img src="..." alt="..."&gt;</span>
+&lt;/div&gt;
+
+
+const elem = document.querySelectorAll('img');     // получим все элементы с тегом img
+elem.forEach((item) =&gt; {                          // переберём все найденные элементы
+  item.<span class="color-red">outerText</span> = '<span class="color-yellow">Здесь было изображение</span>';     // заменим элемент на текст
+});
+
+
+output:
+    
+&lt;div class="container"&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  <span class="color-yellow">Здесь было изображение</span>
+  &lt;div&gt;...&lt;/div&gt;
+  <span class="color-yellow">Здесь было изображение</span>
+&lt;/div&gt;
+
+</code></pre>
+
+            </details>
+            <!-- outerText -->
+
+
+            <details class="show-piece outerHTML">
+              <summary><code><span class="color-red">outerHTML</span> -- </code> замена элемента и его дочерних
+                компонентов (не изменяет DOM-элемент)</summary>
+              <p>устанавливает или возвращает HTML контент, представляющий сам элемент и его дочерние элементы.</p>
+
+              <p>в отличие от innerHTML, запись в outerHTML не изменяет элемент. Вместо этого элемент заменяется целиком
+                во внешнем контексте.</p>
+              <pre><code>
+&lt;div&gt;Привет, мир!&lt;/div&gt;
+
+
+let div = document.querySelector('div'); // заменяем div.outerHTML на &lt;p&gt;...&lt;/p&gt;
+
+div.outerHTML = '&lt;p&gt;Новый элемент&lt;/p&gt;'; 
+
+alert(div.outerHTML); // &lt;div&gt;Привет, мир!&lt;/div&gt; // Содержимое div осталось тем же!
+
+</code></pre>
+
+              <p>Это потому, что использование outerHTML не изменяет DOM-элемент, а удаляет его из внешнего контекста и
+                вставляет вместо него новый HTML-код</p>
+              <ol style="margin-left: 2em;">
+                <li>div был удалён из документа.</li>
+                <li>Вместо него был вставлен другой HTML &lt;p&gt;Новый элемент&lt;/p&gt;</li>
+                <li>В div осталось старое значение. Новый HTML не сохранён ни в какой переменной</li>
+              </ol>
+
+            </details>
+            <!-- outerHTML -->
+
+
+          </section>
+          <!-- получение контента и его установка -->
+
+
+
+
+          <section class="style">
+            <details class="show-block">
+              <summary><code>стили</code></summary>
+
+
+              <div class="cssText">
+                <pre><code>
+<span class="color-red">cssText</span> -- пишет стили в атрибуте style
+
+elem.style.cssText = ` color: ...; font-size: ...; ` // перезапишет существующие
+elem.style.cssText <span style="color: red;">+</span>= ` color: ...; font-size: ...; ` // НЕ перезапишет существующие
+
+elem.style.WebkitBorderRadius = '5px';
+
+document.body.style.backgroundColor = prompt('background color?', 'green');
+
+</code></pre>
+              </div>
+              <!-- стили -->
+
+
+              <details class="show-piece" open>
+                <summary><code>грамотно удалить присвоенное свойство</code></summary>
+                <pre><code>
+delete elem.style.display  // вместо этого
+
+elem.style.display = "";  // присвоить пустую строку
+
+</code></pre>
+              </details>
+              <!-- удалить присвоенное свойство -->
+
+
+
+
+              <details class="show-piece getComputedStyle" open>
+                <summary><code><span class="color-red">getComputedStyle</span>(element, [pseudo]) - </code>получить
+                  стили</summary>
+
+                <ul class="list-reset">
+                  <li><code>element - </code>Элемент, значения для которого нужно получить</li>
+                  <li><code>pseudo - </code>Указывается, если нужен стиль псевдоэлемента. Пустая
+                    строка
+                    или отсутствие аргумента означают сам элемент.</li>
+                </ul>
+
+                <p><span class="color-red">требует полное свойство!</span>
+                  указывать точное свойство(paddingLeft,
+                  marginTop,
+                  borderTopWidth). При обращении к сокращённому: padding, margin, border – правильный результат не
+                  гарантируется.</p>
+              </details>
+              <!-- getComputedStyle -->
+
+
+            </details>
+          </section>
+          <!-- style -->
+
+
+          <section class="сlass">
+            <details class="show-block">
+              <summary><code>классы</code></summary>
+
+              <p>Классы – всегда предпочтительный вариант по сравнению со style. Мы должны манипулировать свойством
+                style только в том случае, если классы «не могут справиться»</p>
+
+              <pre><code>
+<span class="color-red">className</span>  -- заменяет всю строку с классами 
+<span class="color-red">classList</span>  -- add / remove / toggle / contains - проверка(вернет: true / false) 
+
+
+classList перебираемый, поэтому можно перебрать все классы:
+
+&lt;body class="main page"&gt; &lt;/body&gt;
+
+for (let name of body.classList) { alert(name); }  // main, затем page
+    
+    </code>
+</pre>
+              <!-- классы -->
+
+
+              <details class="show-piece">
+                <summary><code>remove add class</code></summary>
+
+
+              </details>
+              <!-- remove add class -->
+
+
+
+
+
+
+
+
+
+
+            </details>
+          </section>
+          <!-- сlass -->
+
+
+
+
+          <section class="logical-operators">
+            <details class="show-block" open>
+              <summary><code>Логические операторы</code></summary>
+
+              <details class="show-piece">
+                <summary><code>?</code> -- если условие истинно, возвращается значение1, в противном случае –
+                  значение2</summary>
+                <p>имеет три аргумента</p>
+                <pre><code>
+let result = условие ? значение1 : значение2;
+  </code>
+</pre>
+                <p>Сначала вычисляется условие: если оно истинно, тогда возвращается значение1, в противном случае –
+                  значение2.</p>
+
+                <pre><code>
+let accessAllowed = (age &gt; 18) ? true : false;
+  </code>
+</pre>
+                <p>Технически, мы можем опустить круглые скобки вокруг age &gt; 18. Оператор вопросительного знака
+                  имеет
+                  низкий
+                  приоритет,
+                  поэтому он выполняется после сравнения &gt;.</p>
+                <pre>
+  <code>
+let accessAllowed = age &gt; 18 ? true : false;
+  </code>
+</pre>
+
+                <p>обычная последовательная проверка</p>
+                <pre>
+  <code>
+let age = prompt('Возраст?', 18);
+
+let message = (age &lt; 3) ? 'Здравствуй, малыш!' : 
+              (age &lt; 18) ? 'Привет!' : 
+              (age &lt; 100) ? 'Здравствуйте!' : 'Какой необычный возраст!' ; 
+
+alert( message );     
+  </code>
+</pre>
+
+
+                <pre>
+  <code>
+Вот как это выглядит при использовании if..else:
+
+if (age &lt; 3) { 
+  message='Здравствуй, малыш!' ; 
+} else if (age &lt; 18) { 
+  message='Привет!' ; 
+} else if (age &lt; 100) {
+  message='Здравствуйте!' ; 
+} else { 
+  message='Какой необычный возраст!' ; 
+}
+  </code>
+</pre>
+
+              </details>
+              <!-- ? -->
+
+              <details class="show-piece">
+                <summary><code>|| - или</code> -- возвращает первое истинное значение или последнее</summary>
+                <pre>
+  <code>
+result = a || b; //если первый операнд вернет true то второй не вычисляется
+  </code>
+</pre>
+                <p>Существует всего четыре возможные логические комбинации:</p>
+                <pre>
+  <code>
+alert( true || true );   // true
+alert( false || true );  // true
+alert( true || false );  // true
+alert( false || false ); // false
+  </code>
+</pre>
+                <p>Если значение не логического типа, то оно к нему приводится в целях вычислений.</p>
+                <pre>
+  <code>
+    цепочка ИЛИ || возвращает первое истинное значение или последнее, если такое значение не найдено.
+
+let currentUser = null;
+let defaultUser = "John";
+
+let name = currentUser || defaultUser || "unnamed";
+
+alert( name ); // выбирается "John" – первое истинное значение
+
+Если бы и currentUser, и defaultUser были ложными, в качестве результата мы бы наблюдали "unnamed".
+  </code>
+</pre>
+
+                <p>ИЛИ || вычисляет слева направо. Вычисление останавливается при достижении первого истинного
+                  значения.
+                  Этот
+                  процесс
+                  называется «сокращённым вычислением», поскольку второй операнд вычисляется только в том случае,
+                  если
+                  первого
+                  недостаточно для вычисления всего выражения.</p>
+                <pre>
+  <code>
+let x;
+
+true || (x = 1);
+
+alert(x); // undefined, потому что (x = 1) не вычисляется
+
+Если бы первый аргумент имел значение false, то || приступил бы к вычислению второго и выполнил операцию присваивания:
+
+let x;
+
+false || (x = 1);
+
+alert(x); // 1
+
+
+этот вариант использования || является "аналогом if". Первый операнд преобразуется в логический. Если он оказывается
+ложным, начинается вычисление второго.
+  </code>
+</pre>
+              </details>
+              <!-- || - или -->
+
+
+              <details class="show-piece">
+                <summary><code>&& - и</code> -- вернет первое ложное значение или последнее, если ничего не найдено
+                </summary>
+
+                <p>возвращает true, если оба аргумента истинны, а иначе – false</p>
+                <pre>
+  <code>
+result = a && b; 
+
+alert( true && true ); // true
+alert( false && true ); // false
+alert( true && false ); // false
+alert( false && false ); // false
+  </code>
+</pre>
+
+                <p>Если все операнды были истинными, возвращается последний.</p>
+
+                <pre>
+  <code>
+    Если первый операнд ложный, && возвращает его. 
+          Второй операнд игнорируется
+alert( null && 5 ); // null
+alert( 0 && "no matter what" ); // 0
+
+alert( 1 && 2 && null && 3 ); // null
+
+alert( 1 && 2 && 3 ); // 3
+  </code>
+</pre>
+
+              </details>
+              <!-- и -->
+
+
+
+
+
+
+
+            </details>
+          </section>
+          <!-- logical-operators -->
+
+
+
+          <section class="cycles">
+            <details class="show-block">
+              <summary><code>циклы</code></summary>
+
+              <p><b>for of --- snring, array, nodelist, map, set и т.д.</b></p>
+              <p><b>for in --- object</b></p>
+              <p><b>for --- свойства / значения</b></p>
+              <p>for...in обход перечисляемых свойств объекта осуществляется в произвольном порядке.</p>
+              <p>for...of обход происходит в соответствии с тем, какой порядок определён в итерируемом объекте</p>
+
+              <p>for и for in вам нужно использовать конструкцию arr [index]:</p>
+              <p>forEach() и for of, вы сразу получаете доступ к самому элементу массива. С forEach() вы можете так
+                же
+                получить
+                индекс массива, с for of индекс не доступен. Проходит объект в произвольном порядке(порядок сверху в низ
+                не горантирован)</p>
+
+
+
+              <details class="show-piece for">
+                <summary><code>for (es5)-- </code>пройти n раз свойства или значения</summary>
+
+                <pre><code>
+for (let i = 0; i &lt; arr.length; i++) {             let i = 0;
+  console.log(i); //ключи                i никакого отношения к индексам не имеет
+  console.log(arr[i]); //значения         это обычная переменная котрая изменяется 
+}                                             каждую итерацию i++
+ </code></pre>
+
+                <p>перебрать что то в обратном порядке:</p>
+
+                <pre><code>
+for (let i = items.length - 1; i > = 0; i -= 1) { ... }
+
+</code></pre>
+
+              </details>
+              <!-- for -->
+
+
+              <details class="show-piece">
+                <summary><code>for in -- </code>для перебора свойств объекта</summary>
+
+                <p>пройти в цикле по перечисляемым свойствам объекта и свойствам из прототипа.</p>
+                <p>Встроенные свойства, например length у массива, не обходятся в цикле если им не указан метод. Для
+                  изменения
+                  значений дескрипторов применяется статический метод Object.defineProperty()</p>
+
+                <pre><code>
+const person = {
+  name: "Igor",
+  age: 28,                            в цикле for in 
+  city: "Bratsk",                     на место <span class="color-red">i</span>
+  hobby: "programmer",                подставляется индекс
+};                                    каждую итерацию цикла
+
+
+for (let <span class="color-red">i</span> <span class="color-light-blue">in</span> person) {
+  console.log(<span class="color-red">i</span> + "-" + person[<span class="color-red">i</span>])    person[<span class="color-red">i</span>]
+}                                 
+      name - Igor                     person.name
+      age - 28                        person.age
+      city - Bratsk                   person.city
+      hobby - programmer              person.hobby  
+                                                                               
+</code></pre>
+
+
+
+
+                <h3 class="color-red">for in не стоит использовать для перебора массива:</h3>
+                <p>Нет гарантии, что for...in будет возвращать индексы в конкретном порядке. </p>
+                <p>Числовые свойства будут перечисляться в отсортированном порядке по возрастанию</p>
+
+
+                <pre><code>
+let arr = [ "a", "b", "c", "d" ];    
+                                        <span class="color-red">не перебирайте массивы с for in</span>
+for (let <span class="color-red">i</span> <span class="color-light-blue">in</span> arr) {      
+  console.log(<span class="color-red">i</span> + " - " + arr[<span class="color-red">i</span>]);      
+};                                            
+          <span class="color-red">i</span>     arr[<span class="color-red">i</span>]
+     // ключ - значение
+           0 - a
+           1 - b
+           2 - c
+           3 - d
+
+</code></pre>
+
+              </details>
+              <!-- for in -->
+
+
+
+              <details class="show-piece">
+                <summary><code>for of (es6)-- </code>обход итерируемых объектов</summary>
+
+                <p><b>snring, array, nodelist, map, set и т.д.</b></p>
+                <p>в отличие от forEach(), он работает с break, continue и return.</p>
+                <p>в отличии от for in порядок перебора объекта гарантирован</p>
+                <pre>
+  <code>
+let arr = [ "a", "b", "c", "d" ];        for of работает сразу со значениями
+                                             к индексам доступа нет
+for (let i <span class="color-red">of</span> arr) { -- i значение массива arr
+  console.log(i)                                                          
+};                                                        
+      // значения 
+            a
+            b
+            c 
+            d
+  </code>
+</pre>
+
+                <h4>перебор object</h4>
+                <pre><code>
+по дефолту не удобно перебирать object с for of
+потому что object не итерируемый по умолчанию
+
+const person = {             
+  name: "Igor",                 
+  age: 28, 
+  city: "Bratsk", 
+  hobby: "programmer", 
+};
+
+              массив ключей объекта                        массив значений объекта
+for (let i <span class="color-red">of</span> <span class="color-light-blue">Object.<span class="color-red">keys</span>(person)</span>) {   |     for (let i <span class="color-red">of</span> <span class="color-light-blue">Object.<span class="color-red">values</span>(person)</span>) {
+  console.log(i);                      |       console.log(i);
+}                                      |     }  
+        // name                        |          // Igor
+           age                         |             28
+           city                        |             Bratsk
+           hobby                       |             programmer
+
+ </code>
+</pre>
+
+              </details>
+              <!-- for of -->
+
+
+
+
+
+
+            </details>
+          </section>
+          <!-- циклы -->
+
+
+
+          <section class="checks">
+            <details class="show-block">
+              <summary><code>Проверки</code></summary>
+
+
+              <details class="show-piece typeof" open>
+                <summary><code><span class="color-red">typeof</span></code> -- узнать тип примитивного значения
+                </summary>
+                <pre>
+  <code>
+console.log(typeof 21); // =&gt; number
+console.log(typeof '21'); // =&gt; string
+console.log(typeof false); // =&gt; boolean
+console.log(typeof {}); // =&gt; object
+console.log(typeof undefined); // =&gt; undefined
+console.log(typeof null); // =&gt; object (не исправляют ради обратной совместимости)
+  </code>
+</pre>
+              </details>
+              <!-- typeof -->
+
+
+              <details class="show-piece isNaN">
+                <summary><code><span class="color-red">isNaN</span></code> - является ли значение выражения числом
+                </summary>
+                <pre>
+  <code>
+isNaN(123) // false 
+  
+isNaN("50 рублей") // true
+  </code>
+</pre>
+
+
+              </details>
+              <!-- isNaN -->
+
+
+              <details class="show-piece">
+                <summary><span class="color-red">%</span> - четное или нечетное</summary>
+                <pre>
+  <code>
+const isEven = x =&gt; {
+  
+  if (x % 2 === 0) {  // If the remainder after dividing by two is 0, return true
+    return true;
+  }
+  return false; // If the number is odd, return false
+}
+
+isEven(12);  //true
+  </code>
+</pre>
+              </details>
+              <!-- четное или нечетное -->
+
+
+              <details class="show-piece matches">
+                <summary><code><span class="color-red">matches</span> - </code>проверить HTML-элемент на соответствие
+                  CSS-селектору.</summary>
+                <p>true / false</p>
+
+                <div class="show-code">
+                  <h2 class="show-code__title"></h2>
+                  <div class="show-code__description">
+                    <p></p>
+                  </div>
+                  <div class="show-code__inner">
+                    <div class="show-code__performance">
+                      <section class="matches__inner">
+                        <p>paragraph</p>
+                        <i>i i i i i</i>
+                        <span class="span">span -- по классу</span>
+                        <strong>strong</strong>
+                        <q>q q q q q</q>
+                        <div>div -- по селектору</div>
+                        <b>b b b b b</b>
+                      </section>
+                    </div>
+                    <textarea class="show-code__textarea">
+let matchesParent = document.querySelector(".matches__inner");
+
+let matchesChildren = matchesParent.children;
+let matchesChildrenArr = Array.from(matchesChildren);
+
+console.log(matchesChildren)
+for(let i of matchesChildrenArr) {
+	if(i.matches(".span")) {
+		i.style.color = "red";
+	} 
+	if (i.matches("div")) {
+		i.style.color = "red";
+	}
+}
+    </textarea>
+                  </div>
+                </div>
+
+                <pre><code>
+const elem = document.querySelectorAll('#questions > li');   // выберем все &lt;li&gt; в #questions
+
+elem.forEach((el) => {             // переберём выбранные элементы
+  if (el.matches('.answered')) {   // если элемент соответствует селектору .answered, то ...
+    el.remove();                   // удалим элемент
+  }
+});
+
+</code></pre>
+                -
+                <pre><code>
+&lt;div data-target="slider"&gt;&lt;/div&gt;
+    
+const el = document.querySelector('[data-target="slider"]');
+const result = el.matches('div');  // true
+
+</code></pre>
+                -
+                <pre><code>
+document.querySelectorAll('li').forEach((el) =&gt; {
+    if (el.matches('.active')) {
+      console.log(el);   // li.active
+    }
+  }); 
+  
+</code></pre>
+
+              </details>
+              <!-- matches -->
+
+
+              <details class="show-piece closest">
+                <summary><code><span class="color-red">closest</span> - </code>найти ближайшего предка</summary>
+
+                <p>вернет - element / null</p>
+                <p>поиск начинается с самого элемента, для которого данный метод вызывается.</p>
+
+                <section class="closest">
+
+                  <ul id="list" style="width: 130px;">
+                    <li>One</li>
+                    <li>Two
+                      <ul>
+                        <li>Four</li>
+                        <li class="active">Five (active)</li>
+                      </ul>
+                    </li>
+                    <li>Three</li>
+                  </ul>
+
+                  <pre><code>
+        closest будет подниматься по цепочке в верх пока 
+		не дойдет до указанного селектора
+		
+const closestActive = document.querySelector('.closest .active');
+const closest = closestActive.closest('.closest  #list > li');
+
+closest.style.backgroundColor = 'yellow';
+
+стили спустятся по каскаду	
+		
+</code></pre>
+
+                </section>
+
+              </details>
+              <!-- closest -->
+
+
+              <details class="show-piece contains">
+                <summary><code><span class="color-red">contains</span></code> - содержит ли узел другой в качестве
+                  потомка</summary>
+
+                <p>проверка начинается с самого этого узла, для которого этот метод вызывается. </p>
+
+                <pre><code>
+&lt;h1&gt;h1&lt;/h1&gt;
+&lt;p&gt;this is &lt;b&gt;tag b&lt;/b&gt;.&lt;/p&gt;
+
+P.contains(P); // true
+P.contains(B); // true
+P.contains(textNode); // true
+    
+P.contains(H1); // false -- h1 не потомок для p
+
+        
+Метод contains позволяет проверить является ли потомком не только узел-элемент, но и любой другой узел. 
+
+Например, узнаем является ли потомком Div1 указанный текстовый узел:
+
+&lt;div id="#div-1"&gt;1
+  &lt;div id="#div-2"&gt;2
+    &lt;div id="#div-3"&gt;3&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+const Div1 = document.querySelector('#div-1');
+const textNode = document.querySelector('#div-3').firstChild;
+
+Div1.contains(textNode); // true
+	
+</code></pre>
+
+              </details>
+              <!-- contains -->
+
+
+            </details>
+          </section>
+          <!-- checks -->
+
+
+
+
+          <section class="transformation">
+            <details class="show-block">
+              <summary><code>Преобразования</code></summary>
+
+              <pre>
+    <code>
+let a = parseInt(prompt("Возраст?", '18'));
+let b = Number(prompt("Вesult")); 
+
+x = +x // к числу
+x = x + '' // к строке
+x = !!x // к булеву типу
+
+x = Number(x) 
+x = String(x)
+x = Boolean(x)
+    </code>
+</pre>
+
+
+
+              <details class="show-piece join">
+                <summary>join - массив в строку</summary>
+                <pre>
+  <code>
+let arr = [1, 2, "str", false];
+
+arr.join(" "); // "1 2 str false" (string)
+  </code>
+</pre>
+              </details>
+
+
+              <details class="show-piece split">
+                <summary>split - строка в массив</summary>
+                <pre>
+  <code>
+let arrTwo = str.split("/"); // ["1", "2", "str", "false"] (array)
+  </code>
+</pre>
+              </details>
+
+
+              <details class="show-piece toString">
+                <summary>toString - объект в строку</summary>
+                <pre>
+    <code>
+obj.toString 
+    </code>
+</pre>
+              </details>
+
+
+              <details class="show-piece keys-values">
+                <summary>keys / values - объект в массив</summary>
+                <p>В стандартном конструкторе Object имеются методы keys и values с помощью которых можно
+                  трансформировать
+                  объект в массив ключей и значений</p>
+                <pre>
+  <code>
+const car = {
+  brand: 'Ford',
+  color: 'blue'
+}
+
+const keys = Object.keys(car); // ['brand', 'color'] 
+const values = Object.values(car); // ['Ford', 'blue'] 
+
+  </code>
+</pre>
+              </details>
+
+
+              <details class="show-piece nodelist-array">
+                <summary>NodeList - в массив </summary>
+                <pre>
+  <code>
+const nodeList = document.querySelectorAll('div');
+const result = [];
+
+for (const node of nodeList) {
+  result.push(node);
+}
+  </code>
+</pre>
+                <p>Также у NodeList есть метод forEach</p>
+                <pre>
+  <code>
+const nodeList = document.querySelectorAll('div');
+const result = [];
+
+nodeList.forEach((node) =&gt; {
+  result.push(node);
+});
+  </code>
+</pre>
+                <p>Array.from();</p>
+                <pre>
+  <code>
+const nodeList = document.querySelectorAll('div');
+const result = Array.from(nodeList);
+  </code>
+</pre>
+                <p>spread</p>
+                <pre>
+  <code>
+const divList = document.querySelectorAll('div');
+const arr = [...divList];
+  </code>
+</pre>
+              </details>
+
+
+              <details class="show-piece parseInt">
+                <summary>parseInt - строку в целое число (второй параметр — система счисления)</summary>
+                <p>Если есть второй параметр — система счисления —
+                  преобразование происходит по указанному основанию системы счисления (8, 10 или 16):</p>
+                <pre>
+    <code>
+parseInt("435") // 435
+parseInt("3.14") // 3
+parseInt("-7.875") // -7
+parseInt("Вася") // NaN
+parseInt("15" ,8) // 13
+
+parseInt - отсекает дробную часть числа.
+    </code>
+</pre>
+              </details>
+
+
+              <details class="show-piece parseFloat">
+                <summary>parseFloat - строку в дробное число</summary>
+                <p>преобразует указанную строку в число с плавающей точкой (десятичной):</p>
+                <pre>
+    <code>
+parseFloat ("435") // 435
+parseFloat("3.14") // 3.14
+parseFloat("-7.875") // -7.875
+parseFloat ("Вася") // NaN
+parseFloat ("17.5") // 17.5
+    </code>
+</pre>
+              </details>
+
+
+            </details>
+          </section>
+          <!-- transformation -->
+
+
+
+          <section class="events">
+            <details class="show-block" open>
+              <summary><code>events</code></summary>
+              <a href="https://www.youtube.com/watch?v=bWCzbR5DvCo&t=908s" target="_blank"
+                rel="noopener noreferrer">источник</a>
+
+              <details class="show-piece" open>
+                <summary><code>виды событий</code></summary>
+
+
+                <p class="color-red">простые</p>
+
+                <ul class="list-reset">
+                  <li><code>mousedown / mouseup -- </code>нажата / отпущена</li>
+                  <li>
+                    <code>mouseover / mouseout -- </code>курсор появляется над элементом / уходит с него
+                  </li>
+                  <li>
+                    <code>mousemove -- </code>каждое движение над элементом генерирует событие
+                  </li>
+                  <li>
+                    <code>contentmenu -- </code>нажатие правой клавишей миши(и клавиатурой вызывается)
+                  </li>
+                </ul>
+
+                <p class="color-red">контекстные</p>
+                <ul class="list-reset">
+                  <li><code>click -- </code>Вызывается при mousedown, а затем mouseup над одним и тем же элементом
+                  </li>
+                  <li><code>dblclick -- </code>двойной <code>click</code> над одним и тем же элементом</li>
+                </ul>
+
+                <p class="color-red">-</p>
+                <ul class="list-reset">
+                  <li>oninput - получить данные из поля ввода без отправки формы</li>
+                  <li></li>
+                </ul>
+              </details>
+              <!-- виды событий -->
+
+
+              <details class="show-piece" open>
+                <summary><code>event</code> - объект у каждого события</summary>
+                <pre><code>
+каждое событие имеет свой объект свойств с которыми можно взаимодействовать		
+свойства можно вытащить при помощи объекта <span class="color-red">event</span>		
+ 
+---
+document.onclick = (event) =&gt; { console.log(event) } 
+элемент.событие = (объект этого события) =gt { взаимодействуем с объектом } 
+---
+
+document.onclick = (event) =&gt; {
+  event         // все детали события (и список всех событий)
+  event.type    // тип события
+
+  event.key     // вернет значение
+  event.keyup   // клавиша отпущена
+  event.keydown // клавиша нажата
+  event.repeat  // автоповтор зажатой клавиши
+  event.code    // вернет закодированную кнопку
+  event.which   // номер кнопки
+  
+  event.target  // объект на котором сработало событие
+  event.currentTarget // объект которому назначен обработчик  
+  
+  и т.д.
+}
+
+
+
+<span class="color-red">event.key // старый браузер возвращает  undefined</span>
+
+</code></pre>
+              </details>
+
+
+              <details class="show-piece" open>
+                <summary><code>виды событий</code></summary>
+
+
+                <table class="show-event">
+                  <thead>
+                    <tr>
+                      <td colspan="2">
+                        <input type="text" class="show-event__input" placeholder="keyup и keydown">
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="show-event__keydown">
+                        <p>type: <span class="type color-red">keydown</span></p>
+                        <p>key: <span class="key"></span></p>
+                        <p>code: <span class="code"></span></p>
+                        <p>keyCode: <span class="keyCode"></span></p>
+                        <p>which: <span class="which"></span></p>
+                      </td>
+                      <td class="show-event__keyup">
+                        <p>type: <span class="type color-red">keyup</span></p>
+                        <p>key: <span class="key"></span></p>
+                        <p>code: <span class="code"></span></p>
+                        <p>keyCode: <span class="keyCode"></span></p>
+                        <p>which: <span class="which"></span></p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- keydown keyup -->
+
+
+
+                <table class="show-event mousemove">
+                  <thead>
+                    <tr>
+                      <td colspan="2">
+                        <input type="text" class="show-event__input" placeholder="mousemove - движение над элементом">
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>type:<span class="type color-red">....................</span></p>
+                        <p>offsetX:<span class="offsetX"></span></p>
+                        <p>pageX:<span class="pageX"></span></p>
+                        <p>clientX:<span class="clientX"></span></p>
+                        <p>layerX:<span class="layerX"></span></p>
+                      </td>
+                      <td>
+                        <p>type:<span class="type color-red">mousemove</span></p>
+                        <p>offsetY:<span class="offsetY"></span></p>
+                        <p>pageY:<span class="pageY"></span></p>
+                        <p>clientY:<span class="clientY"></span></p>
+                        <p>layerY:<span class="layerY"></span></p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- mousemove -->
+
+
+                <table class="show-event oninput">
+                  <thead>
+                    <tr>
+                      <td colspan="2">
+                        <input type="text" class="show-event__input"
+                          placeholder="input - получить данные до отправки формы">
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>type: <span class="color-red">oninput</span></p>
+                        <p>.<span></span></p>
+                        <p>нет value в гугле вместо него data</p>
+                        <p>.<span></span></p>
+                        <p>output: <span class="output"></span></p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+                <!-- <table class="show-event">
+                  <thead>
+                    <tr>
+                      <td colspan="2">
+                        <input type="text" class="show-event__input" placeholder="введите что нибудь">
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="show-event__keydown">
+                        <p>.<span></span></p>
+                        <p>.<span></span></p>
+                        <p>.<span></span></p>
+                        <p>.<span></span></p>
+                        <p>.<span></span></p>
+                      </td>
+                      <td class="show-event__keyup">
+                        <p>.<span></span></p>
+                        <p>.<span></span></p>
+                        <p>.<span></span></p>
+                        <p>.<span></span></p>
+                        <p>.<span></span></p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table> -->
+
+              </details>
+              <!-- key-up-down -->
+
+              <h4>всплытие и погружение</h4>
+
+
+              <details class="show-piece mouse-over-out">
+                <summary><code>mouseover / mouseout - </code>реагируют на дочерние компоненты элемента</summary>
+                <p>реагируют они на них потому что они оба всплывают</p>
+                <p>Оба имеют <code>.relatedTarget</code></p>
+
+                <h5>mouseover</h5>
+
+                <p><code>event.target - </code>элемент на который курсор пришел</p>
+                <p><code>event.relatedTarget - </code>элемент с которого курсор пришел</p>
+
+                <h5>mouseout</h5>
+
+                <p>для него все наоборот</p>
+                <p><code>event.target - </code>элемент с которого курсор пришел</p>
+                <p><code>event.relatedTarget - </code>элемент на который курсор пришел</p>
+
+                <div class="mouse-over-out__hover">
+                  <h4>mouseout</h4>
+                  <h4>mouseover</h4>
+                  <p>реагируют на дочерние компоненты элемента</p>
+                </div>
+
+                <h3>пример реагирования на потомков</h3>
+
+                <p>переход курсором на потомков чувствуется</p>
+
+                <h4>сделан на делегировании событий</h4>
+
+                <div class="mouse-over-out__hover-grid">
+                  <span>1</span>
+                  <span>2</span>
+                  <span>3</span>
+                  <span>4</span>
+                  <span>5</span>
+                  <span>6</span>
+                  <span>7</span>
+                  <span>8</span>
+                  <span>9</span>
+                </div>
+
+
+
+              </details>
+              <!-- mouse-over-out -->
+
+
+              <details class="show-piece mouse-enter-leave">
+                <summary><code>mouseenter / mouseleave - </code>НЕ реагируют на дочерние компоненты элемента
+                </summary>
+
+                <p>не реагируют потому что они не всплывают</p>
+
+                <div class="mouse-enter-leave__hover">
+                  <h4>mouseenter</h4>
+                  <h4>mouseleave</h4>
+                  <p>не реагируют на дочерние компоненты элементы</p>
+                </div>
+              </details>
+              <!-- mouse-enter-leave -->
+
+
+              <details class="show-piece drag-field-show">
+                <summary><code>mousedown - </code>перетаскивание</summary>
+                <div class="drag-field">
+                  <div class="drag-field__item"></div>
+                  <div class="drag-field__point"></div>
+                </div>
+              </details>
+              <!-- mousedown -->
+
+
+
+
+
+
+
+              <details class="show-piece scroll">
+                <summary><code>scroll</code></summary>
+                <p>прокрутку нельзя отменить используя event.preventDefault(отменяет действие по умолчанию); потому
+                  что метод сработает уже после того как скролл произойдет</p>
+                <pre><code>
+document.addEventListener("scroll", function (event) {
+  console.log(event);
+  console.log(`${scrollY}px`);
+})
+</code></pre>
+              </details>
+
+
+              <details class="show-piece loading">
+                <summary><code>loading -- </code>событие загрузки страницы</summary>
+
+                <p><code>DOMContentLoaded - </code> Браузер полностью загрузил html, было построено DOM дерево, но
+                  внешние ресурсы, такие как imh или стили, могут быть еще не загружены</p>
+                <p><code>load - </code>браузер загрузил html и внешние ресурсы (картинки, стили и т.д.)</p>
+                <p><code>beforeunload / unload - </code>пользователь покидает страницу</p>
+                <p><code>document.readyState - </code>состояние загрузки(можем отследить состояние
+                  загрузки с
+                  помощью этого свойства)</p>
+                <p>у <code>document.readyState</code> есть 3 возможных значения:</p>
+
+                <ul>
+                  <li><code>loading - </code>документ загружается</li>
+                  <li><code>interactive - </code>документ был полностью прочитан</li>
+                  <li><code>complete - </code>документ был полностью прочитан и все ресурсы были тоже
+                    загружены(картинки, стили и т.д.)</li>
+                </ul>
+
+                <img class="loading__img" src="../img/1.png" alt="">
+                <pre><code>
+// DOMContentLoaded - срабатывает на объекте document
+document.addEventListener("DOMContentLoaded", readyDom);
+                          
+// readyLoad - срабатывает на объекте window
+window.addEventListener("load", readyLoad);
+                          
+function readyDom() {
+  const image = document.querySelector(".loading__img");
+  console.log(document.readyState);  //interactive
+  console.log("DOM загружен!");
+  console.log(image.offsetWidth);
+}
+                          
+function readyLoad() {
+  const image = document.querySelector(".loading__img");
+  console.log(document.readyState); //complete
+  console.log("Страница загружен!");
+  console.log(image.offsetWidth);
+}
+</code></pre>
+
+              </details>
+
+
+              <details class="show-piece beforeunload">
+                <summary><code>beforeunload - </code>пользователь покидает страницу</summary>
+                <pre><code>
+window.addEventListener("beforeunload", beforeUnload);
+                          
+function beforeUnload(event) {
+  event.preventDefault(); // отменение поведения как указано в стандарте
+  event.returnValue = ''; // хром требует установки возвратного значения
+}
+</code></pre>
+
+              </details>
+
+              <details class="show-piece unload">
+                <summary><code>unload - </code>пользователь уже ушел со страницы но мы можем заставить браузер что
+                  то
+                  выполнить в фоновом режиме</summary>
+                <p>работает на объекте window</p>
+
+                <pre><code>
+window.addEventListener("unload", function (e) {
+   Отправка статистики в фоновом режиме и т.д.
+   navigator.sendBeacon(url, data)
+   https://w3c.github.io/beacon/.
+})
+                          </code></pre>
+              </details>
+
+
+
+              <section><!-- Всплытие и погружение -->
+
+                <details class="show-block">
+                  <summary><code>Всплытие и погружение</code></summary>
+
+                  <p>В основном обработчики работают на всплытие а не на погружение</p>
+                  <p>Когда на элементе происходит событие, обработчик сначала срабатывает на нём следом на его
+                    родителе затем выше и т.д., вверх по цепочке предков.</p>
+
+
+                  <div class="ascent">
+                    <h4>кликайте на блоки и <span class="color-red">смотрите консоль</span></h4>
+                    <p>всплытие событий</p>
+
+                    <div class="ascent-one">
+                      <span>блок 1</span>
+                      <div class="ascent-two">
+                        <span>блок 2</span>
+                        <div class="ascent-three">
+                          <span>блок 3</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <h3>Ловим событие еще на погружении</h3>
+
+                    <p><code>"capture": true</code></p>
+                    <p>тут второй блок отлавливает событие ще на погружении и обрабатывает его, следом
+                      обрабатываются
+                      события на всплытии</p>
+
+                    <div class="ascentListener-one">
+                      <span>блок 1</span>
+                      <div class="ascentListener-two">
+                        <span>{"capture": true}</span>
+                        <div class="ascentListener-three">
+                          <span>блок 3</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <p>остановить всплытие можно методом <code>event.stopPropagation();</code></p>
+                  <p>Все события которые всплыли бы(которые идут после этого вверх по цепочке) игнорируются и не
+                    обрабатываются</p>
+
+                </details>
+              </section>
+
+
+              <details class="show-piece onchange"><!-- onchange -->
+                <summary><code>onchange</code> - элемент теряет фокус после изменения содержимого</summary>
+
+                <p>Событие onchange происходит при изменении значения элемента HTML</p>
+                <p>onchange можно использовать с разными элементами. Он срабатывает, когда пользователь переключает
+                  чекбокс
+                  или
+                  радиокнопки.</p>
+                <pre>
+  <code>
+&lt;element onchange="myScript"&gt;
+
+object.onchange = function(){myScript};
+
+object.addEventListener("change", myScript);
+
+  </code>
+</pre>
+
+                <pre>
+  <code>
+
+    <a target="_blank" href="https://htmlacademy.ru/courses/351/run/13">Полное задание htmlacademy</a>
+
+  select — это элемент с классом filter. 
+  Найдём его, сохраним в переменную и добавим обработчик событий onchange.
+  После этого скажем JavaScript выводить значение фильтра в консоль и 
+  по очереди выберем несколько категорий из списка.
+
+
+let articles = document.querySelectorAll('.news-block');   создаем артикль
+let filter = document.querySelector('.filter');     селект
+
+filter.onchange = function () { // onchange сработает при изменении в select
+  for (let article of articles) {           //проверка, что выбранное значение фильтра строго не равно 'all'
+    if (article.dataset.category !== filter.value && filter.value !== 'all') {                          
+      article.classList.add('hidden');
+    } else {
+      article.classList.remove('hidden');
+    }
+  }
+};
+
+
+
+.hidden {
+  display: none;
+}
+  </code>
+</pre>
+
+
+                <p>onchange срабатывает, если значение поля ввода изменилось и пользователь закончил ввод.
+                  Например, если
+                  пользователь передвинул ползунок и отпустил его. Или ввёл что-то в текстовое поле и убрал из
+                  него
+                  курсор.
+                </p>
+                <p>oninput срабатывает на каждое изменение значения, независимо от того, завершил пользователь ввод
+                  или
+                  нет.
+                  Например, он сработает на каждое изменение положения ползунка, даже если пользователь продолжает
+                  его
+                  двигать. И на
+                  каждый новый символ в текстовом поле, даже если пользователь продолжает вводить текст.
+                </p>
+
+
+
+
+                <pre>
+  <code>
+
+&lt;label&gt;Цвет текста:
+  &lt;select&gt; class="filter color-setting" name="font-color"&gt;
+    &lt;option&gt; value="inherit" selected&gt;По умолчанию&lt;/option&gt;
+    &lt;option&gt; value="purple"&gt;Пурпурный&lt;/option&gt;
+    ...
+  &lt;/select&gt;
+&lt;/label&gt;
+
+&lt;label&gt;Размер текста (&lt;output&gt;px class="pixels"&gt;14&lt;/output&gt;px)
+  &lt;input class="size-setting" type="range" min="8" max="48" step="1" value="14"&gt;
+&lt;/label&gt;
+
+&lt;label&gt;Размер текста (&lt;output&gt;px class="pixels"&gt;14&lt;/output&gt;px)
+  &lt;input class="size-setting" type="range" min="8" max="48" step="1" value="14"&gt;
+&lt;/label&gt;
+
+
+let longread = document.querySelector('.longread'); //блок с текстом
+let colorSetting = document.querySelector('.color-setting');   
+let sizeSetting = document.querySelector('.size-setting');         
+let pixels = document.querySelector('.pixels');
+let backgroundSetting = document.querySelector('.background-setting');
+
+colorSetting.onchange = function () { 
+  longread.style.color = colorSetting.value;
+};
+
+sizeSetting.oninput = function () {  // oninput подходит больше
+  pixels.textContent = sizeSetting.value;
+  longread.style.fontSize = sizeSetting.value + 'px';
+};
+
+backgroundSetting.onchange = function() {
+  longread.style.backgroundColor = backgroundSetting.value;
+}
+  </code>
+</pre>
+
+              </details>
+
+
+            </details>
+          </section>
+          <!-- events -->
+
+
+          <details class="show-piece">
+            <summary><code>addEventListener</code></summary>
+
+            <pre><code>
+const options = { 
+  "capture": false,
+  "once": false,
+  "passive": true
+}
+
+element.addEventListener("click", testFunction, options);
+
+function testFunction() {
+  console.log(this); //выведет в консоль тип события
+}
+  </code>
+</pre>
+
+            <dl>
+              <dt><code>"capture": true / false  -- </code>порядок обработки событий</dt>
+              <dd>
+                Фаза на которой должен сработать обработчик (всплытие или погружение). Ловит событие еще на
+                погружении
+                и можно обработать его прежде чем сработают обработчики на всплытие. если поставить на
+                средний элемент
+                true то сначала отработает он при погружении потом начнет всплывать и отработают другие
+                события, на
+                третьем и первом элементе
+              </dd>
+
+              <dt><code>"once": true / false -- </code>removeEventListener</dt>
+              <dd>
+                true удалит обработчик после выполнения (то же что и removeEventListener)
+              </dd>
+
+              <dt><code>"passive": true / false -- </code> не выполнит <code>preventDefaгlt();</code></dt>
+              <dd>
+                true указывает что обработчик не собирается
+                выполнять preventDefaгlt(отменяет действие браузера по умолчанию(смотрите в делегировании
+                собитий)).
+                Это значит что при скролле пальцем или подобное действие обработчик не будет отменять
+                действия
+                браузера по умолчанию, значит что при скролле пальцем задержек всяких не будет возникать и
+                скролл
+                будет плавным. true убирает ненужные задержки и браузер сразу начинает выполнять действия по
+                умолчанию
+                для некоторых браузеров эта опция уже включена по умолчанию(указана true) для таких событий
+                как:
+                <ul>
+                  <li>
+                    <code>addEventListener("touchstart",...)</code>
+                  </li>
+                  <li>
+                    <code>addEventListener("touchmove",...)</code>
+                  </li>
+                </ul>
+                т.е. если у вас есть отмена стандартных действий браузера по
+                умолчанию как в примере <a href="#events__item-link-cancle">отмены действий браузера</a> и
+                указан
+                <code>addEventListener(..., {"passive": true})</code> то действия по умолчанию выполнятся
+                проигнорировав вашу отмену
+              </dd>
+
+            </dl>
+
+          </details>
+          <!-- addEventListener -->
+
+
+
+          <details class="show-piece delegate-event">
+            <summary><code>Делегирование событий</code></summary>
+            <p>Если элементов достаточно много что бы не вешать обработчик на каждый из них(висящие на них
+              обработчики
+              могут не хило замедлить работу), можно повесить обработчик на их родителя, а функциональность
+              добавить
+              всем элементам через цикл.</p>
+            <p class="color-red">в консоли</p>
+
+            <button class="delegate-event__button">1</button>
+            <button class="delegate-event__button">2</button>
+            <button class="delegate-event__button">3</button>
+            <button class="delegate-event__button">4</button>
+
+
+            <h4>меню на делегировании событий</h4>
+
+            <p>обработчик висит на document а не на самом меню</p>
+            <p>данное меню скрывается атрибутом hidden</p>
+
+            <nav class="delegate-event--menu">
+              <button type="button" class="delegate-event--menu--button">
+                <span>Открыть меню</span>
+                <span>Закрыть меню</span>
+              </button>
+              <ul hidden>
+                <li><a>пункт 1</a></li>
+                <li><a>пункт 2</a></li>
+                <li><a>пункт 3</a></li>
+                <li><a>пункт 4</a></li>
+              </ul>
+            </nav>
+
+          </details>
+          <!-- меню на делегировании событий -->
+
+
+
+          <section class="export-import">
+            <details class="show-block">
+              <summary><code>export-import</code></summary>
+
+              <pre><code>
+import * as name from"./.../....js"; 
+
+*     - все файлы 
+as    - общее имя(name) всех файлов для обращения к ним
+from  - откуда
+
+</code></pre>
+
+
+              <p><b>import</b> <em>дефолтные через запятую</em><b>,</b> { <em>именованные через запятую</em> }
+                откуда
+                "./... .js"
+              </p>
+
+              <div class="export-import__box">
+
+                <pre><code>
+<b>Основной файл</b>
+  
+          
+import del, { sum, show, color } from "./func.js";
+        
+
+
+color(elem);
+    
+sum(4, 1);
+    
+show(elem);
+
+del(elem);
+    <hr>  
+<b>переименование</b>
+
+import del as  delete, { * as <span style="color: red;">name</span> } from "./func.js";
+import del теперь delete, { все теперь <span style="color: red;">name</span> } из "./func.js";
+
+функции стали как свойства объекта <span style="color: red;">name</span>
+но не все а только те которые мы
+объединили в объект <ins> * as name</ins>
+
+
+<span style="color: red;">name</span>.color(elem);
+  
+<span style="color: red;">name</span>.sum(4, 1);
+
+<span style="color: red;">name</span>.show(elem);
+
+delete(elem); //не свойсво объекта <span style="color: red;">name</span>
+</code></pre>
+
+                <pre><code>
+<b>Дополнительный файл</b>
+  
+  
+let sum = function (a, b) { ... }
+let show = function (elem) { ... }
+
+export let color = function() { ... }
+  
+export default function del(elem) { ... }
+  
+
+
+      
+объявленный экспорт снизу не перечисляется:  
+
+export { sum, show };
+</code></pre>
+              </div>
+            </details>
+          </section>
+          <!-- export-import -->
+
+
+
+        </div>
+        <!-- container -->
+
+      </section>
+      <!-- js -->
+
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+  <script src="../js/js.js"></script>
+</body>
+
+</html>

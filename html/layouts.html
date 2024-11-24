@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>layouts</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/layouts.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <section class="layouts">
+
+          <h1 hidden>layouts</h1>
+
+
+          <section class="show-info float">
+            <h2><a name="layouts-float" class="color-red">float</a></h2>
+
+            <p><span class="color-yellow">clear</span> - запрещает обтекание элемента другими элементами</p>
+            <ul class="list-reset">
+              <li><span class="color-yellow">left</span> - запрещено обтекание слева</li>
+              <li><span class="color-yellow">right</span> - запрещено обтекание справа</li>
+              <li><span class="color-yellow">both</span> - запрещено обтекание с обеих сторон</li>
+              <li><span class="color-yellow">none</span> - обтекание разрешено</li>
+            </ul>
+
+
+            <p>Если после флоатного элемента расположен элемент с запрещённым обтеканием, то последний опускается
+              под
+              флоатный.</p>
+
+
+            <section class="float__item">
+
+              <div class="item">
+                <div class="content">Если поставить порядок элементов другой то соседний блок займет место того у
+                  которого
+                  display:
+                  float потому что float вырывает элемент из потока.</div>
+                <div class="sitebar">этот блок уйдет ниже потому что вырвался из потока и занял возможное свободное
+                  место
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="sitebar">Для нужного нам эффекта мы дадим основному блоку левый margin, чтобы он ужался
+                  направо,
+                  а боковую панель заfloat'им.</div>
+                <div class="content">У этого способа есть один очень серьезный недостаток. Обратите внимание, что в
+                  исходном
+                  HTML блок "sidebar" идет до
+                  блока "content" с основным содержимым. Так сделано специально, потому что
+                  иначе этот самый способ с наложением колонки поверх margin'а не работал бы. потому что зафлоаченый
+                  элемент
+                  просто выпадает из потока а соседний блок займет его место.</div>
+              </div>
+
+            </section>
+
+
+
+            <section class="clearfix">
+              <h2>выпадание флоатов: распорки</h2>
+              <p>контейнер схлопнется по высоте если внутри будут одни зафлоаченые элементы, потому что они выпадают
+                из
+                потока</p>
+              <pre>
+  <code>
+&lt;div class="container"&gt; - блок-контейнер
+  &lt;div&gt; class="column1"&gt;...&lt;/div&gt; - колонка, флоат
+  &lt;div&gt; class="column2"&gt;...&lt;/div&gt; - колонка, флоат
+  &lt;div&gt; class="clearfix"&gt;&lt;/div&gt; - распорка с clear:both
+&lt;/div&gt;
+  </code>
+</pre>
+              <p>То есть начали добавлять после зафлоаченных колонок пустой элемент-распорку со свойством clear:both.
+                Этот
+                элемент видел колонки, не давал им пройти через себя, а заодно и растягивал родительский блок по
+                высоте.
+                Для
+                таких распорок прижилось специальное название класса — clearfix.</p>
+
+              <h2>псевдораспорки</h2>
+              <pre>
+  <code>
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  </code>
+</pre>
+              <p>А затем класс clearfix добавляется к контейнеру, внутри которого лежат флоатные колонки. После этого
+                в
+                контейнер не нужно добавлять дополнительный элемент-распорку, так как распорка создаётся с помощью
+                псевдоэлемента.</p>
+
+            </section>
+
+
+
+
+          </section>
+
+
+
+          <section class="show-info flex">
+            <h2><a name="layouts-flex" class="color-red">flex</a></h2>
+
+            <section class="flex-layout">
+              <p>По умолчанию флекс элементы выстраиваются вдоль главной оси и <span class="color-red">растягиваются во
+                  всю длину поперечной оси</span>.
+              </p>
+              <p>flex-direction: изменение направления осей</p>
+
+              <div class="flex-layout__inner">
+                <div class="flex-layout__item">
+                  <div class="item">&#10239;</div>
+                  <div class="item">&#8862;</div>
+                  <div class="item">&#8634;</div>
+                </div>
+
+                <div class="flex-layout__item">
+                  <div class="item">&#10239;</div>
+                  <div class="item">&#8862;</div>
+                  <div class="item">&#8634;</div>
+                </div>
+
+                <div class="flex-layout__item">
+                  <div class="item">&#10239;</div>
+                  <div class="item">&#8862;</div>
+                  <div class="item">&#8634;</div>
+                </div>
+              </div>
+
+            </section>
+
+
+            <h2>flex-shrink</h2>
+            <p>Изменение ширины флекс элементов </p>
+            <section class="flex-shrink">
+
+              <div class="flex-shrink__item">
+                <div class="flex-shrink__box">
+                  <div class="item">&#10239;</div>
+                  <div class="item">&#10007;</div>
+                  <div class="item">&#10003;</div>
+                  <div class="item">&#8862;</div>
+                </div>
+              </div>
+
+              <div class="flex-shrink__item">
+                <div class="flex-shrink__box">
+                  <div class="item">hover</div>
+                  <div class="item">hover</div>
+                  <div class="item">hover</div>
+                  <div class="item">hover</div>
+                </div>
+              </div>
+
+              <div class="flex-shrink__item">
+                <div class="flex-shrink__box">
+                  <div class="item">&#8857;</div>
+                  <div class="item">&#8858;</div>
+                  <div class="item">&#8859;</div>
+                  <div class="item">&#8855;</div>
+                </div>
+              </div>
+
+            </section>
+
+
+
+
+
+
+
+          </section>
+
+
+
+          <section class="show-info grid">
+
+            <h2><a name="layouts-grid" class="color-red">grid</a></h2>
+            
+            <p>Чтобы растянуть грид-элемент, используют слово span, а после указывают число колонок, которые элемент
+              должен занять:</p>
+            <pre>
+  <code>
+.element {              Элемент из примера растянется на две колонки
+  grid-column: span 2;  
+}  
+  </code>
+</pre>
+
+            <article>
+              <h2>grid-auto-flow</h2>
+              <p>Значение по умолчанию row говорит располагать элементы в том порядке, в котором они идут в
+                разметке, и
+                при необходимости
+                создавать новые ряды.</p>
+              <p>Но если указать значение dense, то контейнер будет заполняться так, чтобы не было пропусков.</p>
+              <p>Значение dense заставляет грид-контейнер заполнять пустые ячейки первым подходящим по размеру
+                грид-элементом. При этом
+                визуальный порядок на странице может отличаться от порядка элементов в разметке. Если порядок
+                элементов важен, лучше это
+                значение не использовать.</p>
+            </article>
+
+            <h2>Положение сетки</h2>
+            <p><span class="color-red">grid-template: </span>grid-template-rows / grid-template-columns;</p>
+            <p><span class="color-red">grid-row: </span>grid-row-start / grid-row-end;</p>
+            <p><span class="color-red">grid-column: </span>grid-column-start / grid-column-end</p>
+
+            <section class="grid__position">
+
+
+              <div class="grid-example grid-example-common">
+
+                <div class="place-content">
+                  <p>place-content:
+                    <select class="select-align-content">
+                      <option disabled>align-content</option>
+                      <option value="stretch">stretch</option>
+                      <option value="start">start</option>
+                      <option value="end">end</option>
+                      <option value="center">center</option>
+                      <option value="space-between">space-between</option>
+                      <option value="space-around">space-around</option>
+                      <option value="space-evenly">space-evenly</option>
+                    </select>
+                    <select class="select-justify-content">
+                      <option disabled>justify-content</option>
+                      <option value="stretch">stretch</option>
+                      <option value="start">start</option>
+                      <option value="end">end</option>
+                      <option value="center">center</option>
+                      <option value="space-between">space-between</option>
+                      <option value="space-around">space-around</option>
+                      <option value="space-evenly">space-evenly</option>
+                    </select>
+                  </p>
+                </div>
+                <div class="place-self">
+                  <p>place-self:
+                    <select class="select-align-self">
+                      <option disabled>align-self</option>
+                      <option value="stretch">stretch</option>
+                      <option value="start">start</option>
+                      <option value="end">end</option>
+                      <option value="center">center</option>
+                    </select>
+                    <select class="select-justify-self">
+                      <option disabled>justify-self</option>
+                      <option value="stretch">stretch</option>
+                      <option value="start">start</option>
+                      <option value="end">end</option>
+                      <option value="center">center</option>
+                    </select>
+                  </p>
+                </div>
+                <div class="place-items">
+                  <p>place-items:
+                    <select class="select-align-items">
+                      <option disabled>align-items</option>
+                      <option value="stretch">stretch</option>
+                      <option value="start">start</option>
+                      <option value="end">end</option>
+                      <option value="center">center</option>
+                    </select>
+                    <select class="select-justify-items">
+                      <option disabled>justify-items</option>
+                      <option value="stretch">stretch</option>
+                      <option value="start">start</option>
+                      <option value="end">end</option>
+                      <option value="center">center</option>
+                    </select>
+                  </p>
+                </div>
+
+
+                <div class="grid-example__inner">
+                  <div class="item">
+                    <div>1</div>
+                  </div>
+                  <div class="item">
+                    <div>2</div>
+                  </div>
+                  <div class="item">
+                    <div>3</div>
+                  </div>
+                  <div class="item">
+                    <div>4</div>
+                  </div>
+                  <div class="item">
+                    <div>5</div>
+                  </div>
+                  <div class="item">
+                    <div>6</div>
+                  </div>
+                  <div class="item">
+                    <div>7</div>
+                  </div>
+                  <div class="item">
+                    <div>8</div>
+                  </div>
+                  <div class="item">
+                    <div>9</div>
+                  </div>
+                </div>
+              </div>
+
+            </section>
+
+
+            <div class="grid__item grid-area">
+              <h2>grid-area</h2>
+
+
+
+              <div class="grid-area__inner">
+
+
+                <div class="show-code">
+                  <h2 class="show-code__title"></h2>
+
+                  <div class="show-code__description">
+                    <!-- <p>точка делает блок пустым</p> -->
+                  </div>
+
+                  <div class="show-code__inner">
+                    <div class="show-code__performance">
+                      <section class="class">
+                        <div class="grid">
+                          <div class="grid-header"></div>
+                          <div class="grid-main"></div>
+                          <div class="grid-aside"></div>
+                          <div class="grid-footer"></div>
+                        </div>
+                      </section>
+                    </div>
+                    <textarea class="show-code__textarea">
+.grid {
+
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;-
+  grid-template-areas:
+
+  ". header header header"  ---- точка делает пустым блок
+  "main main . aside"
+  ". footer footer footer";
+}
+.grid-header {
+  grid-area: header;  --- grid-area: имя области
+}
+.grid-main {
+  grid-area: main;
+}
+.grid-aside {
+  grid-area: aside;
+}
+.grid-footer {
+  grid-area: footer;
+}
+</textarea>
+
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <h2>adaptive grid</h2>
+
+            <div class="grid__item grid-adaptive">
+
+              <img src="../img/auto-fit.jpg" alt="">
+              <img src="../img/auto-fill.jpg" alt="">
+              <img src="../img/auto-flex.jpg" alt="">
+
+            </div>
+
+            <section class="grid-template">
+
+              <div class="show-code">
+                <h2 class="show-code__title">grid template:</h2>
+
+                <div class="show-code__description">
+                  <!-- <p>description</p> -->
+                </div>
+
+                <div class="show-code__inner">
+                  <div class="show-code__performance">
+                    <section class="grid-template__inner">
+                      <div class="grid-template__item"><span>1</span></div>
+                      <div class="grid-template__item"><span>2</span></div>
+                      <div class="grid-template__item"><span>3</span></div>
+                      <div class="grid-template__item"><span>4</span></div>
+                      <div class="grid-template__item"><span>5</span></div>
+                      <div class="grid-template__item"><span>6</span></div>
+                      <div class="grid-template__item"><span>7</span></div>
+                      <div class="grid-template__item"><span>8</span></div>
+                      <div class="grid-template__item"><span>9</span></div>
+                      <div class="grid-template__item"><span>10</span></div>
+                      <div class="grid-template__item"><span>11</span></div>
+                      <div class="grid-template__item"><span>12</span></div>
+                      <div class="grid-template__item"><span>13</span></div>
+                      <div class="grid-template__item"><span>14</span></div>
+
+                    </section>
+                  </div>
+
+                  <textarea class="show-code__textarea">
+.grid-template__inner {
+  padding: 1em 0;
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-auto-rows: 2em;
+  gap: 1em;
+}
+
+.grid-template__item {
+  background-color: rgba(183, 91, 91, 0.537);
+  position: relative;
+  text-align: center;
+  border-radius: .3em;
+}
+
+.grid-template__item span {
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  bottom: .2em;
+  right: .2em;
+}
+
+
+.grid-template__item:nth-child(2) {
+  grid-column: 2 / -1;
+}
+
+.grid-template__item:nth-child(3) {
+  grid-row: 2 / 5;
+}
+
+.grid-template__item:nth-child(5) {
+  grid-column: span 2;
+  grid-row: span 3;
+}
+
+.grid-template__item:nth-child(8) {
+  grid-area: 5 / 1 / 7 / 4;
+}
+
+.grid-template__item:nth-child(14) {
+  grid-column: 2 / 3;
+  grid-row: 7 / 8;
+}
+     </textarea>
+
+                </div>
+              </div>
+
+
+            </section>
+
+            <section class="grid-inside-ie">
+              <details class="show-block">
+                <summary><code>display:grid в IE11</code></summary>
+
+                <h3 class="">display:grid в IE11</h3>
+
+                <p>Памятка по особенностям использования display: grid в IE11 на простом
+                  примере. IE11 вполне сносно работает с grid, если
+                  учесть его специфику. Про сам grid я рассказывать не буду, в сети полно исчерпывающих руководств,
+                  здесь же хочу
+                  заострить внимание именно на отличиях его реализации в IE11, потому что это единственное известное
+                  мне
+                  свойство, которое
+                  не корректируется автоматически использованием autoprefixer.</p>
+
+                <figure>
+                  <figcaption>Допустим, мы хотим сверстать вот такой шаблон:</figcaption>
+                  <img src="../img/grid-inside-ie.png" alt="">
+                </figure>
+
+                <p>Для начала опишем словами макет. Это таблица из трех колонок и четырех
+                  строк с отступами между ячейками. Ячейка 4 занимает две колонки, ячейка 5 занимает три строки.</p>
+
+                <p>Блочная модель выглядит так:</p>
+
+
+                <pre>
+                  <code>
+&lsaquo;div id="container"&rsaquo;
+                    
+  &lsaquo;div class="cell"&rsaquo;1&lsaquo;/div&rsaquo;
+  &lsaquo;div class="cell"&rsaquo;2&lsaquo;/div&rsaquo;
+  &lsaquo;div class="cell"&rsaquo;3&lsaquo;/div&rsaquo;
+                    
+  &lsaquo;div class="cell col-span"&rsaquo;4&lsaquo;/div&rsaquo;
+  &lsaquo;div class="cell row-span"&rsaquo;5&lsaquo;/div&rsaquo;
+                    
+  &lsaquo;div class="cell"&rsaquo;6&lsaquo;/div&rsaquo;
+  &lsaquo;div class="cell"&rsaquo;7&lsaquo;/div&rsaquo;
+  &lsaquo;div class="cell"&rsaquo;8&lsaquo;/div&rsaquo;
+  &lsaquo;div class="cell"&rsaquo;9&lsaquo;/div&rsaquo;
+                    
+&lsaquo;/div&rsaquo;
+                  </code>
+        </pre>
+
+
+                <p>Теперь пишем стили для современных браузеров:</p>
+
+                <pre>
+  <code>
+#container {
+  display: grid;                       
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
+}
+                        
+.col-span {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  grid-row-start: 2;
+}
+                        
+.row-span {
+  grid-row-start: 2;
+  grid-row-end: span 3;
+}
+                      </code>
+</pre>
+
+
+                <p>Здесь все логично. Для содержащего контейнера наша сетка описывается указанием количества колонок,
+                  количества строк и
+                  отступов меджу ними. Описывать простые ячейки нет необходимости, браузер сам расставит их по местам.
+                  Опиисания требуют
+                  только особенные, занимающие несколько мест. Для ячейки, объединяющей несколько столбцов, указываем
+                  столбец начала и
+                  столбец конца с ключевым словом span. Аналогично для строк.
+
+                  С ИЕ все сложнее. ИЕ поддерживает старую спецификацию grid, в которой отступы считались за отдельную
+                  колонку. Поэтому
+                  свойства для отступов grid-gap не существует, отступы нужно указывать в описании сетки. Из этого
+                  следует, что у нас
+                  изменяется нумерация колонок и столбцов.
+
+                  Кроме того, для ИЕ необходимо указывать положение в сетке для каждой ячейки, иначе он поставит их
+                  все на первую позицию.</p>
+
+
+
+                <p>Стили для ИЕ11:</p>
+
+
+                <pre>
+  <code>
+#container {
+  display: -ms-grid;
+  -ms-grid-columns: 1fr 1em 1fr 1em 1fr;
+  -ms-grid-rows: 1fr 1em 1fr 1em 1fr 1em 1fr;
+}
+
+.cell:nth-child(1) {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+}
+.cell:nth-child(2) {
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
+}
+.cell:nth-child(3) {
+  -ms-grid-column: 5;
+  -ms-grid-row: 1;
+}
+
+.cell:nth-child(4) {
+  -ms-grid-column: 1;
+  -ms-grid-row: 3;
+  -ms-grid-column-span:3;
+}
+.cell:nth-child(5) {
+  -ms-grid-column: 5;
+  -ms-grid-row: 3;
+  -ms-grid-row-span:7;
+}
+
+.cell:nth-child(6) {
+  -ms-grid-column: 1;
+  -ms-grid-row: 5;
+}
+.cell:nth-child(7) {
+  -ms-grid-column: 3;
+  -ms-grid-row: 5;
+}
+
+.cell:nth-child(8) {
+  -ms-grid-column: 1;
+  -ms-grid-row: 7;
+}
+.cell:nth-child(9) {
+  -ms-grid-column: 3;
+  -ms-grid-row: 7;
+}
+    </code>
+</pre>
+
+                <p>Видно, что, к примеру, для второй ячейки указана колонка 3, а не 2 - это как раз то смещение из-за
+                  отступа,это он занял
+                  вторую колонку. Собственно, это все. С учетом этих несложных особенностей grid вполне можно
+                  использовать
+                  в
+                  IE11.</p>
+
+              </details>
+            </section>
+
+
+          </section>
+
+
+
+
+        </section>
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+  <script src="../js/layouts.js"></script>
+</body>
+
+</html>

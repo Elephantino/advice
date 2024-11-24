@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/css.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <img src="../img/logo.png" alt="">
+            <!-- Да да не удивляйтесь -->
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+
+
+        <div class="performance">
+          <p>initial - все свойства в начальные значения.</p>
+          <p>inherit - все свойства в их унаследованные значения.</p>
+          <p>unset - Изменяет все значения на соответствующее значение по умолчанию, которое является либо inherit
+            или
+            initial.</p>
+          <p>revert - Результирующие значения зависят от источника таблицы стилей, где находится это свойство.</p>
+          <p>revert-layer - Результирующие значения будут соответствовать предыдущему каскадному слою или
+            следующему
+            соответствующему правилу.</p>
+        </div>
+
+
+
+
+        <section class="text">
+          <details class="show-block">
+            <summary><code>text</code></summary>
+
+            <details class="show-piece" open>
+              <summary><code><b>user-select: none</b></code></summary>
+              <p class="user-select"><span>выделение те</span>кста при нажатии</p>
+            </details>
+            <!-- user-select -->
+
+            <details class="show-piece" open>
+              <summary><code><b>теги изменений:</b></code></summary>
+              <ul class="list-reset">
+                <li><b>&lt;b&gt;жирный текст&lt;/b&gt;</b></li>
+                <li><strong>&lt;strong&gt;важный жирный текст&lt;/strong&gt;</strong></li>
+                <li><em>&lt;em&gt;важный курсивный текст&lt;/em&gt;</em></li>
+                <li><i>&lt;i&gt;курсивный текст&lt;/i&gt;</i></li>
+                <li><u>&lt;u&gt;подчеркнутый текст&lt;/u&gt;</u></li>
+                <li><s>&lt;s&gt;перечеркнутый текст&lt;/s&gt;</s></li>
+                <li><del>&lt;del&gt;важный перечеркнутый текст&lt;/del&gt;</del></li>
+                <li><ins>&lt;ins&gt;важный подчеркнутый текст&lt;/ins&gt;</ins></li>
+              </ul>
+
+              <details class="show-piece">
+                <summary><code>del / ins</code></summary>
+                <pre><code>
+del -- «delete» // текст который был удалён в новой версии документа.
+ins -- «insert» // текст который был добавлен в новой версии документа.
+
+&lt;del datetime="2009-10-10T23:38-07:00"&gt;Поспать&lt;/del&gt;
+
+
+del и ins имеют атрибуты:
+
+cite -- используется для ссылки на источник или описание произошедшего изменения
+datetime -- можно указать дату и время поправки / предназначен не для людей
+
+</code></pre>
+              </details>
+            </details>
+            <!-- теги изменений -->
+
+            <details class="show-piece" open>
+              <summary><code><b>text-decoration -- </b></code>text-decoration-line, text-decoration-style,
+                text-decoration-color</summary>
+
+            </details>
+            <!-- text-decoration -->
+
+            <details class="show-piece" open>
+              <summary><code><b>line-height -- </b></code>межстрочный интервал</summary>
+
+              <div class="line-height">
+
+              </div>
+
+            </details>
+            <!-- line-height -->
+
+            <details class="show-piece" open>
+              <summary><code><b>letter-spacing</b></code></summary>
+              <p><span style="letter-spacing: 5px;">интервал между символами</span></p>
+            </details>
+            <!-- letter-spacing -->
+
+            <details class="show-piece" open>
+              <summary><code><b>white-space -- </b></code>управление пробелами при переносе</summary>
+            </details>
+            <!-- white-space -->
+
+            <details class="show-piece" open>
+              <summary><code><b>sub / sup</b></code></summary>
+              <p><code>20м<sup>2</sup>H<sub>2</sub>O - X<sup>3</sup>+X<sup>2</sup>=1</code></p>
+            </details>
+            <!-- sub / sup -->
+
+            <details class="show-piece" open>
+              <summary><code><b>text-overflow:</b> clip / ellipsis</code></summary>
+              <div class="text-overflow">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+              </div>
+            </details>
+            <!-- text-overflow -->
+
+            <details class="show-piece" open>
+              <summary><code><b>text-indent -- </b>красная строка</code></summary>
+              <div class="preview text-indent">
+
+                <div class="inner">
+                  <div class="item">
+                    <p><b>text-indent: 2em;</b> - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, at.
+                    </p>
+                  </div>
+                  <div class="item">
+                    <p><b>text-indent: -2em;</b> - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia,
+                      esse.</p>
+                  </div>
+                </div>
+              </div>
+            </details>
+            <!-- text-indent -->
+
+
+            <details class="show-piece" open>
+              <summary>
+                <code><b>text-align:</b> left / right / centet / justify /start и end</code>
+                <span class="color-red-light">задаётся контейнеру</span>
+              </summary>
+
+              <details class="show-piece ">
+                <summary><code><b>text-justify -- </b></code>управление пробелами в
+                  <code>text-align: justify</code> (<span class="color-red">почти нет поддержки</span>)
+                </summary>
+
+                <div class="text-justify">
+
+                  <div class="inner">
+                    <div class="item">
+                      <p>auto</p>
+                      <p>Lorem ipsum dolor amet. Inventore maxime exercitationem saepe esse. Lorem ipsum dolor sit
+                        consectetur
+                        exercitationem elit. Numquam tempore, delectus exercitationem exercitm error.</p>
+                    </div>
+                    <div class="item">
+                      <p>inter-word</p>
+                      <p>Lorem ipsum dolor amet. Inventore maxime exercitationem saepe esse. Lorem ipsum dolor sit
+                        consectetur
+                        exercitationem elit. Numquam tempore, delectus exercitationem exercitm error.</p>
+                    </div>
+                    <div class="item">
+                      <p>inter-character</p>
+                      <p>Lorem ipsum dolor amet. Inventore maxime exercitationem saepe esse. Lorem ipsum dolor sit
+                        consectetur
+                        exercitationem elit. Numquam tempore, delectus exercitationem exercitm error.</p>
+                    </div>
+                    <div class="item">
+                      <p>distribute</p>
+                      <p>Lorem ipsum dolor amet. Inventore maxime exercitationem saepe esse. Lorem ipsum dolor sit
+                        consectetur
+                        exercitationem elit. Numquam tempore, delectus exercitationem exercitm error.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </details>
+
+            </details>
+            <!-- text-align  text-justify -->
+
+            <details class="show-piece preview vertical-align" open>
+              <summary>
+                <code><b>vertical-align -- </b>top / bottom / baseline / middle / sub / super / text-bottom / text-top <span class="color-red-light">задаётся элементу</span></code>
+              </summary>
+
+              <img src="../img/vertical-align.png" alt="vertical-align">
+
+            </details>
+            <!-- vertical-align -->
+
+
+            <details class="show-piece writing-mode" open>
+              <summary><code><b>writing-mode:</b> horizontal-tb / vertical-rl / vertical-lr</code></summary>
+
+              <div class="flex-container-performance">
+                <div class="item">
+                  <p>horizontal-tb</p>
+                </div>
+                <div class="item">
+                  <p>vertical-rl</p>
+                </div>
+                <div class="item">
+                  <p>vertical-lr</p>
+                </div>
+              </div>
+
+            </details>
+            <!-- writing-mode -->
+
+
+            <details class="show-piece preview text-orientation" open>
+              <summary><code><b>text-orientation:</b> upright / mixed</code> вместе с writing-mode</summary>
+
+              <div class="flex-container-performance">
+                <div class="item">
+                  <p>upright</p>
+                </div>
+                <div class="item">
+                  <p>mixed</p>
+                  <p>vertical-rl</p>
+                </div>
+                <div class="item">
+                  <p>mixed</p>
+                  <p>vertical-lr</p>
+                </div>
+              </div>
+            </details>
+            <!-- text-orientation -->
+
+
+          </details>
+        </section>
+        <!-- text -->
+
+        <section class="animation">
+          <details class="show-block">
+            <summary><code>animation</code></summary>
+            <p>animation: name, duration, timing-function, delay, iteration-count, direction, fill-mode,
+              play-state.</p>
+          </details>
+        </section>
+        <!-- animation -->
+
+
+        <section class="transform">
+          <details class="show-block">
+            <summary><code>transform</code></summary>
+            <section class="transform">
+              <div class="translate">
+                <div>translate(x, y, z);</div>
+                <div>-10px, 0px</div>
+                <div>0px, -10px</div>
+                <div>translate3d(0px, 0px, 10px);</div>
+              </div>
+              <div class="rotate">
+                <div>rotate(x, y, z);</div>
+                <div>15deg</div>
+                <div>-40deg</div>
+                <div>90deg</div>
+                <div>-90deg</div>
+              </div>
+              <div class="skew">
+                <div>skew(x, y)</div>
+                <div>10deg</div>
+                <div>0, -10deg</div>
+                <div>-50deg, 0</div>
+              </div>
+              <div class="scale">
+                <div>scale(px);</div>
+                <div>-1</div>
+                <div>2</div>
+                <div>scaleX(2)</div>
+                <div>scaleY(2)</div>
+                <div>0.5</div>
+              </div>
+              <div class="matrix">
+                <div>matrix</div>
+                <!-- <div></div> -->
+                <!-- <div></div> -->
+                <!-- <div></div> -->
+              </div>
+            </section>
+          </details>
+        </section>
+
+
+        <section><!-- популярные названия классов -->
+          <details class="show-block">
+            <summary><code>популярные названия классов</code></summary>
+
+            <p>Класс должен отражать назначение элемента.</p>
+            <p>Плохими считаются классы, которые описывают внешний вид.</p>
+            <p>Исключение делается для дивов-обёрток, которые нужны исключительно для оформления.</p>
+
+            <h2>Блоки</h2>
+
+            <ul>
+              <li>sity-suggest - ваш город?</li>
+              <li>feedback - обратная связь</li>
+              <li>page — корневой элемент страницы (page-header \ page-main \ page-footer)</li>
+              <li>content — содержимое элемента</li>
+              <li>sidebar — боковая колонка (страницы или элемента)</li>
+              <li>aside — блок с дополнительной информацией</li>
+              <li>widget — виджет, например, в боковой колонке</li>
+              <li>advertisement, adv, commercial, promo — рекламный блок (режутся Адблоком, не рекомендуется
+                использовать такие классы для
+                блоков с внутренней рекламой)</li>
+              <li>meta — блок с дополнительной информацией, например, блок тегов и даты в посте</li>
+            </ul>
+
+            <h2>Элемент</h2>
+            <ul>
+              <li>cart, basket — корзина</li>
+              <li>more, all — ссылка на полную информацию</li>
+            </ul>
+
+
+            <h2>Раскладка</h2>
+            <ul>
+              <li>wrapper, wrap — обёртка, обычно внешняя</li>
+              <li>inner — внутренняя обёртка</li>
+              <li>container, holder, box — контейнер (holder держатель, владелец, обладатель)</li>
+              <li>col, column — контейнер в виде столбца</li>
+            </ul>
+
+            <h2>Текст</h2>
+            <ul>
+              <li>title, subject, heading, headline, caption — заголовок</li>
+              <li>subtitle — подзаголовок</li>
+              <li>slogan — слоган</li>
+              <li>lead, tagline — лид-абзац в тексте</li>
+              <li>text — текстовый контент</li>
+              <li>desc — описание, вариант текстового контента</li>
+              <li>excerpt — отрывок текста, обычно используется перед ссылкой «Читать далее…»</li>
+            </ul>
+
+            <h2>Списки</h2>
+            <ul>
+              <li>dropdown — выпадающий список</li>
+              <li>list, items — список</li>
+              <li>item — элемент списка</li>
+              <li>features, benefits — список основных особенностей товара, услуги</li>
+            </ul>
+
+
+            <h2>Изображения</h2>
+            <ul>
+              <li>icon — иконка</li>
+              <li>logo — логотип</li>
+              <li>userpic, avatar — юзерпик, маленькая картинка пользователя</li>
+              <li>thumbnail, thumb — миниатюра, уменьшенное изображение</li>
+              <li>socials — блок иконок соцсетей</li>
+            </ul>
+
+            <h2>Элементы управления</h2>
+            <ul>
+              <li>control — элемент управления, например, стрелки «Вперёд/назад» в фотогалерее, кнопки управления
+                слайдером</li>
+              <li>slider, carousel — интерактивный элемент с прокруткой содержимого</li>
+              <li>pagination — постраничная навигация</li>
+              <li>bullet — переключатели в пагинации</li>
+              <li>preview — анонс, отрывок, например новости или поста, может состоять из заголовка, описания и
+                картинки. Предполагается
+                ссылка на полную версию</li>
+              <li>breadcrumbs — навигационная цепочка, «хлебные крошки»</li>
+            </ul>
+
+            <h2>Окна</h2>
+            <ul>
+              <li>popup — всплывающее окно</li>
+              <li>modal — модальное (диалоговое) окно</li>
+              <li>tooltip, tip — всплывающие подсказки</li>
+            </ul>
+
+            <h2>Размеры</h2>
+            <il>
+              <li>tiny, xs — маленький, крохотный</li>
+              <li>small, sm — небольшой</li>
+              <li>medium, md — средний</li>
+              <li>big, large, lg — большой</li>
+              <li>huge, xl — огромный</li>
+              <li>narrow — узкий</li>
+              <li>wide — широкий</li>
+            </il>
+
+            <h2>Состояния</h2>
+            <ul>
+              <li>active, current — активный элемент, например, текущий пункт меню</li>
+              <li>hidden — скрытый элемент</li>
+              <li>error — статус ошибки</li>
+              <li>warning — статус предупреждения</li>
+              <li>success — статус успешного выполнения задачи</li>
+              <li>pending — состояние ожидания, например, перед сменой статуса на error или success</li>
+            </ul>
+
+          </details>
+        </section>
+        <!-- популярные названия классов -->
+
+        <section>
+
+          <details class="show-piece scroll-bar">
+            <summary><code>scroll-bar</code></summary>
+            <p>боковая полоса прокрутки в ff не делается через css, единственное это сменить цвет</p>
+
+            <ul>
+              <li>scrollbar-width</li>
+              <li>scrollbar-color</li>
+              <li>scrollbar-gutter</li>
+            </ul>
+
+            <p>в webkit все проще:</p>
+
+            <ul>
+              <li>::-webkit-scroll-bar</li>
+              <li>::-webkit-scroll-bar-button</li>
+              <li>::-webkit-scroll-bar-track</li>
+              <li>::-webkit-scroll-bar-thumb</li>
+            </ul>
+          </details>
+          <!-- scroll-bar -->
+
+          <details class="show-piece a-priority">
+            <summary><code>Приоритет</code></summary>
+            <pre><code>
+&lt;div id="floor"&gt;
+  &lt;span class="cat-in-box"&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+span { 7 }
+div span { 6 }
+#floor .cat-in-box { 5 }
+.cat-in-box { 4 }
+#floor span { 3 }
+div .cat-in-box { 2 }
+
+!important { 1}
+  </code></pre>
+          </details>
+          <!-- Приоритет -->
+
+          <details class="show-piece border">
+            <summary><code>border: width / style / color</code></summary>
+
+            <p>Разные горизонтальные и вертикальные радиусы:</p>
+            <p><code>border-radius: 10px 20px 30px 40px / 5px 15px 25px 35px;</code></p>
+
+          </details>
+          <!-- border -->
+
+
+          <details class="show-piece fit-content">
+            <summary><code>min-content / max-content / fit-content</code></summary>
+            <h4><code>margin: 0 auto; </code>у всех элементов</h4>
+            <div class="fit-content__inner">
+
+              <div class="fit-content__one">
+                <p><code>100px</code></p>
+                <p>Lorem ipsum dolor sit amet, consecteturconsectetur adipisicing elit. Natus, nesciunt?</p>
+              </div>
+              <div class="fit-content__two">
+                <p><code>min-content</code></p>
+                <p>secteturconsecteturt. Самый длинный элемент определяет ширину контейнера</p>
+              </div>
+              <div class="fit-content__three">
+                <p><code>max-content</code></p>
+                <p>Lorem ipsum dolor sit amet, consecteturconsectetur adipisicing elit. Natus, nesciunt?</p>
+              </div>
+              <div class="fit-content__three">
+                <p><code>max-content</code></p>
+                <p>Lorem adipisicing elit. Natus, nesciunt?</p>
+                <p>margin: 0 auto;</p>
+              </div>
+              <div class="fit-content__four">
+                <p><code>fit-content</code></p>
+                <p>Lorem ipsum dolor sit amet, consecteturconsectetur adipisicing elit. Natus, nesciunt?</p>
+              </div>
+              <div class="fit-content__five">
+                <p><code>fit-content</code></p>
+                <p>Lorem ipsum dolor elit.</p>
+              </div>
+            </div>
+          </details>
+          <!-- min-content / max-content / fit-content -->
+
+
+          <details class="show-piece background">
+            <summary><code>background: color image position/size repeat origin clip attachment;</code></summary>
+
+            <p>background: url("../image/examples-burger-svg.svg") no-repeat 0 0 / cover;</p>
+
+
+            <div class="performance">
+              <pre><code>
+<span class="color-red">background-position</span>
+
+background-position: 50px 100px;
+background-position: 50% 25%;
+background-position: right bottom;
+background-position: right 30px bottom 60px; 
+
+</code></pre>
+            </div>
+
+
+            <div class="performance">
+              <pre><code>
+<span class="color-red">background-size</span>
+
+contain -- расширяется во все стороны пока не упрётся в край блока с какой нибудь стороны
+cover -- пропорции изображения сохраняются;
+
+</code></pre>
+            </div>
+
+
+            <div class="performance">
+              <pre><code>
+<span class="color-red">background-repeat</span>: repeat / repeat-x / repeat-y / no-repeat / round / space
+
+<span class="color-red">round</span> -- повторяющиеся картинки по краям блока обрезаться не будут
+<span class="color-red">space</span> -- Режим повторения фона space похож на round,  при чём части картинки тоже не обрезаются.
+Отличие в том, что повторяющиеся фоновые картинки не сжимаются или растягиваются, а для 
+компенсации ширины блока между ними добавляется пустое пространство.
+
+</code></pre>
+            </div>
+
+
+            <div class="performance">
+              <pre><code>
+<span class="color-red">background-attachment</span>: scroll(default) / fixed
+
+фон не прокручивается, зафиксирован на одном месте.
+
+</code></pre>
+            </div>
+
+
+            <div class="performance">
+              <pre><code>
+<span class="color-red">background-origin</span> - расположение и размеры области отображения фонового изображения
+<span class="color-red">background-clip</span>   - управляет тем, как обрезается фон  
+<img src="../img/background-origin-clip.jpg" alt="background-origin.jpg">  
+
+</code></pre>
+            </div>
+
+
+            <div class="performance">
+              <pre><code>
+<span class="color-red">фон инлайново в html</span>
+			
+&lt;a href="#" class="abc" style="background-image: url(img/abc.png)"&gt;
+						
+.abc {
+ ...
+}
+				
+ссылка строчный элемент и что бы фон работал 
+нужно сделать ее блочной или элементом flex/grid
+
+</code></pre>
+            </div>
+
+
+            <div class="performance">
+              <pre><code>
+<span class="color-red">размножить рисунок на весь фон</span>
+
+linear-gradient( ... );
+background-size: 50px 50px;
+background-repeat: repeat;
+
+</code></pre>
+            </div>
+
+
+            <div class="performance">
+              <pre><code>
+<span class="color-red">множественные фоны</span>
+пути к изображениям background перечисляются через запятую
+
+img {
+  background-color: #ffffff;
+  background-image: url("img/glasses.svg"), url("img/keks.jpg");
+  background-position: 75px 125px, center;  
+  background-clip: padding-box;
+  background-origin: border-box;
+  background-size: 150px, cover;    размер первой будет 150px а второй cover
+  background-repeat: no-repeat;
+}
+
+Значения других свойств изображений тоже задаются через запятую.
+Порядок значений должен соответствовать порядку фоновых картинок.
+
+<span class="color-red">image-set</span> -- несколько фоновых изображений
+
+element {
+  background-image: image-set(
+    small-image.png 1x,
+    medium-image.png 2x,
+    large-image.png 3x
+  );
+}
+
+</code></pre>
+            </div>
+
+
+          </details>
+          <!-- background -->
+
+
+          <details class="show-piece outline">
+            <summary><code><a name="outline">outline</a></code></summary>
+            <p>не влияет на размер элемента и не занимает места, то есть отображается над другими элементами.</p>
+
+            <pre><code>
+outline-width: 10px;
+outline-style: solid;
+outline-color: black;
+
+</code></pre>
+            <p>outline-offset -- изменяет расположение рамки</p>
+            <p>внешней рамке нельзя задать параметры отдельных сторон.</p>
+          </details>
+          <!-- outline -->
+
+
+          <details class="show-piece opacity">
+            <summary><code><a name="opacity">opacity</a></code></summary>
+            <div class="show-code">
+              <h2 class="show-code__title" hidden></h2>
+
+              <div class="show-code__description">
+                <p hidden></p>
+              </div>
+
+              <div class="show-code__inner">
+                <div class="show-code__performance">
+                  <section class="class">
+                    <div class="opacity__performance"></div>
+                  </section>
+                </div>
+
+                <textarea cols="30" rows="10" class="show-code__textarea">
+.opacity__performance {
+  opacity: 0;
+  animation: 3s 0.3s anim-opacity ease forwards;
+  background: green;
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+@keyframes anim-opacity {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+	</textarea>
+
+              </div>
+            </div>
+
+          </details>
+          <!-- opacity -->
+
+
+          <details class="show-piece box-shadow">
+            <summary><code>box-shadow</code> - даже у тени есть своя тень(filter-drop-shadow)</summary>
+
+            <p>Тень в реальном мире редко бывает просто черной, она обычно содержит в себе оттенок основного цвета
+              обьекта. Такие тени
+              смотрятся органично.</p>
+            <p>Если какой-то параметр тени не указан, значит он равен 0.</p>
+            <p>рамки увеличивают размер элемента, а тени — нет.</p>
+
+
+            <pre>
+  <code>
+box-shadow: inset? h-offset v-offset blur-radius spread-distance color;
+
+[inset] — внутренняя
+[5px] — смещение по x
+[10px] — смещение по y
+[2px] — размытие
+[3px] — растяжение
+[red]; — цвет
+  </code>
+</pre>
+
+
+            <h3>Множественные тени</h3>
+            <p>тени выстраиваются в стек в обратном порядке и отрисовываются, начиная с последней, причем каждая из
+              них применяется к
+              исходному объекту так, как будто есть только она.</p>
+
+            <button class="box-shadow__button-one" type="button">button</button>
+            <button class="box-shadow__button-two" type="button">в разных направлениях</button>
+            <button class="box-shadow__button-three" type="button">внутренние и внешние</button>
+            <button class="box-shadow__button-four" type="button">продвинутое подчеркивание</button>
+
+
+            <h2>Смягчение теней с помощью слоёв</h2>
+            <p><a class="shadow__link" href="https://xhtml.ru/2021/css/layered-smooth-box-shadows/">Смягчение
+                теней с помощью слоёв в CSS-свойстве box-shadow</a></p>
+            <p>Если увеличивать количество слоев, нужно уменьшить значение прозрачности для каждого слоя, чтобы
+              плотность тени оставалась примерно такой же.</p>
+
+            <button class="shadow-softening__one" type="button">4 слоя с прозрачностью 15%</button>
+            <button class="shadow-softening__two" type="button">6 слоёв с прозрачностью 11%</button>
+            <p>Можно смелее увеличивать размытие, чтобы расширить распространение и ещё больше смягчить эффект тени:
+            </p>
+            <button class="shadow-softening__three" type="button">становится ещё мягче с увеличением шага изменения
+              прозрачности</button>
+            <p>можно управлять длиной тени</p>
+            <button class="shadow-softening__four" type="button">короткая тень с меньшим расстоянием</button>
+            <button class="shadow-softening__five" type="button">длинная тень с большим расстоянием</button>
+          </details>
+          <!-- box-shadow -->
+
+
+          <section>
+            <h2>:псевдоклассы / ::псевдоэлементы</h2>
+
+            <details class="show-piece nth-child">
+              <summary><code>:nth-child() :nth-last-child :nth-last-of-type() :nth-of-type</code></summary>
+
+              <div class="nth-child">
+                <table class="nth-child__table">
+                  <caption>nth-child</caption>
+
+                  <tbody>
+                    <tr class="nth-child__tr-1">
+                      <th>:first-child</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                    <tr class="nth-child__tr-2">
+                      <th>:last-child</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                    <tr class="nth-child__tr-3">
+                      <th>:nth-child(2)</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                    <tr class="nth-child__tr-4">
+                      <th>:nth-last-child(2)</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                    <tr class="nth-child__tr-5">
+                      <th>:nth-child(odd)</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                    <tr class="nth-child__tr-6">
+                      <th>:nth-child(even)</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                    <tr class="nth-child__tr-7">
+                      <th>:nth-child(2n)</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                    <tr class="nth-child__tr-8">
+                      <th>:nth-child(n+3)</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                    <tr class="nth-child__tr-9">
+                      <th>:nth-child(-n+3)</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                    <tr class="nth-child__tr-10">
+                      <th>:nth-child(3n-1)</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                    <tr class="nth-child__tr-11">
+                      <th>:nth-child(4n-1)</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                    <tr class="nth-child__tr-12">
+                      <th>:nth-child(4n)</th>
+                      <td>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="nth-child__how">
+                  <p>how it works?</p>
+
+                  <div class="nth-child__item">
+                    <p>( n + 3 )</p>
+                    <ul>
+                      <li>n = 0 =&gt; ( 0 + 3 ) = 3-й элемент</li>
+                      <li>n = 1 =&gt; ( 1 + 3 ) = 4-й элемент</li>
+                      <li>n = 2 =&gt; ( 2 + 3 ) = 5-й элемент</li>
+                      <li>n = 3 =&gt; ( 3 + 3 ) = 6-й элемент</li>
+                      <li>n = 4 =&gt; ( 4 + 3 ) = 7-й элемент</li>
+                    </ul>
+                  </div>
+
+                  <div class="nth-child__item">
+                    <p>( -n + 3 )</p>
+                    <ul>
+                      <li>n = -0 =&gt; ( -0 + 3 ) = 3-й элемент</li>
+                      <li>n = -1 =&gt; ( -1 + 3 ) = 2-й элемент</li>
+                      <li>n = -2 =&gt; ( -2 + 3 ) = 1-й элемент</li>
+                      <li>n = -3 =&gt; ( -3 + 3 ) = 0-й элемент</li>
+                      <li>n = -4 =&gt; ( -4 + 3 ) = -1-й элемент</li>
+                    </ul>
+                  </div>
+
+                  <div class="nth-child__item">
+                    <p>( 4n - 1 )</p>
+                    <ul>
+                      <li>n = 0 =&gt; ( 4 * 0 - 1 ) = -1-й элемент</li>
+                      <li>n = 1 =&gt; ( 4 * 1 - 1 ) = 3-й элемент</li>
+                      <li>n = 2 =&gt; ( 4 * 2 - 1 ) = 7-й элемент</li>
+                      <li>n = 3 =&gt; ( 4 * 3 - 1 ) = 11-й элемент</li>
+                      <li>n = 4 =&gt; ( 4 * 4 - 1 ) = 15-й элемент</li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+
+            </details>
+            <!-- nth-child -->
+
+
+            <pre><code>
+
+                         поиск элементов
+
+
+по селектору
+-------------
+
+li + li               | соседние
+ul &gt; li &gt; span        | дочерние
+li.one ~ li.six       | родственный
+footer ul span        | контекстные (вложенные)
+.class.class2         | oбъединение селекторов / классов
+
+
+по атрибуту
+------------
+
+input[checked]  
+input[type="text"] 
+details[open] &gt; summary 
+
+
+
+по значениям атрибутов 
+-----------------------
+
+[foo="bar"]     | полное совпадение
+[foo^="bar"]    | поиск в начале строки
+[href$=".pdf"]  | поиск в конце строки
+[foo*="bar"]    | поиск подстроки везде
+[foo^="bar-"]   | поиск по префиксу &lt; элементы, у которых значение 
+                                       атрибута foo начинается 
+					 со значения bar-
+
+
+
+поиск слов внутри строки
+-------------------------
+[value~="Регистрозависим"]  | все элементы у которых значение атрибута value 
+[value~="регистрозависим"]  | содержит слово регистрозависим или Регистрозависим
+
+
+
+
+::first-letter | первый символ  
+::first-line   | первая строка 
+
+:first-child   | первый дочерний элемент \любой\ 
+:last-of-type  | последний дочерний элемент \с учетом типа\
+
+:only-child    | единственный потомок родителя
+:only-of-type  | единственный потомок родителя \с учетом типа\
+
+:empty         | элемент у которого нет потомков
+
+<span title=".card:not(:has(+.card)) -- все .card за которыми нет .card">:has</span>           | стилизовать родителя при наличии конкретного ребёнка
+<span title=":not(:first-child):not(:last-child) { Выберет все теги li, которые НЕ являются первыми и последними в их родителе }">:not           | элементы не соответствующие селектору</span>
+
+:default       | элементы которые используются по умолчанию в группе аналогичных элементов
+
+---
+:focus         | когда элемент получает фоку
+:focus-visible | когда действительно нужно визуально выделить элементы в фокусе
+:focus-within  | элементы которые сами находятся в фокусе, либо имеют дочерние элементы в фокусе
+
+:current()  | элемент или предок элемента, который отображается в данный момент
+:future     | любой элемент, который встречается после :current()
+
+:fullscreen | элемент который в данный момент находится в полноэкранном режиме
+---
+
+
+---
+<span title=":is(header, main, footer) p:hover { ... }">:is()</span>      | принимют один или несколько селекторов в качестве аргумента
+:matches() | Браузер применяет стили к каждому из перечисленных селекторов
+:any()     | is это замена для matches и any
+
+<span title=":where(header, main, footer) p:hover { ... }">:where()</span>   | принимает список селекторов и выбирает только те элементы, которые могут быть выбраны из переданного списка
+---
+
+
+
+---
+:link    | ссылки которые не были посещены  
+:visited | ссылки которые были посещены  
+:hover   | наведение на элемент
+:active  | между нажатием и отпусканием кнопки мыши 
+
+:target  | элемент куда ведет ссылка /якорь/
+:any-link| все элементы a, area, link, которые имеют атрибут href. все элементы, которые используют :link или :visited
+---
+
+
+---
+:modal 
+:popover-open | стилизует всплывающее окно, когда оно находится в «открытом» состоянии
+
+::backdrop     
+---
+
+
+
+
+
+
+формы
+------
+
+:checked  | все выбранные checkbox или radio
+
+:requied  | поля обязательные для заполнения
+:optional | поля НЕобязательные для заполнения \элементы, у которых нет :required\
+
+:enabled   | включённые элементы форм
+:disabled  | отключённые элементы форм
+
+:read-only  | input[readonly] | поля НЕдоступные для редактирования пользователем
+:read-write | not([readonly]) | поля доступные для редактирования пользователем \без атрибута readonly, даже если у них disabled\
+
+:valid   | элементы контент которых проходит валидацию
+:invalid | элементы контент которых НЕ проходит валидацию
+
+:in-range     | все элементы, значение которых попадает в указанный диапазон
+:out-of-range | все элементы, значение которых НЕ попадает в указанный диапазон
+
+:blank    | выбирает пустые элементы пользовательского ввода (input или textarea)
+ 
+:autofill | когда значение input автоматически заполняется браузером
+
+:checked  | radio, checkbox, option которые выбраны или включены
+
+
+
+
+
+:root | обратиться к самому главному родительскому элементу документа \корневой элемент\ 
+
+:picture-in-picture | элемент который находится в режиме «картинка в картинке»
+
+:lang() | элементы основываясь на языке, на котором они определены
+
+:first  | используется с @-правилом @page, представляя первую страницу документа при печати
+
+:indeterminate | элементы в неопределённом состоянии
+
+
+
+
+audio и video
+--------------
+
+:paused  | применяется к элементам audio и video, когда их проигрывание ставится на паузу
+:playing | применяется к элементам audio и video, когда происходит проигрывание аудио или виде
+:muted   | элемент способный издавать звук, например audio или video, но приглушенный (принудительно молчащий)
+:seeking | применяется к элементам audio и video, когда в проигрывателе на шкале времени ищется определённая позиция
+:stalled | применяется к элементам audio и video, когда проигрывание застопорилось
+---
+
+
+
+
+
+
+---------------
+псевдоэлементы
+---------------
+
+::after (:after)        | { content: "" }
+::before (:before)      | { content: "" }
+::marker                | { content: "" }
+
+
+::backdrop              | фон подложки элемента dialog
+::cue
+::file-selector-button
+::first-letter
+::first-line
+::grammar-error
+::highlight()
+::part()
+::placeholder  | :placeholder-shown | любой элемент с активным плейсхолдером
+::selection
+::slotted()
+::spelling-error
+::target-text
+::view-transition
+::view-transition-group
+::view-transition-image-pair
+::view-transition-new
+::view-transition-old
+
+
+
+At-rules
+
+@charset
+@color-profile
+@container
+@counter-style
+@font-face
+@font-feature-values
+@font-palette-values
+@import
+@keyframes
+@layer
+@media
+@namespace
+@page
+@position-tryExperimental
+@property
+@scope
+@starting-style
+@supports
+@view-transitionExperimental
+
+</code></pre>
+
+
+
+          </section>
+          <!-- :псевдоклассы / ::псевдоэлементы -->
+
+
+        </section>
+
+      </div>
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

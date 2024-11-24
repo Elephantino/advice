@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prototype</title>
+  <link rel="stylesheet" href="../style.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <section class="prototype">
+
+          <h1>прототипы</h1>
+          <p>Когда мы пытаемся получить доступ к свойству объекта, свойство ищется не только в самом объекте. Также
+            производится
+            поиск в прототипе объекта, в прототипе прототипа и так далее — пока не будет найдено свойство,
+            соответствующее имени,
+            или не будет достигнут конец цепочки прототипов .</p>
+          <p>Если свойство или метод не найдено нигде в цепочке прототипов, только тогда JavaScript вернет
+            undefined.
+          </p>
+          <p>Если мы создадим массив и выведем его на консоль, в нем мы увидим это: [[Prototype]]</p>
+          <p>Двойные квадратные скобки, которые заключают в себя, [[Prototype]]означают, что это внутреннее свойство
+            и
+            к нему нельзя
+            получить прямой доступ в коде.</p>
+          <p>Чтобы найти [[Prototype]]объект, мы воспользуемся Object.getPrototypeOf()методом.</p>
+
+          <pre><code>
+const arr = [1,2,3]
+console.log(Object.getPrototypeOf(arr))
+
+</code></pre>
+
+
+          <p>В конце цепочки прототипов находится Object.prototype. Все объекты наследуют свойства и методы Object.
+            Любая попытка
+            поиска за пределами конца цепочки приводит к результату null.</p>
+          <p>Если вы ищете прототип прототипа массива, функции или строки, вы увидите, что это объект. И это потому,
+            что в JavaScript
+            все объекты являются потомками или экземплярами Object.prototypeобъекта , который устанавливает свойства
+            и
+            методы для
+            всех других типов данных JavaScript.</p>
+
+          <pre><code>
+const arr = [1,2,3]
+const arrProto = Object.getPrototypeOf(arr)
+console.log(Object.getPrototypeOf(arrProto))
+
+</code></pre>
+
+
+          <p>Каждый тип прототипа (например, прототип массива) определяет свои собственные методы и свойства, а в
+            некоторых случаях
+            переопределяет методы Object.prototypeи свойства (вот почему у массивов есть методы, которых нет у
+            объектов).</p>
+          <p>Но под капотом и по лестнице цепочки прототипов все в JavaScript построено на платформе
+            Object.prototype.
+          </p>
+          <p>Если мы попытаемся заглянуть в прототип, то Object.prototype получим null.</p>
+
+          <pre><code>
+const arr = [1,2,3]
+const arrProto = Object.getPrototypeOf(arr)
+const objectProto = Object.getPrototypeOf(arrProto)
+console.log(Object.getPrototypeOf(objectProto))
+
+</code></pre>
+
+
+
+          <hr>
+
+
+
+          <h3>__proto__</h3>
+
+          <p>когда мы хотим прочитать свойство из объекта а оно отсуцтвует, то js автоматически берет его из
+            прототипа(прототипное наследование)</p>
+
+          <pre><code>
+задать прототип
+
+obj.__proto__: protoObj;
+
+obj {
+  __proto__: protoObj,
+}
+
+let obj = new Object(protoObj)
+</code></pre>
+
+
+          <h2>this</h2>
+          <p>У нас может быть большой объект со множеством методов
+            от которого можно наследовать. Наследующие объекты могут вызывать его методы но они будут изменять свое
+            состояние а не объекта родителя.</p>
+          <textarea name="" id="" cols="30" rows="10">
+let old = {
+  name: "name-old",
+  get f() {
+    return this.name
+  }
+}
+
+console.log(old.f) //name-old
+
+let newObj = new Object(old); создали объект на основе old
+
+console.log(newObj.f) //name-old
+
+newObj.name = "name-newObj"
+
+console.log(newObj.f) //name-newObj
+</textarea>
+
+
+
+          <h2>цикл for...in перебирает и унаследованные свойства тоже а Object.keys(obj) только собственные</h2>
+
+          <textarea name="" id="" cols="30" rows="10">
+const a = {
+  a: "A",
+  b: "B",
+}
+
+const c = {
+  c: "C",
+  __proto__: a,
+}
+
+for (let prop in c) console.log(prop)  // c a b
+
+console.log(Object.keys(c)) // c
+</textarea>
+
+          <h2>obj.hasOwnProperty(key)</h2>
+          <p>obj.hasOwnProperty(key) метод вернет true если у obj есть собственное(не унаследованное) свойство key
+            иначе false</p>
+          <textarea name="" id="" cols="50" rows="10">
+let a = {
+  a: "a",
+}
+
+let b = {
+  b: "b",
+  __proto__: a,
+}
+
+console.log(b.a) //a
+
+for (let i in b) {
+  let isOwn = b.hasOwnProperty(i);
+	
+  if (isOwn) {
+    console.log("свое " + i) //свое b
+  } else {
+  console.log("наследуемое " + i) //наследуемое a
+  }
+}
+</textarea>
+
+        </section>
+        <!-- prototype -->
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

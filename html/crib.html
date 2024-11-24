@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>шпора</title>
+  <link rel="stylesheet" href="../style.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+        <div class="page--main__inner">
+
+          <h3>Все методы вставки автоматически удаляют узлы со старых мест(кроме клонирования).</h3>
+          <p><code>prepend, append, before, after - </code>заменяют теги на текст</p>
+
+          <h3><code>Устаревшие методы</code></h3>
+
+          <p><code>elem.appendChild(node) - </code>вставит node после последнего элемента внутри elem</p>
+          <p><code>elem.insertBefore(node, nextSibling) - </code>вставит узел node перед nextSibling внутри elem</p>
+          <p><code>parent.removeChild(node) - </code>вызываем метод на родительском элементе и передаем аргументом
+            дочерний элемент который нужно удалить</p>
+          <p><code>replaceChild - </code>заменить элемент другим</p>
+
+          <h3><code>вставить элемент а не текст? -- insertAdjacentHTML</code></h3>
+
+          <p><code>insertAdjacentHTML(where, elem или text) - </code>вставить фрагмент html или текст</p>
+          <p><code>DocumentFragment - </code>вставить множество элементов</p>
+
+
+
+
+
+          <h3>получение контента и его установка</h3>
+
+          <p><code>textContent - </code>получить/вписать просто текст (и содержимое его потомков)(предпочтителен потому
+            что не парсит html)</p>
+          <p><code>innerHTML - </code>установка или получение текста вместе с HTML разметкой элемента</p>
+          <p><code>innerText - </code>копирует текст, отображаемый элементом в браузере(учитывает стили)(немного
+            устарел)</p>
+          <p><code>outerText - </code>удаляет полностью весь элемент а на его место ставит текстовое содержимое</p>
+          <p><code>outerHTML - </code>замена элемента и его дочерних компонентов</p>
+
+
+          <p><code>style.WebkitBorderRadius = '5px';</code></p>
+          <p><code>cssText - </code>перезаписать или добавить стили</p>
+          <p><code>getComputedStyle(element, [pseudo]) - </code>получить стили</p>
+
+          <p><code>.className - </code>заменит всю строку с классами</p>
+          <p><code>.classList  -- add / remove / toggle / contains</code></p>
+
+
+
+
+
+
+          <h3>Логические операторы</h3>
+
+          <dl>
+            <dt>если (?)
+            <dd>
+              <code>let result = условие ? значение1 : значение2;</code>
+              <br>
+              если условие истинно, возвращается значение1, в противном случае – значение2
+            </dd>
+            </dt>
+            <dt>или (||)
+            <dd>
+              <code>result = a || b;</code>
+              <br>
+              если первый операнд вернет true то второй не вычисляется
+            </dd>
+            </dt>
+            <dt>и (&&)
+            <dd>
+              <code>alert( 1 && 2 && null && 3 ); // null</code>
+              <br>
+              <code>alert( 1 && 2 && 3 ); // 3</code>
+              <br>
+              возвращает первое ложное значение, или последнее, если ничего не найдено
+            </dd>
+            </dt>
+          </dl>
+
+
+
+
+
+
+
+          <h3>интерфейсы Node</h3>
+
+          <p>Каждый отдельный узел, будь то html-элемент, его атрибуты или текст, в структуре DOM представлен обьектом
+            Node</p>
+          <p>Любой элемент на странице является узлом, но не любой узел является элементом(атрибуты и текст так же
+            являютс узлами)</p>
+
+          <p>Обьект Node представляет ряд свойств с помощью которых мы можем получить информацию о данном узле:</p>
+
+          <p><code>node.remove() - </code>удаление узлов</p>
+          <p><code>node.replaceWith - </code>заменить node узлом или строкой</p>
+
+          <ul>
+
+            <li><b>childNodes</b> - коллекция дочерних узлов</li>
+            <li><b>children</b> - коллекция дочерних узлов которые являются элементами</li>
+            <li><b>firstChild</b> - первый дочерний узел текущего узла</li>
+            <li><b>firstElementChild</b> - первый дочерний узел который является элементом</li>
+            <li><b>lastChild</b> - последний дочерний узел текущего узла</li>
+            <li><b>lastElementChild</b> - последний дочерний узел который является элементом</li>
+            <li><b>previousSibling</b> - предыдущий узел на текущем уровне</li>
+            <li><b>nextSibling</b> - следующий узел на текущем уровне</li>
+            <li><b>previousElementSibling</b> - предыдущий узел, который является элементом на текущем уровне</li>
+            <li><b>nextElementSibling</b> - следующий узел, который является элементом на текущем уровне</li>
+            <li><b>ownerDocument</b> - корневой узел документа</li>
+            <li><b>parentNode</b> - родительский узел для текущего узла</li>
+            <li><b>parentElement</b> - родительский узел который является элементом</li>
+            <li><b>nodeName</b> - имя узла</li>
+            <li><b>nodeType</b> - тип узла в виде числа(1-элемент/ 2-атрибут/ 3-текст)</li>
+            <li><b>nodeValue</b> - текст текущего узла</li>
+            <li><b>hasChildNodes()</b> - true если содержит вложенные узлы</li>
+            <li><b>importNode(existingNode, deep)</b> - создает новый узел на основе существующего</li>
+            <li><b>localName / tagName</b> - имя тега</li>
+            <li><b>id / className / classList</b> - </li>
+            <li><b>replaceChild(newNode, existingNode)</b> - звменяет существующий узел(existingNode) новым (newNode)
+            </li>
+            <li><b>removeChild(node)</b> - удаляет указаный дочерний узел</li>
+
+          </ul>
+
+
+          <details class="show-piece">
+            <summary><code>NodeIterator и TreeWalker - </code>обход деревьев узлов</summary>
+            <textarea cols="50" rows="13">
+<p><span><a></a></span></p>
+
+const iterator = document.createNodeIterator(p);
+
+console.log(iterator)                // NodeIterator
+console.log(iterator.nextNode())     // p
+console.log(iterator.nextNode())     // span 
+console.log(iterator.nextNode())     // a
+console.log(iterator.previousNode()) // a
+console.log(iterator.previousNode()) // span
+console.log(iterator.previousNode()) // p
+console.log(iterator.previousNode()) // null
+</textarea>
+          </details>
+
+
+
+
+
+
+
+
+          <h4>атрибуты</h4>
+
+          <ul>
+            <li><b>hasAttributes</b> - true / false (если есть какие то атрибуты)</li>
+            <li><b>hasAttribute(attrName)</b> - true / false (если есть конкретный атрибут)</li>
+            <li>-</li>
+            <li><b>getAttributesNames</b> - вернет название атрибутов</li>
+            <li><b>getAttribute(attrName)</b> - вернет значение указанного attrName</li>
+            <li>-</li>
+            <li><b>createAttribute(attr)</b></li>
+            <li><b>setAttribute(name, value)</b></li>
+            <li><b>removeAttribute(attr)</b></li>
+            <li><b>toggleAttribute(name, force)</b></li>
+            <li><b>attributes </b>- перебираемая коллекция(объект со свойствами name и value)</li>
+          </ul>
+
+          <div class="performance">
+            <ul>
+              <li>getAtribute - обычные атрибуты</li>
+              <li>dataset - нестандартные атрибусы(дата-атрибуты)</li>
+              <li>setAttribute(atr, value) - замена значения или добавление атрибута с значением</li>
+            </ul>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <section class="data-attribute">
+            <details class="show-block">
+              <summary><code><a name="дата атрибуты">работа с дата-атрибутами</a></code></summary>
+              <p>в HTML можно создавать свои собственные атрибуты. Имена таких атрибутов начинаются с префикса data-,
+                после которого идёт
+                любое выбранное разработчиком слово. Это немного похоже на переменные: вы сами решаете, как назвать
+                атрибут и какое он
+                должен иметь значение.</p>
+
+              <p>Атрибуты, начинающиеся с data-, обычно используют, чтобы хранить вспомогательную информацию.</p>
+
+              <h4>получить значение дата-атрибута</h4>
+
+              <p>Для этого используют свойство dataset, после которого указывают имя атрибута без префикса data-:</p>
+
+              <p><code>элемент.dataset.имяДатаАтрибутаБезПрефикса(data-)</code></p>
+
+              <p>Если имя атрибута состояло из нескольких слов и в нём были дефисы, то в JavaScript его записывают в
+                camelCase</p>
+
+              <textarea cols="50" rows="3">
+<div class="div" data-pet-name="Абобус"></div>
+
+elem.dataset.petName // Абобус
+</textarea>
+            </details>
+          </section>
+
+
+
+
+
+
+          <h3>сравнение узлов </h3>
+
+          <p>два узла равны если они имеют один и тот же тип,определяющие характиристики (для элементов это их id,
+            кол-во дочерних элементов и т.д.) совпадение атрибутов и т.д.</p>
+
+          <details class="show-piece">
+            <summary><code>elem.isEqualNode(node) - </code>сравнивает узлы</summary>
+            <textarea cols="50" rows="13">
+<span>text</span>
+<span>texttext</span>
+<span>text</span>
+
+let divList = document.getElementsByTagName("span");
+
+let d0 = divList[0];
+let d1 = divList[1];
+let d2 = divList[2];
+
+console.log(d0.isEqualNode(d1)); // false
+console.log(d0.isEqualNode(d2)); // true
+</textarea>
+          </details>
+
+          <details class="show-piece">
+            <summary><code>elem.isSameNode(node) - </code>идентичность узлов(устаревшая замена ===)</summary>
+
+          </details>
+
+
+
+
+
+
+          <h3>объект Document</h3>
+
+          <p><code>location - </code>объект с информацией о текущей локации документа</p>
+          <p>свойства объекта location</p>
+          <ul>
+            <li><b>hash</b> - хэш-часть url (символ # и все, что следует за ним) напримет #top</li>
+            <li><b>host</b> - название хоста или порта <code><b>localhost:3000</b></code></li>
+
+            <li><b>hostname</b> - название хоста <code><b>localhost:</b>3000</code></li>
+            <li><b>port</b> - localhost:<b>3000</b></li>
+            <li><b>href</b> - полный путь</li>
+            <li><b>origin</b> - <code>protocol + host</code></li>
+            <li><b>pathname</b> - путь до протокола</li>
+            <li><b>protocol</b> - https</li>
+            <li><b>search</b> - строка запроса (<b>?</b> и все что следует за ним)</li>
+
+          </ul>
+
+          <p>методы <code>location</code></p>
+
+          <ul>
+            <li><b>reload()</b> - перезагрузить текущую локацию</li>
+            <li><b>replace()</b> - заменить текущую локацию на новую</li>
+            <li><b></b> - </li>
+            <li><b>title</b> - </li>
+            <li><b>head</b> - </li>
+            <li><b>body</b> - </li>
+            <li><b>images</b> - псевдомассив всех img в документе</li>
+            <li><b>links</b> - псевдомассив всех ссылок в документе</li>
+            <li><b>forms</b> - псевдомассив всех форм в документе</li>
+          </ul>
+
+          <p>устаревшие методы <code>location:</code> open(), close(), write(), writeln(), designMode(), execCommand()
+          </p>
+
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

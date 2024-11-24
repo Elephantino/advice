@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>structures</title>
+  <link rel="stylesheet" href="../style.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <section class="structures">
+
+          <h1 hidden>structures</h1>
+
+
+          <section class="primitives">
+            <a name="structures-primitives" hidden>примитивы</a>
+            <h2 class="color-red">примитивы</h2>
+            <p>Все кроме объекта являются примитивными.</p>
+            <p>Примитивы неизменны, строку можно только перезаписать полностью. JavaScript
+              неявно оборачивает примитив в объект его типа, так что на примитивах возможно использовать
+              свойства
+              и
+              методы этих объектов.</p>
+            <p>Number, BigInt, String, Boolean, null, undefined, Symbol, Object.</p>
+          </section>
+          <!-- primitives -->
+
+
+          <section class="string">
+            <h2><a name="structures-string" class="color-red">строки</a></h2>
+
+            <p>cтрока - примитив, приметив неизменяем(только заменяем), по этому все методы возвращают новую строку а не
+              изменяют старую</p>
+
+            <p>доступ к символам подобен массивам</p>
+            <p>перебор строк подобен массивам</p>
+
+            <h2>String.prototype.methods</h2>
+
+
+            <div class="performance">
+              <pre><code>
+let str = "Qwe";
+let str2 = "rty";
+
+                         
+str.at(0)          es6   | Q             | символ по индексу
+charAt(0)                | Q             | символ по индексу
+indexOf("str")           | только str    | индекс первого вхождения
+search()                 | regexp и str  | индекс первого вхождения
+
+replace()                | regexp и str  | вернет строку, заменит часть
+concat(str2)             | Qwerty        | строка из множества строк
+repeat(2)                | QweQwe        | строка из повторов
+slice(0, 2)              | Qw            | кусок строки по индексам
+substr(1, 2)             | we            | кусок строки по индексам
+
+ 
+ 
+match()                  | regexp        | возвращает совпадения с регулярным выражением
+replace()                | regexp и str  | вернет строку, заменит часть
+search()                 | regexp и str  | индекс первого вхождения с регулярным выражением или строкой
+
+
+
+includes("Qwe")          | true          | содержит ли строка заданную подстроку
+startWith("Qwe")         | --- TypeError | начинается ли строка с символов
+endWith("rty")           | --- TypeError | заканчивается ли строка символами
+
+
+
+split()                  | ["Qwe"]       | строка в массив
+valueOf()                | ?             | ?
+["a", "b", 3].toString() | a, b, 3       | в строку любой объект
+
+
+
+trim()                   |               | удалит пробелы 
+padStart("NEW")          | --- TypeError | дополняет текущую строку
+
+
+
+length                   | 3             | длина
+toUpperCase()            | toLowerCase() | регистр
+charCodeAt("")           | ?             | числовое значение Юникода
+
+</code></pre>
+            </div>
+          </section>
+          <!-- строки -->
+
+
+          <section class="HTMLCollection">
+
+            <h2><a name="structures-HTMLCollection" class="color-red">HTMLCollection</a></h2>
+
+            <ul>
+              <li>Динамическая коллекция элементов</li>
+              <li>Не имеет привычных методов массива</li>
+              <li>Хранит только узлы HTML элементов(теги)</li>
+              <li>Обращение к элементам коллекции:
+                <ul>
+                  <li>по индексу</li>
+                  <li>по имени методом namedItem</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p>если возвращенная коллекция динамическая то перебирать ее нужно с конца (страница 274)</p>
+
+            <p>у html-коллекции нет итератора по этому что бы перебрать нужно коллекцию перевести в массив
+              <code>Array.from() или [...htmlCollection]</code>
+            </p>
+
+            <pre><code>
+let elem = document.querySelector("#test");
+
+let arr = Array.from(elem.children)
+let arr = [...elem.children]
+
+for (let i of arr) {
+  console.log(i)
+}
+
+</code></pre>
+
+          </section>
+          <!-- HTMLCollection -->
+
+
+          <section class="NodeList">
+
+            <h2><a class="color-red" name="structures-NodeList">NodeList</a></h2>
+
+            <p>querySelectorAll / getElementsByName / childNodes</p>
+
+            <ul>
+              <li>статическая / динамическая коллекция элементов</li>
+              <li>не имеет привычных методов массива</li>
+              <li>хранит любые типы узлов(текстовые узлы и комментарии)</li>
+              <li>обращение к элементам коллекции только по индексу</li>
+            </ul>
+          </section>
+          <!-- NodeList -->
+
+
+
+
+          <section class="array">
+            <h2><a class="color-red" name="structures-array">array</a></h2>
+
+            <ul>
+              <li>списки пронумерованных значений</li>
+              <li>могут содержать данные любого типа</li>
+            </ul>
+
+            <pre><code>
+const arr = [] / [ 1, 2, 3 ]
+const arr = new Array(6) // пустой массив но length = 6 
+const arr = Array.of() / Array.of(1,2,3) / Array.of(NodeList)
+
+ 
+let arr = [10, "2", 3, false];
+
+let count = 1;
+
+arr[count] // "2"
+arr[3] // false
+arr[10] // undefined
+
+
+arr[0] = 4; // [4, "2", 3, false];
+ 
+arr[5] = false; // [ 4, "2", 3, false, "", false ] // Разреженный массив (пропустили 4 индекс)
+  </code></pre>
+
+            <p>При использовании точки слово, стоящее после нее, является точечным именем свойства.</p>
+            <p>При использовании квадратных скобок,для получении имени свойства
+              <i>Вычисляется</i> заключенное в скобки выражение.
+            </p>
+            <p>Если value.x извлекает из значения value свойство с именем x, то
+              value[x] пытается вычислить выражение x и применяет результат, преобразованный в строку, в
+              качестве
+              имени
+              свойства</p>
+
+
+
+            <!-- сортировка массива -->
+            <details class="show-piece">
+              <summary><code>сортировка массива</code></summary>
+              <textarea cols="120" rows="28">
+let arr = [4, 1, 3, 2, 5];
+
+console.log(arr);
+
+for (let currentIndex = 0; currentIndex &lt;= arr.length - 2; currentIndex++) {
+
+  let minValue = arr[currentIndex];
+
+  for (let j = currentIndex + 1; j &lt;= arr.length - 1; j++) {
+
+    if(arr[j] &lt; minValue) {
+
+      minValue = arr[j];
+
+      let swap = arr[currentIndex];
+
+      arr[currentIndex] = minValue;
+
+      arr[j] = swap;
+
+      console.log('меняем местами ' + swap + ' и ' + minValue);
+      console.log('Массив сейчас: ' + arr);
+    }
+  }
+  console.log('на позиции ' + currentIndex + ' находится минимальный элемент ' + minValue);
+}
+console.log(arr);
+        </textarea>
+
+            </details>
+
+            <details class="show-piece array-clone">
+              <summary>клонирование массива</summary>
+              <p>В js нет метода для клонирования массивов</p>
+              <p>Этот метод легко сэмулировать, помня, что concat и slice не меняют исходный массив. Достаточно
+                вызвать
+                метод
+                concat без
+                аргументов или метод slice с единственным аргументом равным 0.</p>
+              <pre>
+   <code>
+let a = [1,2,3];
+let b = a.concat();
+let c = a.slice(0);
+
+(a + ';' + b + ';' + c); // '1,2,3;1,2,3;1,2,3'
+
+([a == b, a == c, b == c]); // [ false,false,false ]
+   </code>
+</pre>
+              <p>Если в массиве лежат ссылки на объекты, в том числе ссылки на другие массивы, то в
+                новосозданном
+                массиве будут лежать
+                ссылки на те же самые объекты. Поэтому если вы хотите клонировать многомерный массив, то
+                придётся
+                вручную создавать
+                новый массив, после чего перебрать подмассивы исходного массива и клонировать их в новый.</p>
+              <pre>
+   <code>
+  Клонируется только массив верхнего уровня:
+let a = [
+[1,2,3],
+[4,5,6],
+[7,8,9]
+];
+
+let b = a.concat();
+
+a[0][1] // 2
+b[0][1] // 2
+
+b[0][1] = 15;
+a[0][1] // 15
+   </code>
+</pre>
+              <pre>
+   <code>
+  Клонируем вложенные массивы:
+
+let a = [
+[1,2,3],
+[4,5,6],
+[7,8,9]
+];
+
+let b = [ ];
+  a.forEach(function(subArry) {
+  b.push(subArray.concat());
+})
+
+a[0][1]; // 2
+b[0][1]; // 2
+
+b[0][1] = 15;
+a[0][1]; // 15
+   </code>
+</pre>
+
+
+            </details>
+
+
+
+
+
+
+
+            <section>
+
+              <h3>перебор массива</h3>
+
+              <details class="show-piece for">
+                <summary><code>for</code></summary>
+                <pre><code>
+let arr = [ "a", "b", "c", "d" ];
+
+for (let <span class="color-red">i</span> = 0; i ?пеж arr.length; i++) {                
+  console.log(i + " - " + arr[i]);             в цикле for переменная <span class="color-red">i</span> - никак к ключу не 
+};                                                относится это просто переменная которая 
+          i      arr[i]                              изменяется каждую итерацию цикла,
+      // ключ - значение                                в других циклах <span class="color-red">i</span> это ключ/свойство
+            0 - a
+            1 - b
+            2 - c
+            3 - d
+
+</code></pre>
+              </details>
+              <!-- for -->
+
+
+
+              <details class="show-piece for-in">
+                <summary><code>for in - </code><span class="color-red"> не стоит использовать для перебора
+                    массива</span></summary>
+                <pre><code>
+let arr = [ "a", "b", "c", "d" ];
+
+for (let <span class="color-red">i</span> <span class="color-light-blue">in</span> arr) {  
+  console.log(i + " - " + arr[i]);     на место <span class="color-red">i</span> подставляется ключ/свойство 
+};                                           каждую итерацию цикла
+          i     arr[i]
+     // ключ - значение
+           0 - a
+           1 - b
+           2 - c
+           3 - d
+
+</code></pre>
+              </details>
+              <!-- for in -->
+
+
+
+              <details class="show-piece for-of">
+                <summary><code>for of</code></summary>
+                <pre><code>
+let arr = [ "a", "b", "c", "d" ];
+
+for (let i <span class="color-red">of</span> arr) { 
+  console.log(i)                                    на место <span class="color-red">i</span> подставляется ключ/свойство                      
+};                                                        каждую итерацию цикла
+      // значения 
+            a
+            b
+            c 
+            d
+
+</code></pre>
+              </details>
+              <!-- for of -->
+
+
+
+
+              <details class="show-piece">
+                <summary><code>forEach</code></summary>
+                <pre><code>
+arr.forEach((e) =&gt; console.log(e));  // a b c d
+
+arr.map((e) =&gt; console.log(e))  // a b c d // новый массив
+
+</code></pre>
+              </details>
+              <!-- forEach -->
+
+            </section>
+
+
+            <!-- Методы массивов -->
+            <section>
+
+              <hgroup>
+                <h2>Методы массивов</h2>
+                <h3>Array.prototype.method</h3>
+              </hgroup>
+
+              <section class="methods">
+
+
+                <pre><code>
+
+let arr1 = [ 1, 2, 3 ];
+let <span class="color-light-blue">arr2</span> = [ "b", 1,  2, "a" ];
+
+
+изменят исходный массив
+
+arr1.push("new")               | [1, 2, 3, "new"]
+arr1.unshift("new")            | ["new", 1, 2, 3]
+arr1.shift()                   | [2, 3]                | вернет значение
+arr1.pop()                     | [1, 2]                | вернет значение
+arr1.splice(1, 3, "new")       | [1, "new"]            | удалить / добавить / заменить
+<span class="color-light-blue">arr2</span>.sort()                    | [1, 2, "a", "b"]      | сортировка по условию или Unicode
+arr1.reverse()                 | [3, 2, 1]
+delete arr1[1]                 | [1,  , 3]             | удалит значение, индекс = undefined, длина не изменится
+arr1.fill("new")               | ["new", "new", "new"] | заменит или заполнит элементы одним значением
+arr1.with()                    | вернет массив???      | заменит элемент по индексу
+copyWithin(target, start[end]) | ???                   | записать в target копию (от start, до end)
+
+----------------------------
+
+вернут значение 
+
+arr.shift и pop     | оба изменят массив    | описаны выше
+arr1.at(0)          | 1                     | вернет элемент по индексу не изменяя массив
+<span title="let sum = arr1.reduce((a, b) =>  a + b , 0)">arr1.reduse()</span>       | 6                     | собрать определенные данные с каждого элемента и вернуть одно общее значение
+arr1.length         | 3                     | длина
+arr.keys()          | вернет Array Iterator, содержащий ключи каждого значения
+arr.values          | вернет Array Iterator, содержащий значения каждого ключа
+arr.peek()          | получить последний элемент не удаляя его из массива
+
+----------------------------
+
+получить фрагмент массива
+
+<span class="color-light-blue">arr2</span>.slice(0, 3)    | ["b", 1, 2]  | по индексам (от, до)
+
+----------------------------
+
+массив в строку
+
+arr1.toString()   | 1,2,3 | список элементов массива раздененных запятыми
+arr1.join("-")    | 1-2-3 | список элементов раздененных указанным символом
+
+----------------------------
+
+создадут новый массив
+
+map         |         | новый массив с результатом callback для каждого элемента
+filter      |         | массив с элементами прошедшими проверку
+concat      |         | массив из массивов
+flat        |         | развернет вложенные массивы в новый массив
+toSorted    |         | сортировка по условию или Unicode
+toReverse   | копирующая версия reverse
+toSorted    | копирующая версия sort
+toSpliced   | копирующая версия splice 
+
+----------------------------
+
+поиск элементов в массиве
+любой перебор массива можно отнести к поиску
+
+find                |      | первый элемент по условию
+findIndex           |      | индекс по условию
+<span class="color-light-blue">arr2</span>.indexOf("a")   |  3   | индекс по первому вхождению
+<span class="color-light-blue">arr2</span>.includes("a")  | true | по элементу
+   
+----------------------------
+
+перебор массива
+
+forEach                        
+map                            
+find
+reduce
+sort
+for
+for in   - не стоит использовать для перебора массива
+for of
+
+----------------------------
+
+проверка
+
+some     | если хоть один элемент соответствует
+every    | если все элементы соответствуют
+isArray  | является ли массивом переданное значение
+
+</code></pre>
+
+                <hr>
+
+                <!-- peek -->
+                <details class="show-piece peek">
+                  <summary><code>peek</code></summary>
+                  <p>для просмотра последнего элемента массива</p>
+
+                  <textarea cols="30" rows="10">
+arr[arr.length - 1]
+
+добавитиь метод в цепочку прототипов Array 
+
+
+Array.prototype.peek = function() {
+  if (this.length === 0) {
+    throw new Error("out of bounds");
+  }
+  return this[this.length - 1];
+}
+
+let arr = [1, 2, 3];
+
+arr.peek() // 3
+
+</textarea>
+
+                </details>
+
+                <!-- reduce -->
+                <details class="show-piece">
+                  <summary><code>reduce </code>добавить полифил</summary>
+                  <pre><code>
+const array1 = [1, 2, 3, 4];
+
+const initialValue = 0;       // начальное значение аккумулятора
+
+const sum = array1.reduce(
+  (accumulator, currentValue) =&gt; accumulator + currentValue, initialValue,
+);
+
+console.log(sum); // 10 --- (0 + 1 + 2 + 3 + 4 = 10)
+
+</code></pre>
+                </details>
+
+
+              </section>
+
+            </section>
+            <!-- Методы массивов -->
+
+
+          </section>
+          <!-- array -->
+
+
+
+
+
+          <section class="object">
+            <h2><a class="color-red" name="structures-object">object</a></h2>
+
+            <p>для хранения именованных коллекций</p>
+
+            <p><code>obj = {} </code><code></code></p>
+            <p><code>obj = new Object()</code></p>
+            <p><code>new Object() </code>конструктор для объектов с собственным свойством prototype, которое ссылается
+              на
+              огромный обьект с методами.</p>
+
+            <p>Объекты – это ссылочный тип, когда вы присваиваете объект переменной, вы присваиваете ей не сам
+              этот
+              объект, а ссылку на него, которая указывает на то место в памяти компьютера, где он находится.</p>
+
+            <pre>
+<code>
+let obj = {
+  name: "obj name",
+  "sub name": "obj sub name",
+  " ": 123,
+  func() {
+    console.log(this.name)
+  },
+}
+
+obj.func()      // obj name
+obj[" "]        // 123
+obj["sub name"] // obj sub name
+
+
+свойства - пары ключ: значение (можно не заключать в кавычки если оно без пробелов)
+методы – свойства, у которых значение является функцией(поведение объекта)
+
+
+имена свойств в объекте не явно являются строками
+
+. = не можем обратиться к нестандартному свойству
+[" "] = ключ указывать в виде строки   
+
+ </code>
+</pre>
+
+            <!-- Вычисляемые свойства -->
+            <details class="show-piece">
+              <summary>Вычисляемые свойства</summary>
+              <p>В JavaScript имя свойства может быть вычисляемым. То есть для задания имени можно
+                использовать
+                выражение, результат вычисления которого и будет это имя. Указывать вычисляемое свойство
+                необходимо
+                в
+                квадратных скобках [ ]:</p>
+              <pre>
+  <code>
+const key = 'url';
+const app = {
+  name: 'Yandex',
+  [key]: 'https://yandex.ru/', // имя свойства будет взято из переменной key
+};
+console.log(app.url); // 'https://yandex.ru/'
+ </code>
+</pre>
+
+              <h3>метод с более сложным выражением:</h3>
+              <pre>
+  <code>
+const key = 'url';
+const app = {
+  name: 'Yandex',
+  [key]: 'https://yandex.ru/',
+  ['get' + key.toUpperCase()]() {
+    return this[key];
+  }
+};
+console.log(app.getURL()); // 'https://yandex.ru/'
+ </code>
+</pre>
+            </details>
+
+            <section class="methods">
+
+              <h2>Object.prototype.methods</h2>
+
+
+              <!-- вернут значение -->
+              <section>
+                <h3>вернут значение</h3>
+
+                <!-- assign -->
+                <details class="show-piece object-clone">
+                  <summary><code>assign - </code> копия значений всех перечисляемых свойств из всех объектов в один
+                    объект</summary>
+                  <p>Переменная, содержащая объект на самом деле содержит не сам объект, а только ссылку на него.
+                    При
+                    копировании объектов в отличие от значений примитивных типов происходит передача ссылки.</p>
+                  <pre>
+  <code>
+const student1 = { name: 'Carl' };
+const student2 = student1;
+
+Теперь student1 и student2 содержат ссылки, 
+указывающие на один и тот же объект.
+
+student2.name = 'Nelly';
+console.log(student1.name); // Nelly
+ </code>
+</pre>
+                  <p>А что если нам необходимо скопировать не саму ссылку, а создать новый объект с такими же
+                    свойствами?
+                  </p>
+                  <pre>
+ <code>
+const student3 = {};
+for (const key in student1) {
+  student3[key] = student1[key];
+}
+
+student3 содержит клон объекта student1
+student3.name = 'Thyra';
+в student1 значение name осталось прежним
+console.log(student1.name); // Nelly
+ </code>
+</pre>
+
+                  <h3>Другой способ скопировать свойства:</h3>
+                  <pre>
+ <code>
+const student4 = Object.assign({}, student1);
+ </code>
+</pre>
+
+                  <p>Object.assign() позволяет скопировать свойства из множества объектов.</p>
+                  <pre>
+<p>в который нужно скопировать указывается первым</p>
+ <code>
+const target = { a: 1 };
+const source1 = { b: 2 };
+const source2 = { c: 3 };
+Object.assign(target, source1, source2);
+console.log(target); // {a: 1, b: 2, c: 3}
+ </code>
+</pre>
+                </details>
+
+
+                <!-- keys-values-entries -->
+                <details class="show-piece keys-values-entries">
+                  <summary><code>keys / values / entries - </code> массив собственных ключей и значений</summary>
+
+                  <p>не перечисляют свойства из прототипа как for-in</p>
+
+                  <pre><code>
+const person = {
+  name: "Igor",
+  lastName: "Rybinsky",
+  age: 28,
+  city: "Bratsk"
+}
+
+Object.keys(obj);    // массив имен объекта
+Object.values(obj);  // массив значений объекта
+Object.entries(obj); // массив массивов [имя свойства, значение свойства]
+
+
+Object.keys(person);    // [ 'name', 'lastName', 'age', 'city' ]
+Object.values(person);  // [ 'Igor', 'Rybinsky', 28, 'Bratsk' ]
+Object.entries(person); // [ ['name', 'Igor'], ['lastName', 'Rybinsky'], ['age', 28], ['city', 'Bratsk'] ]
+
+
+перебрать только значения  
+  
+Object.values(obj).forEach((value) =&gt; { console.log(value); });
+</code></pre>
+                </details>
+
+
+                <!-- create -->
+                <details class="show-piece">
+                  <summary><code>create - </code>новый бъект с указанным прототипом и свойствами</summary>
+
+                </details>
+
+
+                <!-- constructor -->
+                <details class="show-piece">
+                  <summary><code>constructor - </code>ссылка на функцию создавшую прототип экземпляра</summary>
+
+                </details>
+
+
+                <!-- getPrototypeOf -->
+                <details class="show-piece">
+                  <summary><code>getPrototypeOf - </code>получить прототип</summary>
+
+                </details>
+
+              </section>
+              <!-- вернут значение -->
+
+
+              <!-- проверки -->
+              <section>
+
+                <h3>проверки</h3>
+
+                <!-- hasOwnProperty -->
+                <details class="show-piece">
+                  <summary><code>hasOwn замена hasOwnProperty - </code>свойство собственное / унаследованно</summary>
+
+                  <p><code>obj.hasOwnProperty(prop)</code></p>
+                  <p><code>true - свойство собственное</code></p>
+                  <p><code>false - свойство унаследованно или его нет вовсе</code></p>
+                  <p>содержит ли объект указанное свойство в качестве собственного</p>
+                </details>
+
+
+                <!-- in -->
+                <details class="show-piece">
+                  <summary><code>in - </code>наличие ключа</summary>
+
+                </details>
+
+
+                <!-- is -->
+                <details class="show-piece">
+                  <summary><code>is - </code>являются ли два значения одинаковыми</summary>
+
+
+                </details>
+
+                <!-- isPrototypeOf -->
+                <details class="show-piece">
+                  <summary><code>isPrototypeOf - </code>входит ли объект в цепочку прототипов другого объекта</summary>
+
+                </details>
+
+
+                <!-- propertyIsEnumerable -->
+                <details class="show-piece">
+                  <summary><code>propertyIsEnumerable - </code>являестя ли свойство перечисляемым</summary>
+
+                </details>
+
+              </section>
+
+
+
+
+              <!-- преобразовать -->
+              <section>
+                <h3>преобразовать</h3>
+
+
+                <!-- toString -->
+                <details class="show-piece">
+                  <summary><code>toString - </code>в строку</summary>
+
+                </details>
+
+
+                <!-- fromEntries -->
+                <details class="show-piece">
+                  <summary><code>fromEntries - </code>объект из пар (Map, Array, ...)</summary>
+
+                  <p>преобразует пары <code>["a", "b"]</code> в объект</p>
+                </details>
+
+
+                <!-- valueOf -->
+                <details class="show-piece">
+                  <summary><code>valueOf - </code>в примитив</summary>
+
+                </details>
+
+              </section>
+
+
+              <!-- изменит объект -->
+              <section>
+                <h3>изменит объект</h3>
+
+                <!-- setPrototypeOf -->
+                <details class="show-piece">
+                  <summary><code>setPrototypeOf - </code>меняет прототип</summary>
+
+                </details>
+
+              </section>
+
+
+
+
+              <!-- работа со свойствами / дескрипторами / флагами -->
+              <section>
+                <h3>работа с дескрипторами и флагами свойств</h3>
+
+
+                <!-- defineProperty -->
+                <details class="show-piece">
+                  <summary><code>defineProperty - </code>определяет новое или изменяет существующее свойство</summary>
+
+                  <p><code>defineProperties - </code>то же но с множеством свойств</p>
+                </details>
+
+
+                <!-- freeze -->
+                <details class="show-piece">
+                  <summary><code>freeze / isFrozen</code></summary>
+
+                </details>
+
+
+                <!-- preventExtensions -->
+                <details class="show-piece">
+                  <summary><code>preventExtensions / isExtensible - </code></summary>
+
+                </details>
+
+
+                <!-- seal -->
+                <details class="show-piece">
+                  <summary><code>seal / isSealed - </code></summary>
+
+                </details>
+
+
+
+                <!-- getOwnPropertyDescriptor -->
+                <details class="show-piece">
+                  <summary><code>getOwnPropertyDescriptor - </code>дескрипторы свойств для собственного свойства
+                  </summary>
+                  <p>getOwnPropertyDescriptor / getOwnPropertyDescriptors</p>
+
+                </details>
+
+
+                <!-- getOwnPropertyNames -->
+                <details class="show-piece">
+                  <summary><code>getOwnPropertyNames - </code>массив всех свойств (даже не перечисляемые)</summary>
+
+                </details>
+
+                <!-- getOwnPropertySymbols -->
+                <details class="show-piece">
+                  <summary><code>getOwnPropertySymbols - </code>массив всех символьных свойств</summary>
+
+                </details>
+
+              </section>
+
+            </section>
+
+            <div>
+              <h3>перебор объекта</h3>
+
+
+
+              <details class="show-piece keys-values-entries">
+                <summary><code>keys / values / entries </code> </summary>
+                <p>описан выше</p>
+              </details>
+
+              <details class="show-piece obj-for">
+                <summary><code>for</code></summary>
+                <pre><code>
+const person = {        
+  name: "Igor",                   Object.keys(obj) свойства
+  age: 28,                        Object.values(obj) значения
+  city: "Bratsk",                 Object.entries(obj) весь объект
+  hobby: "programmer", 
+};
+
+for (let <span class="color-red">i</span> = 0; i &lt; <span class="color-light-blue">Object.keys(person)</span>.length; i++) {
+  console.log(<span class="color-light-blue">Object.keys(person)</span>[<span class="color-red">i</span>] + " - " + <span class="color-light-blue">Object.values(person)</span>[<span class="color-red">i</span>]);
+}    
+     name - Igor
+     age - 28
+     city - Bratsk
+     hobby - programmer
+
+</code></pre>
+              </details>
+
+              <details class="show-piece obj-for-in">
+                <summary><code>for in</code></summary>
+                <pre><code>
+const person = {
+  name: "Igor",
+  age: 28,                            в цикле for in 
+  city: "Bratsk",                     на место <span class="color-red">i</span>
+  hobby: "programmer",                подставляется ключ/свойство
+};                                    каждую итерацию цикла
+
+
+for (let <span class="color-red">i</span> <span class="color-light-blue">in</span> person) {
+  console.log(<span class="color-red">i</span> + "-" + person[<span class="color-red">i</span>])    person[<span class="color-red">i</span>]
+}                                 
+      name - Igor                     person.name
+      age - 28                        person.age
+      city - Bratsk                   person.city
+      hobby - programmer              person.hobby 
+
+</code></pre>
+
+                <details class="show-piece examples-js-object-for-in">
+                  <summary><code><a name="examples-js-object-for-in">Перебор объекта в цикле for...in</a></code>
+                  </summary>
+                  <a href="https://www.youtube.com/watch?v=eqD7DJVJWOc" target="_blank"
+                    rel="noopener noreferrer">Источник
+                    этого
+                    примера https://www.youtube.com/watch?v=eqD7DJVJWOc</a>
+
+                  <pre>
+  <code>
+let arr = [
+  {
+    "original_name": "Fight Club",
+    "russian_name": "Бойцовский клуб",
+    "year": 1999,
+    "actors": [
+      "Эдварт нортан",
+      "Бред Питт",
+      "Хелена Бонем Кратер"
+    ]
+  },
+  {
+    "original_name": "The Mask",
+    "russian_name": "Маска",
+    "year": 1994,
+    "actors": [
+      "Джим Керри",
+      "Камерон Диаз"
+    ]
+  },
+  {
+    "original_name": "Rocky III",
+    "russian_name": "Рокки 3",
+    "year": 1982,
+    "actors": [
+      "Сильвестр Сталоне",
+      "Мистер Ти",
+      "Талия Шайн",
+      "Бёрджесс Мередит"
+    ]
+  },
+]
+
+консоль лог приводит значения к строке
+по этому выражение надо писать в скобках //(i + 1), (k + 1), 
+что бы в результате была не конкатенация =&gt; i = 0; + i + 1 + = 01   ======== Фильм №01 ========
+а сам результат который получается в скобках =&gt; + (i + 1) + = 1     ======== Фильм №1 ========
+
+for (let i = 0; i &gt; arr.length; i++) {
+  console.log("======== Фильм №" + (i + 1) + " ========"); 
+  for (let j in arr[i]) {                                 
+    if (j == "actors") {                                  
+      for (let k = 0; k &gt; arr[i][j].length; k++) {        
+        console.log("Актёр " + (k + 1) + ": " + arr[i][j][k]);
+      }
+    } else if (j == "original_name") {
+      console.log("Оригинальное название: " + arr[i][j]);
+    } else if (j == "russian_name") {
+      console.log("Русское название: " + arr[i][j]);
+    } else if (j == "year") {
+      console.log("Год: " + arr[i][j]);
+    }
+  }
+}
+
+
+======== Фильм №1 ========
+js.js:71 Оригинальное название: Fight Club
+js.js:73 Русское название: Бойцовский клуб
+js.js:75 Год: 1999
+js.js:68 Актёр 1: Эдварт нортан
+js.js:68 Актёр 2: Бред Питт
+js.js:68 Актёр 3: Хелена Бонем Кратер
+js.js:64 ======== Фильм №2 ========
+js.js:71 Оригинальное название: The Mask
+js.js:73 Русское название: Маска
+js.js:75 Год: 1994
+js.js:68 Актёр 1: Джим Керри
+js.js:68 Актёр 2: Камерон Диаз
+js.js:64 ======== Фильм №3 ========
+js.js:71 Оригинальное название: Rocky III
+js.js:73 Русское название: Рокки 3
+js.js:75 Год: 1982
+js.js:68 Актёр 1: Сильвестр Сталоне
+js.js:68 Актёр 2: Мистер Ти
+js.js:68 Актёр 3: Талия Шайн
+js.js:68 Актёр 4: Бёрджесс Мередит
+  </code>
+</pre>
+                </details>
+
+              </details>
+
+              <details class="show-piece obj-for-of">
+                <summary><code>for of </code>не удобно перебирать object с for of</summary>
+                <pre><code>
+по дефолту не удобно перебирать object с for of
+потому что object не итерируемый по умолчанию
+
+const person = {             
+  name: "Igor",                 
+  age: 28, 
+  city: "Bratsk", 
+  hobby: "programmer", 
+};
+
+              массив ключей объекта                        массив значений объекта
+for (let i <span class="color-red">of</span> <span class="color-light-blue">Object.<span class="color-red">keys</span>(person)</span>) {   |     for (let i <span class="color-red">of</span> <span class="color-light-blue">Object.<span class="color-red">values</span>(person)</span>) {
+  console.log(i);                      |       console.log(i);
+}                                      |     }  
+        // name                        |          // Igor
+           age                         |             28
+           city                        |             Bratsk
+           hobby                       |             programmer
+
+</code></pre>
+              </details>
+
+              <details class="show-piece obj-forEach">
+                <summary><code>forEach</code></summary>
+                <pre><code>
+Object.keys(car).forEach((key) =&gt; {
+  console.log(`${key}: ${car[key]}`);
+});
+  </code></pre>
+              </details>
+
+
+            </div>
+
+
+
+            <section>
+              <h2>Сравнение объектов</h2>
+              <pre>
+ <code>
+let objA = {};
+let objB = objA;
+let objC = {};
+
+console.log( objA === objB ); // true, т.к. переменные содержат одну и ту же ссылку
+console.log( objA === objC ); // false, т.к. переменные содержат разные ссылки (оба объекта пусты, но это разные объекты)
+ </code>
+</pre>
+
+            </section>
+            <!-- Сравнение объектов -->
+
+
+
+            <!-- flags-and-descriptors -->
+            <section class="flags-and-descriptors">
+              <h2><a class="color-red" name="structures-flags-and-descriptors">конфигурация свойств объекта</a></h2>
+              <p><a href="https://itchief.ru/javascript/objects" target="_blank" rel="noopener noreferrer">источник
+                  https://itchief.ru/javascript/objects</a></p>
+
+
+              <p>дескрипторы работают на уровне одного свойства</p>
+              <p>методы ограничивают доступ ко всему объекту</p>
+
+              <table class="table-object">
+                <thead>
+                  <tr>
+                    <th>методы</th>
+                    <th>проверки этих методов</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  <tr>
+                    <td>
+                      <p>запрет на добавление новых свойств</p>
+                      <details class="show-piece">
+                        <summary><code>Object.preventExtensions(obj) </code></summary>
+
+                        <textarea name="" id="" cols="40" rows="11">
+let user = {
+  name1: "name 1",
+}
+
+Object.preventExtensions(user) // false = объект теперь не расширить
+
+user.name2 = "name 2" // не добавится
+
+Object.isExtensible(user) // false
+  </textarea>
+                      </details>
+                    </td>
+
+                    <td>
+
+                      <p><b>Object.isExtensible(obj)</b></p>
+                      <p><b>false - </b>запрет на добавление новых свойств</p>
+
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <p>запрет добавить / удалить свойства</p>
+                      <p><span style="color: red;">configurable: false</span> для всех существующих свойств</p>
+                      <details class="show-piece">
+                        <summary><code>Object.seal(obj)</code></summary>
+
+                      </details>
+                    </td>
+                    <td>
+                      <p><b>Object.isSealed(obj)</b></p>
+                      <p><b>true - </b>запрет на добавить / удалить для всех свойств</p>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <p>запрет добавить / удалить / изменить свойства</p>
+                      <p><span style="color: red;">configurable: false, writable: false</span> для всех существующих
+                        свойств</p>
+                      <details class="show-piece">
+                        <summary><code>Object.freeze(obj)</code></summary>
+
+                      </details>
+                    </td>
+
+
+                    <td>
+                      <p><b>Object.isFrozen(obj)</b></p>
+                      <p><b>true - </b>добавить / удалить / изменить свойства запрещено для всех свойств</p>
+
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+              <h2>флаги и десприпторы свойств </h2>
+
+              <h4>проверка флагов конкретного свойства</h4>
+
+              <p><b>Object.getOwnPropertyDescriptor(obj, "property")</b></p>
+
+              <pre><code>
+  для нового свойства необходимо явно указывать флаг со значением true
+  если нужен флаг со значением false то он просто не указывается
+
+let obj = {};
+
+Object.defineProperty(obj, "newProperty", {
+  value: "new value",
+  enumerable: true, 
+})
+
+console
+Object {
+  newProperty: "new value"
+}
+
+console.log(Object.getOwnPropertyDescriptor(obj, "newProperty"))
+
+Object {
+  value: "new value", 
+  writable: false, 
+  enumerable: true, 
+  configurable: false
+}
+
+</code></pre>
+
+              <h4>замена флагов</h4>
+
+              <p><b>Object.defineProperty(obj, "property", { value: "new value" })</b></p>
+              <p>получить значения флагов свойства</p>
+
+              <ul>
+                <li>свойство есть то оно заменит флаги на противоположные</li>
+                <li>свойства нет то оно создастся с указанные value и фалгами</li>
+                <li>флаг не был указан то он получит значение false</li>
+                <li>изменит все флаги на false у вновь созданного свойства</li>
+              </ul>
+
+
+              <!-- writable -->
+              <details class="show-piece">
+                <summary><code>writable - </code>только для чтения</summary>
+
+                <pre><code>
+let user = {
+  name: "old name",
+}; 
+
+Object.defineProperty(user, "name", {
+  writable: false,
+});
+
+user.name = "new name" // не сработает value будет old name
+
+</code></pre>
+
+                <p style="color: blue;">то же саоме но с новым свойством:</p>
+
+                <pre><code>
+let user = {};
+ 
+Object.defineProperty(user, "name", {
+  value: "new value",
+  enumerable: true, 
+  configurable: true,
+})
+
+если какой то флаг не был указан то он получит значение false
+
+user.name = "new"; // не сработает (writable не указан)
+</code></pre>
+
+              </details>
+
+
+
+              <!-- enumerable -->
+              <details class="show-piece">
+                <summary><code>enumerable - </code>неперечислимое свойство</summary>
+
+                <p>все встроенные методы объекта не перечислимы, их не видно в обычных циклах</p>
+
+
+                <pre><code>
+let user = {
+  name: "user name",
+  givName() {
+    return this.name;
+  }
+}
+
+for (let key in user) console.log(key) // name givName
+
+<span style="color: red;">скроем метод от перечисления</span>	
+
+Object.defineProperty(user, "givName", {
+  <span style="color: red;">enumerable: false,</span>
+})
+
+for (let key in user) console.log(key) // name
+</code></pre>
+
+
+              </details>
+
+
+
+              <!-- configurable -->
+              <details class="show-piece">
+                <summary><code>configurable - </code>неконфигуримое свойство</summary>
+                <p>такое свойство не может быть удалено, его атрибуты не могут быть удалены</p>
+
+                <p>если configurable false <span style="color: red;">то другой флаг (если он false) не
+                    изменить</span>, дорога в один конец</p>
+
+                <pre><code>
+let user = {
+  name: "old name",
+}
+
+Object.defineProperty(user, "name", {
+  <span style="color: red;">writable: false</span>,
+  configurable: false,
+})
+
+user.name = "new"; // не сработает 
+delete user.name   // не сработает
+<span style="color: red;">Object.defineProperty(user, "name", { writable: true });</span> // js выдаст ошибку
+  
+</code></pre>
+
+              </details>
+
+
+
+
+              <!-- defineProperties -->
+              <details class="show-piece">
+                <summary><code>Object.defineProperties - </code>определить множество свойств за раз</summary>
+                <div class="performance">
+                  <pre><code>
+const user = {
+  name: "user",
+}
+
+Object.defineProperties(user, {
+  surname: { value: "new surname", writable: true },
+  age: { value: 29, writable: false},
+})
+
+console.log(user)
+  Object {
+    name: "user", 
+    surname: "new surname", 
+    age: 29
+  }
+
+console.log(Object.getOwnPropertyDescriptor(user, "surname"))
+  Object {
+    value: "new surname", 
+    writable: true, 
+    enumerable: false, 
+    configurable: false
+  }
+  
+</code></pre>
+                </div>
+              </details>
+
+              <!-- getOwnPropertyDescriptors -->
+              <details class="show-piece">
+                <summary><code>Object.getOwnPropertyDescriptors</code></summary>
+
+              </details>
+
+
+            </section>
+            <!-- flags-and-descriptors -->
+
+
+          </section>
+          <!-- object -->
+
+
+
+
+          <section class="map">
+            <h2><a class="color-red" name="structures-map">map</a></h2>
+
+            <p><code>map -- </code>словарь</p>
+            <p>get, set, has</p>
+            <p>коллекция ключ/значение как obj но позволяет задействовать любые типы ключей</p>
+            <pre><code>
+let map = new Map();  создание
+map.set(key, value);  записать значение по ключу
+map.get(key);         вернуть значение по ключу
+map.has(key);         true / false
+map.delete(key);      удалит пару
+map.clear();          фул отчистка
+map.size();           размер
+</code></pre>
+
+
+            <p>map сохранит тип ключей в отличии от obj</p>
+
+            <pre><code>
+map.set(1, "цыфра ключ")  
+   .set("1", "строка ключ")
+   .set(false, "булево значение ключ");  (цепочка вызовов set)
+
+
+let obj = {obj: "obj"};
+
+map.set(obj, 123); -- обьект ключ 
+map.get(obj); //123
+
+</code></pre>
+
+
+            <details class="show-piece">
+              <summary><code>создание Map</code></summary>
+              <p>при создании мы можем указать пустой Map, передать внутрь массив(или другой итерируемый обьект)
+                или даже сделать Map из обьекта.</p>
+              <pre><code>
+let map = new Map();
+----------------------
+let map = new Map([
+  ["1", "str1'],
+  [1,   "num1"],
+  [true, "bool"]
+]);
+
+alert(map.get("1")); // str1
+
+</code></pre>
+            </details>
+
+            <p>Map перебирается по порядку добавления в отличии от obj</p>
+
+            <details class="show-piece">
+              <summary><code>перебор Map</code></summary>
+              <pre><code>
+map.keys();    вернет итерируемый обьект по ключам
+map.values();  вернет итерируемый обьект по значениям
+map.entries(); вернет итерируемый обьект по парам [ключ, значение](по умолчанию в for...of)  
+
+
+
+let map = new Map([
+  ["огурец", 500],
+  ["помидор", 400],
+  ["лук", 300]
+]);
+
+  по ключам
+for(let i of map.keys()) {
+  console.log(i);
+}
+
+  по значениям
+for(let i of map.values()) {
+  console.log(i);
+}
+
+  по парам [ключ, значение]
+for (let i of map) {  то же что и map.entries()
+  console.log(i);
+}
+
+
+map.forEach((value, key, map) =&gt; {
+	console.log(`${key}: ${value}`);
+});
+
+</code></pre>
+            </details>
+
+
+            <details class="show-piece">
+              <summary><code>Object.entries() -- </code>возвращает(Map) массив пар [ключ, значение]</summary>
+              <pre><code>
+Map из обычного обьекта
+
+Object.entries(obj) -- метод получает обьект и 
+возвращает массив пар [ключ, значение]
+
+let obj = {
+  name: "John",
+  age: "30"
+};
+
+let map = new Map(Object.entries(obj));
+
+map.get("name"); //John
+
+</code></pre>
+            </details>
+
+            <details class="show-piece">
+              <summary><code>Object.fromEntries() -- </code>создает обьект из пар [ключ, значение]</summary>
+              <pre><code>
+const arr = [
+  ["0", "a"],
+  ["1", "b"],
+  ["2", 42]
+]
+
+const obj = Object.formEntries(arr); // {0: "a", 1: "b", 2: 42};
+
+-----------------------------
+
+let map = new Map();
+
+map.set("a", 1);
+map.set("b", 2);
+map.set("c", 3);
+
+let obj = Object.fromEntries(map.emtries());// {a: 1, b: 2, c: 3}; 
+let obj = Object.fromEntries(map);// {a: 1, b: 2, c: 3}; 
+
+map.emtries() вернет итерируемый 
+обект пар для Object.fromEntries
+
+</code></pre>
+            </details>
+
+
+
+          </section>
+          <!-- map -->
+
+
+
+          <section class="set">
+            <h2><a class="color-red" name="structures-set">set</a></h2>
+
+            <p>set - <span class="color-red">"множество"</span> коллекция без ключей где каждое значение может появиться
+              только 1 раз</p>
+            <p>для множеств Set лучше оптимизорован чем Array, по этому поиск по нему будет быстрее и
+              автоматическая проверка на идентичность</p>
+
+            <pre><code>
+new Set(iterable); если в аргументе был передан итерируемый
+обьект(обычно это arr), то копирует его значения в новый Set
+
+set.add(value); если value повторяется то не добавит
+
+set.delete(value); вернет true если value было в множестве
+на момент вызова метода  
+
+set.has(vslue); проверка (true / false)
+set.clear(); 
+set.size;
+
+</code></pre>
+
+            <p>Set имеет те же методы что и Map</p>
+            <p><code>set.values() -- </code>вернет перебираемый объект для значений</p>
+            <p><code>set.keys() -- </code>то же что и set.values()</p>
+            <p><code>set.entries() -- </code>вернет перебираемый объект для пар [значение, значение]</p>
+
+          </section>
+
+
+
+
+          <section class="function">
+            <h2><a class="color-red" name="structures-function">function</a></h2>
+
+            <p>function – особого типа значение переменной</p>
+
+            <ul>
+              <li>функция возвращает только один результат своей работы</li>
+              <li>после <code>return</code> код не выполняется, происходит выход из функции</li>
+              <li>если в функции нет <code>return</code> то она вернет <code>indefined</code></li>
+            </ul>
+
+            <details class="show-piece">
+              <summary><code>флаг как параметр функции</code></summary>
+              <p>если в параметре достаточно двух вариантов ответа то это наверняка булевы значения(true/false),
+                такие параметры называют флагами.</p>
+
+              <p>Эти значения называют особым образом, их пишут с приставкой is -- isBusinessClass т.е. переменная
+                как бы задает вопрос своему содержанию "сейчас у нас бизнес класс?", а содержание отвечает на
+                вопрос а или нет.</p>
+              <p>от содержимого этой переменной мы можем что то делать</p>
+
+              <textarea cols="30" rows="10">
+let a = function(name, isB) {
+	if(isB == true) {
+		что то делаем
+		флаг равен true
+	} else {
+		что то делаем
+		флаг равен false
+	}
+}
+
+a(igor, false);
+a(igor, true);
+</textarea>
+            </details>
+
+            <div class="performance">
+              <h3 class="performance__title">Function Declaration - объявление функции</h3>
+
+              <p>может быть вызвана раньше, чем она объявлена.</p>
+              <p>доступна везде внутри блока в котором находится, но не снаружи него</p>
+              <p>инструкция определяет переменную (имя функции) и назначает ей ссылку на функцию. Объявления
+                функций
+                не
+                являются
+                частью обычной
+                последовательности выполнения программ. Они перемещаются в верхнюю часть своей области
+                видимости.
+              </p>
+              <pre>
+    <code>
+function sayHi() {
+  console.log("Привет");
+}
+sayHi(); //Привет
+    </code>
+</pre>
+
+            </div>
+
+
+            <div class="performance">
+              <h3>Function Expression - функциональное выражение</h3>
+              <p>создаётся, когда выполнение доходит до него.</p>
+              <pre>
+    <code>
+let sayHi = function() {
+   console.log("Привет");
+}
+sayHi(); //Привет
+    </code>
+</pre>
+            </div>
+
+            <div class="performance">
+              <h3>стрелочные</h3>
+              <pre>
+  <code>
+(...args) =&gt; expression
+
+(...args) =&gt; { return } если использовать скобки то надо явно указать return
+
+return без следующего за ним выражения приводит к тому что функция возвращает undefined
+
+одна и та же функция:
+const square = (x) =&gt; {return x * x};
+const square = x =&gt; x * x;
+  </code>
+</pre>
+            </div>
+
+
+
+            <section class="methods">
+              <ul>
+                <li><span class="color-red">apply</span> - вызывает функцию с аргументами в виде массива</li>
+                <li><span class="color-red">bind</span> - создает функцию которая при вызове заменяет this на значения
+                </li>
+                <li><span class="color-red">call</span> - </li>
+                <li><span class="color-red">toString</span> - функция в строку</li>
+                <li><span class="color-red">length</span> - количество аргументов ожидаемых функцией</li>
+                <li><span class="color-red">name</span> - название функции создания во время определения</li>
+              </ul>
+            </section>
+
+
+            <section class="polyfill">
+              <h2><a name="structures-polyfill" class="color-red"></a>полифилы</h2>
+              <p>Глобальный объект можно использовать, чтобы проверить поддержку современных возможностей языка</p>
+              <pre><code>
+if (!window.Promise) {
+  alert("Ваш браузер очень старый!");
+}  
+
+</code></pre>
+              <p>Если нет (скажем, используется старый браузер), мы можем создать полифил: добавить функции, которые не
+                поддерживаются окружением, но существуют в современном стандарте.</p>
+              <pre><code>
+if (!window.Promise) {
+  window.Promise = ... // собственная реализация современной возможности языка
+}
+
+</code></pre>
+            </section>
+            <!-- полифилы -->
+
+          </section>
+          <!-- function -->
+
+
+          <section class="window">
+            <h2><a class="color-red" name="structures-window">объект window</a></h2>
+            <p>все #id становятся свойствами объекта window</p>
+            <pre><code>
+&lt;a id="link&gt;...&lt;a&gt;
+
+link === window.link // true
+
+</code></pre>
+          </section>
+          <!-- window -->
+
+
+        </section>
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

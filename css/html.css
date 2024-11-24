@@ -1,0 +1,43 @@
+.video table,
+.audio table {
+  max-width: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 183, 178);
+}
+
+.video caption,
+.audio caption {
+  margin-bottom: .3em;
+}
+
+.video table td,
+.audio table td {
+  border: 1px solid rgb(200, 183, 178);
+  padding: 1em;
+}
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+/* <section class="dialog"> */
+.modal {
+  padding: 0;
+  border: none;
+  border-radius: 15px;
+}
+
+.modal__inner {
+  padding: 1em 2em;
+  text-align: center;
+}
+
+.modal::backdrop {
+  background-color: #2f0303bd;
+}
+
+.openModal,
+.closeModal {
+  border: 1px solid black;
+}
+
+/* ... ... ... ... ... ... ... ... ... ... ... ... */

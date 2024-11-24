@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>examples</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/examples.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                      <use href="img/sprite.svg#logo"></use>
+                    </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+        <div class="page--main__inner">
+
+          <section class="example">
+
+            <div class="elem">
+
+              <!-- show-block -->
+              <section class="">
+                <details class="show-block">
+                  <summary><code>show-block</code></summary>
+
+                  <textarea cols="40" rows="8" style="display: block">
+
+<section class="">
+  <details class="show-block">
+    <summary><code></code></summary>
+
+  </details>
+</section>
+
+</textarea>
+
+                </details>
+              </section>
+
+              <!-- show-piece -->
+              <details class="show-piece">
+                <summary><code>show-piece</code></summary>
+
+                <textarea cols="35" rows="6" style="display: block">
+
+<details class="show-piece">
+  <summary><code></code></summary>
+
+</details>
+
+</textarea>
+
+              </details>
+
+              <!-- performance -->
+              <div class="performance">
+                <pre><code>
+<textarea cols="25" rows="5">
+<div class="performance">
+  <pre><code>
+
+  </code></pre>
+              </div>
+              </textarea>
+              </code></pre>
+            </div>
+
+            <!-- show-info -->
+            <div class="show-info" style="height: 100px;">
+
+              <textarea rows="6" cols="32">
+
+
+<div class="show-info">
+
+</div>
+</textarea>
+
+            </div>
+
+            <!-- show-code  -->
+            <div class="show-code">
+              <h2 class="show-code__title">showСode</h2>
+
+              <div class="show-code__description">
+                <p>description</p>
+              </div>
+
+              <div class="show-code__inner">
+                <div class="show-code__performance" style="padding: 55px">
+                  <section class="class">
+                    performance
+                  </section>
+                </div>
+
+                <textarea style="width: 31px; height: 83px;">
+<div class="show-code">
+  <h2 class="show-code__title">showСode</h2>
+              
+<div class="show-code__description">
+  <p>description</p>
+</div>
+              
+<div class="show-code__inner">
+  <div class="show-code__performance">
+    <section class="class">
+      performance
+    </section>
+  </div>
+              
+    textarea.show-code__textarea
+              
+  </div>
+</div>
+</textarea>
+
+              </div>
+            </div>
+
+        </div>
+
+        <!-- git init -->
+        <div class="elem">
+
+          <div class="performance git-init">
+            <pre>
+  <code>
+git init
+git remote add origin http://
+git pull origin main   ===   git pull http://
+
+git add . 
+  git status 
+git commit -m "commit"
+git push origin main   ===   git push http://
+
+git clone http://
+  </code>
+</pre>
+          </div>
+
+          <!-- alt коды -->
+          <div class="performance alt-cods">
+            <pre>
+<code>
+	alt коды
+
+179 : │    193 : ┴    217 : ┘
+
+180 : ┤    194 : ┬    218 : ┌
+
+191 : ┐    195 : ├    250 : ·
+
+192 : └    196 : ─     31 : ▼  
+</code>
+</pre>
+          </div>
+
+        </div>
+
+
+
+        <div class="elem">
+
+          <!-- счетчики -->
+          <div class="performance">
+            <pre>
+<code>
+            счетчики          
+
+css 
+
+ul { counter-reset: count; }
+li { counter-increment: count 1; }
+li::marker { content: counter(count); }
+---------------------------------------
+
+js
+
+
+</code>
+</pre>
+          </div>
+
+
+          <!-- префиксы -->
+          <div>
+            <div class="performance">
+              <pre><code>
+префиксы
+
+elem {
+  -webkit-lol-cat 
+     -moz-lol-cat
+       -o-lol-cat
+          lol-cat
+}
+
+</code></pre>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+        <div class="elem">
+
+          <!-- figma -->
+          <div class="div">
+            <div class="performance">
+
+              <pre><code>
+figma
+
+Duplicate to uour draft -- дубликат макета, в верхнем меню
+клонировать -- зажать alt перетащить объект
+проект во весь экран -- hift + 1
+
+</code></pre>
+            </div>
+          </div>
+
+
+          <!-- найти выпирающий элемент -->
+          <div class="performance">
+            <pre><code>
+        найти выпирающий элемент
+
+* { outline: 5px solid green !important; }
+
+</code></pre>
+          </div>
+
+
+
+
+          <div>
+            <div class="performance">
+              <pre><code>
+section id     | #id class |   #js &gt; .events
+  div class     --- или ----------------
+  div class    | #id       |   #js    
+               |   class   |     .events
+
+</code></pre>
+            </div>
+          </div>
+
+        </div>
+
+
+
+        </section>
+
+
+
+        <section class="multi-columns">
+
+          <details class="show-block">
+            <summary><code>мультиколонки</code></summary>
+
+
+            <ul>
+              <li>column-count - на сколько столбцов разбмть элемент</li>
+              <li>column-fill - как заполнять столбцы</li>
+              <li>column-rule: style / width / color;</li>
+              <li>column-gap - отступ межу колонками</li>
+              <li>column-span - сколько колонок займет элемент</li>
+              <li>column-width - оптимальная ширина столбцов</li>
+            </ul>
+
+            <ul>
+              <li>columns: column-width || column-count; -- <span class="color-red">порядок значения не имеет</span>
+              </li>
+              <li>columns: 100px 3; -- <span class="color-red">максимум 3 колонки минимум 100px в ширину каждая;</span>
+              </li>
+              <li>columns: 200px auto; -- <span class="color-red">ширина колонок минимум 200 пикселов, количество
+                  задаётся браузером</span></li>
+              <li>columns: 2; -- <span class="color-red">две колонки, их ширина определяется браузером.</span></li>
+            </ul>
+
+
+            <div class="performance">
+              <p>Свойство column-width задаёт минимальную желаемую ширину колонки. Если свойство column-count ещё не
+                было
+                задано, браузер
+                автоматически поделит текст на такое количество колонок, чтобы они уместились во всю доступную ширину.
+              </p>
+            </div>
+
+
+
+
+            <div class="multi-columns__inner">
+              <div class="multi-columns__item">
+                <h2>title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sequi?</p>
+                <h2>title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sequi?</p>
+                <h2>title</h2>
+                <p>Lorem <ips> </ips>um dolor sit amet consectetur adipisicing elit. Soluta, sequi?</p>
+                <h2>title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sequi?</p>
+                <h2>title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sequi?</p>
+              </div>
+            </div>
+          </details>
+
+        </section>
+
+
+        <!-- checkout -->
+        <div class="performance">
+          <section class="checkout">
+
+            <ol class="tab-list list-reset">
+              <li class="tab-item">html</li>
+              <li class="tab-item is-active">2</li>
+              <li class="tab-item">css</li>
+              <li class="tab-item">4</li>
+              <li class="tab-item">js</li>
+            </ol>
+
+            <ul class="content-list list-reset">
+              <li class="content-item">
+                <textarea>
+<section class="checkout"> 
+
+  <ol class="tab-list list-reset">
+    <li class="tab-item">1</li>
+    <li class="tab-item is-active">2</li>
+    <li class="tab-item">3</li> 
+    <li class="tab-item">4</li>
+    <li class="tab-item">5</li>
+  </ol>
+
+  <ul class="content-list list-reset">
+    <li class="content-item">Content-1</li>
+    <li class="content-item is-active">Content-2</li>
+    <li class="content-item">Content-3</li>
+    <li class="content-item">Content-4</li>
+    <li class="content-item">Content-5</li>
+  </ul>
+
+</section>
+                </textarea>
+              </li>
+              <li class="content-item is-active">Content-2</li>
+              <li class="content-item">
+                <textarea>
+.checkout {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  min-width: 350px;
+  padding: 5px;
+  background-color: cadetblue;
+}
+
+.checkout .tab-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 5px;
+  font-size: 1.3em;
+}
+
+.checkout .tab-list li {
+  padding: .5em 0;
+  border: 2px solid black;
+  flex: 1;
+  text-align: center;
+  transition: flex 0.4s;
+  cursor: pointer;
+}
+
+.checkout .tab-list li.is-active {
+  flex: 2;
+}
+
+
+.checkout .content-list {
+  display: flex;
+  border: 2px solid black;
+  width: 100%;
+  overflow: hidden;
+}
+
+.checkout .content-item {
+  display: none;
+  background-color: rgb(196, 146, 146);
+  width: 100%;
+  min-height: 7em;
+}
+
+.checkout .content-item.is-active {
+  display: block;
+}
+                </textarea>
+              </li>
+              <li class="content-item">Content-4</li>
+              <li class="content-item">
+                <textarea>
+const tabItems = Array.from(document.querySelectorAll('.tab-item'));
+const contentItems = Array.from(document.querySelectorAll('.content-item'));
+//  Array.from что бы работал .find
+
+const clearActiveClass = (element, className = 'is-active') => {
+  element.find(item => item.classList.remove(`${className}`))
+}
+const setActiveClass = (element, index, className = 'is-active') => {
+  element[index].classList.add(`${className}`)
+}
+
+const checkoutTabs = (item, index) => {
+  item.addEventListener('click', () => {
+
+    if (item.classList.contains('is-active')) return
+
+    clearActiveClass(tabItems)
+    clearActiveClass(contentItems)
+
+    setActiveClass(tabItems, index)
+    setActiveClass(contentItems, index)
+
+  })
+}
+
+tabItems.forEach(checkoutTabs);
+                </textarea>
+              </li>
+            </ul>
+
+          </section>
+        </div>
+
+
+
+
+
+
+
+      </div>
+  </div>
+  </main>
+
+  <footer class="page--footer">
+    <div class="container">
+      <div class="page--footer__inner">
+        footer
+      </div>
+    </div>
+  </footer>
+
+  </div>
+  <script src="../js/example.js"></script>
+</body>
+
+</html>

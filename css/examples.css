@@ -1,0 +1,80 @@
+
+
+.example>.elem {
+  display: inline-block;
+  vertical-align: top;
+  min-width: 259px;
+  max-width: 450px;
+  min-height: 100px;
+  padding: 2px;
+  margin-bottom: 0.5em;
+}
+
+.multi-columns__item {
+  border: 1px solid black;
+  padding: 1em;
+  
+  /* column-count: auto;
+  column-width: 150px; */
+
+  columns: auto 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.checkout {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  min-width: 350px;
+  padding: 5px;
+  background-color: cadetblue;
+}
+
+.checkout .tab-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 5px;
+  font-size: 1.3em;
+}
+
+.checkout .tab-list li {
+  padding: .5em 0;
+  border: 2px solid black;
+  flex: 1;
+  text-align: center;
+  transition: flex 0.4s;
+  cursor: pointer;
+}
+
+.checkout .tab-list li.is-active {
+  flex: 2;
+}
+
+
+.checkout .content-list {
+  display: flex;
+  border: 2px solid black;
+  width: 100%;
+  overflow: hidden;
+}
+
+.checkout .content-item {
+  display: none;
+  background-color: rgb(196, 146, 146);
+  width: 100%;
+  min-height: 7em;
+}
+
+.checkout .content-item.is-active {
+  display: block;
+}

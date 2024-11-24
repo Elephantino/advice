@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>regexp</title>
+  <link rel="stylesheet" href="../style.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+
+        <section class="regexp">
+          <h1>регулярные выражения</h1>
+
+          <p><code>let str = new RegExp("abc")</code></p>
+          <p><code>let str = /abc/</code></p>
+          <p>регулярные выражения интегрированны в строки.</p>
+          <div class="performance">
+            <h3>флаги</h3>
+            <p><code>i - </code>не регистрозависим</p>
+            <p><code>g - </code>все совпадения (без него только первое)</p>
+            <p><code>m - </code>многострочный режим</p>
+            <p><code>s - </code>режим dotall</p>
+            <p><code>u - </code>полная поддержка Юникода</p>
+            <p><code>y - </code>поиск на конкретной позиции</p>
+            <p><code>d - </code>в массив</p>
+          </div>
+
+          <!-- matches -->
+          <details class="show-piece">
+            <summary><code>str.matches(regexp) - </code>вернет совпадение с regexp</summary>
+            <p>у него есть 3 режима работы:</p>
+
+            <pre><code>
+<b>с флагом g - вернет все совпадения</b>
+
+"Любо, братцы, любо".match(/любо/gi) | ["Любо", "любо"]
+
+<b>без флага g - вернет массив (только первое совпадение с доп данными)</b>
+
+"Любо, братцы, любо".match(/любо/i)    | ["Любо", index: 0, input: "Любо, братцы, любо."]
+"Любо, братцы, любо".match(/любо/i)[0] | Любо
+
+
+<b>если нет совпадений вернет null</b>
+
+"Любо, братцы, любо".match(/abc/gi)  | null
+
+</code></pre>
+          </details>
+
+
+          <!-- replace -->
+          <details class="show-piece">
+            <summary><code>str.replace(regexp, replacment) - </code>заменит совпадение с regexp в str на replacment
+            </summary>
+
+            <pre><code>
+/abc/.test("abcde") | true
+
+"Регистрозависим".replace("р", "Х")      | РегистХозависим  | просто поиск
+"Регистрозависим".replace(/р/, "Х")      | РегистХозависим  | поиск регулярным выражением
+
+"Регистро-не-зависим".replace(/р/i, "Х") | Хегистро-не-зависим
+
+"Регистр-и-все-совпадения-в-строке".replace(/р/ig, "Х") | ХегистХ-и-все-совпадения-в-стХоке
+
+</code></pre>
+          </details>
+
+        </section>
+        <!-- regexp -->
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

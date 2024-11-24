@@ -1,0 +1,57 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ------------------------------------- */
+
+.btn-up {
+  position: absolute;
+  right: 0;
+  top: 120px;
+}
+
+/* ------------------------------------- */
+
+.page--header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin-top: 0;
+  background-color: #5f9ea0;
+}
+.page--header__inner {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 1em 0;
+}
+.page--header .item {
+  display: inline-block;
+  margin: 0 0.2em;
+}
+.page--header .item a {
+  padding: 0.7em;
+}
+
+/* ------------------------------------- */
+
+.page--main {
+  flex: 1 0 auto;
+  min-width: 0;
+}
+
+/* ------------------------------------- */
+
+.page--footer {
+  flex: 0 0 auto;
+  color: #fff;
+  background-color: rgba(0, 0, 0, .4);
+  padding: 1em;
+  position: relative;
+  margin-top: auto;  
+}
+
+

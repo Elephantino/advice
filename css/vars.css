@@ -1,0 +1,13 @@
+:root {
+  --container-width: 1650px;
+  --container-offset: 15px;
+  
+  --color-blue: #1e5bd6;
+  --color-light-blue: #289dcc;
+  --color-blue-light: #3199d1;
+
+  --color-yellow: #ccac00;
+
+  --color-red: rgb(185, 63, 63);
+  --color-red-light: #cc4700;
+}

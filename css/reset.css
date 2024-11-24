@@ -1,0 +1,99 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;  
+}
+
+body {
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  min-width: 320px;
+  font-family: "Montserrat-Regular", sans-serif;
+  /* font-family: "Yarin-Regular", sans-serif; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 1em 0;
+  text-align: center;
+}
+
+p {
+  margin-bottom: .5em;
+}
+
+
+img,
+video {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+pre {
+  margin: 0;
+  overflow-x: auto;
+  background-color: rgb(228, 225, 225);
+  padding-left: 1em;
+}
+
+
+
+
+
+
+input::-ms-clear {
+  display: none;
+}
+
+.input-reset::-webkit-search-decoration,
+.input-reset::-webkit-search-cancel-button,
+.input-reset::-webkit-search-results-button,
+.input-reset::-webkit-search-results-decoration {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

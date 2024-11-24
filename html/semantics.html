@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>semantics</title>
+  <link rel="stylesheet" href="../style.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <section class="semantics">
+
+          <section class="header-ierarchy">
+            <h3>иерархия заголовков</h3>
+            <img src="../img/header-ierarchy.png" alt="header-ierarchy-img">
+          </section>
+
+          <article>
+            <p>Изменять порядок элементов в разметке нежелательно — с точки зрения семантики, первым должен идти
+              заголовок раздела, а уже потом все относящиеся к нему элементы. Как быть? Изменим визуальный порядок
+              элементов!</p>
+          </article>
+
+          <div class="performance ">
+            <p><code class="color-red">классы у header, footer - </code> </p>
+            <p>Если вы не хотите использовать классы для шапки и подвала сайта, то можете использовать селекторы body
+              &gt; header и body &gt; footer. Эти селекторы не повлияют на хедеры и футеры, вложенные более глубоко.</p>
+          </div>
+
+          <div class="performance main">
+            <p><code class="color-red">main - </code>основное содержание сайта</p>
+            <p>может использоваться на странице только один раз</p>
+          </div>
+
+          <div class="performance footer">
+            <p><code class="color-red">footer - </code>подвал сайта</p>
+            <p>копирайты, контактной информацией ... Может использоваться и в других разделах сайта, например в статье.
+            </p>
+          </div>
+
+          <div class="performance nav">
+            <p><code class="color-red">nav - </code>элемент для навигационных блоков</p>
+            <p>Меню и блоки ссылок лучше оборачивать не в дивы, а в <code class="color-red">nav</code>.</p>
+          </div>
+
+          <div class="performance article">
+            <p><code class="color-red">article - </code>самостоятельный, цельный и независимый раздел документа (cтатья,
+              пост в блоге, сообщение на форуме).</p>
+            <p>Так как <code>article</code> должен быть независимым, то при разметке удобно считать его отдельной и
+              самостоятельной страницей сайта. При этом иерархия заголовков на всей нашей странице должна быть
+              «сквозная», то есть внутри <code>article</code> заголовок будет «очередного» уровня (соблюдать иерархию
+              заголовков).</p>
+          </div>
+
+          <div class="performance aside">
+            <p><code class="color-red">aside - </code>дополнительное содержание</p>
+            <p>не связанное напрямую с основным (сайдбар, боковыми панель)</p>
+            <p>рекламная вставка, акционное предложение</p>
+          </div>
+
+
+          <div class="performance div">
+            <p><code class="color-red">div - </code>универсальный контейнер. В него можно положить любые другие теги и
+              просто текст.</p>
+            <p>Чаще всего дивы используются для группировки крупных блоков. Отсутствует собственный смысл, поэтому его
+              дополняют «говорящим» классом.</p>
+          </div>
+
+          <div class="performance p">
+            <p><code class="color-red">p - </code>разметка обычных абзацев в текстах</p>
+            <p>контейнер для группировки небольших текстовых элементов</p>
+          </div>
+
+          <div class="performance span">
+            <p><code class="color-red">span - </code>это не контейнер, а фрагмент текста. Им можно выделять элементы
+              внутри текстового потока. С помощью div и p такие выделения делать нельзя.</p>
+            <p>span выделяют словосочетания. Отсутствует собственный смысл, поэтому почти всегда его дополняют
+              «говорящим» классом.</p>
+          </div>
+
+          <div class="performance inline">
+            <p><code class="color-red">inline - </code></p>
+            <ul>
+              <li>Не реагируют на width и height.</li>
+              <li>margin - воспринимая только горизонтальные отступы.</li>
+              <li>padding - воспринимая только горизонтальные отступы.</li>
+              <li>При задании вертикальных padding визуально увеличиваются, но без увеличения занимаемого места(не
+                отталкивают другие элементы).</li>
+              <li>Воспринимают рамки. Аналогично padding рамки сверху и снизу не увеличивают занимаемое элементом место.
+              </li>
+            </ul>
+            <p>Если зафлоатить строчный элемент, то он начинает вести себя как блочный (воспринимать размеры и отступы).
+            </p>
+            <p>абсолютно спозицыонированный инлайн или инлайнблок ведет себя как блочный(принимает высоту и ширину)</p>
+          </div>
+
+
+          <div class="performance inline-block">
+            <p><code class="color-red">inline-block - </code></p>
+            <p>Снаружи как обычные строчные, но внутри они ведут себя как блочные.</p>
+            <p>Каждый элемент с inlune-block воспринимается браузером как один символ или слово, из-за этого между
+              inline-block элементами появзяется отступ, этот отступ это line-height; <a
+                href="https://htmlacademy.ru/blog/css/fighting-the-space-between-inline-block-elements" target="_blank"
+                rel="noopener noreferrer">статья</a></p>
+            <ul>
+              <li>не центруются с помощью <code>margin: 0 auto;</code></li>
+              <li>можно задавать размеры, рамки и отступы, как и элементам с блочным боксом</li>
+              <li>ширина по умолчанию зависит от содержания</li>
+              <li>элементы в одной строке выравниваются вертикально подобно элементам со строчным боксом.</li>
+            </ul>
+
+            <p>От строчных им достались следующие черты:</p>
+            <ul>
+              <li>по ширине они ужимаются под своё содержимое;</li>
+              <li>могут располагаться в одну строку;</li>
+              <li>реагируют на вертикальное выравнивание, vertical-align;</li>
+              <li>реагируют на горизонтальное выравнивание, text-align, заданное у родителя.</li>
+            </ul>
+
+            <p>От блочных:</p>
+            <ul>
+              <li>им можно задавать размеры с помощью width и height;</li>
+              <li>а также внешние и внутренние отступы и рамки, которые работают во всех направлениях и
+                увеличивают
+                размер элемента.</li>
+            </ul>
+
+
+          </div>
+
+
+          <div class="performance block">
+            <p><code class="color-red">block - </code></p>
+            <code>margin: 0 auto;</code>
+            <p>такое действует только на <code>display: block;</code>(возможно и внутри flex)</p>
+          </div>
+
+
+        </section>
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="index.html">
+            <!-- <svg width="125px" height="20px">
+              <use href="img/sprite.svg#logo"></use>
+            </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Добро на позитиве
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="html/404.html">404</a></li>
+            <li class="item"><a href="html/examples.html">examples</a></li>
+            <li class="item"><a href="html/crib.html">шпора</a></li>
+            <li class="item"><a href="html/table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+        <div class="page--main__inner">
+
+
+
+          <ul>
+            <li><a target="_blank" rel="noopener noreferrer"
+                href="https://www.youtube.com/watch?v=OtJkXuqyjkk&t=488s">ФОРМЫ. ---
+                ФРИЛАНСЕР</a></li>
+            <li>
+              <a href="html/js.html#oninput">получить данные из поля ввода без отправки формы <span
+                  class="color-red">oninput</span></a>
+            </li>
+            <li>
+              <a href="html/css.html#hidden">
+                Любому элементу можно добавить атрибут hidden и он пропадёт
+              </a>
+            </li>
+            <li>
+              <a href="js.html#delegate-event--menu">Меню на делегировании событий</a>
+            </li>
+            <li>
+              атрибут title="подсказка при hover"
+            </li>
+            <li>
+              <a href="https://developer.mozilla.org/ru/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy">Политика
+                защиты содержимого</a>
+            </li>
+          </ul>
+
+
+          <div style="display: inline-block; padding: 5px; border: 1px solid black;">
+            <p>сделать</p>
+            <ol>
+              <li>remove add class внутри классы js</li>
+              <li>mouseover / mouseout / mouseenter / mouseleave</li>
+              <li>тег nav есть в делегировании событий</li>
+              <li>Смил анимаци</li>
+              <li>mask-image svg</li>
+            </ol>
+          </div>
+
+
+
+<pre><code>
+  hz
+  
+const list = document.querySelectorAll('.menu li a');
+list.forEach(item => {
+  item.addEventListener('click', (e) => {
+    list.forEach(el => { el.classList.remove('active'); });
+    item.classList.add('active');
+  });
+});
+</code></pre>
+
+
+          <img src="img/table.jpg" alt="">
+
+
+          <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fmSIHr3WKxk&t=11s">CSS 3D
+            Трансформации. Пример с 3D кубом</a>
+
+
+
+          <h2>резервные классы</h2>
+          <ul>
+            <li>.visually-hidden</li>
+            <li>.inline-block</li>
+            <li>.list-reset</li>
+            <li>.button-reset</li>
+            <li>.clearfix::after ???????</li>
+            <li></li>
+            <li>.color-blue</li>
+            <li>.color-light-blue</li>
+            <li>.color-blue-light</li>
+            <li>.color-yellow</li>
+            <li>.color-red</li>
+            <li>.color-red-light</li>
+            <li></li>
+          </ul>
+
+          <textarea name="" id="" cols="85" rows="55">
+
+                       oNode.parentNode 
+                              |
+                              | 
+   oNode.previosSibling --- oNode --- oNode.nextSibling 
+                              |
+          ┌───────────────────┴──────────────────────────────────────────┐
+          │                   │                                          │
+   oNode.firstChils      oNode.childNodes[1]...(стек элементов)     oNode.lastChild
+
+
+
+
+
+
+
+
+window ─┐
+        ├─ DOM ─┐
+        │       └ document
+        │ 
+        ├─ BOM ─┐
+        │       ├─ navigator
+        │       ├─ screen
+        │       ├─ frames
+        │       ├─ history
+        │       └─ XMLHttpRequest
+        │
+        └─ JS ─┐
+               ├─ object
+               ├─ array
+               └─ func
+
+
+EventTarget ─┐
+             │ 
+             └─ Node ─┐
+                      ├─ text
+                      ├─ element ─┐
+                      └─ comment  ├─ HTMLElement ─┐
+                                  └─ SVGElement   │
+
+
+</textarea>
+
+
+          <div>
+            <h2>события</h2>
+
+            <ul>
+              <li>Blur потеря объектом фокуса onBlur</li>
+              <li>Change пользователь изменяет значение элемента onChange</li>
+              <li>Click пользователь щелкает мыщью по объекту onClick</li>
+              <li>DblClick пользователь делает двойной щелчок мышью по объекту onDblClick</li>
+              <li>DragDrop пользователь перетаскивает мышью объект onDragDrop</li>
+              <li>Error возникновение javascript-ошибки onError</li>
+              <li>Focus окно или элемент формы получает фокус onFocus</li>
+              <li>KeyDown пользователь нажимает клавишу клавиатуры onKeyDown</li>
+              <li>KeyPress пользователь удерживает нажатой клавишу клавиатуры onKeyPress</li>
+              <li>KeyUp пользователь отпускает клавишу клавиатуры onKeyUp</li>
+              <li>Load документ загружается в браузер onLoad</li>
+              <li>MouseDown пользователь нажимает кнопку мыши onMouseDown</li>
+              <li>MouseOut указатель мыши выходит за пределы элемента onMouseOut</li>
+              <li>MouseOver указатель мыши помещается над элементом onMouseOver</li>
+              <li>MouseUp пользователь отпускает кнопку мыши onMouseUp</li>
+              <li>Move пользователь перемещает окно onMove</li>
+              <li>Reset пользователь нажимает кнопку "reset" формы onReset</li>
+              <li>Resize пользователь изменяет размеры окна или элемента onResize</li>
+              <li>Select пользователь выбирает элемент формы onSelect</li>
+              <li>Select пользователь выбирает элемент формы onSelect</li>
+              <li>Unload пользователь закрывает документ onUnload</li>
+            </ul>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>

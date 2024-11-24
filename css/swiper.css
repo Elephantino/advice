@@ -1,0 +1,27 @@
+.swiper {
+  user-select: none;
+  padding: 20px;
+}
+
+.swiper-slide img {
+  display: block;
+  margin: 0 auto;
+}
+
+.swiper .swiper-pagination-progressbar-fill {
+  background: rgb(195, 100, 100);
+}
+
+.swiper-scrollbar-drag {
+  background: rgb(37, 24, 24);
+}
+
+
+
+
+
+
+
+
+
+
