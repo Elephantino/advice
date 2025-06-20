@@ -1053,6 +1053,18 @@ alert(div.outerHTML); // &lt;div&gt;Привет, мир!&lt;/div&gt; // Сод�
             <details class="show-block">
               <summary><code>стили</code></summary>
 
+              <div class="performance">
+                <pre><code>
+грамотно удалить присвоенное свойство  
+
+delete elem.style.display  // НЕ правильно
+elem.style.display = "";  // присвоить пустую строку
+
+</code></pre>
+              </div>
+              <!-- удалить присвоенное свойство -->
+
+
 
               <div class="cssText">
                 <pre><code>
@@ -1068,20 +1080,6 @@ document.body.style.backgroundColor = prompt('background color?', 'green');
 </code></pre>
               </div>
               <!-- стили -->
-
-
-              <details class="show-piece" open>
-                <summary><code>грамотно удалить присвоенное свойство</code></summary>
-                <pre><code>
-delete elem.style.display  // вместо этого
-
-elem.style.display = "";  // присвоить пустую строку
-
-</code></pre>
-              </details>
-              <!-- удалить присвоенное свойство -->
-
-
 
 
               <details class="show-piece getComputedStyle" open>
