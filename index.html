@@ -48,21 +48,6 @@
                 href="https://www.youtube.com/watch?v=OtJkXuqyjkk&t=488s">ФОРМЫ. ---
                 ФРИЛАНСЕР</a></li>
             <li>
-              <a href="html/js.html#oninput">получить данные из поля ввода без отправки формы <span
-                  class="color-red">oninput</span></a>
-            </li>
-            <li>
-              <a href="html/css.html#hidden">
-                Любому элементу можно добавить атрибут hidden и он пропадёт
-              </a>
-            </li>
-            <li>
-              <a href="js.html#delegate-event--menu">Меню на делегировании событий</a>
-            </li>
-            <li>
-              атрибут title="подсказка при hover"
-            </li>
-            <li>
               <a href="https://developer.mozilla.org/ru/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy">Политика
                 защиты содержимого</a>
             </li>
@@ -82,24 +67,11 @@
 
 
 
-<pre><code>
-  hz
-  
-const list = document.querySelectorAll('.menu li a');
-list.forEach(item => {
-  item.addEventListener('click', (e) => {
-    list.forEach(el => { el.classList.remove('active'); });
-    item.classList.add('active');
-  });
-});
-</code></pre>
 
+<p><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fmSIHr3WKxk&t=11s">CSS 3D
+            Трансформации. Пример с 3D кубом</a></p>
 
-          <img src="img/table.jpg" alt="">
-
-
-          <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fmSIHr3WKxk&t=11s">CSS 3D
-            Трансформации. Пример с 3D кубом</a>
+          
 
 
 
@@ -120,24 +92,22 @@ list.forEach(item => {
             <li></li>
           </ul>
 
-          <textarea name="" id="" cols="85" rows="55">
 
-                       oNode.parentNode 
+          <div style="display: inline-block;">
+            <pre><code>
+                        Node.parentNode 
                               |
                               | 
-   oNode.previosSibling --- oNode --- oNode.nextSibling 
+    Node.previosSibling ---  Node --- Node.nextSibling 
                               |
-          ┌───────────────────┴──────────────────────────────────────────┐
-          │                   │                                          │
-   oNode.firstChils      oNode.childNodes[1]...(стек элементов)     oNode.lastChild
-
-
-
-
-
-
-
-
+          ┌───────────────────┴────────────────────────────┐
+          │                   │                            │
+    Node.firstChils       Node.childNodes[1]...       Node.lastChild 
+                          (стек элементов)  
+</code></pre>
+          </div>
+          <div style="display: inline-block;">
+            <pre><code>
 window ─┐
         ├─ DOM ─┐
         │       └ document
@@ -152,19 +122,37 @@ window ─┐
         └─ JS ─┐
                ├─ object
                ├─ array
-               └─ func
+               └─ func  
+</code></pre>
+          </div>
+
+          <div style="display: inline-block;">
+            <pre><code>
+      EventTarget
+           │
+         Node
+           │
+ ┌─────────┴──────────┐
+ │         │          │
+text     element     comment
+           │
+    ┌──────┴───────┐
+    │              │
+HTMLElement    SVGElement  
+</code></pre>
+          </div>
 
 
-EventTarget ─┐
-             │ 
-             └─ Node ─┐
-                      ├─ text
-                      ├─ element ─┐
-                      └─ comment  ├─ HTMLElement ─┐
-                                  └─ SVGElement   │
 
 
-</textarea>
+
+
+
+
+
+
+
+
 
 
           <div>
