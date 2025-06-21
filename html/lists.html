@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lists</title>
+  <link rel="stylesheet" href="../style.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <section class="lists">
+<h1>списки</h1>
+
+
+          <!-- lists -->
+        
+
+              <details class="show-piece unordered-list">
+                <summary><code>unordered list</code> -- неупорядоченный список</summary>
+                <p>в ul могут находиться только теги li -- «list item»</p>
+                <p>Пунктов должно быть не менее одного.</p>
+              </details>
+
+              <details class="show-piece ordered-list">
+                <summary><code>ordered list</code> -- упорядоченный список</summary>
+                <p><code>У ol может быть несколько атрибутов: start, reversed и type.</code></p>
+                <p>По умолчанию нумерация пунктов начинается с единицы, а с помощью start можно поменять это стартовое
+                  число. Нумерация пунктов списка может также быть отрицательной.</p>
+                <pre><code>
+start     -- меняет стартовое число нумерации, может быть отрицательным.
+reversed  -- меняет направление нумерации на противоположный, не требует значения
+type      -- можно задавать различные типы маркеров
+
+      </code></pre>
+                <ul class="list-reset">
+                  <li>1: десятичное число</li>
+                  <li>a: буквы латинского алфавита в нижнем регистре</li>
+                  <li>A: буквы латинского алфавита в верхнем регистре</li>
+                  <li>i: римские цифры в нижнем регистре</li>
+                  <li>I: римские цифры в верхнем регистре</li>
+                </ul>
+              </details>
+
+              <details class="show-piece description-list">
+                <summary><code>description list</code> -- список описаний</summary>
+                <p>может содержать более одного описания для каждого термина.</p>
+                <pre><code>
+&lt;dl&gt;    «description list»           сам список описаний;
+&lt;dt&gt;    «description term»           термин;
+&lt;dd&gt;    «description definition»     описание или определение.
+      </code></pre>
+              </details>
+
+
+          </section>
+
+
+
+
+
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

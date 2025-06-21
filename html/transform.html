@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>transform</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .transform>div {
+      display: flex;
+      padding: 1em 5px;
+      border: 1px solid blue;
+      margin-bottom: -1px;
+      gap: 11px;
+
+      perspective: 100px;
+
+      max-width: 800px;
+    }
+
+    .transform>div>div {
+      border: 1px solid black;
+      padding: 0.3em 0.5em;
+      transition: transform 500ms;
+    }
+
+    .transform>div>div:first-child {
+      border: none;
+      margin-right: auto;
+    }
+
+    .transform .translate div:nth-child(2):hover {
+      transform: translate(-10px, 0px);
+    }
+
+    .transform .translate div:nth-child(3):hover {
+      transform: translate(0px, -10px);
+    }
+
+    .transform .translate div:nth-child(4):hover {
+      transform: translate3d(0px, 0px, 20px);
+    }
+
+    .transform .rotate div:nth-child(2):hover {
+      transform: rotateX(50deg);
+    }
+
+    .transform .rotate div:nth-child(3):hover {
+      transform: rotateY(40deg);
+    }
+
+    .transform .rotate div:nth-child(4):hover {
+      transform: rotate(90deg);
+    }
+
+    .transform .rotate div:nth-child(5):hover {
+      transform: rotate(-90deg);
+    }
+
+    .transform .skew div:nth-child(2) {
+      transform: skew(10deg);
+    }
+
+    .transform .skew div:nth-child(3) {
+      transform: skew(0, -10deg);
+    }
+
+    .transform .skew div:nth-child(4):hover {
+      transform: skew(-50deg, 0);
+    }
+
+    .transform .scale div:nth-child(2):hover {
+      transform: scale(-1);
+    }
+
+    .transform .scale div:nth-child(3):hover {
+      transform: scale(2);
+    }
+
+    .transform .scale div:nth-child(4):hover {
+      transform: scaleX(2);
+    }
+
+    .transform .scale div:nth-child(5):hover {
+      transform: scaleY(2);
+    }
+
+    .transform .scale div:nth-child(6):hover {
+      transform: scale(0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <h1>transform</h1>
+
+        <p>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fmSIHr3WKxk&t=11s">
+            CSS 3D Трансформации. Пример с 3D кубом
+          </a>
+        </p>
+
+        <section class="transform">
+          <div class="translate">
+            <div>translate(x, y, z);</div>
+            <div>-10px, 0px</div>
+            <div>0px, -10px</div>
+            <div>translate3d(0px, 0px, 10px);</div>
+          </div>
+          <div class="rotate">
+            <div>rotate(x, y, z);</div>
+            <div>15deg</div>
+            <div>-40deg</div>
+            <div>90deg</div>
+            <div>-90deg</div>
+          </div>
+          <div class="skew">
+            <div>skew(x, y)</div>
+            <div>10deg</div>
+            <div>0, -10deg</div>
+            <div>-50deg, 0</div>
+          </div>
+          <div class="scale">
+            <div>scale(px);</div>
+            <div>-1</div>
+            <div>2</div>
+            <div>scaleX(2)</div>
+            <div>scaleY(2)</div>
+            <div>0.5</div>
+          </div>
+          <div class="matrix">
+            <div>matrix</div>
+            <!-- <div></div> -->
+            <!-- <div></div> -->
+            <!-- <div></div> -->
+          </div>
+        </section>
+
+
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

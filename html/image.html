@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>image</title>
+  <link rel="stylesheet" href="../style.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <h1>image</h1>
+
+        <div class="html-element">
+
+          <ul>
+            <li><a href="">адаптивное изображение</a></li>
+            <li><a href="">дескриптор плотности - </a>если изображения имеют фиксированную ширину
+            </li>
+            <li><a href="">дескриптор ширины - </a>браузер выберет image на основе ширины window
+            </li>
+            <li><a href="">loading - </a>приоритет загрузки img</li>
+            <li><a href="">picture - </a>заменить изображение от ширины экрана (и качество)</li>
+            <li><a href="">map-image</a></li>
+          </ul>
+
+        </div>
+
+
+        <section>
+
+          <!-- адаптивное изображение -->
+          <div class="html-element">
+            <h3><a name="адаптивное изображение">адаптивное изображение</a></h3>
+
+            <pre><code>
+.container {             |     
+  position: relative;    |
+  padding-top: 56,25%;   |  .container > img {
+}                        |    aspect-ratio: 16 / 9;
+                         |    width: 100%; 
+.container > img {       |  }
+  position: absolute;    |
+  top: 0;                |
+  width: 100%;           |
+}                        |
+</code></pre>
+          </div>
+          <!-- адаптивное изображение -->
+
+
+          <!-- дескриптор плотности -->
+          <div class="html-element">
+            <h3><a name="дескриптор плотности">дескриптор плотности</a></h3>
+
+            <p>если изображения имеют фиксированную ширину</p>
+            <pre><code>
+&lt;img src="img.png" 
+     srcset="img.png, 
+     img2.png 2x" /&gt;
+	 
+используйте дескриптор плотности
+отображения(x1; 1.5; x2) если 
+ваши изображения имеют
+фиксированную ширину
+</code></pre>
+          </div>
+          <!-- дескриптор плотности -->
+
+
+          <!-- дескриптор ширины -->
+          <div class="html-element">
+            <h3><a name="дескриптор ширины">дескриптор ширины</a></h3>
+
+            <p>браузер выберет img на основе ширины window</p>
+            <pre><code>
+&lt;img src="img.png" 
+     srcset="small.png 300w, 
+     medium.png 600w,
+     big.png 900w" /&gt;
+
+использование дескриптора ширины
+позволяет браузеру выбирать
+лучшего кандидата на основе 
+фактической ширины, необходимой 
+для визуализации этого изображения 
+на этом конкретном дисплее во 
+время выполнения.
+</code></pre>
+          </div>
+          <!-- дескриптор ширины -->
+
+
+          <!-- loading -->
+          <div class="html-element">
+            <h3><a name="loading">loading</a></h3>
+
+            <p><code>&lt;img loading="lazy"&gt;</code></p>
+            <p>Браузер не будет загружать ленивые изображения до тех пор, пока пользователь не
+              прокрутит страницу вниз
+              настолько, что
+              изображение вот-вот появится в поле зрения. Если пользователь никогда не
+              прокручивает, изображение никогда не
+              загружается</p>
+            <p>lazy - не следует указывать тем изображениям которые при загрузке страницы уже
+              попадают в поле зрения.</p>
+            <p>Если ваш сайт автоматически применяет lazy атрибут, можете установить eager
+              атрибут (который используется по
+              умолчанию), чтобы предотвратить его применение:
+              <code>&lt;img loading="eager"&gt;</code>
+            </p>
+            <p><code>&lt;img fetchpriority="high"&gt;</code> - </p>
+            <p>Это сообщит браузеру о том, что нужно сразу же получить изображение и с высоким
+              приоритетом, а не ждать, пока
+              браузер завершит макет, когда изображения обычно загружаются.</p>
+          </div>
+          <!-- loading -->
+
+          <!-- picture -->
+          <div class="html-element">
+            <h3><a name="picture">picture</a></h3>
+
+            <pre><code>
+&lsaquo;picture"&rsaquo;    2x для ретины(такая же картинка только плотность пикселей больше)
+
+  &lsaquo;source srcset="../img/1.png 1x, ../img/2.png 2x" media="(max-width: 320px)"&rsaquo;
+  &lsaquo;source srcset="../img/3.png 1x, ../img/4.png 2x" media="(max-width: 500px)"&rsaquo;
+  &lsaquo;source srcset="../img/5.png 1x, ../img/6.png 2x" media="(max-width: 700px)"&rsaquo;
+
+  &lsaquo;img src="../img/7.png" srcset="../img/8.png 2x" alt=""&rsaquo;
+          img отобразится если ни один вариант выше не подойдет
+&lsaquo;/picture&rsaquo;
+</code></pre>
+          </div>
+          <!-- picture -->
+
+
+          <!-- map-image -->
+          <div class="html-element">
+            <h3><a name="map-image">map-image</a></h3>
+
+            <ul>
+              <li>usemap это имя карты изображения, шарп (#) обязателен</li>
+              <li>coords="координаты в пикселях"</li>
+              <li>x от левого края картинки до точки</li>
+              <li>y от верха картинки до точки</li>
+              <li>shape="rect / circle / poly / default"</li>
+              <li>shape - область</li>
+              <li>default - вся область(по дефолту)</li>
+            </ul>
+            <pre><code> 
+&lsaquo;img class="" src="" alt="" usemap="#имя карты изображения, шарп обязателен"&rsaquo;
+&lsaquo;map&rsaquo; name="имя карты изобpажения"&rsaquo;
+
+coords="x, y, x, y"
+&lsaquo;area shape="rect" coords="58, 37, 167, 175" href="" target="blank" alt=""&rsaquo; rect - прямоугольная область
+
+coords=" x, y, ширина "
+&lsaquo;area shape="circle" coords="250, 115, 60" href="https://" target="blank" alt=""&rsaquo; circle - круглая область
+
+&lsaquo;area shape="poly" coords="70,70, 168,70, 180,112, 280,112, 280,198, 180,198, 168,210, 70,210" href="https://"
+    target="blank" alt=""&rsaquo;
+&lsaquo;/map&rsaquo;
+  </code></pre>
+
+            <img src="../img/mapSircle.png" alt="">
+            <img src="../img/mapRect.png" alt="">
+            <img src="../img/mapPoly.png" alt="">
+
+          </div>
+          <!-- map-image -->
+        </section>
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>width-content</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .fit-content__inner {
+      border: 2px solid tomato;
+      max-width: 300px;
+    }
+
+    .fit-content__inner div {
+      border: 1px solid #000;
+      margin: 0 auto;
+    }
+
+    .fit-content__inner div:not(:last-child) {
+      margin-bottom: .5em;
+    }
+
+    .fit-content__one {
+      width: 100px;
+    }
+
+    .fit-content__two {
+      width: min-content;
+    }
+
+    .fit-content__three {
+      width: max-content;
+    }
+
+    .fit-content__four {
+      width: fir-content;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <h1 hidden>min / max / fit-content</h1>
+
+        <p><code class="color-red-light">min-content / max-content / fit-content</code></p>
+        <section class="show-piece fit-content">
+
+          <h4><code>margin: 0 auto; </code>у всех элементов</h4>
+          <div class="fit-content__inner">
+
+            <div class="fit-content__one">
+              <p><code>100px</code></p>
+              <p>Lorem ipsum dolor sit amet, consecteturconsectetur adipisicing elit. Natus, nesciunt?</p>
+            </div>
+            <div class="fit-content__two">
+              <p><code>min-content</code></p>
+              <p>secteturconsecteturt. Самый длинный элемент определяет ширину контейнера</p>
+            </div>
+            <div class="fit-content__three">
+              <p><code>max-content</code></p>
+              <p>Lorem ipsum dolor sit amet, consecteturconsectetur adipisicing elit. Natus, nesciunt?</p>
+            </div>
+            <div class="fit-content__three">
+              <p><code>max-content</code></p>
+              <p>Lorem adipisicing elit. Natus, nesciunt?</p>
+              <p>margin: 0 auto;</p>
+            </div>
+            <div class="fit-content__four">
+              <p><code>fit-content</code></p>
+              <p>Lorem ipsum dolor sit amet, consecteturconsectetur adipisicing elit. Natus, nesciunt?</p>
+            </div>
+            <div class="fit-content__five">
+              <p><code>fit-content</code></p>
+              <p>Lorem ipsum dolor elit.</p>
+            </div>
+          </div>
+        </section>
+        <!-- min-content / max-content / fit-content -->
+
+
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

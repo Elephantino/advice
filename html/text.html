@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>text</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .text-overflow p {
+      border: 1px solid red;
+      width: 100px;
+      overflow-x: hidden;
+      white-space: nowrap;
+
+      text-overflow: clip;
+    }
+
+    .text-overflow p:last-child {
+      text-overflow: ellipsis;
+    }
+
+    .text-overflow p:hover {
+      width: 100%;
+    }
+
+    /* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+    .text-indent .item {
+      display: inline-block;
+      height: 125px;
+      width: 140px;
+      border: 1px solid black;
+    }
+
+    .text-indent .item:nth-child(1) {
+      text-indent: 2em;
+      margin-right: 35px;
+    }
+
+    .text-indent .item:nth-child(2) {
+      margin-left: 2em;
+      text-indent: -2em;
+    }
+
+    /* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+
+    .text-justify .inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+
+    .text-justify .item {
+      min-height: 100px;
+      min-width: 100px;
+      max-width: 200px;
+      border: 1px solid black;
+    }
+
+    .text-justify .item p {
+      text-align: justify;
+      margin: 0;
+    }
+
+    .text-justify .item p:first-child {
+      text-align: center;
+      margin: 10px 0 15px;
+      font-weight: bold;
+    }
+
+    .text-justify .item:first-child p:last-child {
+      text-justify: auto;
+    }
+
+    .text-justify .item:nth-child(2) p:last-child {
+      text-justify: inter-word;
+    }
+
+    .text-justify .item:nth-child(3) p:last-child {
+      text-justify: inter-character;
+    }
+
+    .text-justify .item:nth-child(4) p:last-child {
+      text-justify: distribute;
+    }
+
+    /* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+    .writing-mode .flex-container-performance,
+    .text-orientation .flex-container-performance {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+
+    .writing-mode .item,
+    .text-orientation .item {
+      min-height: 100px;
+      min-width: 100px;
+      max-width: 200px;
+      border: 1px solid black;
+    }
+
+    .writing-mode .item>p,
+    .text-orientation .item>p {
+      margin: 0;
+    }
+
+    .writing-mode .item {
+      writing-mode: horizontal-tb;
+    }
+
+    .writing-mode .item:nth-child(2) {
+      writing-mode: vertical-lr;
+    }
+
+    .writing-mode .item:last-child {
+      writing-mode: vertical-rl;
+    }
+
+    /* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+    .text-orientation .item:nth-child(1) {
+      writing-mode: vertical-lr;
+      text-orientation: upright;
+      width: 100px;
+    }
+
+    .text-orientation .item:nth-child(2) {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    .text-orientation .item:nth-child(3) {
+      writing-mode: vertical-lr;
+      text-orientation: mixed;
+    }
+
+    /* ... ... ... ... ... ... ... ... ... ... ... ... */
+
+    .fit-content__inner {
+      border: 2px solid tomato;
+      max-width: 300px;
+    }
+
+    .fit-content__inner div {
+      border: 1px solid #000;
+      margin: 0 auto;
+    }
+
+    .fit-content__inner div:not(:last-child) {
+      margin-bottom: .5em;
+    }
+
+    .fit-content__one {
+      width: 100px;
+    }
+
+    .fit-content__two {
+      width: min-content;
+    }
+
+    .fit-content__three {
+      width: max-content;
+    }
+
+    .fit-content__four {
+      width: fir-content;
+    }
+  </style>
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <section class="text">
+
+          <h1>text</h1>
+
+
+
+          <details class="show-piece" open>
+            <summary><code><b>user-select: none</b></code></summary>
+            <p class="user-select"><span>выделение те</span>кста при нажатии</p>
+          </details>
+          <!-- user-select -->
+
+          <details class="show-piece" open>
+            <summary><code><b>теги изменений:</b></code></summary>
+            <ul class="list-reset">
+              <li><b>&lt;b&gt;жирный текст&lt;/b&gt;</b></li>
+              <li><strong>&lt;strong&gt;важный жирный текст&lt;/strong&gt;</strong></li>
+              <li><em>&lt;em&gt;важный курсивный текст&lt;/em&gt;</em></li>
+              <li><i>&lt;i&gt;курсивный текст&lt;/i&gt;</i></li>
+              <li><u>&lt;u&gt;подчеркнутый текст&lt;/u&gt;</u></li>
+              <li><s>&lt;s&gt;перечеркнутый текст&lt;/s&gt;</s></li>
+              <li><del>&lt;del&gt;важный перечеркнутый текст&lt;/del&gt;</del></li>
+              <li><ins>&lt;ins&gt;важный подчеркнутый текст&lt;/ins&gt;</ins></li>
+            </ul>
+
+            <details class="show-piece">
+              <summary><code>del / ins</code></summary>
+              <pre><code>
+            del -- «delete» // текст который был удалён в новой версии документа.
+            ins -- «insert» // текст который был добавлен в новой версии документа.
+            
+            &lt;del datetime="2009-10-10T23:38-07:00"&gt;Поспать&lt;/del&gt;
+            
+            
+            del и ins имеют атрибуты:
+            
+            cite -- используется для ссылки на источник или описание произошедшего изменения
+            datetime -- можно указать дату и время поправки / предназначен не для людей
+            
+            </code></pre>
+            </details>
+          </details>
+          <!-- теги изменений -->
+
+          <details class="show-piece" open>
+            <summary><code><b>text-decoration -- </b></code>text-decoration-line, text-decoration-style,
+              text-decoration-color</summary>
+
+          </details>
+          <!-- text-decoration -->
+
+          <details class="show-piece" open>
+            <summary><code><b>line-height -- </b></code>межстрочный интервал</summary>
+
+            <div class="line-height">
+
+            </div>
+
+          </details>
+          <!-- line-height -->
+
+          <details class="show-piece" open>
+            <summary><code><b>letter-spacing</b></code></summary>
+            <p><span style="letter-spacing: 5px;">интервал между символами</span></p>
+          </details>
+          <!-- letter-spacing -->
+
+          <details class="show-piece" open>
+            <summary><code><b>white-space -- </b></code>управление пробелами при переносе</summary>
+          </details>
+          <!-- white-space -->
+
+          <details class="show-piece" open>
+            <summary><code><b>sub / sup</b></code></summary>
+            <p><code>20м<sup>2</sup>H<sub>2</sub>O - X<sup>3</sup>+X<sup>2</sup>=1</code></p>
+          </details>
+          <!-- sub / sup -->
+
+          <details class="show-piece" open>
+            <summary><code><b>text-overflow:</b> clip / ellipsis</code></summary>
+            <div class="text-overflow">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+            </div>
+          </details>
+          <!-- text-overflow -->
+
+          <details class="show-piece" open>
+            <summary><code><b>text-indent -- </b>красная строка</code></summary>
+            <div class="preview text-indent">
+
+              <div class="inner">
+                <div class="item">
+                  <p><b>text-indent: 2em;</b> - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, at.
+                  </p>
+                </div>
+                <div class="item">
+                  <p><b>text-indent: -2em;</b> - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia,
+                    esse.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+          <!-- text-indent -->
+
+
+          <details class="show-piece" open>
+            <summary>
+              <code><b>text-align:</b> left / right / centet / justify /start и end</code>
+              <span class="color-red-light">задаётся контейнеру</span>
+            </summary>
+
+            <details class="show-piece ">
+              <summary><code><b>text-justify -- </b></code>управление пробелами в
+                <code>text-align: justify</code> (<span class="color-red">почти нет поддержки</span>)
+              </summary>
+
+              <div class="text-justify">
+
+                <div class="inner">
+                  <div class="item">
+                    <p>auto</p>
+                    <p>Lorem ipsum dolor amet. Inventore maxime exercitationem saepe esse. Lorem ipsum dolor sit
+                      consectetur
+                      exercitationem elit. Numquam tempore, delectus exercitationem exercitm error.</p>
+                  </div>
+                  <div class="item">
+                    <p>inter-word</p>
+                    <p>Lorem ipsum dolor amet. Inventore maxime exercitationem saepe esse. Lorem ipsum dolor sit
+                      consectetur
+                      exercitationem elit. Numquam tempore, delectus exercitationem exercitm error.</p>
+                  </div>
+                  <div class="item">
+                    <p>inter-character</p>
+                    <p>Lorem ipsum dolor amet. Inventore maxime exercitationem saepe esse. Lorem ipsum dolor sit
+                      consectetur
+                      exercitationem elit. Numquam tempore, delectus exercitationem exercitm error.</p>
+                  </div>
+                  <div class="item">
+                    <p>distribute</p>
+                    <p>Lorem ipsum dolor amet. Inventore maxime exercitationem saepe esse. Lorem ipsum dolor sit
+                      consectetur
+                      exercitationem elit. Numquam tempore, delectus exercitationem exercitm error.</p>
+                  </div>
+                </div>
+              </div>
+
+            </details>
+
+          </details>
+          <!-- text-align  text-justify -->
+
+          <details class="show-piece preview vertical-align" open>
+            <summary>
+              <code><b>vertical-align -- </b>top / bottom / baseline / middle / sub / super / text-bottom / text-top <span class="color-red-light">задаётся элементу</span></code>
+            </summary>
+
+            <img src="../img/vertical-align.png" alt="vertical-align">
+
+          </details>
+          <!-- vertical-align -->
+
+
+          <details class="show-piece writing-mode" open>
+            <summary><code><b>writing-mode:</b> horizontal-tb / vertical-rl / vertical-lr</code></summary>
+
+            <div class="flex-container-performance">
+              <div class="item">
+                <p>horizontal-tb</p>
+              </div>
+              <div class="item">
+                <p>vertical-rl</p>
+              </div>
+              <div class="item">
+                <p>vertical-lr</p>
+              </div>
+            </div>
+
+          </details>
+          <!-- writing-mode -->
+
+
+          <details class="show-piece preview text-orientation" open>
+            <summary><code><b>text-orientation:</b> upright / mixed</code> вместе с writing-mode</summary>
+
+            <div class="flex-container-performance">
+              <div class="item">
+                <p>upright</p>
+              </div>
+              <div class="item">
+                <p>mixed</p>
+                <p>vertical-rl</p>
+              </div>
+              <div class="item">
+                <p>mixed</p>
+                <p>vertical-lr</p>
+              </div>
+            </div>
+          </details>
+          <!-- text-orientation -->
+
+
+
+
+
+
+
+
+        </section>
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

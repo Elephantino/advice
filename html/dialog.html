@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dialog</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .modal {
+      padding: 0;
+      border: none;
+      border-radius: 15px;
+    }
+
+    .modal__inner {
+      padding: 1em 2em;
+      text-align: center;
+    }
+
+    .modal::backdrop {
+      background-color: #2f0303bd;
+    }
+
+    .openModal,
+    .closeModal {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <section class="dialog">
+          <div class="container">
+
+            <header>
+              <a href="../index.html">home</a>
+            </header>
+
+            <h1>dialog</h1>
+
+            <dialog class="modal">
+              <div class="modal__inner">
+                <h2>dialog html элемент</h2>
+                <p>какой то текст</p>
+
+                <button class="closeModal">close</button>
+              </div>
+            </dialog>
+
+            <button class="openModal">open</button>
+
+            <ul>
+              <li><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element">HTML
+                  Standard</a></li>
+              <li><a href="https://www.youtube.com/watch?v=m-mWUNUdtss" target="_blank"
+                  rel="noopener noreferrer">youtube</a>
+              </li>
+            </ul>
+
+            <article>
+              <p>Удаление open атрибута обычно скрывает диалоговое окно. Однако это влечет за собой ряд
+                странных
+                дополнительных
+                последствий:</p>
+              <ul>
+                <li>Событие closeне будет запущено.</li>
+                <li>Метод close()и любой интерфейс отмены, предоставляемый пользовательским агентом , больше
+                  не смогут
+                  закрыть диалоговое
+                  окно.</li>
+                <li>Если диалог был показан с использованием его showModal() метода, он Documentвсе равно
+                  будет
+                  заблокирован
+                  .</li>
+              </ul>
+              <p>По этим причинам обычно лучше никогда не удалять open атрибут вручную. Вместо этого
+                используйте
+                close() метод,
+                чтобы
+                закрыть диалоговое окно, или hidden атрибут, чтобы скрыть его.</p>
+            </article>
+
+            <h3>Методы</h3>
+
+            <pre><code>
+атрибут open открывает модальное окно &lt;dialog open&gt;...&ltdialog&gt;
+              
+modal.showModal();   открыть 
+              
+modal.close();       скрыть
+              
+::backdrop задний фон
+</code></pre>
+
+            <p>html элемент dialig занимает 100% окна браузера а не только див с контентом</p>
+            <p>если кликнуть в любое место вы кликаете на элемент dialog</p>
+
+            <img src="../image/html/dialog.jpg" alt="">
+
+            <p>по этому что бы закрывать модальное окно по клику в любое место нужно сделать подложку в нутри
+              модального
+              окна
+              что бы по клику на само окно оно не закрывалось а по клику мимо всплывашки оно закрывалось, и
+              всякие
+              паддинги
+              задавать уже иннеру а не самому модальному окну.</p>
+
+            <img src="../image/html/dialog-2.jpg" alt="">
+
+
+
+
+          </div> <!-- container -->
+        </section><!-- dialog -->
+
+        <script>
+
+          const openModal = document.querySelector('.openModal');
+          const closeModal = document.querySelector('.closeModal');
+          const modal = document.querySelector('.modal');
+
+
+          if (openModal) {
+            openModal.addEventListener('click', () => {
+              modal.showModal();
+            })
+
+            closeModal.addEventListener('click', () => {
+              modal.close();
+            })
+
+            modal.addEventListener('click', (e) => {
+              // console.log(e.target);
+              if (e.target === modal) modal.close();
+            })
+          }
+        </script>
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>
