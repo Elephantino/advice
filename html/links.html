@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>links</title>
+  <link rel="stylesheet" href="../style.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <section class="links">
+
+          <h1>ссылки, якоря</h1>
+
+
+          <p>
+            <code>&lt;a href="../html/layouts.html<span class="color-red">#layouts-float</span>"&gt; откуда &lt;/a&gt;</code>
+          </p>
+          <p><code>&lt;a name="<span class="color-red">link</span>"&gt; куда &lt;/a&gt;</code></p>
+
+          <details class="show-piece"><!-- Зона кликабельности ссылки -->
+            <summary><code>Зона кликабельности ссылки</code></summary>
+            <pre>
+  <code>
+div {
+position: relative;
+}
+
+a:before {
+content: '';
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+}
+  </code>
+</pre>
+
+          </details><!-- Зона кликабельности ссылки -->
+
+          <details class="show-piece"><!-- ссылка на файл -->
+            <summary><code>ссылка на файл</code></summary>
+            <p>при переходе по ссылке на файл браузер предложит его скачать.</p>
+            <p>Однако, если браузер умеет обрабатывать файлы этого типа, то содержимое файла откроется прямо в
+              браузере. Чаще всего так происходит с изображениями.</p>
+            <p>предотвратить открытие файлов прямо в браузере:</p>
+            <pre><code>
+&lt;a href="file.pdf" download&gt;Браузер скачает меня, а не будет читать&lt;/a&gt;
+  
+rel="noopener" // атрибут позволяет игнорировать скрипты сторонней страницы
+
+</code></pre>
+            <p>При скачивании или загрузке файлов со сторонних сайтов для безопасности можно использовать атрибут
+              rel="noopener". Этот атрибут позволяет игнорировать скрипты сторонней страницы, которые могут влиять
+              на загрузку файла. Особенно актуален этот атрибут в случае, если загрузка происходит в новой вкладке
+              или новом окне.</p>
+          </details><!-- ссылка на файл -->
+
+
+
+
+
+          <pre><code>
+:link    | ссылки которые не были посещены  
+:visited | ссылки которые были посещены  
+:focus   |
+:hover   | наведение на элемент
+:active  | между нажатием и отпусканием кнопки мыши 
+
+:target  | элемент куда ведет ссылка /якорь/
+:any-link| все элементы a, area, link, которые имеют атрибут href. 
+           все элементы, которые используют :link или :visited    
+                </code></pre>
+
+
+
+
+
+
+        </section>
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

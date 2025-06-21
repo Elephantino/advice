@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>border</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .box-shadow button {
+      width: 250px;
+      padding: 0.5em;
+      margin: 1em;
+      border: none;
+    }
+
+
+    .box-shadow__button-one {
+      box-shadow:
+        0 0 2px 1px red,
+        0 0 2px 2px orange,
+        0 0 2px 3px #ff0,
+        0 0 2px 4px green,
+        0 0 2px 5px #add8e6,
+        0 0 2px 6px blue,
+        0 0 2px 7px violet;
+    }
+
+    .box-shadow__button-two {
+      box-shadow:
+        -6px -6px 8px -4px rgba(255, 0, 0, .75),
+        6px -6px 8px -4px rgba(0, 255, 0, .75),
+        6px 6px 8px -4px rgba(255, 255, 0, .75),
+        -6px 6px 8px -4px rgba(0, 0, 255, .75);
+    }
+
+    .box-shadow__button-three {
+      box-shadow:
+        inset 0 0 8px orange,
+        1px 1px 3px blue;
+    }
+
+    .box-shadow__button-four {
+      box-shadow:
+        0 1px red,
+        0 3px 3px -2px black;
+    }
+
+    .box-shadow .shadow-softening__one {
+      box-shadow:
+        0 1px 1px rgba(0, 0, 0, .15),
+        0 2px 2px rgba(0, 0, 0, .15),
+        0 4px 4px rgba(0, 0, 0, .15),
+        0 8px 8px rgba(0, 0, 0, .15);
+    }
+
+    .box-shadow .shadow-softening__two {
+      box-shadow:
+        0 1px 1px rgba(0, 0, 0, .11),
+        0 2px 2px rgba(0, 0, 0, .11),
+        0 4px 4px rgba(0, 0, 0, .11),
+        0 8px 8px rgba(0, 0, 0, .11),
+        0 16px 16px rgba(0, 0, 0, .11),
+        0 32px 32px rgba(0, 0, 0, .11);
+    }
+
+
+    .box-shadow .shadow-softening__three {
+      box-shadow:
+        0 1px 2px rgba(0, 0, 0, .07),
+        0 2px 4px rgba(0, 0, 0, .07),
+        0 4px 8px rgba(0, 0, 0, .07),
+        0 8px 16px rgba(0, 0, 0, .07),
+        0 16px 32px rgba(0, 0, 0, .07),
+        0 32px 64px rgba(0, 0, 0, .07);
+    }
+
+
+    .box-shadow .shadow-softening__four {
+      box-shadow:
+        0 1px 1px rgba(0, 0, 0, .11),
+        0 2px 2px rgba(0, 0, 0, .11),
+        0 4px 4px rgba(0, 0, 0, .11),
+        0 6px 8px rgba(0, 0, 0, .11),
+        0 8px 16px rgba(0, 0, 0, .11);
+    }
+
+
+
+    .box-shadow .shadow-softening__five {
+      box-shadow:
+        0 2px 1px rgba(0, 0, 0, .09),
+        0 4px 2px rgba(0, 0, 0, .09),
+        0 8px 4px rgba(0, 0, 0, .09),
+        0 16px 8px rgba(0, 0, 0, .09),
+        0 32px 16px rgba(0, 0, 0, .09);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <h1>border / outline / box-shadow</h1>
+
+        <p><code><span class="color-red-light">border</span>: width / style / color</code></p>
+        <p>Разные горизонтальные и вертикальные радиусы:</p>
+        <p><code>border-radius: 10px 20px 30px 40px / 5px 15px 25px 35px;</code></p>
+        <!-- border -->
+
+        <hr>
+
+        <p><code><span class="color-red-light">outline</span>:width / style / color</code></p>
+        <p>не влияет на размер элемента и не занимает места, то есть отображается над другими элементами.</p>
+
+        <pre><code>
+outline-width: 10px;
+outline-style: solid;
+outline-color: black;
+
+</code></pre>
+        <p>outline-offset -- изменяет расположение рамки</p>
+        <p>внешней рамке нельзя задать параметры отдельных сторон.</p>
+
+        <!-- outline -->
+
+        <hr>
+
+        <section class="box-shadow">
+
+          <p><code class="color-red-light">box-shadow</code> - даже у тени есть своя тень(filter-drop-shadow)</p>
+
+          <p>Тень в реальном мире редко бывает просто черной, она обычно содержит в себе оттенок основного цвета
+            обьекта. Такие тени
+            смотрятся органично.</p>
+          <p>Если какой-то параметр тени не указан, значит он равен 0.</p>
+          <p>рамки увеличивают размер элемента, а тени — нет.</p>
+
+
+          <pre>
+<code>
+box-shadow: inset? h-offset v-offset blur-radius spread-distance color;
+
+[inset] — внутренняя
+[5px] — смещение по x
+[10px] — смещение по y
+[2px] — размытие
+[3px] — растяжение
+[red]; — цвет
+</code>
+</pre>
+
+
+          <h3>Множественные тени</h3>
+          <p>тени выстраиваются в стек в обратном порядке и отрисовываются, начиная с последней, причем каждая из
+            них применяется к
+            исходному объекту так, как будто есть только она.</p>
+
+          <button class="box-shadow__button-one" type="button">button</button>
+          <button class="box-shadow__button-two" type="button">в разных направлениях</button>
+          <button class="box-shadow__button-three" type="button">внутренние и внешние</button>
+          <button class="box-shadow__button-four" type="button">продвинутое подчеркивание</button>
+
+
+          <h2>Смягчение теней с помощью слоёв</h2>
+          <p><a class="shadow__link" href="https://xhtml.ru/2021/css/layered-smooth-box-shadows/">Смягчение
+              теней с помощью слоёв в CSS-свойстве box-shadow</a></p>
+          <p>Если увеличивать количество слоев, нужно уменьшить значение прозрачности для каждого слоя, чтобы
+            плотность тени оставалась примерно такой же.</p>
+
+          <button class="shadow-softening__one" type="button">4 слоя с прозрачностью 15%</button>
+          <button class="shadow-softening__two" type="button">6 слоёв с прозрачностью 11%</button>
+          <p>Можно смелее увеличивать размытие, чтобы расширить распространение и ещё больше смягчить эффект тени:
+          </p>
+          <button class="shadow-softening__three" type="button">становится ещё мягче с увеличением шага изменения
+            прозрачности</button>
+          <p>можно управлять длиной тени</p>
+          <button class="shadow-softening__four" type="button">короткая тень с меньшим расстоянием</button>
+          <button class="shadow-softening__five" type="button">длинная тень с большим расстоянием</button>
+        </section>
+        <!-- box-shadow -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

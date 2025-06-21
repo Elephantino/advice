@@ -4,9 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>html</title>
+  <title>scroll-bar</title>
   <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../css/html.css">
   <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
 </head>
 
@@ -39,27 +38,38 @@
     </header>
 
     <main class="page--main">
+      <div class="container">
 
-      <section class="html">
-        <div class="container">
-
-         
-  
-
-          
-          
-
-
-       
+        <section class="scroll-bar">
 
 
 
+          <summary><code>scroll-bar</code></summary>
+          <p>боковая полоса прокрутки в ff не делается через css, единственное это сменить цвет</p>
+
+          <ul>
+            <li>scrollbar-width</li>
+            <li>scrollbar-color</li>
+            <li>scrollbar-gutter</li>
+          </ul>
+
+          <p>в webkit все проще:</p>
+
+          <ul>
+            <li>::-webkit-scroll-bar</li>
+            <li>::-webkit-scroll-bar-button</li>
+            <li>::-webkit-scroll-bar-track</li>
+            <li>::-webkit-scroll-bar-thumb</li>
+          </ul>
 
 
 
-        </div><!-- container -->
-      </section> <!-- html -->
 
+
+        </section>
+
+      </div>
+      <!-- container -->
     </main>
 
     <footer class="page--footer">

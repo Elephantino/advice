@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>index</title>
   <link rel="stylesheet" href="style.css">
+
   <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png">
 </head>
 
@@ -53,63 +54,83 @@
             </li>
           </ul>
 
+          <!-- git init -->
+          <div class="elem">
 
-          <div style="display: inline-block; padding: 5px; border: 1px solid black;">
-            <p>сделать</p>
-            <ol>
-              <li>remove add class внутри классы js</li>
-              <li>mouseover / mouseout / mouseenter / mouseleave</li>
-              <li>тег nav есть в делегировании событий</li>
-              <li>Смил анимаци</li>
-              <li>mask-image svg</li>
-            </ol>
-          </div>
+            <div class="performance git-init">
+              <pre>
+  <code>
+git init
+git remote add origin http://
+git pull origin main   ===   git pull http://
+
+git add . 
+  git status 
+git commit -m "commit"
+git push origin main   ===   git push http://
+
+git clone http://
+  </code>
+</pre>
+            </div>
+
+
+
+            <nav style="display: flex;">
 
 
 
 
-          <div class="hide-element">
+              <ul>
+                <li class="color-red-light">elements</li>
+                <li><a href="html/scroll-bar.html">scroll-bar</a></li>
+                <li><a href="html/figure.html">figure</a></li>
+                <li><a href="html/figure.html">цитаты</a></li>
+                <li><a href="html/"></a></li>
+                <li><a href="html/links.html">ссылки</a></li>
+                <li><a href="html/"></a></li>
+                <li><a href="html/lists.html">списки</a></li>
+                <li><a href="html/"></a></li>
+                <li><a href="html/input.html">input</a></li>
+                <li><a href="html/"></a></li>
+                <li><a href="html/dialog.html">dialog</a></li>
+                <li><a href="html/image.html">image</a></li>
+                <li><a href="html/image.html">picture</a></li>
+                <li><a href="html/attributes.html">attributes</a></li>
+                <li><a href="html/meta.html">meta</a></li>
+                <li><a href="html/localstorage.html">localstorage</a></li>
+                <li><a href="html/table.html">table</a></li>
+                <li><a href="html/"></a></li>
+              </ul>
+
+
+            </nav>
+
+
+
+
+
+
+
+
+            <!-- hide-element -->
             <div class="performance">
               <p class="color-red-light">скрыть элемент</p>
-              <ul>
-                <li>display: none === аттрибут hidden</li>
-                <li>opacity: 0</li>
-                <li>visability: hidden</li>
-              </ul>
+              <pre><code>
+display: none === аттрибут hidden
+opacity: 0
+visability: hidden
+
+</code></pre>
             </div>
-          </div>
-
-
-
-
-          <p><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fmSIHr3WKxk&t=11s">CSS
-              3D
-              Трансформации. Пример с 3D кубом</a></p>
 
 
 
 
 
-          <h2>резервные классы</h2>
-          <ul>
-            <li>.visually-hidden</li>
-            <li>.inline-block</li>
-            <li>.list-reset</li>
-            <li>.button-reset</li>
-            <li>.clearfix::after ???????</li>
-            <li></li>
-            <li>.color-blue</li>
-            <li>.color-light-blue</li>
-            <li>.color-blue-light</li>
-            <li>.color-yellow</li>
-            <li>.color-red</li>
-            <li>.color-red-light</li>
-            <li></li>
-          </ul>
 
-
-          <div style="display: inline-block;">
-            <pre><code>
+            <div style="display: inline-block;">
+              <pre><code>
                         Node.parentNode 
                               |
                               | 
@@ -120,9 +141,9 @@
     Node.firstChils       Node.childNodes[1]...       Node.lastChild 
                           (стек элементов)  
 </code></pre>
-          </div>
-          <div style="display: inline-block;">
-            <pre><code>
+            </div>
+            <div style="display: inline-block;">
+              <pre><code>
 window ─┐
         ├─ DOM ─┐
         │       └ document
@@ -139,10 +160,10 @@ window ─┐
                ├─ array
                └─ func  
 </code></pre>
-          </div>
+            </div>
 
-          <div style="display: inline-block;">
-            <pre><code>
+            <div style="display: inline-block;">
+              <pre><code>
       EventTarget
            │
          Node
@@ -155,52 +176,53 @@ text     element     comment
     │              │
 HTMLElement    SVGElement  
 </code></pre>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div>
+              <h2>события</h2>
+
+              <ul>
+                <li>Blur потеря объектом фокуса onBlur</li>
+                <li>Change пользователь изменяет значение элемента onChange</li>
+                <li>Click пользователь щелкает мыщью по объекту onClick</li>
+                <li>DblClick пользователь делает двойной щелчок мышью по объекту onDblClick</li>
+                <li>DragDrop пользователь перетаскивает мышью объект onDragDrop</li>
+                <li>Error возникновение javascript-ошибки onError</li>
+                <li>Focus окно или элемент формы получает фокус onFocus</li>
+                <li>KeyDown пользователь нажимает клавишу клавиатуры onKeyDown</li>
+                <li>KeyPress пользователь удерживает нажатой клавишу клавиатуры onKeyPress</li>
+                <li>KeyUp пользователь отпускает клавишу клавиатуры onKeyUp</li>
+                <li>Load документ загружается в браузер onLoad</li>
+                <li>MouseDown пользователь нажимает кнопку мыши onMouseDown</li>
+                <li>MouseOut указатель мыши выходит за пределы элемента onMouseOut</li>
+                <li>MouseOver указатель мыши помещается над элементом onMouseOver</li>
+                <li>MouseUp пользователь отпускает кнопку мыши onMouseUp</li>
+                <li>Move пользователь перемещает окно onMove</li>
+                <li>Reset пользователь нажимает кнопку "reset" формы onReset</li>
+                <li>Resize пользователь изменяет размеры окна или элемента onResize</li>
+                <li>Select пользователь выбирает элемент формы onSelect</li>
+                <li>Select пользователь выбирает элемент формы onSelect</li>
+                <li>Unload пользователь закрывает документ onUnload</li>
+              </ul>
+            </div>
+
+
+
+
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <div>
-            <h2>события</h2>
-
-            <ul>
-              <li>Blur потеря объектом фокуса onBlur</li>
-              <li>Change пользователь изменяет значение элемента onChange</li>
-              <li>Click пользователь щелкает мыщью по объекту onClick</li>
-              <li>DblClick пользователь делает двойной щелчок мышью по объекту onDblClick</li>
-              <li>DragDrop пользователь перетаскивает мышью объект onDragDrop</li>
-              <li>Error возникновение javascript-ошибки onError</li>
-              <li>Focus окно или элемент формы получает фокус onFocus</li>
-              <li>KeyDown пользователь нажимает клавишу клавиатуры onKeyDown</li>
-              <li>KeyPress пользователь удерживает нажатой клавишу клавиатуры onKeyPress</li>
-              <li>KeyUp пользователь отпускает клавишу клавиатуры onKeyUp</li>
-              <li>Load документ загружается в браузер onLoad</li>
-              <li>MouseDown пользователь нажимает кнопку мыши onMouseDown</li>
-              <li>MouseOut указатель мыши выходит за пределы элемента onMouseOut</li>
-              <li>MouseOver указатель мыши помещается над элементом onMouseOver</li>
-              <li>MouseUp пользователь отпускает кнопку мыши onMouseUp</li>
-              <li>Move пользователь перемещает окно onMove</li>
-              <li>Reset пользователь нажимает кнопку "reset" формы onReset</li>
-              <li>Resize пользователь изменяет размеры окна или элемента onResize</li>
-              <li>Select пользователь выбирает элемент формы onSelect</li>
-              <li>Select пользователь выбирает элемент формы onSelect</li>
-              <li>Unload пользователь закрывает документ onUnload</li>
-            </ul>
-          </div>
-
-
-
-
         </div>
       </div>
     </main>

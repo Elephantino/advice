@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>input</title>
+  <link rel="stylesheet" href="../style.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+        <section class="input">
+          <h1>input</h1>
+
+          <ul>
+            <li><a href="">tabindex - </a>порядок навигации</li>
+            <li><a href="">autocomplete - </a>автозаполнение</li>
+            <li><a href="">readonly / disabled - </a>запрет редактирования полей</li>
+            <li><a href="">type="password" - </a>показать пароль</li>
+            <li><a href="">select - </a>drop down list
+            </li>
+          </ul>
+
+          <p class="color-red-light">input custom:</p>
+          <ul>
+            <li><span class="color-yellow">appearance - </span>сброc / задание внешнего вида input</li>
+            <li><a href="">custom checkbox</a> </li>
+            <li><a href="">input снаружи label</a></li>
+            <li><a href="">input вложен в label</a></li>
+          </ul>
+
+          <a
+            href="https://codepen.io/collection/DgYaMj/?cursor=eyJjb2xsZWN0aW9uX2lkIjoiRGdZYU1qIiwiY29sbGVjdGlvbl90b2tlbiI6bnVsbCwibGltaXQiOjQsIm1heF9pdGVtcyI6OTksIm9mZnNldCI6MjQsInBhZ2UiOjcsInNvcnRfYnkiOiJwb3NpdGlvbiIsInNvcnRfb3JkZXIiOiJBc2MifQ==">input
+            type range</a>
+
+
+
+
+
+
+          <details class="show-piece">
+            <summary><code>tabindex - </code>порядок навигации</summary>
+            <p><a name="tabindex"></a></p>
+            <p>Из соображений доступности не рекомендуется менять порядок навигации по полям ввода
+              по умолчанию</p>
+            <p><code>&lt;input type="text" tabindex="3"&gt;</code></p>
+            <p>В качестве значения может использоваться любое целое положительное число. Значения
+              выстраиваются
+              последовательно и
+              переход между элементами происходит от меньшего значения к большему.</p>
+            <p>Если представлено отрицательное значение — элемент может быть выделен, однако не
+              участвует в
+              последовательной навигации</p>
+            <p>Если представлен 0 — элемент может быть выделен и достигнут с помощью
+              последовательной
+              навигации,
+              однако
+              порядок
+              навигации определён платформой</p>
+          </details>
+          <!-- tabindex -->
+
+
+          <details class="show-piece">
+            <summary><code>autocomplete - </code>автозаполнение</summary>
+            <p>При вводе первых букв текста выводится список сохранённых ранее значений</p>
+            <p>Параметрами автозаполнения можно управлять используя атрибут autocomplete.</p>
+            <p>Он может принимать два значения on и off</p>
+            <p>Отключение автозаполнения обычно используется из соображений безопасности, например,
+              чтобы не
+              сохранялись
+              пароли, номера
+              банковских карт и так далее.</p>
+            <p><code>&lt;input type="text" autocomplete="off"&gt;</code></p>
+          </details>
+          <!-- autocomplete -->
+
+          <details class="show-piece">
+            <summary><code>readonly / disabled - </code>запрет редактирования полей</summary>
+
+            <p><code>readonly</code> не дает пользователю изменять поле (вводить новый текст,
+              модифицировать
+              существующий).
+              Введенное
+              значение можно выделить и скопировать. Данные из этого поля отправляются на сервер.
+            </p>
+            <p><code>disabled</code> не дает пользователю изменять поле (вводить новый текст,
+              модифицировать
+              существующий).
+              Нельзя поставить
+              фокус в это поле, введенное значение нельзя выделять и копировать. Данные из этого
+              поля НЕ
+              отправляются
+              на
+              сервер.</p>
+            <p><code>&lt;input type="text" readonly&gt;</code></p>
+            <p><code>&lt;input type="text" disabled&gt;</code></p>
+          </details>
+          <!-- readonly/ disabled -->
+
+
+          <details class="show-piece">
+            <summary><code>type="password" - </code>показать пароль</summary>
+            <pre><code>
+&lt;input class="password" type="password" placeholder="**********" required&gt;
+&lt;input class="show-password" type="checkbox"&gt;
+
+let password = document.querySelector('.password');
+let showPassword = document.querySelector('.show-password');
+let securityBar = document.querySelector('.security-bar');
+
+showPassword.onchange = function () {
+  if (showPassword.checked) {
+     password.type = 'text';
+  } else {                          //если чекбокс не checked то 
+    password.type = 'password';       изменим type на pasword
+  }                                  что бы снова скрыть пароль
+};
+
+      прогрессбар заполнения пароля
+password.oninput = function () {
+  
+  let passLength = password.value.length;
+  
+  securityBar.style.width = passLength * 10 + '%';
+  
+  if (passLength &lt;= 5) {
+    securityBar.style.backgroundColor = 'red';
+  } else if (passLength > 5 && passLength &lt; 10) {
+    securityBar.style.backgroundColor = 'gold';
+  } else {
+    securityBar.style.backgroundColor = 'green';
+    }
+};
+
+тут * на 10 потому что минимальная длина пароля 10 символов.
+умножайте на свое минимальное значение что бы полоса под инпутом 
+заполнялась актуально
+</code></pre>
+          </details>
+          <!-- type="password" -->
+
+
+          <details class="show-piece">
+            <summary><code>type="range" - </code>диапазон</summary>
+            <pre><code>
+range {
+    appearance: none;      
+    outline: none;
+}
+             ползунок
+range::-webkit-slider-thumb {  
+    -webkit-appearance: none;
+    cursor: pointer;
+ }
+            полоса
+range::-moz-range-track {     
+    appearance: none;
+    outline: none;
+}
+</code></pre>
+          </details>
+          <!-- type="range"  -->
+
+
+          <!-- select -->
+          <details class="show-piece">
+            <summary><code>select - </code>выпадающий список</summary>
+            <p>Вложенность групп не ограничена, внутрь каждой группы можно вложить другие группы.
+            </p>
+            <p>Аналогично можно группировать элементы и в списках со множественным выбором</p>
+
+            <select name="variants">
+              <optgroup label="Группа вариантов 1">
+                <option value="1">Вариант 1</option>
+                <option value="2">Вариант 2</option>
+                <option value="3">Вариант 3</option>
+              </optgroup>
+              <optgroup label="Группа вариантов 2">
+                <option value="4">Вариант 4</option>
+                <option value="5">Вариант 5</option>
+                <option value="6">Вариант 6</option>
+              </optgroup>
+            </select>
+
+            <pre><code>
+    &lt;select name="variants"&gt;
+      &lt;optgroup label="Группа вариантов 1"&gt;
+        &lt;option value="1"&gt;Вариант 1&lt;/option&gt;
+        &lt;option value="2"&gt;Вариант 2&lt;/option&gt;
+        &lt;option value="3"&gt;Вариант 3&lt;/option&gt;
+      &lt;/optgroup&gt;
+      &lt;optgroup label="Группа вариантов 2"&gt;
+        &lt;option value="4"&gt;Вариант 4&lt;/option&gt;
+        &lt;option value="5"&gt;Вариант 5&lt;/option&gt;
+        &lt;option value="6"&gt;Вариант 6&lt;/option&gt;
+      &lt;/optgroup&gt;
+    &lt;/select&gt;
+      </code></pre>
+
+          </details>
+          <!-- select -->
+
+
+          <section class="custom-input" style="border: 1px solid black;">
+
+            <p class="color-red-light">custom input</p>
+
+            <!-- checkbox - custom -->
+            <details class="show-piece">
+              <summary><code>checkbox - custom</code></summary>
+              <pre><code>
+&lt;form class="check"&gt;
+    &lt;input type="checkbox" class="check__input" id="agreement"&gt;
+    &lt;label class="check__label" for="agreement"&gt; I'm agree&lt;/label&gt;
+&lt;/form&gt;
+    
+.check__input {
+    position: absolute;
+    left: -999%;
+    width: 1px;
+    height: 1px;
+    clip: rect(0 0 0 0);
+    opacity: 0;
+    z-index: -1;
+}
+    
+.check__label {
+    vertical-align: middle;
+}
+    
+.check__label::before {
+    content: '';
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    padding-bottom: 0.05em;
+    font-size: 0.7em;
+    border: 1px solid #000;
+    border-radius: 0.2em;
+    vertical-align: middle;
+    margin-right: 0.35em;
+    text-align: center;
+    position: relative;
+    top: -0.2em;
+}
+    
+.check__input:checked + .check__label::before {
+    content: '\2714';
+}
+</code></pre>
+            </details>
+            <!-- checkbox - custom -->
+
+
+            <!-- input снаружи label -->
+            <details class="show-piece">
+              <summary><code>input снаружи label - </code>custom</summary>
+              <pre><code>
+&lt;input class=“custom-checkbox reset” type="checkbox" id="checkbox-1”&gt;
+&lt;label for=" checkbox-1"&gt;&lt;/label&gt;
+    
+- Скрываем инпут добавлением класса
+
+- Создаем чекбокс
+
+.custom-checkbox + label::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 1px solid red;
+    border-radius: .25em;
+    margin-right: .5em;
+    vertical-align: middle;
+    
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 50% 50%;
+}
+
+
+- checked
+
+.custom-checkbox:checked + label::before {
+    border-color: #0b76ef;
+    background-color: #0b76ef;
+    background-image: url("");
+}
+
+    
+- hover на checkbox
+
+.custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
+    border-color: #b3d7ff;
+}
+    
+
+- active чекбокса 
+.custom-checkbox:not(:disabled):active+label::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+}
+    
+
+- focus
+
+.custom-checkbox:focus+label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+    
+- для чекбокса, находящегося в фокусе и не находящегося в состоянии checked
+    
+.custom-checkbox:focus:not(:checked)+label::before {
+    border-color: #80bdff;
+}
+  
+
+- disabled
+    .custom-checkbox:disabled+label::before {
+    background-color: #e9ecef;
+}
+</code></pre>
+            </details>
+            <!-- input снаружи label -->
+
+
+            <details class="show-piece">
+              <summary><code>input вложен в label - </code>custom</summary>
+              <pre><code>
+&lt;label class="custom-radio"&gt;
+    &lt;input class=“reset” type="radio" name="color" value="indigo"&gt;
+    &lt;input class=“reset” type="radio" name="color" value="red"&gt;
+    &lt;span&gt;без спана не обойтись в этом случае&lt;/span&gt;
+&lt;/label&gt;
+
+
+- Скрываем инпут добавлением класса
+    
+- для элемента label связанного с .custom-radio
+    
+.custom-radio &gt; span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: .5em;
+}
+
+
+- создание в label псевдоэлемента before 
+
+.custom-radio &gt; span::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 0.5em;
+    
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
+    
+    
+- при наведении курсора на радио
+    
+.custom-radio &gt; input:not(:disabled):not(:checked)+span:hover::before {
+    border-color: #b3d7ff;
+}
+
+
+- для активной радиокнопки (при нажатии на неё)
+    
+.custom-radio &gt; input:not(:disabled):active+span::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+}
+  
+
+- для радиокнопки, находящейся в фокусе
+    
+.custom-radio &gt; input:focus+span::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+    
+    
+- для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked
+    
+.custom-radio &gt; input:focus:not(:checked) + span::before {
+    border-color: #80bdff;
+}
+    
+    
+- для радиокнопки, находящейся в состоянии checked
+    
+.custom-radio &gt; input:checked + span::before {
+    border-color: #0b76ef;
+    background-color: #0b76ef;
+    background-image: url("http://");
+}
+    
+    
+- для радиокнопки, находящейся в состоянии disabled
+    
+.custom-radio &gt; input:disabled + span::before {
+    background-color: #e9ecef;
+}
+</code></pre>
+            </details>
+          </section>
+
+
+
+
+
+        </section>
+
+
+
+
+        </section>
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

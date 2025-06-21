@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404</title>
+  <link rel="stylesheet" href="../style.css">
+  <!-- <link rel="shortcut icon" href="img/window-icon/window-icon-3.svg" type="image/png"> -->
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="page--header">
+      <div class="container">
+        <div class="page--header__inner">
+
+          <a href="../index.html">
+            <!-- <svg width="125px" height="20px">
+                  <use href="img/sprite.svg#logo"></use>
+                </svg> -->
+            <!-- <img src="img/logo.png" alt=""> -->
+            Да да не удивляйтесь
+          </a>
+
+          <ul class="header-list list-reset">
+            <li class="item"><a href="404.html">404</a></li>
+            <li class="item"><a href="examples.html">examples</a></li>
+            <li class="item"><a href="crib.html">шпора</a></li>
+            <li class="item"><a href="table-of-contents.html">оглавление</a></li>
+          </ul>
+
+          <button class="btn-up visually-hidden" type="button">button up</button>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="page--main">
+      <div class="container">
+
+       
+        <h1>table</h1>
+
+        <section class="table">
+
+
+            <p><img src="img/table.jpg" alt=""></p>
+
+
+            <h2>display: table</h2>
+
+            <img src="../img/table.jpg" alt="таблица">
+
+
+
+
+
+
+            <pre>
+<code>
+html     | css
+
+table    | display: table 
+
+caption  | display: table-caption      | первый элемент внутри table
+ caption-side: top / bottom 
+ text-align: ...
+
+thead    | display: table-header-group | группировка для th
+tbody    | display: table-row-group 
+tfoot    | display: table-footer-group | всегда отображается снизу
+
+colgroup | display: table-column-group | стилизация столбцов
+col      | display: table-column       | 
+
+tr       | display: table-row 
+td, th   | display: table-cell 
+
+
+
+cellspacing | border-spacing  | отступы между ячейками
+cellpadding | th,td{padding}  | отступы внутри ячеек
+
+
+empty-cells: show / hide     | границы и фон вокруг пустых ячеек
+
+          separate     collapse
+border-collapse:  ┌----┐┌----┐  ┌----┐----┐
+                  └----┘└----┘  └----┘----┘
+                                    colspan: 2
+colspan | объединение ячеек    ┌----┐┌----┐ > ┌-------┐
+rowspan | объединение ячеек    └----┘└----┘ > └-------┘
+
+</code>
+</pre>
+
+            <!-- col -->
+            <details class="show-piece">
+              <summary><code>col - </code>стилизация столбцов</summary>
+
+              <pre><code>
+&lt;table&gt;
+&lt;col width="20%"&gt;
+&lt;col width="80%"&gt;
+&lt;tr&gt;
+...
+&lt;/tr&gt;
+&lt;tr&gt;
+...
+&lt;/tr&gt;
+&lt;/table&gt;
+
+</code></pre>
+
+              <p>В HTML-таблицах для стилизации столбцов используется тег &lt;col&gt;. Тег пишется в начале таблицы
+                и не закрывается. Первый col в разметке влияет на каждую первую ячейку в рядах таблицы, то есть, на
+                первый столбец. Следующий &lt;col&gt; будет стилизовать второй столбец и так далее.</p>
+              <p>В CSS-таблицах так же: внутри таблицы создать пустой тег и задать ему display: table-column (это
+                аналог тега col). Правила для него будут применяться к первому столбцу, следующий элемент с
+                table-column стилизует второй столбец и так далее.</p>
+
+            </details>
+
+            <!-- таблица -->
+            <details class="show-piece">
+              <summary><code>таблица</code></summary>
+              <div class="show-code">
+                <h2 class="show-code__title">table</h2>
+
+                <div class="show-code__description">
+                  <!-- <p>description</p> -->
+                </div>
+
+                <div class="show-code__inner">
+                  <div class="show-code__performance">
+                    <section>
+
+                      <table border="1" cellspacing="10" cellpadding="2">
+                        <caption>border-collapse: separate</caption>
+
+                        <colgroup>
+                          <col width="100px">
+                          <col width="60px">
+                          <col>
+                          <col width="150px">
+                        </colgroup>
+
+
+                        <thead bgcolor="lightblue">
+                          <tr>
+                            <th>.</th>
+                            <th>.</th>
+                            <th>.</th>
+                            <th>.</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr>
+                            <th rowspan="2" valign="bottom">valign</th>
+                            <td>.</td>
+                            <td>.</td>
+                            <td>.</td>
+                          </tr>
+                          <tr>
+                            <th></th>
+                            <td>.</td>
+                            <td>.</td>
+                          </tr>
+                        </tbody>
+
+                        <tfoot>
+                          <tr>
+                            <td colspan="4" align="right">align</td>
+                          </tr>
+                        </tfoot>
+
+                      </table>
+                    </section>
+                  </div>
+
+                  <textarea name="" id="" cols="30" rows="10">
+<table border="1" cellspacing="10" cellpadding="2">
+
+<caption>caption</caption>	
+
+<colgroup>
+<col width="100px">
+<col width="60px">
+<col>
+<col width="150px">
+</colgroup>
+
+
+<thead bgcolor="lightblue">
+<tr>
+<th>.</th>
+<th>.</th>
+<th>.</th>
+<th>.</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<th rowspan="2" valign="bottom">valign</th>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<th></th>
+<td>.</td>
+<td>.</td>
+</tr>
+</tbody>
+
+<tfoot>
+<tr>
+<td colspan="4" align="right">align</td>
+</tr>
+</tfoot>
+
+</table>
+</textarea>
+                </div>
+              </div>
+            </details>
+
+
+
+
+
+            <!-- table-row -->
+            <details class="show-piece">
+              <summary><code>table-row</code></summary>
+              <p><b>display: table-row - </b>контейнер для ячеек, практически не имеет собственного отображения. Для
+                неё можно только задавать цвет фона.</p>
+            </details>
+
+            <!-- cellpadding -->
+            <details class="show-piece">
+              <summary><code>cellpadding - </code>отступы внутри ячеек</summary>
+
+              <p><b>атрибут cellpadding - </b>отступы внутри ячеек, но лучше его не использовать, а задавать отступы
+                с помощью CSS.</p>
+            </details>
+
+
+            <!-- cellspacing -->
+            <details class="show-piece">
+              <summary><code>cellspacing / border-spacing </code>отступы между ячейками</summary>
+              <p>Отступы между ячейками не работают с border-collapse: collapse, ведь рамки ячеек в этом режиме
+                «склеены» и их не разорвать.</p>
+            </details>
+
+
+      
+        </section><!-- table -->
+
+      </div>
+      <!-- container -->
+    </main>
+
+    <footer class="page--footer">
+      <div class="container">
+        <div class="page--footer__inner">
+          footer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>
